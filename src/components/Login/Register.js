@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Login() {
+const Register = ({ openLoginModal }) => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    dateOfBirth: "",
+    timeOfBirth: "",
+    placeOfBirth: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Replace with your form submission logic (e.g., API call)
+    console.log(formData);
+  };
+
   return (
     <div>
       <div
         className="modal fade login-div-modal contact-form01"
-        id="loginModal01"
+        id="registerModal"
       >
         <div className="modal-dialog">
           <div className="modal-content">
@@ -31,64 +53,76 @@ export default function Login() {
             </div>
             <div className="modal-body">
               <div className="modla-contact">
-                <h2> Login to your Account</h2>
+                <h2>Sign Up for & consult your favourite Tarot Reader</h2>
                 <div className="form-div-sections mt-5 d-inline-block w-100 px-5">
-                  <form
-                    name="fmn"
-                    action="https://oxentictemplates.in/templatemonster/astrology/mj"
-                    method="post"
-                  >
+                  <form name="fmn" onSubmit={handleSubmit}>
                     <div className="row" data-aos="fade-down">
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label> Full Name </label>
+                          <label>Full Name</label>
                           <input
                             type="text"
+                            name="fullName"
                             className="form-control"
                             placeholder="Enter your name"
+                            value={formData.fullName}
+                            onChange={handleChange}
                             required
                           />
                         </div>
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label> Your Email </label>
+                          <label>Your Email</label>
                           <input
                             type="email"
+                            name="email"
                             className="form-control"
                             placeholder="Enter your email"
+                            value={formData.email}
+                            onChange={handleChange}
                             required
                           />
                         </div>
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label> Date of Birth </label>
+                          <label>Date of Birth</label>
                           <input
+                            type="text"
+                            name="dateOfBirth"
                             id="datepicker"
                             placeholder="DD/MM/YYYY"
                             className="form-control"
+                            value={formData.dateOfBirth}
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label> Time Of Birth </label>
+                          <label>Time Of Birth</label>
                           <input
                             type="text"
+                            name="timeOfBirth"
                             className="form-control"
                             placeholder="12:00"
+                            value={formData.timeOfBirth}
+                            onChange={handleChange}
                             required
                           />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="form-group">
-                          <label> Place of Birth </label>
+                          <label>Place of Birth</label>
                           <input
                             type="text"
+                            name="placeOfBirth"
                             className="form-control"
                             placeholder="Enter your City"
+                            value={formData.placeOfBirth}
+                            onChange={handleChange}
                             required
                           />
                         </div>
@@ -103,19 +137,16 @@ export default function Login() {
                     </div>
                   </form>
                 </div>
-
-                <p className="text-center  mt-3 mb-5">
-                  {" "}
-                  Do not have an account?
+                <p className="text-center mt-3 mb-5">
+                  Already have an account?{" "}
                   <a
                     data-bs-toggle="modal"
-                    className="regster-bn"
-                    data-bs-target="#registerModal"
+                    class="regster-bn"
+                    data-bs-target="#loginModal01"
                     data-bs-dismiss="modal"
                   >
-                    {" "}
-                    Register{" "}
-                  </a>{" "}
+                    Login
+                  </a>
                 </p>
               </div>
             </div>
@@ -124,4 +155,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Register;
