@@ -1,54 +1,40 @@
 import express from "express";
 import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
-require("dotenv").config();
 import bodyParser from "body-parser";
-// import connection from "./config/connectDB";
+import cors from "cors";
+require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7218; // Define PORT, defaulting to 7218 if not set
 
-//config cors
-app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", process.env.REACT_URL);
+// CORS Configuration
+app.use(
+  cors({
+    origin: process.env.REACT_URL, // Use environment variable for allowed origin
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["X-Requested-With", "Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  // Request headers you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type, Authorization"
-  );
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader("Access-Control-Allow-Credentials", true);
-
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  // Pass to next layer of middleware
-  next();
-});
-
-//config view engine
-configViewEngine(app);
-
-//config body-parser
+// Body-parser Configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//test connection db
-// connection();
+// View Engine Configuration
+configViewEngine(app);
 
-//init web routes
+// Test Route
+app.get("/api/users", (req, res) => {
+  const data = { message: "Success" };
+  res.json(data);
+});
+
+// Initialize Web Routes
 initWebRoutes(app);
 
+// Start Server
 app.listen(PORT, () => {
-  console.log(">>> JWT Backend is running on the port = " + PORT);
+  console.log(`>>> JWT Backend is running on port ${PORT}`);
 });

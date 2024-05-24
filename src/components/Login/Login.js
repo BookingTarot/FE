@@ -18,6 +18,7 @@ export default function Login() {
     e.preventDefault();
 
     const response = await fetch("https://localhost:7218/api/User/login", {
+      // Use HTTP and correct endpoint
       method: "POST",
       headers: {
         "Content-Type": "application/json",
