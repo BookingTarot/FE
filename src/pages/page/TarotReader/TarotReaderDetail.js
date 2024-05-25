@@ -16,11 +16,11 @@ export default function TarotReaderDetail() {
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
         <div class="container">
-          <h2 class="text-center text-white"> Astrologer details</h2>
+          <h2 class="text-center text-white"> Tarot Reader details</h2>
           <nav class="mt-4">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active">Astrologer details</li>
+              <li class="breadcrumb-item active">Tarot Reader details</li>
             </ol>
           </nav>
         </div>
