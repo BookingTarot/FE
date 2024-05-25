@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,15 +34,19 @@ export default function Login() {
 
     if (response.ok) {
       // Handle successful login, e.g., redirect to another page or show a success message
+      navigate("/tarotReader");
       console.log("Login successful", result);
+      toast.success("Login successful!");
     } else {
       // Handle errors, e.g., show an error message
       console.error("Login failed", result);
+      toast.error("Login failed, please input again!");
     }
   };
 
   return (
     <div>
+      <ToastContainer />
       <div
         className="modal fade login-div-modal contact-form01"
         id="loginModal01"

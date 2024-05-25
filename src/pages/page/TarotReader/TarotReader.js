@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
 import Header from "../../../components/Header/Header";
 import Login from "../../../components/Login/Login";
 import Register from "../../../components/Login/Register";
@@ -6,6 +8,24 @@ import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
 import Footer from "../../../components/Footer/Footer";
 
 export default function TarotReader() {
+  const navigate = useNavigate();
+  const [tarotReaders, setTarotReaders] = useState([]);
+
+  useEffect(() => {
+    const fetchTarotReaders = async () => {
+      try {
+        const response = await axios.get(
+          "https://localhost:7218/api/TarotReader"
+        );
+        setTarotReaders(response.data);
+      } catch (error) {
+        console.error("Error fetching the tarot readers data", error);
+      }
+    };
+
+    fetchTarotReaders();
+  }, []);
+
   return (
     <div>
       {/* <!-- Header Modal --> */}
@@ -16,11 +36,11 @@ export default function TarotReader() {
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
         <div class="container">
-          <h2 class="text-center text-white"> Astrologer </h2>
+          <h2 class="text-center text-white"> Tarot Reader </h2>
           <nav class="mt-4">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active">Astrologer</li>
+              <li class="breadcrumb-item active">Tarot Reader</li>
             </ol>
           </nav>
         </div>
@@ -63,7 +83,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault"
                           >
-                            Vedic
+                            Love
                           </label>
                         </div>
 
@@ -78,7 +98,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault2"
                           >
-                            Tarot
+                            Work
                           </label>
                         </div>
 
@@ -93,7 +113,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault3"
                           >
-                            Numerology
+                            Health
                           </label>
                         </div>
 
@@ -108,43 +128,13 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault4"
                           >
-                            Vastu
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault5"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault5"
-                          >
-                            Fengshui
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault6"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault6"
-                          >
-                            Reiki Healing
+                            Finance
                           </label>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="accordion-item">
+                  {/* <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button
                         class="accordion-button"
@@ -285,10 +275,10 @@ export default function TarotReader() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div class="accordion-item">
-                    <h2 class="accordion-header">
+                    {/* <h2 class="accordion-header">
                       <button
                         class="accordion-button "
                         type="button"
@@ -297,12 +287,12 @@ export default function TarotReader() {
                       >
                         Experience
                       </button>
-                    </h2>
+                    </h2> */}
                     <div
                       id="panelsStayOpen-collapsefour"
                       class="accordion-collapse collapse show"
                     >
-                      <div class="accordion-body my-5">
+                      {/* <div class="accordion-body my-5">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -362,7 +352,7 @@ export default function TarotReader() {
                             20 Years & Above
                           </label>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
@@ -373,7 +363,7 @@ export default function TarotReader() {
               <div class="col-lg-9 mt-5 mt-lg-0">
                 <div class="d-flex justify-content-between align-items-center">
                   <h2 class="ashow text-white">
-                    Consult to Our Best Astrologers{" "}
+                    Consult to Our Best Tarot Readers{" "}
                   </h2>
                   <div class="right-section-btn d-flex align-items-center">
                     <div class="dropdown">
@@ -422,13 +412,10 @@ export default function TarotReader() {
                         <div class="top-asto d-flex align-items-center justify-content-between w-100">
                           <div class="pro-astro d-flex align-items-start">
                             <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/spiritual-man-india-traditional-clothing-39495501.jpg"
-                              />
+                              <img alt="ser" src="assets/images/profile2.png" />
                             </div>
                             <div class="le-astro ms-4">
-                              <h5> Jaone Smith </h5>
+                              <h5>Tan Tran</h5>
                               <p class="rt-cion">
                                 <span>
                                   {" "}
@@ -443,15 +430,15 @@ export default function TarotReader() {
                           </div>
 
                           <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
+                            <h5> Love, Work </h5>
                             <p> Exp: 3 Years </p>
                           </div>
                         </div>
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
-                            Hindi, Spanish
+                            <i class="fas fa-newspaper"></i> CONNECTION AND
+                            HAPPINESS
                           </p>
                         </div>
 
@@ -459,11 +446,11 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 30/min
                           </p>
                         </div>
 
-                        <div class="d-flex align-items-center justify-content-between my-4">
+                        {/* <div class="d-flex align-items-center justify-content-between my-4">
                           <a
                             href="astrologer-details.html"
                             class="btn btn-comij"
@@ -477,11 +464,144 @@ export default function TarotReader() {
                           >
                             <i class="fas fa-phone-alt"></i> Start Call
                           </a>
+                        </div> */}
+                      </div>
+                    </div>
+                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
+                      <div class="comon-items-d1 d-inline-block w-100">
+                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
+                          <div class="pro-astro d-flex align-items-start">
+                            <div class="profile-astro">
+                              <img alt="ser" src="assets/images/profile4.png" />
+                            </div>
+                            <div class="le-astro ms-4">
+                              <h5>Minh Đăng</h5>
+                              <p class="rt-cion">
+                                <span>
+                                  {" "}
+                                  <i class="fas fa-star"></i>{" "}
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>{" "}
+                                </span>
+                                <i class="fas fa-star"></i>{" "}
+                                <i class="fas fa-star"></i>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="right-usert text-lg-end">
+                            <h5> Love </h5>
+                            <p> Exp: 5 Years </p>
+                          </div>
+                        </div>
+                        <div class="lang-ved mt-4">
+                          <p>
+                            {" "}
+                            <i class="fas fa-newspaper"></i> TAROT FOR EVOLUTION
+                          </p>
+                        </div>
+
+                        <hr />
+                        <div class="lang-ved mt-4">
+                          <p>
+                            {" "}
+                            <i class="fas fa-clock"></i> 90/min
+                          </p>
                         </div>
                       </div>
                     </div>
 
                     <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
+                      <div class="comon-items-d1 d-inline-block w-100">
+                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
+                          <div class="pro-astro d-flex align-items-start">
+                            <div class="profile-astro">
+                              <img alt="ser" src="assets/images/profile1.png" />
+                            </div>
+                            <div class="le-astro ms-4">
+                              <h5>Văn Nga</h5>
+                              <p class="rt-cion">
+                                <span>
+                                  {" "}
+                                  <i class="fas fa-star"></i>{" "}
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>{" "}
+                                </span>
+                                <i class="fas fa-star"></i>{" "}
+                                <i class="fas fa-star"></i>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="right-usert text-lg-end">
+                            <h5> Health, Family </h5>
+                            <p> Exp: 2 Years </p>
+                          </div>
+                        </div>
+                        <div class="lang-ved mt-4">
+                          <p>
+                            {" "}
+                            <i class="fas fa-newspaper"></i> CONNECTION &
+                            LIBERATION
+                          </p>
+                        </div>
+
+                        <hr />
+                        <div class="lang-ved mt-4">
+                          <p>
+                            {" "}
+                            <i class="fas fa-clock"></i> 60/min
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
+                      <div class="comon-items-d1 d-inline-block w-100">
+                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
+                          <div class="pro-astro d-flex align-items-start">
+                            <div class="profile-astro">
+                              <img alt="ser" src="assets/images/profile3.png" />
+                            </div>
+                            <div class="le-astro ms-4">
+                              <h5>Ánh Nguyệt</h5>
+                              <p class="rt-cion">
+                                <span>
+                                  {" "}
+                                  <i class="fas fa-star"></i>{" "}
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>{" "}
+                                </span>
+                                <i class="fas fa-star"></i>{" "}
+                                <i class="fas fa-star"></i>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="right-usert text-lg-end">
+                            <h5> Work </h5>
+                            <p> Exp: 3 Years </p>
+                          </div>
+                        </div>
+                        <div class="lang-ved mt-4">
+                          <p>
+                            {" "}
+                            <i class="fas fa-newspaper"></i> HUMANISTIC TAROT
+                            READER
+                          </p>
+                        </div>
+
+                        <hr />
+                        <div class="lang-ved mt-4">
+                          <p>
+                            {" "}
+                            <i class="fas fa-clock"></i> 30/min
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
                       <div class="comon-items-d1 d-inline-block w-100">
                         <div class="top-asto d-flex align-items-center justify-content-between w-100">
                           <div class="pro-astro d-flex align-items-start">
@@ -514,7 +634,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -523,7 +643,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -578,7 +698,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -587,7 +707,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -642,7 +762,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -651,7 +771,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -706,7 +826,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -715,7 +835,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -770,7 +890,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -779,7 +899,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -834,7 +954,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -843,7 +963,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -898,7 +1018,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -907,7 +1027,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -962,7 +1082,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -971,7 +1091,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -1026,7 +1146,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-language"></i> Lang: English,
+                            <i class="fas fa-newspaper"></i> Lang: English,
                             Hindi, Spanish
                           </p>
                         </div>
@@ -1035,7 +1155,7 @@ export default function TarotReader() {
                         <div class="lang-ved mt-4">
                           <p>
                             {" "}
-                            <i class="fas fa-dollar-sign"></i> 5/min
+                            <i class="fas fa-clock"></i> 5/min
                           </p>
                         </div>
 
@@ -1055,7 +1175,7 @@ export default function TarotReader() {
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   <nav class="my-5">

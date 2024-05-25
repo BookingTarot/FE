@@ -4,6 +4,7 @@ import Register from "../../../components/Login/Register";
 import Login from "../../../components/Login/Login";
 import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
 import Footer from "../../../components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 export default function AstrologyHome() {
   return (
@@ -22,7 +23,7 @@ export default function AstrologyHome() {
               <div className="col">
                 <span className="spm-smalll" data-aos="fade-up">
                   {" "}
-                  Ultimate Guide To Astrology{" "}
+                  A new place for tarot{" "}
                 </span>
                 <h1 className="text-white my-3" data-aos="fade-down">
                   Your Star Determines
@@ -30,16 +31,19 @@ export default function AstrologyHome() {
                 </h1>
                 <p data-aos="fade-up">
                   {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Utelit tellusoi luctus nec ullamcorper mattis pulvinar dapibus
-                  leonec.
+                  Experience interactive & deeply illuminating tarot sessions
+                  right from your browser
                 </p>
 
                 <div className="mt-5">
-                  <a href="#" className="btn btn-get-btn" data-aos="fade-up">
+                  <Link
+                    to="/tarotReader"
+                    className="btn btn-get-btn"
+                    data-aos="fade-up"
+                  >
                     {" "}
                     Getting Started{" "}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col">

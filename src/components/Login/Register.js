@@ -2,11 +2,14 @@ import React, { useState } from "react";
 
 const Register = ({ openLoginModal }) => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
+    lastName: "",
+    firstName: "",
     dateOfBirth: "",
-    timeOfBirth: "",
-    placeOfBirth: "",
+    phoneNumber: "",
+    gender: "0", // Ensure gender is a string
+    email: "",
+    password: "",
+    address: "",
   });
 
   const handleChange = (e) => {
@@ -17,10 +20,31 @@ const Register = ({ openLoginModal }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Replace with your form submission logic (e.g., API call)
-    console.log(formData);
+
+    try {
+      // Make API call to submit form data
+      const response = await fetch("https://localhost:7218/api/User/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Registration successful
+        console.log("Registration successful!");
+        // Optionally redirect to the login modal
+        openLoginModal(true); // Call the function to open the login modal
+      } else {
+        // Registration failed
+        console.error("Registration failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting registration:", error);
+    }
   };
 
   return (
@@ -46,7 +70,7 @@ const Register = ({ openLoginModal }) => {
                     className="bi bi-x-lg"
                     viewBox="0 0 16 16"
                   >
-                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1-.708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                   </svg>
                 </span>
               </button>
@@ -59,13 +83,28 @@ const Register = ({ openLoginModal }) => {
                     <div className="row" data-aos="fade-down">
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label>Full Name</label>
+                          <label>Last Name</label>
                           <input
                             type="text"
-                            name="fullName"
+                            name="lastName"
                             className="form-control"
-                            placeholder="Enter your name"
-                            value={formData.fullName}
+                            placeholder="Enter your Last Name"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="col-lg-6">
+                        <div className="form-group">
+                          <label>First Name</label>
+                          <input
+                            type="text"
+                            name="firstName"
+                            placeholder="Enter your First Name"
+                            className="form-control"
+                            value={formData.firstName}
                             onChange={handleChange}
                             required
                           />
@@ -73,7 +112,7 @@ const Register = ({ openLoginModal }) => {
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label>Your Email</label>
+                          <label>Email</label>
                           <input
                             type="email"
                             name="email"
@@ -87,46 +126,94 @@ const Register = ({ openLoginModal }) => {
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label>Date of Birth</label>
+                          <label>Password</label>
+                          <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your Password"
+                            className="form-control"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="col-lg-6">
+                        <div className="form-group">
+                          <label>Phone Number</label>
                           <input
                             type="text"
+                            name="phoneNumber"
+                            placeholder="Enter Your Phone Number"
+                            className="form-control"
+                            value={formData.phoneNumber}
+                            onChange={handleChange}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="col-lg-6">
+                        <div className="form-group">
+                          <label>Date of Birth</label>
+                          <input
+                            type="date"
                             name="dateOfBirth"
-                            id="datepicker"
                             placeholder="DD/MM/YYYY"
                             className="form-control"
                             value={formData.dateOfBirth}
                             onChange={handleChange}
+                            required
                           />
                         </div>
                       </div>
+
                       <div className="col-lg-6">
                         <div className="form-group">
-                          <label>Time Of Birth</label>
+                          <label>Address</label>
                           <input
                             type="text"
-                            name="timeOfBirth"
+                            name="address"
+                            placeholder="Enter your Address"
                             className="form-control"
-                            placeholder="12:00"
-                            value={formData.timeOfBirth}
+                            value={formData.address}
                             onChange={handleChange}
                             required
                           />
                         </div>
                       </div>
-                      <div className="col-lg-12">
+
+                      <div className="col-lg-6">
                         <div className="form-group">
-                          <label>Place of Birth</label>
-                          <input
-                            type="text"
-                            name="placeOfBirth"
-                            className="form-control"
-                            placeholder="Enter your City"
-                            value={formData.placeOfBirth}
-                            onChange={handleChange}
-                            required
-                          />
+                          <label>Gender</label>
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="gender"
+                              value="0"
+                              checked={formData.gender === "0"}
+                              onChange={handleChange}
+                              required
+                            />
+                            <label className="form-check-label">Male</label>
+                          </div>
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="gender"
+                              value="1"
+                              checked={formData.gender === "1"}
+                              onChange={handleChange}
+                              required
+                            />
+                            <label className="form-check-label">Female</label>
+                          </div>
                         </div>
                       </div>
+
                       <div className="col-lg-12">
                         <input
                           type="submit"
@@ -141,7 +228,7 @@ const Register = ({ openLoginModal }) => {
                   Already have an account?{" "}
                   <a
                     data-bs-toggle="modal"
-                    class="regster-bn"
+                    className="regster-bn"
                     data-bs-target="#loginModal01"
                     data-bs-dismiss="modal"
                   >
