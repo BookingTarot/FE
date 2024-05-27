@@ -5,6 +5,9 @@ import Login from "../../../components/Login/Login";
 import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
 import Footer from "../../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import Horoscope from "../../../components/TabContent/Horoscope";
+import Consult from "../../../components/Consult/Consult";
+import Review from "../../../components/Review/Review";
 
 export default function AstrologyHome() {
   return (
@@ -23,16 +26,16 @@ export default function AstrologyHome() {
               <div className="col">
                 <span className="spm-smalll" data-aos="fade-up">
                   {" "}
-                  A new place for tarot{" "}
+                  Một Địa Điểm Mới Cho Tarot{" "}
                 </span>
                 <h1 className="text-white my-3" data-aos="fade-down">
-                  Your Star Determines
-                  <span className="d-block"> Your Life's Journey </span>
+                  Lá Bài Quyết Định
+                  <span className="d-block"> Hành Trình Cuộc Đời </span>
                 </h1>
                 <p data-aos="fade-up">
                   {" "}
-                  Experience interactive & deeply illuminating tarot sessions
-                  right from your browser
+                  Trải nghiệm tương tác & chiếu sáng sâu sắc từ các bài đọc
+                  Tarot
                 </p>
 
                 <div className="mt-5">
@@ -42,7 +45,7 @@ export default function AstrologyHome() {
                     data-aos="fade-up"
                   >
                     {" "}
-                    Getting Started{" "}
+                    Bắt Đầu Khám Phá{" "}
                   </Link>
                 </div>
               </div>
@@ -116,12 +119,12 @@ export default function AstrologyHome() {
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/3776970.png" />
                   </div>
-                  <h5 className="text-white"> Know About Horoscope </h5>
+                  <h5 className="text-white"> ĐA DẠNG THỂ LOẠI </h5>
                   <p>
                     {" "}
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy
+                    Các phòng tương tác của chúng tôi là nơi dành cho những
+                    người đam mê và những người mới đến tìm hiểu sâu hơn mối
+                    quan hệ của họ với tarot mà không có tình trạng spam
                   </p>
                 </a>
               </div>
@@ -135,12 +138,12 @@ export default function AstrologyHome() {
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/815838.png" />
                   </div>
-                  <h5 className="text-white"> Chart Comparisons </h5>
+                  <h5 className="text-white"> ĐẶT CHỖ AN TOÀN, UY TÍN </h5>
                   <p>
                     {" "}
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy
+                    Tellory đảm nhận việc đặt chỗ và thanh toán dễ dàng cho các
+                    bài đọc và bài học, để các chuyên gia tarot có thể phát
+                    triển
                   </p>
                 </a>
               </div>
@@ -154,12 +157,12 @@ export default function AstrologyHome() {
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/1408347.png" />
                   </div>
-                  <h5 className="text-white"> Tarot Reading </h5>
+                  <h5 className="text-white"> Trải Nghiệm Tarot </h5>
                   <p>
                     {" "}
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy
+                    Chúng tôi đã xây dựng một cách tốt hơn để những người có sở
+                    thích khám phá các bộ bài tarot mới cũng như phong cách đọc
+                    bài và giáo viên đa dạng phù hợp với họ.
                   </p>
                 </a>
               </div>
@@ -182,42 +185,40 @@ export default function AstrologyHome() {
                     data-aos="fade-up"
                   >
                     <h4 className="text-center">
-                      16 +<span className="d-lg-block">Year Experience</span>
+                      1 +<span className="d-lg-block">Year Experience</span>
                     </h4>
                   </div>
                 </div>
               </div>
               <div className="col">
-                <h5 data-aos="fade-down"> About Astro Ava </h5>
+                <h5 data-aos="fade-down"> About Tellory </h5>
                 <h2 className="text-white my-2" data-aos="fade-down">
                   {" "}
-                  We Can Make Your Bright
+                  Chúng Tôi Có Thể Giúp Bạn
                   <span className="d-lg-block" data-aos="fade-up">
                     {" "}
-                    Future With Astrology
+                    Tự Tin Hơn Với Bài Tarot
                   </span>
                 </h2>
                 <p className="mt-3" data-aos="fade-up">
                   {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged.{" "}
+                  Tarot là một môn tập luyện bí truyền có hơn 400 năm tuổi gần
+                  đây đã bùng nổ thành một nghi thức suy ngẫm phổ biến đối với
+                  hàng triệu người trên toàn thế giới. Đối tượng ngày càng mở
+                  rộng của nó đang tìm kiếm các công cụ tốt hơn để cùng nhau
+                  giải bài tarot trực tuyến.{" "}
                 </p>
                 <p className="mt-3">
                   {" "}
-                  It was popularised in the 1960s with the release of Letraset
-                  sheets containing Lorem Ipsum passages, and more recently with
-                  desktop publishing software like Aldus PageMaker including
-                  versions of Lorem Ipsum.
+                  Vì vậy, Tellory đã xây dựng một nền tảng mới để phát triển
+                  theo nhu cầu của tarot. Chúng tôi tạo ra những công cụ tuyệt
+                  vời bao gồm các phiên tarot được cá nhân hóa, bộ bài kỹ thuật
+                  số, đặt chỗ dễ dàng và hơn thế nữa!
                 </p>
 
                 <a href="#" className="read-btn btn mt-4" data-aos="fade-down">
                   {" "}
-                  <span> Read more </span>{" "}
+                  <span> Khám Phá Ngay </span>{" "}
                 </a>
               </div>
             </div>
@@ -228,14 +229,14 @@ export default function AstrologyHome() {
             <div className="comon-heading text-center">
               <h5 className="sub-heading" data-aos="fade-down">
                 {" "}
-                Zodiac Sign{" "}
+                Biểu Tượng Hoàng Đạo{" "}
               </h5>
               <h2
                 className="text-white comon-heading mt-3"
                 data-aos="fade-down"
               >
                 {" "}
-                Know Yourself Through Your Sign{" "}
+                Khám Phá Bản Thân Với Các Cung Hoàng Đạo{" "}
               </h2>
             </div>
             <div
@@ -254,8 +255,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Aries </h5>
-                    <p className="mt-2"> Mar 21 - Apr 19</p>
+                    <h5 className="text-white"> BẠCH DƯƠNG </h5>
+                    <p className="mt-2"> 21/3 - 19/4</p>
                   </div>
                 </a>
               </div>
@@ -272,8 +273,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Taurus </h5>
-                    <p className="mt-2"> Apr 20 - May 20</p>
+                    <h5 className="text-white"> KIM NGƯU </h5>
+                    <p className="mt-2"> 20/4 - 20/5 </p>
                   </div>
                 </a>
               </div>
@@ -290,8 +291,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Gemini </h5>
-                    <p className="mt-2"> May 21 - Jun 20</p>
+                    <h5 className="text-white"> SONG TỬ </h5>
+                    <p className="mt-2"> 21/5 - 20/6 </p>
                   </div>
                 </a>
               </div>
@@ -309,8 +310,8 @@ export default function AstrologyHome() {
                   </div>
 
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Cancer </h5>
-                    <p className="mt-2"> Jun 21 - Jul 22 </p>
+                    <h5 className="text-white"> CỰ GIẢI </h5>
+                    <p className="mt-2"> 21/6 - 22/7 </p>
                   </div>
                 </a>
               </div>
@@ -327,8 +328,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Leo </h5>
-                    <p className="mt-2"> Jul 23 - Aug 22 </p>
+                    <h5 className="text-white"> SƯ TỬ </h5>
+                    <p className="mt-2"> 23/7 - 22/8 </p>
                   </div>
                 </a>
               </div>
@@ -345,8 +346,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Virgo </h5>
-                    <p className="mt-2"> Aug 23 - Sep 22 </p>
+                    <h5 className="text-white"> XỬ NỮ </h5>
+                    <p className="mt-2"> 23/8 - 22/9 </p>
                   </div>
                 </a>
               </div>
@@ -363,8 +364,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Libra</h5>
-                    <p className="mt-2"> Sep 23 - Oct 22 </p>
+                    <h5 className="text-white"> THIÊN BÌNH</h5>
+                    <p className="mt-2"> 23/9 - 22/10 </p>
                   </div>
                 </a>
               </div>
@@ -381,8 +382,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Scorpio </h5>
-                    <p className="mt-2"> Oct 23 - Nov 21 </p>
+                    <h5 className="text-white"> THIÊN YẾT </h5>
+                    <p className="mt-2"> 23/10 - 21/11 </p>
                   </div>
                 </a>
               </div>
@@ -399,8 +400,8 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Sagittarius </h5>
-                    <p className="mt-2"> Nov 22 - Dec 21</p>
+                    <h5 className="text-white"> NHÂN MÃ </h5>
+                    <p className="mt-2"> 22/11 - 21/12 </p>
                   </div>
                 </a>
               </div>
@@ -417,7 +418,7 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Capricorn </h5>
+                    <h5 className="text-white"> MA KẾT </h5>
                     <p className="mt-2"> Dec 22 - Jan 19 </p>
                   </div>
                 </a>
@@ -435,7 +436,7 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Aquarius </h5>
+                    <h5 className="text-white"> BẢO BÌNH </h5>
                     <p className="mt-2"> Jan 20 - Feb 18 </p>
                   </div>
                 </a>
@@ -453,7 +454,7 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> Pisces </h5>
+                    <h5 className="text-white"> SONG NGƯ </h5>
                     <p className="mt-2"> Feb 19 - Mar 20 </p>
                   </div>
                 </a>
@@ -466,13 +467,13 @@ export default function AstrologyHome() {
             <div className="comon-heading text-center">
               <h5 className="sub-heading" data-aos="fade-up">
                 {" "}
-                Our Service
+                DỊCH VỤ CHÚNG TÔI
               </h5>
               <h2
                 className="text-white comon-heading mt-3 mb-3"
                 data-aos="fade-up"
               >
-                Our Astrologers Work for You
+                Xem Tarot – Khai Mở Tương Lai
               </h2>
             </div>
             <p
@@ -480,8 +481,9 @@ export default function AstrologyHome() {
               data-aos="fade-down"
             >
               {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy
+              Tellory tổ chức các chuyên gia tarot giàu lòng nhân ái và hòa
+              nhập, những người cung cấp các bài đọc và bài học cho mọi cấp độ
+              kinh nghiệm
             </p>
             <div className="row mt-5 gy-4 g-lg-4">
               <div className="col-lg-3">
@@ -489,10 +491,10 @@ export default function AstrologyHome() {
                   <figure>
                     <img alt="su" src="assets/images/3013143.png" />
                   </figure>
-                  <h4 className="text-white mt-3">Kundli Dosha</h4>
+                  <h4 className="text-white mt-3">Tình Yêu</h4>
                   <p className="mt-2">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    Tarot giúp bạn hiểu rõ hơn về tình cảm và mối quan hệ của
+                    mình.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -504,10 +506,10 @@ export default function AstrologyHome() {
                   <figure>
                     <img alt="su" src="assets/images/8596897.png" />
                   </figure>
-                  <h4 className="text-white mt-3">Birth Journal</h4>
+                  <h4 className="text-white mt-3">Sức Khỏe</h4>
                   <p className="mt-2">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    Tarot đưa ra lời khuyên về tình trạng sức khỏe và cách cải
+                    thiện.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -533,10 +535,10 @@ export default function AstrologyHome() {
                   <figure>
                     <img alt="su" src="assets/images/867780.png" />
                   </figure>
-                  <h4 className="text-white mt-3">Tarot Reading</h4>
+                  <h4 className="text-white mt-3">Công Việc</h4>
                   <p className="mt-2">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    Tarot cung cấp cái nhìn sâu sắc về con đường sự nghiệp và cơ
+                    hội thăng tiến.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -548,10 +550,10 @@ export default function AstrologyHome() {
                   <figure>
                     <img alt="su" src="assets/images/9289285.png" />
                   </figure>
-                  <h4 className="text-white mt-3">Numerology Tips</h4>
+                  <h4 className="text-white mt-3">Tài Chính</h4>
                   <p className="mt-2">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    Tarot hỗ trợ bạn quản lý tài chính và nhận diện cơ hội đầu
+                    tư.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -574,15 +576,22 @@ export default function AstrologyHome() {
             </div>
             <div className="tipsoft" data-aos="fade-up">
               <div className="d-md-flex justify-content-center align-items-center">
-                <h2 className="text-white"> Tips Of the day </h2>
+                <h2 className="text-white"> Mẹo Trong Ngày </h2>
                 <p className="ms-md-5 col-lg-7">
-                  {" "}
                   <span className="me-3 text-white">
                     {" "}
                     <i className="fas fa-quote-left"></i>{" "}
                   </span>{" "}
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.{" "}
+                  Một sự thật đã được chứng minh từ lâu rằng người đọc sẽ bị
+                  phân tâm bởi nội dung có thể đọc được của một trang khi nhìn
+                  vào bố cục của nó.{" "}
+                  <span className="me-3 text-white">
+                    {" "}
+                    <i
+                      className="fas fa-quote-right"
+                      style={{ marginLeft: "10px" }}
+                    ></i>{" "}
+                  </span>{" "}
                 </p>
               </div>
             </div>
@@ -594,14 +603,14 @@ export default function AstrologyHome() {
             <div className="comon-heading text-center">
               <h5 className="sub-heading" data-aos="fade-down">
                 {" "}
-                Horoscopes{" "}
+                Tử Vi{" "}
               </h5>
               <h2
                 className="text-white comon-heading mt-2 mb-3"
                 data-aos="fade-up"
               >
                 {" "}
-                Daily Horoscopes for You{" "}
+                Tử Vi Mỗi Ngày dành cho Bạn{" "}
               </h2>
             </div>
 
@@ -619,7 +628,7 @@ export default function AstrologyHome() {
                   role="tab"
                 >
                   {" "}
-                  Daily Horoscopes
+                  Tử Vi Mỗi Ngày
                 </button>
               </li>
 
@@ -642,1031 +651,17 @@ export default function AstrologyHome() {
                   type="button"
                   role="tab"
                 >
-                  Numerology{" "}
+                  Thần Số Học{" "}
                 </button>
               </li>
             </ul>
-            <div className="tab-content" id="pills-tabContent">
-              <div
-                className="tab-pane fade show active"
-                id="pills-hop01"
-                role="tabpanel"
-              >
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="uo" src="assets/images/5005806.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white">
-                        {" "}
-                        <span> Aries </span> <span>(Mar 21 - Apr 19)</span>{" "}
-                      </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="yu" src="assets/images/5005810.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white">
-                        {" "}
-                        Taurus <span>(Apr 20 - May 20)</span>{" "}
-                      </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="sui" src="assets/images/5005814.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white">
-                        {" "}
-                        Gemini <span>(May 21 - Jun 20)</span>{" "}
-                      </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <a
-                  href="#"
-                  className="btn btn-more01 d-table mx-auto text-center"
-                  data-aos="fade-up"
-                >
-                  <span> More Horoscopes </span>
-                </a>
-              </div>
-              <div className="tab-pane fade" id="pills-hop02" role="tabpanel">
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="sui" src="assets/images/8381914.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white"> Angel Tarot </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="si" src="assets/images/8381914.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white"> Daily Flirt Tarot </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="sui" src="assets/images/8381914.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white"> Love Tarot </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <a
-                  href="#"
-                  className="btn btn-more01 d-table mx-auto text-center"
-                  data-aos="fade-in"
-                >
-                  <span> More Card </span>
-                </a>
-              </div>
-              <div className="tab-pane fade" id="pills-hop03" role="tabpanel">
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="card" src="assets/images/6767016.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white"> No- 1 </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="card" src="assets/images/6767016.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white"> No- 2 </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="comin-divu-main d-grid align-content-center w-100"
-                  data-aos="zoom-in"
-                >
-                  <div className="row align-items-center">
-                    <div className="col-lg-2">
-                      <figure className="mx-auto mb-lg-0">
-                        <img alt="card" src="assets/images/6767016.png" />
-                      </figure>
-                    </div>
-                    <div className="col-lg-10">
-                      <h5 className="text-white"> No- 3 </h5>
-                      <p className="mt-2">
-                        {" "}
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown.{" "}
-                      </p>
-                      <a href="#" className="btn btn-more mt-2">
-                        {" "}
-                        Read more..
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <a
-                  href="#"
-                  className="btn btn-more01 d-table mx-auto text-center"
-                  data-aos="fade-up"
-                >
-                  <span> More Number </span>
-                </a>
-              </div>
-            </div>
+            <Horoscope />
           </div>
         </section>
 
-        <section className="konow-more-zoidc d-inline-block w-100">
-          <div className="container">
-            <div className="col-lg-6">
-              <div className="form-zodiuc">
-                <div className="comon-heading text-center text-lg-start">
-                  <h5 className="sub-heading" data-aos="fade-down">
-                    {" "}
-                    Your ZODIAC{" "}
-                  </h5>
-                  <h2
-                    className="text-white comon-heading mt-3 mb-3"
-                    data-aos="fade-up"
-                  >
-                    {" "}
-                    Get Your Zodiac Sign{" "}
-                  </h2>
-                </div>
-                <p data-aos="fade-down">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown{" "}
-                </p>
+        <Consult />
 
-                <form
-                  action="https://oxentictemplates.in/templatemonster/astrology/me"
-                  method="get"
-                >
-                  <div className="row" data-aos="fade-down">
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label> Full Name </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your name"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label> Your Email </label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          placeholder="Enter your email"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label> Date of Birth </label>
-                        <input
-                          id="datepicker"
-                          placeholder="DD/MM/YYYY"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label> Time Of Birth </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="12:00"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12">
-                      <div className="form-group">
-                        <label> Place of Birth </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your City"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-12">
-                      <input
-                        type="submit"
-                        className="btn btn-submit"
-                        value="Find Zodiac"
-                      />
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div className="img-bh d-none d-lg-block">
-            <img
-              alt=""
-              src="assets/images/b25b0862914e3a91284933a7af276075.jpg"
-            />
-          </div>
-        </section>
-
-        <section className="our-astroly d-inline-block w-100">
-          <div className="container">
-            <div className="comon-heading text-center">
-              <h2
-                className="text-white comon-heading mt-3 mb-3"
-                data-aos="fade-down"
-              >
-                {" "}
-                Our Astrologers
-              </h2>
-              <h6 className="text-white" data-aos="fade-up">
-                {" "}
-                100+ Best Astrologers for Online Consultation
-              </h6>
-            </div>
-            <div className="astrolger owl-carousel owl-theme mt-5">
-              <a
-                href="#"
-                className="items-astro d-lg-grid align-content-center w-100"
-              >
-                <div className="bg-round-im">
-                  <img alt="hj" src="assets/images/author-bg.png" />
-                  <div className="img-user mx-auto">
-                    <img
-                      alt="suer"
-                      src="assets/images/spiritual-man-india-traditional-clothing-39495501.jpg"
-                    />
-                  </div>
-                </div>
-                <div className="asto-te-dl text-center">
-                  <h5> James Dan </h5>
-                  <p> Vedic</p>
-                  <div className="d-flex align-items-center justify-content-center">
-                    <span className="me-2">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-translate"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
-                      </svg>{" "}
-                    </span>
-                    <ul className="d-flex align-content-center">
-                      <li> English , </li>
-                      <li> Hindi </li>
-                    </ul>
-                  </div>
-                  <div className="exp justify-content-between mt-2">
-                    <span className="d-block">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-mortarboard"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
-                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
-                      </svg>{" "}
-                      15Years
-                    </span>
-
-                    <h4 className="d-flex text-center justify-content-center mt-3 align-content-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-currency-dollar"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
-                      </svg>
-                      10
-                    </h4>
-                  </div>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                className="items-astro d-lg-grid align-content-center w-100"
-              >
-                <div className="bg-round-im">
-                  <img alt="hj" src="assets/images/author-bg.png" />
-                  <div className="img-user mx-auto">
-                    <img
-                      alt="suer"
-                      src="assets/images/istockphoto-1277971635-612x612.jpg"
-                    />
-                  </div>
-                </div>
-                <div className="asto-te-dl text-center">
-                  <h5> Amit Patel </h5>
-                  <p> Vedic</p>
-                  <div className="d-flex align-items-center justify-content-center">
-                    <span className="me-2">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-translate"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
-                      </svg>{" "}
-                    </span>
-                    <ul className="d-flex align-content-center">
-                      <li> English , </li>
-                      <li> Hindi </li>
-                    </ul>
-                  </div>
-                  <div className="exp justify-content-between mt-2">
-                    <span className="d-block">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-mortarboard"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
-                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
-                      </svg>{" "}
-                      10Years
-                    </span>
-
-                    <h4 className="d-flex text-center justify-content-center mt-3 align-content-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-currency-dollar"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
-                      </svg>
-                      20
-                    </h4>
-                  </div>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                className="items-astro d-lg-grid align-content-center w-100"
-              >
-                <div className="bg-round-im">
-                  <img alt="hj" src="assets/images/author-bg.png" />
-                  <div className="img-user mx-auto">
-                    <img
-                      alt="suer"
-                      src="assets/images/image-13-1561127528.jpg"
-                    />
-                  </div>
-                </div>
-                <div className="asto-te-dl text-center">
-                  <h5> Sumit Ghosh </h5>
-                  <p> Vedic</p>
-                  <div className="d-flex align-items-center justify-content-center">
-                    <span className="me-2">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-translate"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
-                      </svg>{" "}
-                    </span>
-                    <ul className="d-flex align-content-center">
-                      <li> English , </li>
-                      <li> Hindi </li>
-                    </ul>
-                  </div>
-                  <div className="exp justify-content-between mt-2">
-                    <span className="d-block">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-mortarboard"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
-                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
-                      </svg>{" "}
-                      12Years
-                    </span>
-
-                    <h4 className="d-flex text-center justify-content-center mt-3 align-content-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-currency-dollar"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
-                      </svg>
-                      25
-                    </h4>
-                  </div>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                className="items-astro d-lg-grid align-content-center w-100"
-              >
-                <div className="bg-round-im">
-                  <img alt="hj" src="assets/images/author-bg.png" />
-                  <div className="img-user mx-auto">
-                    <img
-                      alt="suer"
-                      src="assets/images/depositphotos_81108858-stock-photo-casual-business-indian-boy-portrait.jpg"
-                    />
-                  </div>
-                </div>
-                <div className="asto-te-dl text-center">
-                  <h5> Ochoa Patel </h5>
-                  <p> Tarot</p>
-                  <div className="d-flex align-items-center justify-content-center">
-                    <span className="me-2">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-translate"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
-                      </svg>{" "}
-                    </span>
-                    <ul className="d-flex align-content-center">
-                      <li> English , </li>
-                      <li> Hindi </li>
-                    </ul>
-                  </div>
-                  <div className="exp justify-content-between mt-2">
-                    <span className="d-block">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-mortarboard"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
-                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
-                      </svg>{" "}
-                      20Years
-                    </span>
-
-                    <h4 className="d-flex text-center justify-content-center mt-3 align-content-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-currency-dollar"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
-                      </svg>
-                      14
-                    </h4>
-                  </div>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                className="items-astro d-lg-grid align-content-center w-100"
-              >
-                <div className="bg-round-im">
-                  <img alt="hj" src="assets/images/author-bg.png" />
-                  <div className="img-user mx-auto">
-                    <img
-                      alt="suer"
-                      src="assets/images/close-up-portrait-young-indian-man-white-shirt-posing-standing-smiling-looks-calm.webp"
-                    />
-                  </div>
-                </div>
-                <div className="asto-te-dl text-center">
-                  <h5> Irwin Dan </h5>
-                  <p> Vedic</p>
-                  <div className="d-flex align-items-center justify-content-center">
-                    <span className="me-2">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-translate"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />
-                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />
-                      </svg>{" "}
-                    </span>
-                    <ul className="d-flex align-content-center">
-                      <li> English , </li>
-                      <li> Hindi </li>
-                    </ul>
-                  </div>
-                  <div className="exp justify-content-between mt-2">
-                    <span className="d-block">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-mortarboard"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
-                        <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
-                      </svg>{" "}
-                      10Years
-                    </span>
-
-                    <h4 className="d-flex text-center justify-content-center mt-3 align-content-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-currency-dollar"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
-                      </svg>
-                      20
-                    </h4>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="review-main-astroly d-inline-block w-100 mt-5">
-          <div className="container">
-            <div className="row row-cols-2 row-cols-lg-4 mb-5">
-              <div className="col">
-                <div className="feate text-center" data-aos="fade-down">
-                  <h2 className="text-white">
-                    99 <span>+</span>
-                  </h2>
-                  <p className="text-white">
-                    {" "}
-                    Trusted by <br />
-                    Many Clients
-                  </p>
-                </div>
-              </div>
-              <div className="col">
-                <div className="feate text-center" data-aos="fade-up">
-                  <h2 className="text-white">
-                    50 <span>+</span>
-                  </h2>
-                  <p className="text-white">
-                    {" "}
-                    Types of
-                    <br />
-                    Horoscopes
-                  </p>
-                </div>
-              </div>
-
-              <div className="col">
-                <div className="feate text-center" data-aos="fade-down">
-                  <h2 className="text-white">
-                    99 <span>+</span>
-                  </h2>
-                  <p className="text-white">
-                    {" "}
-                    Qualified <br />
-                    Astrologers
-                  </p>
-                </div>
-              </div>
-              <div className="col">
-                <div className="feate text-center" data-aos="fade-up">
-                  <h2 className="text-white">
-                    99 <span>+</span>
-                  </h2>
-                  <p className="text-white">
-                    {" "}
-                    Success <br />
-                    Horoscope
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="comon-heading text-center tryu">
-              <h5 className="sub-heading" data-aos="fade-down">
-                {" "}
-                Testimonial{" "}
-              </h5>
-              <h2
-                className="text-white comon-heading mt-2 mb-3"
-                data-aos="fade-up"
-              >
-                {" "}
-                Success Stories{" "}
-              </h2>
-            </div>
-
-            <div
-              className="sucees-sty owl-carousel owl-theme mt-5"
-              data-aos="fade-up"
-            >
-              <div className="items-storty text-center">
-                <span className="d-block qote">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-quote"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-                  </svg>
-                </span>
-                <p className="text-white">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy.
-                </p>
-                <div className="usertcbg text-center">
-                  <h5> Jame Smith </h5>
-                  <p>Myndtown, United Kingdom</p>
-                  <figure className="mx-auto">
-                    <img alt="ser" src="assets/images/testimonials-1-1.jpg" />
-                  </figure>
-                  <ul className="d-flex align-items-center justify-content-center">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="items-storty text-center">
-                <span className="d-block qote">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-quote"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-                  </svg>
-                </span>
-                <p className="text-white">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy.
-                </p>
-                <div className="usertcbg text-center">
-                  <h5> Klein Dan </h5>
-                  <p> Ruddlemoor, United Kingdom</p>
-                  <figure className="mx-auto">
-                    <img
-                      alt="ser"
-                      src="assets/images/istockphoto-963801050-612x612.jpg"
-                    />
-                  </figure>
-                  <ul className="d-flex align-items-center justify-content-center">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="items-storty text-center">
-                <span className="d-block qote">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-quote"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-                  </svg>
-                </span>
-                <p className="text-white">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy.
-                </p>
-                <div className="usertcbg text-center">
-                  <h5> Quinn Smith </h5>
-                  <p> Edendonich, United Kingdom</p>
-                  <figure className="mx-auto">
-                    <img
-                      alt="ser"
-                      src="assets/images/istockphoto-1200677760-612x612.jpg"
-                    />
-                  </figure>
-                  <ul className="d-flex align-items-center justify-content-center">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="items-storty text-center">
-                <span className="d-block qote">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-quote"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-                  </svg>
-                </span>
-                <p className="text-white">
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy.
-                </p>
-                <div className="usertcbg text-center">
-                  <h5> Hills Smith </h5>
-                  <p> Tytherleigh, United Kingdom</p>
-                  <figure className="mx-auto">
-                    <img
-                      alt="ser"
-                      src="assets/images/istockphoto-1277996375-612x612.jpg"
-                    />
-                  </figure>
-                  <ul className="d-flex align-items-center justify-content-center">
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                    <li>
-                      <i className="fas fa-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Review />
 
         <section className="bookj d-inline-block w-100">
           <div className="container">
@@ -1811,7 +806,7 @@ export default function AstrologyHome() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna...
                 </p>
-                <h5 className="btn p-0"> Read more </h5>
+                <h5 className="btn p-0"> Xem thêm </h5>
               </a>
 
               <a href="#" className="items-blogs">
@@ -1832,7 +827,7 @@ export default function AstrologyHome() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna...
                 </p>
-                <h5 className="btn p-0"> Read more </h5>
+                <h5 className="btn p-0"> Xem thêm </h5>
               </a>
 
               <a href="#" className="items-blogs">
@@ -1853,7 +848,7 @@ export default function AstrologyHome() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna...
                 </p>
-                <h5 className="btn p-0"> Read more </h5>
+                <h5 className="btn p-0"> Xem thêm </h5>
               </a>
 
               <a href="#" className="items-blogs">
@@ -1874,7 +869,7 @@ export default function AstrologyHome() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna...
                 </p>
-                <h5 className="btn p-0"> Read more </h5>
+                <h5 className="btn p-0"> Xem thêm </h5>
               </a>
             </div>
           </div>
