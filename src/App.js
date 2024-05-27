@@ -6,8 +6,7 @@ import TarotReader from "./pages/page/TarotReader/TarotReader";
 import TarotReaderDetail from "./pages/page/TarotReader/TarotReaderDetail";
 import Blog from "./pages/page/Blog/Blog";
 import BlogDetail from "./pages/page/Blog/BlogDetail";
-import Numerology from "./pages/page/Numerology/Numerology";
-import NumerologyDetail from "./pages/page/Numerology/NumerologyDetail";
+import Zodiac from "./pages/page/Zodiac/zodiac";
 import TarotCard from "./pages/page/TarotCard/TarotCard";
 import TarotCardDetail from "./pages/page/TarotCard/TarotCardDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -27,12 +26,7 @@ function App() {
           />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blogDetail" element={<BlogDetail />} />
-          <Route exact path="/numerology" element={<Numerology />} />
-          <Route
-            exact
-            path="/numerologyDetail"
-            element={<NumerologyDetail />}
-          />
+          <Route exact path="/zodiac" element={<Zodiac />} />
           <Route exact path="/tarotCard" element={<TarotCard />} />
           <Route exact path="/tarotCardDetail" element={<TarotCardDetail />} />
         </Routes>

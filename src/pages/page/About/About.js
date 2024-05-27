@@ -51,42 +51,35 @@ export default function About() {
                 </div>
               </div>
               <div className="col">
-                <h5 data-aos="fade-down" className="aos-init aos-animate">
+                <h5 data-aos="fade-down"> About Tellory </h5>
+                <h2 className="text-white my-2" data-aos="fade-down">
                   {" "}
-                  About Astro Ava{" "}
-                </h5>
-                <h2
-                  className="text-white my-2 aos-init aos-animate"
-                  data-aos="fade-down"
-                >
-                  {" "}
-                  We Can Make Your Bright
-                  <span
-                    className="d-lg-block aos-init aos-animate"
-                    data-aos="fade-up"
-                  >
+                  Chúng Tôi Có Thể Giúp Bạn
+                  <span className="d-lg-block" data-aos="fade-up">
                     {" "}
-                    Future With Astrology
+                    Tự Tin Hơn Với Bài Tarot
                   </span>
                 </h2>
-                <p className="mt-3 aos-init aos-animate" data-aos="fade-up">
+                <p className="mt-3" data-aos="fade-up">
                   {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged.{" "}
+                  Tarot là một môn tập luyện bí truyền có hơn 400 năm tuổi gần
+                  đây đã bùng nổ thành một nghi thức suy ngẫm phổ biến đối với
+                  hàng triệu người trên toàn thế giới. Đối tượng ngày càng mở
+                  rộng của nó đang tìm kiếm các công cụ tốt hơn để cùng nhau
+                  giải bài tarot trực tuyến.{" "}
                 </p>
-
                 <p className="mt-3">
                   {" "}
-                  It was popularised in the 1960s with the release of Letraset
-                  sheets containing Lorem Ipsum passages, and more recently with
-                  desktop publishing software like Aldus PageMaker including
-                  versions of Lorem Ipsum.
+                  Vì vậy, Tellory đã xây dựng một nền tảng mới để phát triển
+                  theo nhu cầu của tarot. Chúng tôi tạo ra những công cụ tuyệt
+                  vời bao gồm các phiên tarot được cá nhân hóa, bộ bài kỹ thuật
+                  số, đặt chỗ dễ dàng và hơn thế nữa!
                 </p>
+
+                <a href="#" className="read-btn btn mt-4" data-aos="fade-down">
+                  {" "}
+                  <span> Khám Phá Ngay </span>{" "}
+                </a>
               </div>
             </div>
           </div>

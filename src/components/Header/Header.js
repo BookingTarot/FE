@@ -34,12 +34,12 @@ export default function Header() {
 
                 <li className="nav-item">
                   <Link className="nav-link" to="/tarotCard">
-                    Tarot Card{" "}
+                    Bài Tarot{" "}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/numerology">
-                    Numerology{" "}
+                  <Link className="nav-link" to="/zodiac">
+                    Cung Hoàng Đạo{" "}
                   </Link>
                 </li>
 
@@ -51,7 +51,7 @@ export default function Header() {
 
                 <li className="nav-item">
                   <Link className="nav-link" to="/about">
-                    About Us{" "}
+                    Về Chúng Tôi{" "}
                   </Link>
                 </li>
               </ul>
@@ -74,8 +74,8 @@ export default function Header() {
                         </svg>
                       </span>
                       <span>
-                        Customer Care
-                        <b className="d-block">1800-254-256</b>
+                        Chăm Sóc Khách Hàng
+                        <b className="d-block">032 8026 926</b>
                       </span>
                     </div>
                   </li>
@@ -87,7 +87,7 @@ export default function Header() {
                       className="btn consult-btn"
                     >
                       {" "}
-                      Consult Now{" "}
+                      Tư Vấn Ngay{" "}
                     </a>
                   </li>
                 </ul>
