@@ -9,6 +9,7 @@ import BlogDetail from "./pages/page/Blog/BlogDetail";
 import Zodiac from "./pages/page/Zodiac/zodiac";
 import TarotCard from "./pages/page/TarotCard/TarotCard";
 import TarotCardDetail from "./pages/page/TarotCard/TarotCardDetail";
+import TarotReaderDashboard from "./pages/page/TarotReaderDashboard/TarotReaderDashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/zodiac" element={<Zodiac />} />
           <Route exact path="/tarotCard" element={<TarotCard />} />
           <Route exact path="/tarotCardDetail" element={<TarotCardDetail />} />
+          <Route exact path="/tarotReaderDashboard" element={<TarotReaderDashboard/>}/>
         </Routes>
       </Router>
     </div>
