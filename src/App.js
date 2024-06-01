@@ -11,6 +11,8 @@ import TarotCard from "./pages/page/TarotCard/TarotCard";
 import TarotCardDetail from "./pages/page/TarotCard/TarotCardDetail";
 import TarotReaderDashboard from "./pages/page/TarotReaderDashboard/TarotReaderDashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login/Login";
+import Register from "./components/Login/Register";
 
 function App() {
   return (
@@ -30,7 +32,13 @@ function App() {
           <Route exact path="/zodiac" element={<Zodiac />} />
           <Route exact path="/tarotCard" element={<TarotCard />} />
           <Route exact path="/tarotCardDetail" element={<TarotCardDetail />} />
-          <Route exact path="/tarotReaderDashboard" element={<TarotReaderDashboard/>}/>
+          <Route
+            exact
+            path="/tarotReaderDashboard"
+            element={<TarotReaderDashboard />}
+          />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Register />} />
         </Routes>
       </Router>
     </div>

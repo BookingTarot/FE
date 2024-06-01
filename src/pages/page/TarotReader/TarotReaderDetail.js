@@ -380,13 +380,6 @@ export default function TarotReaderDetail() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
-
-      {/* <!-- login Modal --> */}
-      <Login />
-
-      {/* <!-- register Modal --> */}
-
-      <Register />
     </div>
   );
 }

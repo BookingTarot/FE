@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Register.css";
 
 const Register = ({ openLoginModal }) => {
   const [formData, setFormData] = useState({
@@ -48,196 +50,108 @@ const Register = ({ openLoginModal }) => {
   };
 
   return (
-    <div>
-      <div
-        className="modal fade login-div-modal contact-form01"
-        id="registerModal"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header border-bottom-0">
-              <button
-                type="button"
-                className="btn-close colis-btn"
-                data-bs-dismiss="modal"
-              >
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-x-lg"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1-.708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                  </svg>
-                </span>
-              </button>
+    <div className="full-height center-content">
+      <div className="card">
+        <h2 className="fw-bold mb-2 text-center">Register</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-container">
+            <div className="input-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
             </div>
-            <div className="modal-body">
-              <div className="modla-contact">
-                <h2>Sign Up for & consult your favourite Tarot Reader</h2>
-                <div className="form-div-sections mt-5 d-inline-block w-100 px-5">
-                  <form name="fmn" onSubmit={handleSubmit}>
-                    <div className="row" data-aos="fade-down">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Last Name</label>
-                          <input
-                            type="text"
-                            name="lastName"
-                            className="form-control"
-                            placeholder="Enter your Last Name"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>First Name</label>
-                          <input
-                            type="text"
-                            name="firstName"
-                            placeholder="Enter your First Name"
-                            className="form-control"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Email</label>
-                          <input
-                            type="email"
-                            name="email"
-                            className="form-control"
-                            placeholder="Enter your email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Password</label>
-                          <input
-                            type="password"
-                            name="password"
-                            placeholder="Enter your Password"
-                            className="form-control"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Phone Number</label>
-                          <input
-                            type="text"
-                            name="phoneNumber"
-                            placeholder="Enter Your Phone Number"
-                            className="form-control"
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Date of Birth</label>
-                          <input
-                            type="date"
-                            name="dateOfBirth"
-                            placeholder="DD/MM/YYYY"
-                            className="form-control"
-                            value={formData.dateOfBirth}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Address</label>
-                          <input
-                            type="text"
-                            name="address"
-                            placeholder="Enter your Address"
-                            className="form-control"
-                            value={formData.address}
-                            onChange={handleChange}
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <label>Gender</label>
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="gender"
-                              value="0"
-                              checked={formData.gender === "0"}
-                              onChange={handleChange}
-                              required
-                            />
-                            <label className="form-check-label">Male</label>
-                          </div>
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="gender"
-                              value="1"
-                              checked={formData.gender === "1"}
-                              onChange={handleChange}
-                              required
-                            />
-                            <label className="form-check-label">Female</label>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-12">
-                        <input
-                          type="submit"
-                          className="btn btn-submit"
-                          value="Signup"
-                        />
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <p className="text-center mt-3 mb-5">
-                  Already have an account?{" "}
-                  <a
-                    data-bs-toggle="modal"
-                    className="regster-bn"
-                    data-bs-target="#loginModal01"
-                    data-bs-dismiss="modal"
-                  >
-                    Login
-                  </a>
-                </p>
-              </div>
+            <div className="input-group">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
             </div>
           </div>
+          <div className="form-container">
+            <div className="input-group">
+              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <input
+                type="date"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                value={formData.dateOfBirth}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="phoneNumber">Phone Number</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="form-container">
+            <div className="input-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="form-container">
+            <div className="input-group">
+              <label htmlFor="address">Address</label>
+              <input
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="gender">Gender</label>
+              <select
+                id="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <option value="0">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" className="mb-2 w-100">
+            Register
+          </button>
+        </form>
+        <div className="sign-up-link">
+          <p>
+            Already have an account? <Link to="/login">Sign up</Link>
+          </p>
         </div>
       </div>
     </div>

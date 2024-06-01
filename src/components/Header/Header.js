@@ -81,14 +81,10 @@ export default function Header() {
                   </li>
 
                   <li>
-                    <a
-                      data-bs-toggle="modal"
-                      href="#registerModal"
-                      className="btn consult-btn"
-                    >
+                    <Link to="/login" className="btn consult-btn">
                       {" "}
                       Tư Vấn Ngay{" "}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

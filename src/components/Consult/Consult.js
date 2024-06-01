@@ -3,7 +3,10 @@ import React from "react";
 export default function Consult() {
   return (
     <div>
-      <section className="our-astroly d-inline-block w-100">
+      <section
+        className="our-astroly d-inline-block w-100"
+        style={{ backgroundColor: "#0c071c" }}
+      >
         <div className="container">
           <div className="comon-heading text-center">
             <h2
@@ -11,11 +14,11 @@ export default function Consult() {
               data-aos="fade-down"
             >
               {" "}
-              Consult Our Tarot reader
+              Tham khảo Tarot Reader
             </h2>
             <h6 className="text-white" data-aos="fade-up">
               {" "}
-              100+ Best Tarot Reader for Online Consultation
+              100+ Tarot Reader Xuất Sắc Cho Tư Vấn Online
             </h6>
           </div>
           <div className="astrolger owl-carousel owl-theme mt-5">

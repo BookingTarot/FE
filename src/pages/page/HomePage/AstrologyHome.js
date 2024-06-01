@@ -7,7 +7,6 @@ import Footer from "../../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Horoscope from "../../../components/TabContent/Horoscope";
 import Consult from "../../../components/Consult/Consult";
-import Review from "../../../components/Review/Review";
 
 export default function AstrologyHome() {
   return (
@@ -107,7 +106,10 @@ export default function AstrologyHome() {
         </div>
       </section>
       <main className="float-start w-100 body-main">
-        <section className="div01-top d-inline-block w-100">
+        <section
+          className="div01-top d-inline-block w-100"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="row row-cols-1 h-top row-cols-md-3 g-4 g-lg-5">
               <div className="col">
@@ -169,7 +171,10 @@ export default function AstrologyHome() {
             </div>
           </div>
         </section>
-        <section className="about-part-section d-inline-block w-100">
+        <section
+          className="about-part-section d-inline-block w-100"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="row row-cols-1 row-cols-lg-2 gy-5 g-lg-5">
               <div className="col">
@@ -462,7 +467,10 @@ export default function AstrologyHome() {
             </div>
           </div>
         </section>
-        <section className="horosocpe-div d-inline-block w-100">
+        <section
+          className="horosocpe-div d-inline-block w-100"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="comon-heading text-center">
               <h5 className="sub-heading" data-aos="fade-up">
@@ -598,7 +606,10 @@ export default function AstrologyHome() {
           </div>
         </section>
 
-        <section className="daily-horp d-inline-block w-100">
+        <section
+          className="daily-horp d-inline-block w-100"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="comon-heading text-center">
               <h5 className="sub-heading" data-aos="fade-down">
@@ -661,112 +672,10 @@ export default function AstrologyHome() {
 
         <Consult />
 
-        <Review />
-
-        <section className="bookj d-inline-block w-100">
-          <div className="container">
-            <div className="row row-cols-1 row-cols-lg-2 align-items-center">
-              <div className="col">
-                <div className="cla-book">
-                  <h2 className="text-white comon-heading" data-aos="fade-down">
-                    {" "}
-                    Book Your Sessions{" "}
-                  </h2>
-                  <p data-aos="fade-up">
-                    {" "}
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
-                  </p>
-                  <div className="row row-cols-1 row-cols-sm-2 mt-5 gy-5 g-lg-5">
-                    <div className="col">
-                      <a href="#" className="rmt-comon" data-aos="fade-up">
-                        <div className="imgobokk">
-                          <img alt="hj" src="assets/images/815838.png" />
-                        </div>
-                        <div className="text-dert0">
-                          <h5> Popular Astrologer</h5>
-                          <p>
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing{" "}
-                          </p>
-                          <span className="d-block sty">
-                            {" "}
-                            <i className="fas fa-ellipsis-h"></i>{" "}
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className="col">
-                      <a href="#" className="rmt-comon" data-aos="fade-down">
-                        <div className="imgobokk">
-                          <img alt="hj" src="assets/images/3776970.png" />
-                        </div>
-                        <div className="text-dert0">
-                          <h5> Birth Journal </h5>
-                          <p>
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing{" "}
-                          </p>
-                          <span className="d-block sty">
-                            {" "}
-                            <i className="fas fa-ellipsis-h"></i>{" "}
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className="col">
-                      <a href="#" className="rmt-comon" data-aos="fade-up">
-                        <div className="imgobokk">
-                          <img alt="hj" src="assets/images/9289285.png" />
-                        </div>
-                        <div className="text-dert0">
-                          <h5> Popular Numerology </h5>
-                          <p>
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing{" "}
-                          </p>
-                          <span className="d-block sty">
-                            {" "}
-                            <i className="fas fa-ellipsis-h"></i>{" "}
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className="col">
-                      <a href="#" className="rmt-comon" data-aos="fade-down">
-                        <div className="imgobokk">
-                          <img alt="hj" src="assets/images/1408347.png" />
-                        </div>
-                        <div className="text-dert0">
-                          <h5> Learn Tarot </h5>
-                          <p>
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing{" "}
-                          </p>
-                          <span className="d-block sty">
-                            {" "}
-                            <i className="fas fa-ellipsis-h"></i>{" "}
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <figure className="m-0" data-aos="fade-down">
-                  <img alt="su" src="assets/images/bhok.png" />
-                </figure>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="blogs-part-div d-inline-block w-100">
+        {/* <section
+          className="blogs-part-div d-inline-block w-100"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="comon-heading text-center mt-5">
               <h5 className="sub-heading" data-aos="fade-up">
@@ -873,53 +782,7 @@ export default function AstrologyHome() {
               </a>
             </div>
           </div>
-        </section>
-
-        <section className="news-letter-div d-inline-block w-100">
-          <div className="container">
-            <div className="comon-heading text-center mt-5">
-              <h5 className="sub-heading" data-aos="fade-down">
-                {" "}
-                Our Newsletter{" "}
-              </h5>
-              <h2
-                className="text-white comon-heading mt-2 mb-3"
-                data-aos="fade-up"
-              >
-                {" "}
-                Subscribe And Ask For Free{" "}
-              </h2>
-            </div>
-            <p
-              className="col-lg-8 mx-auto d-block text-center"
-              data-aos="fade-up"
-            >
-              {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard
-            </p>
-            <form
-              method="get"
-              action="https://oxentictemplates.in/templatemonster/astrology/gm"
-              className="w-100"
-            >
-              <div
-                className="subcribe-section mt-5 col-lg-5 mx-auto d-flex justify-content-center"
-                data-aos="fade-up"
-              >
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Your Email"
-                />
-                <button type="submit" className="subscribe btn">
-                  {" "}
-                  subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-        </section>
+        </section> */}
       </main>
 
       {/* <!-- footer Modal --> */}
