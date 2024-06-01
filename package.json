@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullcalendar/core": "^6.1.13",
     "@fullcalendar/daygrid": "^6.1.13",
     "@fullcalendar/interaction": "^6.1.13",
     "@fullcalendar/react": "^6.1.13",
@@ -13,6 +14,7 @@
     "@types/react-router": "^5.1.20",
     "axios": "1.7.2",
     "cors": "^2.8.5",
+    "mdb-react-ui-kit": "^8.0.0",
     "react": "^18.3.1",
     "react-datepicker": "^6.9.0",
     "react-dom": "^18.3.1",
