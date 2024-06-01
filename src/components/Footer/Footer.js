@@ -1,9 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <div>
-      <footer className="float-start w-100 pt-5">
+      <footer
+        className="float-start w-100 pt-5"
+        style={{ backgroundColor: "#0c071c" }}
+      >
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 align-content-center">
             <div className="col">
@@ -12,32 +16,33 @@ export default function Footer() {
               </a>
               <p className="text-white mt-3 col-lg-10">
                 {" "}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard
+                Mỗi lá bài như một tấm gương phản chiếu tâm hồn, mở ra những tri
+                thức cần thiết để bạn định hướng hành trình cuộc đời
               </p>
             </div>
             <div className="col">
               <div className="colm-footer">
-                <h5> Contact Us </h5>
+                <h5> Liên Hệ </h5>
                 <ul>
                   <li>
                     {" "}
-                    <i className="fab fa-whatsapp"></i> +62-311-89-90-19
+                    <i className="fab fa-whatsapp"></i> +8432-8026-926
                   </li>
                   <li>
                     {" "}
-                    <i className="fas fa-paper-plane"></i> exmaple@gmail.com
+                    <i className="fas fa-paper-plane"></i>{" "}
+                    bookingtarot@gmail.com
                   </li>
                   <li>
                     {" "}
-                    <i className="fas fa-phone-alt"></i> +62-311-89-90-19
+                    <i className="fas fa-phone-alt"></i> +8432-8026-926
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col">
               <div className="colm-footer">
-                <h5> Our Services </h5>
+                <h5> Dịch Vụ </h5>
                 <ul>
                   <li>
                     {" "}
@@ -45,30 +50,38 @@ export default function Footer() {
                   </li>
                   <li>
                     {" "}
-                    <a href="numerology.html"> Numerology </a>
+                    <a href="numerology.html"> Xem Bài </a>
                   </li>
                   <li>
                     {" "}
-                    <a href="astrologer.html"> Astrologer </a>
+                    <a href="astrologer.html"> Học Xem Bài </a>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col">
               <div className="colm-footer">
-                <h5> Quick Links </h5>
+                <h5> Liên Kết </h5>
                 <ul>
                   <li>
                     {" "}
-                    <a href="about.html"> About </a>
+                    <Link to="/tarotReader"> Tarot Reader</Link>
                   </li>
                   <li>
                     {" "}
-                    <a href="blog.html">Blog </a>
+                    <Link to="/tarotCard"> Bài Tarot </Link>
                   </li>
                   <li>
                     {" "}
-                    <a href="contact-us.html"> Contact </a>
+                    <Link to="/zodiac"> Cung Hoàng Đạo </Link>
+                  </li>
+                  <li>
+                    {" "}
+                    <Link to="/blog"> Blog </Link>
+                  </li>
+                  <li>
+                    {" "}
+                    <Link to="/about"> Về Chúng Tôi </Link>
                   </li>
                 </ul>
               </div>
@@ -76,7 +89,7 @@ export default function Footer() {
           </div>
           <hr className="my-4" />
           <div className="d-flex align-items-center justify-content-between">
-            <p> Copyright © 2023. All rights reserved.</p>
+            <p> Copyright © 2024. All rights reserved.</p>
             <ul>
               <li>
                 <a href="#">
