@@ -791,13 +791,6 @@ export default function AstrologyHome() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
-
-      {/* <!-- login Modal --> */}
-      <Login />
-
-      {/* <!-- register Modal --> */}
-
-      <Register />
     </div>
   );
 }

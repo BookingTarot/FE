@@ -2,14 +2,31 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import Header from "../../../components/Header/Header";
-import Login from "../../../components/Login/Login";
-import Register from "../../../components/Login/Register";
 import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
 import Footer from "../../../components/Footer/Footer";
+import SessionType from "../../../components/Popup/SessionType";
+import { Link } from "react-router-dom";
+import Btn from "../../../components/Button/Btn";
 
 export default function TarotReader() {
+  const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [tarotReaders, setTarotReaders] = useState([]);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const truncateText = (text, wordLimit) => {
+    const words = text.split("");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join("") + "...";
+    }
+    return text;
+  };
 
   useEffect(() => {
     const fetchTarotReaders = async () => {
@@ -17,7 +34,14 @@ export default function TarotReader() {
         const response = await axios.get(
           "https://localhost:7218/api/TarotReader"
         );
-        setTarotReaders(response.data);
+
+        const filterDuration = response.data.map((reader) => ({
+          ...reader,
+          sessionTypes: reader.sessionTypes.filter(
+            (sessionType) => sessionType.duration === 30
+          ),
+        }));
+        setTarotReaders(filterDuration);
       } catch (error) {
         console.error("Error fetching the tarot readers data", error);
       }
@@ -39,13 +63,16 @@ export default function TarotReader() {
           <h2 class="text-center text-white"> Tarot Reader </h2>
           <nav class="mt-4">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item">Home</li>
+              <li class="breadcrumb-item">Trang Chủ</li>
               <li class="breadcrumb-item active">Tarot Reader</li>
             </ol>
           </nav>
         </div>
       </section>
-      <main class="float-start w-100 body-main">
+      <main
+        class="float-start w-100 body-main"
+        style={{ backgroundColor: "#0c071c" }}
+      >
         <section class="listing-page-div">
           <div class="container">
             <div class="row gx-lg-5">
@@ -64,7 +91,7 @@ export default function TarotReader() {
                         aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne"
                       >
-                        Expertise
+                        Kinh Nghiệm
                       </button>
                     </h2>
                     <div
@@ -83,7 +110,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault"
                           >
-                            Love
+                            Tình yêu
                           </label>
                         </div>
 
@@ -98,7 +125,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault2"
                           >
-                            Work
+                            Công việc
                           </label>
                         </div>
 
@@ -113,7 +140,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault3"
                           >
-                            Health
+                            Sức khỏe
                           </label>
                         </div>
 
@@ -128,7 +155,7 @@ export default function TarotReader() {
                             class="form-check-label"
                             for="flexCheckDefault4"
                           >
-                            Finance
+                            Tài chính
                           </label>
                         </div>
                       </div>
@@ -362,9 +389,6 @@ export default function TarotReader() {
 
               <div class="col-lg-9 mt-5 mt-lg-0">
                 <div class="d-flex justify-content-between align-items-center">
-                  <h2 class="ashow text-white">
-                    Consult to Our Best Tarot Readers{" "}
-                  </h2>
                   <div class="right-section-btn d-flex align-items-center">
                     <div class="dropdown">
                       <button
@@ -374,7 +398,7 @@ export default function TarotReader() {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Default sorting
+                        Sắp xếp
                       </button>
                       <ul
                         class="dropdown-menu"
@@ -382,22 +406,22 @@ export default function TarotReader() {
                       >
                         <li>
                           <a class="dropdown-item" href="#">
-                            popularity
+                            Ít hơn 1 năm
                           </a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#">
-                            latest
+                            Trên 1 năm
                           </a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#">
-                            low to high
+                            Trên 3 năm
                           </a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#">
-                            high to low
+                            Trên 5 năm
                           </a>
                         </li>
                       </ul>
@@ -405,9 +429,86 @@ export default function TarotReader() {
                   </div>
                 </div>
 
-                <div id="products" class="mt-4">
+                <div id="products">
                   <div class="row g-lg-5 mt-0">
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
+                    {tarotReaders.map((reader, index) => (
+                      <div
+                        key={index}
+                        className="item list-item col-md-12 col-xl-6 view-group grid-group-item collist"
+                      >
+                        <div className="comon-items-d1 d-inline-block w-100">
+                          <Link to={`tarot-reader/${reader.tarotReaderId}`}>
+                            <div className="top-asto d-flex align-items-center justify-content-between w-100">
+                              <div className="pro-astro d-flex align-items-start">
+                                <div className="profile-astro">
+                                  <img
+                                    alt="ser"
+                                    src="assets/images/profile2.png"
+                                  />
+                                </div>
+
+                                <div className="le-astro ms-4">
+                                  <h5>
+                                    {reader.user.firstName}{" "}
+                                    {reader.user.lastName}
+                                  </h5>
+                                  <p className="rt-cion">
+                                    <span>
+                                      <i className="fas fa-star"></i>
+                                      <i className="fas fa-star"></i>
+                                      <i className="fas fa-star"></i>
+                                    </span>
+                                    <i className="fas fa-star"></i>
+                                    <i className="fas fa-star"></i>
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="right-usert text-lg-end">
+                                <h5> Love, Work </h5>
+                                <p> Exp: 3 Years </p>
+                              </div>
+                            </div>
+                          </Link>
+                          <div className="lang-ved mt-4">
+                            <p>
+                              <i className="fas fa-newspaper"></i>{" "}
+                              {truncateText(reader.introduction, 40)}
+                            </p>
+                          </div>
+
+                          <hr />
+                          <div
+                            className="lang-ved mt-4"
+                            style={{ justifyContent: "space-between" }}
+                          >
+                            {reader.sessionTypes.map((sessionType) => (
+                              <p
+                                key={sessionType.sessionTypeId}
+                                style={{ marginTop: "1.5rem" }}
+                              >
+                                <i
+                                  className="fas fa-clock"
+                                  style={{
+                                    color: "#273cb9",
+                                    fontSize: "25px",
+                                  }}
+                                ></i>
+                                {sessionType.duration} phút
+                              </p>
+                            ))}
+
+                            <btn
+                              onClick={openModal}
+                              className="btn btn-comij-call"
+                            >
+                              Book Me
+                            </btn>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
                       <div class="comon-items-d1 d-inline-block w-100">
                         <div class="top-asto d-flex align-items-center justify-content-between w-100">
                           <div class="pro-astro d-flex align-items-start">
@@ -443,31 +544,23 @@ export default function TarotReader() {
                         </div>
 
                         <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
+                        <div class="d-flex align-items-center justify-content-between my-4">
+                          <p style={{ marginTop: "1.5rem" }}>
                             {" "}
-                            <i class="fas fa-clock"></i> 30/min
+                            <i
+                              class="fas fa-clock "
+                              style={{ color: "#273cb9", fontSize: "25px" }}
+                            ></i>{" "}
+                            30/min
                           </p>
+
+                          <Btn onClick={openModal} class="btn btn-comij-call">
+                            Book Me
+                          </Btn>
                         </div>
-
-                        {/* <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div> */}
                       </div>
-                    </div>
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
+                    </div> */}
+                    {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
                       <div class="comon-items-d1 d-inline-block w-100">
                         <div class="top-asto d-flex align-items-center justify-content-between w-100">
                           <div class="pro-astro d-flex align-items-start">
@@ -599,7 +692,7 @@ export default function TarotReader() {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
                       <div class="comon-items-d1 d-inline-block w-100">
@@ -1213,7 +1306,7 @@ export default function TarotReader() {
           </div>
         </section>
 
-        <section class="news-letter-div d-inline-block w-100 mt-5">
+        {/* <section class="news-letter-div d-inline-block w-100 mt-5">
           <div class="container">
             <div class="comon-heading text-center mt-5">
               <h5 class="sub-heading" data-aos="fade-down">
@@ -1251,7 +1344,7 @@ export default function TarotReader() {
               </div>
             </form>
           </div>
-        </section>
+        </section> */}
       </main>
 
       {/* <!-- footer Modal --> */}
@@ -1260,6 +1353,11 @@ export default function TarotReader() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
+
+      {/* <!-- SessionType menu --> */}
+      {isModalOpen && <SessionType onClose={closeModal} />}
+
+      {/* <SessionType /> */}
     </div>
   );
 }

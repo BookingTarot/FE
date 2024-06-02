@@ -25,7 +25,10 @@ export default function Blog() {
           </nav>
         </div>
       </section>
-      <main className="float-start w-100 body-main">
+      <main
+        className="float-start w-100 body-main"
+        style={{ backgroundColor: "#0c071c" }}
+      >
         <section className="blogs-info-div d-inline-block w-100 my-5">
           <div className="container">
             <div className="row gy-5 g-lg-5">
@@ -431,13 +434,6 @@ export default function Blog() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
-
-      {/* <!-- login Modal --> */}
-      <Login />
-
-      {/* <!-- register Modal --> */}
-
-      <Register />
     </div>
   );
 }

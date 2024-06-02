@@ -13,34 +13,41 @@ import TarotReaderDashboard from "./pages/page/TarotReaderDashboard/TarotReaderD
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
+import { AuthProvider } from "./components/Login/Authen";
 
 function App() {
   return (
     <div className="App" id="wrapper">
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<AstrologyHome />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/tarotReader" element={<TarotReader />} />
-          <Route
-            exact
-            path="/tarotReaderDetail"
-            element={<TarotReaderDetail />}
-          />
-          <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/blogDetail" element={<BlogDetail />} />
-          <Route exact path="/zodiac" element={<Zodiac />} />
-          <Route exact path="/tarotCard" element={<TarotCard />} />
-          <Route exact path="/tarotCardDetail" element={<TarotCardDetail />} />
-          <Route
-            exact
-            path="/tarotReaderDashboard"
-            element={<TarotReaderDashboard />}
-          />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Register />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<AstrologyHome />} />
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/tarotReader" element={<TarotReader />} />
+            <Route
+              exact
+              path="/tarotReader/tarot-reader/:id"
+              element={<TarotReaderDetail />}
+            />
+            <Route exact path="/blog" element={<Blog />} />
+            <Route exact path="/blogDetail" element={<BlogDetail />} />
+            <Route exact path="/zodiac" element={<Zodiac />} />
+            <Route exact path="/tarotCard" element={<TarotCard />} />
+            <Route
+              exact
+              path="/tarotCardDetail"
+              element={<TarotCardDetail />}
+            />
+            <Route
+              exact
+              path="/tarotReaderDashboard"
+              element={<TarotReaderDashboard />}
+            />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Register />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
