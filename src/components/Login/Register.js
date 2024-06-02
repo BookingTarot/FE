@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Register.css";
 
 const Register = ({ openLoginModal }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     lastName: "",
     firstName: "",
@@ -38,11 +41,14 @@ const Register = ({ openLoginModal }) => {
       if (response.ok) {
         // Registration successful
         console.log("Registration successful!");
-        // Optionally redirect to the login modal
-        openLoginModal(true); // Call the function to open the login modal
+        toast.success("Registration successful!");
+        toast.success("Login successful!", {
+          onClose: () => navigate("/login"),
+        });
       } else {
         // Registration failed
         console.error("Registration failed.");
+        toast.error("Registration successful!");
       }
     } catch (error) {
       console.error("Error submitting registration:", error);
@@ -51,8 +57,9 @@ const Register = ({ openLoginModal }) => {
 
   return (
     <div className="full-height center-content">
-      <div className="card">
-        <h2 className="fw-bold mb-2 text-center">Register</h2>
+      <ToastContainer />
+      <div className="cardRegister">
+        <h2 className="fw-bold mb-2 text-center">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-container">
             <div className="input-group">
@@ -124,7 +131,6 @@ const Register = ({ openLoginModal }) => {
             <div className="input-group">
               <label htmlFor="address">Address</label>
               <input
-                id="address"
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
@@ -133,24 +139,22 @@ const Register = ({ openLoginModal }) => {
             <div className="input-group">
               <label htmlFor="gender">Gender</label>
               <select
-                id="gender"
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
               >
-                <option value="0">Select</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
               </select>
             </div>
           </div>
           <button type="submit" className="mb-2 w-100">
-            Register
+            Sign Up
           </button>
         </form>
         <div className="sign-up-link">
           <p>
-            Already have an account? <Link to="/login">Sign up</Link>
+            Already have an account? <Link to="/login">Sign In</Link>
           </p>
         </div>
       </div>

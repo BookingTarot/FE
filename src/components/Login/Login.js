@@ -3,21 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
+import { useAuth } from "./Authen";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const { setUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,52 +20,57 @@ export default function Login() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ email, password, remember }),
     });
 
-    const result = await response.json();
-
     if (response.ok) {
-      navigate("/tarotReader");
-      toast.success("Login successful!");
+      const data = await response.json();
+      setUser(data.lastName);
+      toast.success("Login successful!", {
+        onClose: () => navigate("/"),
+      });
     } else {
-      toast.error("Login failed, please input again!");
+      toast.error("Login failed!");
     }
   };
 
   return (
     <div className="full-height center-content">
-      <div className="card">
+      <ToastContainer />
+      <div className="cardLogin">
         <h2 className="fw-bold mb-2 text-center">Sign in</h2>
         <p className="text-white-50 mb-3 text-center">
           Please enter your login and password!
         </p>
         <form onSubmit={handleSubmit}>
-          <div className="input-group mb-4">
+          <div className="input-group-sign mb-4">
             <label htmlFor="email">Email address</label>
             <input
-              id="email"
               type="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <div className="input-group mb-4">
+          <div className="input-group-sign mb-4">
             <label htmlFor="password">Password</label>
             <input
-              id="password"
               type="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
           <div className="checkbox-group">
             <div>
-              <input type="checkbox" id="rememberMe" />
+              <input
+                type="checkbox"
+                id="rememberMe"
+                checked={remember}
+                onChange={(e) => setRemember(e.target.checked)}
+              />
               <label htmlFor="rememberMe">Remember me</label>
             </div>
             <a href="#!">Forgot password?</a>
@@ -87,7 +85,6 @@ export default function Login() {
           </p>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }

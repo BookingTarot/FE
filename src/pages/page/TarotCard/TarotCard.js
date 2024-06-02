@@ -30,7 +30,10 @@ export default function TarotCard() {
           </nav>
         </div>
       </section>
-      <main className="float-start w-100 body-main">
+      <main
+        className="float-start w-100 body-main"
+        style={{ backgroundColor: "#0c071c" }}
+      >
         <section className="daily-horp d-inline-block w-100">
           <div className="container">
             <div className="comon-heading text-center">
@@ -643,13 +646,6 @@ export default function TarotCard() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
-
-      {/* <!-- login Modal --> */}
-      <Login />
-
-      {/* <!-- register Modal --> */}
-
-      <Register />
     </div>
   );
 }

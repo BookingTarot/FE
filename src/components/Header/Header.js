@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../Login/Authen";
 
 export default function Header() {
+  const { user } = useAuth();
+
   return (
     <div>
       <header className="float-start w-100">
@@ -31,27 +34,24 @@ export default function Header() {
                     Tarot Reader
                   </Link>
                 </li>
-
                 <li className="nav-item">
                   <Link className="nav-link" to="/tarotCard">
-                    Bài Tarot{" "}
+                    Bài Tarot
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/zodiac">
-                    Cung Hoàng Đạo{" "}
+                    Cung Hoàng Đạo
                   </Link>
                 </li>
-
                 <li className="nav-item">
                   <Link className="nav-link" to="/blog">
-                    Blog{" "}
+                    Blog
                   </Link>
                 </li>
-
                 <li className="nav-item">
                   <Link className="nav-link" to="/about">
-                    Về Chúng Tôi{" "}
+                    Về Chúng Tôi
                   </Link>
                 </li>
               </ul>
@@ -80,12 +80,40 @@ export default function Header() {
                     </div>
                   </li>
 
-                  <li>
-                    <Link to="/login" className="btn consult-btn">
-                      {" "}
-                      Tư Vấn Ngay{" "}
-                    </Link>
-                  </li>
+                  {user ? (
+                    <li className="list-inline-item mb-0 ms-1">
+                      <div className="dropdown dropdown-primary">
+                        <a
+                          className=""
+                          href="#"
+                          style={{ color: "white" }}
+                          data-bs-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Chào, {user}
+                        </a>
+                        <div className="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3">
+                          <a
+                            className="dropdown-item text-dark"
+                            href="doctor-profile-setting.html"
+                          >
+                            Chỉnh Sửa Thông Tin
+                          </a>
+                          <div className="dropdown-divider border-top"></div>
+                          <Link className="dropdown-item text-dark" to="/login">
+                            Logout
+                          </Link>
+                        </div>
+                      </div>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to="/signup" className="btn consult-btn">
+                        Tư Vấn Ngay
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

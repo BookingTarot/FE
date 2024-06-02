@@ -547,11 +547,6 @@ export default function About() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
-
-      {/* <!-- login Modal --> */}
-      <Login />
-      {/*<!-- register Modal --> */}
-      <Register />
     </div>
   );
 }
