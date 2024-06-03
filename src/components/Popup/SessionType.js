@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Btn from "../Button/Btn";
+import Schedule from "../Popup/Schedule";
 
-export default function SessionType({ onClose }) {
+export default function SessionType({ onClose, selectedTarotReaderId }) {
+  const [sessionTypes, setSessionTypes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showTimeSelection, setShowTimeSelection] = useState(false);
+  const [selectedSessionType, setSelectedSessionType] = useState(null);
+
+  useEffect(() => {
+    const fetchSessionTypes = async () => {
+      try {
+        const response = await fetch(
+          `https://localhost:7218/api/TarotReader/${selectedTarotReaderId}`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setSessionTypes(data.sessionTypes);
+        console.log("data", data.sessionTypes);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSessionTypes();
+  }, [selectedTarotReaderId]);
+
+
+  const handleTimeSelectionOpen = (sessionType) => {
+    setSelectedSessionType({ ...sessionType, tarotReaderId: selectedTarotReaderId });
+    setShowTimeSelection(true);
+  };
+
+  const handleTimeSelectionClose = () => {
+    setShowTimeSelection(false);
+    setSelectedSessionType(null);
+  };
+
   return (
     <div
       className="modal show"
@@ -8,7 +49,6 @@ export default function SessionType({ onClose }) {
       tabIndex="-1"
       aria-labelledby="sessionTypeLabel"
       aria-hidden="true"
-      // style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}
       style={{
         display: "flex",
         justifyContent: "center",
@@ -19,14 +59,17 @@ export default function SessionType({ onClose }) {
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.5)",
+        overflowY: "auto"
       }}
     >
-      <div className="modal-dialog">
+      <div className="modal-dialog" style={{ maxWidth: "600px", width: "90%", maxHeight: "80%" }}>
         <div
           className="modal-content"
           style={{
             borderRadius: "30px",
             boxShadow: "rgb(0, 0, 0) 0px 3px 0px 0px",
+            maxHeight: "80vh",
+            overflowY: "auto",
           }}
         >
           <div className="modal-header border-bottom-0">
@@ -41,67 +84,61 @@ export default function SessionType({ onClose }) {
           <div className="modal-body">
             <div className="modal-contact">
               <h2>Session Type</h2>
-              <div className="form-div-sections mt-5 d-inline-block w-100 px-5">
-                <form onSubmit={(e) => e.preventDefault()}>
-                  <div className="row" data-aos="fade-down">
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="name"
-                          name="name"
-                        />
-                      </div>
+              {loading && <p>Loading...</p>}
+              {error && <p>Error: {error}</p>}
+              {!loading && !error && sessionTypes && sessionTypes.length > 0 && (
+                <div>
+                  {sessionTypes.map((sessionType) => (
+                    <div
+                      key={sessionType.sessionTypeId}
+                      className="form-div-sections mt-5 d-inline-block w-100 px-5"
+                      style={{
+                        display: "flex",
+                        backgroundColor: "white",
+                        borderRadius: "21px",
+                        border: "1px solid black",
+                        marginBottom: "16px",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        padding: "28px 32px",
+                      }}
+                    >
+                      <h4 style={{ textAlign: "start" }}>{sessionType.name}</h4>
+                      <p style={{ textAlign: "start" }}>
+                        <strong>
+                          <i
+                            className="fas fa-clock"
+                            style={{
+                              color: "#273cb9",
+                              fontSize: "25px",
+                              marginTop: "10px",
+                            }}
+                          ></i>
+                        </strong>{" "}
+                        {sessionType.duration} minutes
+                      </p>
+                      <p style={{ textAlign: "start" }}>
+                        <strong>Mô tả:</strong> {sessionType.description}
+                      </p>
+                      <p style={{ textAlign: "start" }}>
+                        <strong>Giá:</strong> {sessionType.price}.000đ
+                      </p>
+                      <Btn style={{ maxWidth: "200px" }} onClick={() => handleTimeSelectionOpen(sessionType)}>
+                        Lựa chọn thời gian
+                      </Btn>
                     </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label htmlFor="duration">Duration</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="duration"
-                          name="duration"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label htmlFor="description">Description</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="description"
-                          name="description"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <label htmlFor="price">Price</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="price"
-                          name="price"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-12 mt-3">
-                    <input
-                      type="submit"
-                      className="btn btn-submit"
-                      value="Submit"
-                    />
-                  </div>
-                </form>
-              </div>
+                  ))}
+                </div>
+              )}
+              {!loading && !error && sessionTypes && sessionTypes.length === 0 && (
+                <p>No session types available for this tarot reader.</p>
+              )}
             </div>
           </div>
         </div>
       </div>
+      {showTimeSelection && <Schedule onClose={handleTimeSelectionClose} sessionType={selectedSessionType}/>}
+
     </div>
   );
 }

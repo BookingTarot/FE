@@ -76,7 +76,7 @@ export default function TarotReaderDetail() {
                   <div className="name-t mt-4">
                     <h2>
                       {" "}
-                      {tarotReader.user.firstName} {tarotReader.user.lastName}{" "}
+                      {tarotReader.fullName}{" "}
                     </h2>
 
                     <h5 className="mt-3"> Vedic, Numerology </h5>
