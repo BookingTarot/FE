@@ -11,9 +11,11 @@ import Btn from "../../../components/Button/Btn";
 export default function TarotReader() {
   const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
+  const [selectedTarotReaderId, setSelectedTarotReaderId] = useState(null);
   const [tarotReaders, setTarotReaders] = useState([]);
 
-  const openModal = () => {
+  const openModal = (tarotReaderId) => {
+    setSelectedTarotReaderId(tarotReaderId);
     setModalOpen(true);
   };
   const closeModal = () => {
@@ -161,148 +163,7 @@ export default function TarotReader() {
                       </div>
                     </div>
                   </div>
-                  {/* <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseTwo"
-                      >
-                        Languages
-                      </button>
-                    </h2>
-                    <div
-                      id="panelsStayOpen-collapseTwo"
-                      class="accordion-collapse collapse show"
-                    >
-                      <div class="accordion-body my-5">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefaultlg"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefaultlg"
-                          >
-                            Hindi
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefaultlg2"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefaultlg2"
-                          >
-                            English
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefaultlg3"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefaultlg3"
-                          >
-                            Spanish
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefaultlg4"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefaultlg4"
-                          >
-                            French
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button
-                        class="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseThree"
-                        aria-expanded="false"
-                      >
-                        Rating
-                      </button>
-                    </h2>
-                    <div
-                      id="panelsStayOpen-collapseThree"
-                      class="accordion-collapse collapse show"
-                    >
-                      <div class="accordion-body my-5">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault7"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault7"
-                          >
-                            2.0 and above
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault8"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault8"
-                          >
-                            3.0 and above
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault9"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault9"
-                          >
-                            4.0 and above
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
+          
 
                   <div class="accordion-item">
                     {/* <h2 class="accordion-header">
@@ -448,10 +309,7 @@ export default function TarotReader() {
                                 </div>
 
                                 <div className="le-astro ms-4">
-                                  <h5>
-                                    {reader.user.firstName}{" "}
-                                    {reader.user.lastName}
-                                  </h5>
+                                  <h5>{reader.fullName} </h5>
                                   <p className="rt-cion">
                                     <span>
                                       <i className="fas fa-star"></i>
@@ -499,7 +357,7 @@ export default function TarotReader() {
                             ))}
 
                             <btn
-                              onClick={openModal}
+                              onClick={() => openModal(reader.tarotReaderId)}
                               className="btn btn-comij-call"
                             >
                               Book Me
@@ -508,7 +366,7 @@ export default function TarotReader() {
                         </div>
                       </div>
                     ))}
-                    {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
+{/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
                       <div class="comon-items-d1 d-inline-block w-100">
                         <div class="top-asto d-flex align-items-center justify-content-between w-100">
                           <div class="pro-astro d-flex align-items-start">
@@ -541,7 +399,7 @@ export default function TarotReader() {
                             <i class="fas fa-newspaper"></i> CONNECTION AND
                             HAPPINESS
                           </p>
-                        </div>
+                        </div>                    
 
                         <hr />
                         <div class="d-flex align-items-center justify-content-between my-4">
@@ -1355,7 +1213,7 @@ export default function TarotReader() {
       <MobileMenu />
 
       {/* <!-- SessionType menu --> */}
-      {isModalOpen && <SessionType onClose={closeModal} />}
+      {isModalOpen && <SessionType selectedTarotReaderId={selectedTarotReaderId} onClose={closeModal} />}
 
       {/* <SessionType /> */}
     </div>
