@@ -2,3 +2,48 @@
     font-size: 50px;    
     color: rgb(255, 255, 255);
 }
+
+/* TarotReaderAppointment.css */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f3f4f6;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table tbody td:last-child {
+    text-align: center;
+}
+
+.table tbody .confirmed {
+    color: green;
+    font-weight: bold;
+}
+
+.table tbody .disabled {
+    color: red;
+    font-weight: bold;
+}
