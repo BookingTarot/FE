@@ -44,7 +44,7 @@ function TarotReaderDashboard() {
                         </div>
 
                         {/* Content */}
-                        <div class="col-xl-9 col-lg-8 col-md-7 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                        <div className="col-xl-9 col-lg-8 col-md-7 mt-4 pt-2 mt-sm-0 pt-sm-0">
                             {activeTab === "schedule" && (
                                 <TarotReaderSchedule                                
                                 />

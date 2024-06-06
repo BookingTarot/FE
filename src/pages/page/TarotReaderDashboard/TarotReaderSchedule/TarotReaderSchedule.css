@@ -1,0 +1,108 @@
+.btn-custom {
+    background-color: #2c3e50; /* Màu nền */
+    color: white; /* Màu chữ */
+    border: none; /* Bỏ viền */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    text-align: center; /* Canh giữa chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    display: inline-block; /* Hiển thị nội tuyến */
+    font-size: 16px; /* Kích thước chữ */
+    margin: 4px 2px; /* Khoảng cách bên ngoài */
+    margin-bottom: 20px;
+    transition-duration: 0.4s; /* Thời gian hiệu ứng */
+    cursor: pointer; /* Hình dạng con trỏ */    
+}
+
+.btn-custom:hover {
+    background-color: #1a252f; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+    border: 2px solid #4CAF50; /* Thêm viền khi hover */
+}
+
+.btn-custom:focus,
+.btn-custom:active {
+    background-color: #2c3e50 !important; /* Giữ màu nền khi focus hoặc active */
+    color: white !important; /* Giữ màu chữ khi focus hoặc active */
+    border: none !important; /* Bỏ viền khi focus hoặc active */
+    outline: none !important; /* Bỏ outline khi focus */
+    box-shadow: none !important; /* Bỏ box-shadow khi focus */
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #f7f9fc; /* Màu nền cho modal */
+    border-radius: 12px; /* Bo góc cho modal */
+    border: none; /* Bỏ viền */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng cho modal */        
+}
+
+.modal-header {
+    border-bottom: none; /* Bỏ viền dưới */
+    background-color: #2c3e50; /* Màu nền cho header */
+    color: white; /* Màu chữ cho header */
+    border-top-left-radius: 10px; /* Bo góc trên trái */
+    border-top-right-radius: 10px; /* Bo góc trên phải */
+    font-size: 1.5rem; /* Kích thước chữ cho header */
+}
+
+.modal-header .modal-title {
+    font-size: 30px; /* Kích thước chữ cho tiêu đề */
+    font-weight: bold;
+}
+
+.modal-header .close {
+    color: white; /* Màu chữ cho nút đóng */
+    opacity: 1; /* Độ trong suốt cho nút đóng */
+}
+
+.modal-body {
+    padding: 10px; /* Khoảng cách bên trong cho body */
+    font-size: 20px; /* Kích thước chữ cho body */
+    color: black;
+    font-weight: 600;    
+}
+
+.form-control {
+    font-size: 1.2rem; /* Kích thước chữ cho ô input */
+    padding: 8px; /* Khoảng cách bên trong cho ô input */    
+    border-radius: 5px; /* Bo góc cho ô input */
+    border: 1px solid #ced4da; /* Viền cho ô input */
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.modal-footer {
+    border-top: none; /* Bỏ viền trên */
+    background-color: #f7f9fc; /* Màu nền cho footer */
+    border-bottom-left-radius: 10px; /* Bo góc dưới trái */
+    border-bottom-right-radius: 10px; /* Bo góc dưới phải */
+}
+
+.modal-footer .btn {
+    border-radius: 20px; /* Bo góc cho nút */
+    padding: 8px 20px; /* Khoảng cách bên trong cho nút */
+    font-size: 15px; /* Kích thước chữ cho nút */
+}
+
+.modal-footer .btn-secondary {
+    background-color: #95a5a6; /* Màu nền cho nút đóng */
+    color: white; /* Màu chữ cho nút đóng */
+    border: none; /* Bỏ viền cho nút đóng */
+}
+
+.modal-footer .btn-primary {
+    background-color: #2c3e50; /* Màu nền cho nút lưu */
+    color: white; /* Màu chữ cho nút lưu */
+    border: none; /* Bỏ viền cho nút lưu */
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #1a252f; /* Màu nền cho nút lưu khi hover */
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    width: 100%; /* Đảm bảo picker ngày chiếm hết chiều rộng */
+    font-size: 15px; /* Kích thước chữ cho picker ngày */      
+}
