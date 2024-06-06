@@ -25,7 +25,7 @@ export default function Login() {
 
     if (response.ok) {
       const data = await response.json();
-      setUser(data.lastName);
+      setUser(data);
       toast.success("Login successful!", {
         onClose: () => navigate("/"),
       });

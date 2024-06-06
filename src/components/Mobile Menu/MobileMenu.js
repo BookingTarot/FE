@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function MobileMenu() {
   return (
@@ -10,7 +11,7 @@ export default function MobileMenu() {
             className="close-menu"
             data-bs-dismiss="offcanvas"
           >
-            <span> Close </span> <i className="fas fa-long-arrow-alt-right"></i>
+            <span> Đóng </span> <i className="fas fa-long-arrow-alt-right"></i>
           </button>
         </div>
 
@@ -25,80 +26,32 @@ export default function MobileMenu() {
                 <div className="collapse navbar-collapse">
                   <ul className="navbar-nav">
                     <li className="nav-item">
-                      <a className="nav-link" href="astrologer.html">
-                        Astrologer
-                      </a>
+                      <Link className="nav-link" to="/tarotReader">
+                        Tarot Reader
+                      </Link>
                     </li>
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                      >
-                        Horoscope
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a className="dropdown-item" href="love.html">
-                            Love
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="love.html">
-                            Career
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="love.html">
-                            Money
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="love.html">
-                            Health & Beauty
-                          </a>
-                        </li>
-                      </ul>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/tarotCard">
+                        Bài Tarot
+                      </Link>
                     </li>
 
                     <li className="nav-item">
-                      <a className="nav-link" href="tarot.html">
-                        Tarot{" "}
-                      </a>
+                    <Link className="nav-link" to="/zodiac">
+                    Cung Hoàng Đạo 
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="numerology.html">
-                        Numerology{" "}
-                      </a>
+                    <Link className="nav-link" to="/blog">
+                        Blog
+                      </Link>
                     </li>
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                      >
-                        More
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a className="dropdown-item" href="about.html">
-                            About Us
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="blog.html">
-                            Blog
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="contact-us.html">
-                            Contact
-                          </a>
-                        </li>
-                      </ul>
+                    <li className="nav-item">
+                    <Link className="nav-link" to="/about">
+                        Về Chúng Tôi
+                      </Link>
                     </li>
+
                   </ul>
                 </div>
               </nav>
