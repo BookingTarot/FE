@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/tarotReader" element={<TarotReader />} />
             <Route
               exact
-              path="/tarotReader/tarot-reader/:id"
+              path="/TarotReader/:id"
               element={<TarotReaderDetail />}
             />
             <Route exact path="/blog" element={<Blog />} />

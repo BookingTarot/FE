@@ -91,7 +91,7 @@ export default function Header() {
                           aria-haspopup="true"
                           aria-expanded="false"
                         >
-                          Chào, {user}
+                          Chào, {user.lastName}
                         </a>
                         <div className="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3">
                           <a

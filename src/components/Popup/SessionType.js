@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Btn from "../Button/Btn";
 import Schedule from "../Popup/Schedule";
 
-export default function SessionType({ onClose, selectedTarotReaderId }) {
+export default function SessionType({ onClose, selectedTarotReaderId, tarotReaderName}) {
   const [sessionTypes, setSessionTypes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,10 +30,10 @@ export default function SessionType({ onClose, selectedTarotReaderId }) {
 
     fetchSessionTypes();
   }, [selectedTarotReaderId]);
-
+console.log("a", tarotReaderName);
 
   const handleTimeSelectionOpen = (sessionType) => {
-    setSelectedSessionType({ ...sessionType, tarotReaderId: selectedTarotReaderId });
+    setSelectedSessionType({ ...sessionType, tarotReaderId: selectedTarotReaderId , tarotReaderName: tarotReaderName});
     setShowTimeSelection(true);
   };
 
@@ -83,7 +83,7 @@ export default function SessionType({ onClose, selectedTarotReaderId }) {
           </div>
           <div className="modal-body">
             <div className="modal-contact">
-              <h2>Session Type</h2>
+              <h2>Chọn buổi đọc</h2>
               {loading && <p>Loading...</p>}
               {error && <p>Error: {error}</p>}
               {!loading && !error && sessionTypes && sessionTypes.length > 0 && (
@@ -137,7 +137,7 @@ export default function SessionType({ onClose, selectedTarotReaderId }) {
           </div>
         </div>
       </div>
-      {showTimeSelection && <Schedule onClose={handleTimeSelectionClose} sessionType={selectedSessionType}/>}
+      {showTimeSelection && <Schedule onClose={handleTimeSelectionClose} sessionType={selectedSessionType} tarotReaderName={tarotReaderName}/>}
 
     </div>
   );

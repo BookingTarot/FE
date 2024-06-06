@@ -12,10 +12,19 @@ export default function TarotReader() {
   const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [selectedTarotReaderId, setSelectedTarotReaderId] = useState(null);
+  const [selectedTarotReaderName, setSelectedTarotReaderName] = useState(null);
   const [tarotReaders, setTarotReaders] = useState([]);
+  const [filteredReaders, setFilteredReaders] = useState([]);
+  const [filters, setFilters] = useState({
+    love: false,
+    work: false,
+    health: false,
+    finance: false,
+  });
 
-  const openModal = (tarotReaderId) => {
+  const openModal = (tarotReaderId, tarotReaderName) => {
     setSelectedTarotReaderId(tarotReaderId);
+    setSelectedTarotReaderName(tarotReaderName);
     setModalOpen(true);
   };
   const closeModal = () => {
@@ -28,6 +37,70 @@ export default function TarotReader() {
       return words.slice(0, wordLimit).join("") + "...";
     }
     return text;
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, checked } = e.target;
+    setFilters((prevFilters) => ({ ...prevFilters, [name]: checked }));
+  };
+
+  const applyFilters = () => {
+    let newFilteredReaders = tarotReaders;
+
+    if (filters.love) {
+      newFilteredReaders = newFilteredReaders.filter((reader) =>
+        reader.kind.includes("Psychic")
+      );
+    }
+
+    if (filters.work) {
+      newFilteredReaders = newFilteredReaders.filter((reader) =>
+        reader.kind.includes("Công Việc")
+      );
+    }
+
+    if (filters.health) {
+      newFilteredReaders = newFilteredReaders.filter((reader) =>
+        reader.kind.includes("Sức khỏe")
+      );
+    }
+
+    if (filters.finance) {
+      newFilteredReaders = newFilteredReaders.filter((reader) =>
+        reader.kind.includes("Tài chính")
+      );
+    }
+
+    setFilteredReaders(newFilteredReaders);
+  };
+
+  const handleSortByExperience = (years) => {
+    let sortedReaders = [...filteredReaders];
+    switch (years) {
+      case "lessThan1":
+        sortedReaders = sortedReaders.filter(
+          (reader) => reader.experience < 1
+        );
+        break;
+      case "moreThan1":
+        sortedReaders = sortedReaders.filter(
+          (reader) => reader.experience >= 1
+        );
+        break;
+      case "moreThan3":
+        sortedReaders = sortedReaders.filter(
+          (reader) => reader.experience >= 3
+        );
+        break;
+      case "moreThan5":
+        sortedReaders = sortedReaders.filter(
+          (reader) => reader.experience >= 5
+        );
+        break;
+      default:
+        break;
+    }
+    setFilteredReaders(sortedReaders);
   };
 
   useEffect(() => {
@@ -44,6 +117,7 @@ export default function TarotReader() {
           ),
         }));
         setTarotReaders(filterDuration);
+        setFilteredReaders(filterDuration);
       } catch (error) {
         console.error("Error fetching the tarot readers data", error);
       }
@@ -51,6 +125,11 @@ export default function TarotReader() {
 
     fetchTarotReaders();
   }, []);
+
+  useEffect(() => {
+    applyFilters();
+  }, [filters, tarotReaders]);
+
 
   return (
     <div>
@@ -107,6 +186,9 @@ export default function TarotReader() {
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
+                            name="love"
+                            checked={filters.love}
+                            onChange={handleFilterChange}
                           />
                           <label
                             class="form-check-label"
@@ -266,24 +348,24 @@ export default function TarotReader() {
                         aria-labelledby="dropdownMenuButton1"
                       >
                         <li>
-                          <a class="dropdown-item" href="#">
+                          <button class="dropdown-item" onClick={() => handleSortByExperience("lessThan1")}>
                             Ít hơn 1 năm
-                          </a>
+                          </button>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#">
-                            Trên 1 năm
-                          </a>
+                        <button class="dropdown-item" onClick={() => handleSortByExperience("moreThan1")}>
+                            Hơn 1 năm
+                          </button>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#">
-                            Trên 3 năm
-                          </a>
+                        <button class="dropdown-item" onClick={() => handleSortByExperience("moreThan3")}>
+                            Hơn 3 năm
+                          </button>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#">
-                            Trên 5 năm
-                          </a>
+                        <button class="dropdown-item" onClick={() => handleSortByExperience("moreThan5")}>
+                            Hơn 5 năm
+                          </button>
                         </li>
                       </ul>
                     </div>
@@ -298,7 +380,7 @@ export default function TarotReader() {
                         className="item list-item col-md-12 col-xl-6 view-group grid-group-item collist"
                       >
                         <div className="comon-items-d1 d-inline-block w-100">
-                          <Link to={`tarot-reader/${reader.tarotReaderId}`}>
+                          <Link to={`${reader.tarotReaderId}`}>
                             <div className="top-asto d-flex align-items-center justify-content-between w-100">
                               <div className="pro-astro d-flex align-items-start">
                                 <div className="profile-astro">
@@ -323,8 +405,8 @@ export default function TarotReader() {
                               </div>
 
                               <div className="right-usert text-lg-end">
-                                <h5> Love, Work </h5>
-                                <p> Exp: 3 Years </p>
+                                <h5> {reader.kind} </h5>
+                                <p> Exp: {reader.experience} </p>
                               </div>
                             </div>
                           </Link>
@@ -365,769 +447,9 @@ export default function TarotReader() {
                           </div>
                         </div>
                       </div>
+
                     ))}
-{/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img alt="ser" src="assets/images/profile2.png" />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Tan Tran</h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Love, Work </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> CONNECTION AND
-                            HAPPINESS
-                          </p>
-                        </div>                    
-
-                        <hr />
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <p style={{ marginTop: "1.5rem" }}>
-                            {" "}
-                            <i
-                              class="fas fa-clock "
-                              style={{ color: "#273cb9", fontSize: "25px" }}
-                            ></i>{" "}
-                            30/min
-                          </p>
-
-                          <Btn onClick={openModal} class="btn btn-comij-call">
-                            Book Me
-                          </Btn>
-                        </div>
-                      </div>
-                    </div> */}
-                    {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img alt="ser" src="assets/images/profile4.png" />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Minh Đăng</h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Love </h5>
-                            <p> Exp: 5 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> TAROT FOR EVOLUTION
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 90/min
-                          </p>
-                        </div>
-                      </div>
                     </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img alt="ser" src="assets/images/profile1.png" />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Văn Nga</h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Health, Family </h5>
-                            <p> Exp: 2 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> CONNECTION &
-                            LIBERATION
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 60/min
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img alt="ser" src="assets/images/profile3.png" />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Ánh Nguyệt</h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Work </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> HUMANISTIC TAROT
-                            READER
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 30/min
-                          </p>
-                        </div>
-                      </div>
-                    </div> */}
-
-                    {/* <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/istockphoto-1277971635-612x612.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5> Baker Dan </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/istockphoto-1200677760-612x612.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Nalty Dan </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/testimonials-1-1.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5> Quinn Smith </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/tania-medina-zwsL1bj_yKA-unsplash.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Lopez Dan </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 15 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/image-13-1561127528.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5> Baker Dan </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/depositphotos_81108858-stock-photo-casual-business-indian-boy-portrait.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Patel Dan </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic, Tarot </h5>
-                            <p> Exp: 10 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/close-up-portrait-young-indian-man-white-shirt-posing-standing-smiling-looks-calm.webp"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5> Baker Dan </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/istockphoto-963801050-612x612.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5>Klein Jones </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item list-item col-md-12 col-xl-6 view-group grid-group-item collist">
-                      <div class="comon-items-d1 d-inline-block w-100">
-                        <div class="top-asto d-flex align-items-center justify-content-between w-100">
-                          <div class="pro-astro d-flex align-items-start">
-                            <div class="profile-astro">
-                              <img
-                                alt="ser"
-                                src="assets/images/istockphoto-1277996375-612x612.jpg"
-                              />
-                            </div>
-                            <div class="le-astro ms-4">
-                              <h5> Rose Samith </h5>
-                              <p class="rt-cion">
-                                <span>
-                                  {" "}
-                                  <i class="fas fa-star"></i>{" "}
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>{" "}
-                                </span>
-                                <i class="fas fa-star"></i>{" "}
-                                <i class="fas fa-star"></i>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="right-usert text-lg-end">
-                            <h5> Vedic </h5>
-                            <p> Exp: 3 Years </p>
-                          </div>
-                        </div>
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-newspaper"></i> Lang: English,
-                            Hindi, Spanish
-                          </p>
-                        </div>
-
-                        <hr />
-                        <div class="lang-ved mt-4">
-                          <p>
-                            {" "}
-                            <i class="fas fa-clock"></i> 5/min
-                          </p>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between my-4">
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij"
-                          >
-                            <i class="fas fa-comments"></i> Start Chat
-                          </a>
-
-                          <a
-                            href="astrologer-details.html"
-                            class="btn btn-comij-call"
-                          >
-                            <i class="fas fa-phone-alt"></i> Start Call
-                          </a>
-                        </div>
-                      </div>
-                    </div> */}
-                  </div>
 
                   <nav class="my-5">
                     <ul class="pagination">
@@ -1164,45 +486,6 @@ export default function TarotReader() {
           </div>
         </section>
 
-        {/* <section class="news-letter-div d-inline-block w-100 mt-5">
-          <div class="container">
-            <div class="comon-heading text-center mt-5">
-              <h5 class="sub-heading" data-aos="fade-down">
-                {" "}
-                Our Newsletter{" "}
-              </h5>
-              <h2 class="text-white comon-heading mt-2 mb-3" data-aos="fade-up">
-                {" "}
-                Subscribe And Ask For Free{" "}
-              </h2>
-            </div>
-            <p class="col-lg-8 mx-auto d-block text-center" data-aos="fade-up">
-              {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard
-            </p>
-            <form
-              method="get"
-              action="https://oxentictemplates.in/templatemonster/astrology/gm"
-              class="w-100"
-            >
-              <div
-                class="subcribe-section mt-5 col-lg-5 mx-auto d-flex justify-content-center"
-                data-aos="fade-up"
-              >
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Email"
-                />
-                <button type="submit" class="subscribe btn">
-                  {" "}
-                  subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-        </section> */}
       </main>
 
       {/* <!-- footer Modal --> */}
@@ -1213,7 +496,7 @@ export default function TarotReader() {
       <MobileMenu />
 
       {/* <!-- SessionType menu --> */}
-      {isModalOpen && <SessionType selectedTarotReaderId={selectedTarotReaderId} onClose={closeModal} />}
+      {isModalOpen && <SessionType selectedTarotReaderId={selectedTarotReaderId} onClose={closeModal} tarotReaderName={selectedTarotReaderName}/>}
 
       {/* <SessionType /> */}
     </div>
