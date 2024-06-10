@@ -11,7 +11,7 @@ const Register = ({ openLoginModal }) => {
     firstName: "",
     dateOfBirth: "",
     phoneNumber: "",
-    gender: "0", // Ensure gender is a string
+    gender: true, 
     email: "",
     password: "",
     address: "",
@@ -38,17 +38,19 @@ const Register = ({ openLoginModal }) => {
         body: JSON.stringify(formData),
       });
 
+      console.log("register", formData);
+
       if (response.ok) {
         // Registration successful
         console.log("Registration successful!");
-        toast.success("Registration successful!");
-        toast.success("Login successful!", {
+        toast.success("Registration successful!", {
           onClose: () => navigate("/login"),
         });
+
       } else {
         // Registration failed
-        console.error("Registration failed.");
-        toast.error("Registration successful!");
+        console.error("Registration failed!");
+        toast.error("Registration failed!");
       }
     } catch (error) {
       console.error("Error submitting registration:", error);
@@ -143,8 +145,8 @@ const Register = ({ openLoginModal }) => {
                 value={formData.gender}
                 onChange={handleChange}
               >
-                <option value="0">Male</option>
-                <option value="1">Female</option>
+                <option value={false}>Male</option>
+                <option value={true}>Female</option>
               </select>
             </div>
           </div>

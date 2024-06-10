@@ -83,7 +83,7 @@ export default function Schedule({ onClose, sessionType, tarotReaderName }) {
             boxShadow: "rgb(0, 0, 0) 0px 3px 0px 0px",
           }}
         >
-          <div className="modal-header border-bottom-0">
+          <div className="modal-header border-bottom-0" style={{backgroundColor: "transparent"}}>
             <button
               style={{ marginRight: "5px" }}
               type="button"
