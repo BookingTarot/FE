@@ -4,7 +4,7 @@ import axios from "axios";
 
 function TarotReaderAppointment() {
     const [appointments, setAppointments] = useState([]);
-    const id = 2;
+    const id = 1;
 
     useEffect(() => {
         const fetchAppointments = async () => {
@@ -68,9 +68,8 @@ function TarotReaderAppointment() {
                                                 <button className="btn btn-danger">Hủy</button>
                                             </td>
                                         ):(
-                                            <td className={`p-3 ${appointment.status === 'Confirmed' ? 'confirmed' : 'disabled'}`}>                                                                                        
-                                                {appointment.status === 'Confirmed' ? 'Xác nhận' : ''}
-                                                {appointment.status === 'Disabled' ? 'Hủy' : ''}
+                                            <td className={`p-3 ${appointment.status ? 'true' : 'false'}`}>
+                                                {appointment.status ? 'Xác nhận' : 'Hủy'}
                                             </td>
                                         )}
                                     </tr>

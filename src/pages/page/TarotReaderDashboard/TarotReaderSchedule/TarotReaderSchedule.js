@@ -18,58 +18,110 @@ const hours = Array.from({ length: 48 }, (_, i) => {
 function TarotReaderSchedule() {
     const [tarotReader, setTarotReader] = useState(null);
     const [events, setEvents] = useState([]);
-    const [showModal, setShowModal] = useState(false);    
+    const [showModal, setShowModal] = useState(false);
+    const [isUpdate, setIsUpdate] = useState(false);
+    const [selectedEventId, setSelectedEventId] = useState(null);
     const [eventDate, setEventDate] = useState(new Date());
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
-    const id = 2;
+    const id = 1;
+
+    const fetchTarotReaders = async () => {
+        try {
+            const response = await axios.get(
+                `https://localhost:7218/api/TarotReader`
+            );
+            const reader = response.data.find(
+                (reader) => reader.tarotReaderId === parseInt(id)
+            );
+            setTarotReader(reader);
+            if (reader && reader.schedules) {
+                const formattedEvents = reader.schedules.map(scheduleItem => ({
+                    id: scheduleItem.scheduleId,
+                    title: "Lịch làm",
+                    start: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.startTime.slice(11),
+                    end: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.endTime.slice(11)
+                }));
+                setEvents(formattedEvents);
+            }
+        } catch (error) {
+            console.error("Error fetching tarot reader data", error);
+        }
+    };
 
     useEffect(() => {
-        const fetchTarotReaders = async () => {
-            try {
-                const response = await axios.get(
-                    `https://localhost:7218/api/TarotReader`
-                );
-                const reader = response.data.find(
-                    (reader) => reader.tarotReaderId === parseInt(id)
-                );
-                setTarotReader(reader);
-                if (reader && reader.schedules) {
-                    const formattedEvents = reader.schedules.map(scheduleItem => ({
-                        title: "Lịch làm",
-                        start: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.startTime.slice(11),
-                        end: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.endTime.slice(11)
-                    }));
-                    setEvents(formattedEvents);
-                }
-            } catch (error) {
-                console.error("Error fetching tarot reader data", error);
-            }
-        };
         fetchTarotReaders();
     }, [id]);
 
-    const handleShow = () => setShowModal(true);
+    const handleShow = () => {
+        setIsUpdate(false);
+        setSelectedEventId(null);
+        setEventDate(new Date());
+        setStartTime("");
+        setEndTime("");
+        setShowModal(true);
+    };
     const handleClose = () => setShowModal(false);
 
+    const formatTime = (date) => {
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    };
+
+    const handleEventClick = (info) => {
+        console.log("Event clicked:", info.event); // Debugging log
+        const eventId = info.event.id; // Lấy id của sự kiện
+        const startDate = info.event.start;
+        const endDate = info.event.end;
+
+        if (eventId) {
+            setIsUpdate(true);
+            setSelectedEventId(eventId);
+            setEventDate(startDate);
+            setStartTime(formatTime(startDate)); // Lấy giờ bắt đầu từ startDate
+            setEndTime(formatTime(endDate)); // Lấy giờ kết thúc từ endDate
+            setShowModal(true);
+        }
+    };
+
     const handleSave = async () => {
-        console.log(tarotReader.tarotReaderId, eventDate.toISOString().slice(0, 10), startTime, endTime)
+        const dateStr = eventDate.toISOString().split('T')[0];
+        const startDateTime = `${dateStr}T${startTime}:00`;
+        const endDateTime = `${dateStr}T${endTime}:00`;
+
         try {
-            await axios.post("https://localhost:7218/api/Schedule", {
-                tarotReaderId: tarotReader.tarotReaderId,
-                date: eventDate.toISOString().slice(0, 10),
-                startTime,
-                endTime,
-                status: true
-            });
-            const newEvent = {            
-                start: new Date(eventDate.setHours(parseInt(startTime.split(":")[0]), parseInt(startTime.split(":")[1]))),
-                end: new Date(eventDate.setHours(parseInt(endTime.split(":")[0]), parseInt(endTime.split(":")[1])))
-            };
-            setEvents([...events, newEvent]);
+            if (isUpdate) {
+                await axios.put(`https://localhost:7218/api/Schedules/${selectedEventId}`, {
+                    tarotReaderId: tarotReader.tarotReaderId,
+                    date: dateStr,
+                    startTime: startDateTime,
+                    endTime: endDateTime,    
+                    status: null           
+                });
+            } else {
+                await axios.post("https://localhost:7218/api/Schedules", {
+                    tarotReaderId: tarotReader.tarotReaderId,
+                    date: dateStr,
+                    startTime: startDateTime,
+                    endTime: endDateTime,
+                    status: null
+                });
+            }
+            await fetchTarotReaders();
             handleClose();
         } catch (error) {
             console.error("Error saving schedule", error);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`https://localhost:7218/api/Schedules/${selectedEventId}`);
+            await fetchTarotReaders();
+            handleClose();
+        } catch (error) {
+            console.error("Error deleting schedule", error);
         }
     };
 
@@ -115,10 +167,11 @@ function TarotReaderSchedule() {
                                 start: 'today',
                                 center: 'title',
                                 end: 'dayGridMonth,timeGridWeek prev,next'
-                            }}
+                            }}                        
                             events={events}
                             allDaySlot={false}
-                            {...viLocale} 
+                            eventClick={handleEventClick}
+                            {...viLocale}
                         />
                     </div>
                 </div>
@@ -127,10 +180,10 @@ function TarotReaderSchedule() {
             {/* Popup Modal */}
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Đăng ký lịch làm</Modal.Title>
+                    <Modal.Title>{isUpdate ? 'Cập nhật lịch làm' : 'Đăng ký lịch làm'}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>                        
+                    <Form>
                         <Form.Group controlId="formEventDate">
                             <Form.Label>Ngày</Form.Label>
                             <DatePicker 
@@ -175,11 +228,18 @@ function TarotReaderSchedule() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Đóng
-                    </Button>
+                    {isUpdate && (
+                        <Button variant="danger" onClick={handleDelete}>
+                            Xóa
+                        </Button>
+                    )}
+                    {!isUpdate && (
+                        <Button variant="secondary" onClick={handleClose}>
+                            Đóng
+                        </Button>
+                    )}
                     <Button variant="primary" onClick={handleSave}>
-                        Đăng ký
+                        {isUpdate ? 'Cập nhật' : 'Đăng ký'}
                     </Button>
                 </Modal.Footer>
             </Modal>

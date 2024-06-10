@@ -38,12 +38,12 @@
     text-align: center;
 }
 
-.table tbody .confirmed {
+.table tbody .true {
     color: green;
     font-weight: bold;
 }
 
-.table tbody .disabled {
+.table tbody .false {
     color: red;
     font-weight: bold;
 }
