@@ -72,7 +72,7 @@ console.log("a", tarotReaderName);
             overflowY: "auto",
           }}
         >
-          <div className="modal-header border-bottom-0">
+          <div className="modal-header border-bottom-0" style={{backgroundColor: "transparent"}}>
             <button
               style={{ marginRight: "5px" }}
               type="button"
