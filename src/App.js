@@ -31,8 +31,16 @@ function App() {
             <Route exact path="/zodiac" element={<Zodiac />} />
             <Route exact path="/tarotCard" element={<TarotCard />} />
             <Route exact path="/tarotCardDetail" element={<TarotCardDetail />} />
-            <Route exact path="/tarotReaderDashboard" element={<TarotReaderDashboard />} />
-            <Route exact path="/tarotAdmin" element={<TarotAdminDashboard />} />
+            <Route
+              path="/tarotReaderDashboard"
+              element={
+                <ProtectedRoute element={TarotReaderDashboard} role={3} />
+              }
+            />
+            <Route
+              path="/tarotAdmin"
+              element={<ProtectedRoute element={TarotAdminDashboard} role={1} />}
+            />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Register />} />
           </Routes>

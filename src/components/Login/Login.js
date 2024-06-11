@@ -27,14 +27,14 @@ export default function Login() {
       const data = await response.json();
       setUser(data);
       switch (data.roleId) {
-        case 1:
+        case 2:
           navigate("/");
           break;
-        case 2:
+        case 3:
           navigate("/TarotReaderDashboard");
           break;
-        case 3:
-          navigate("/TarotAdminDashboard");
+        case 1:
+          navigate("/tarotAdmin");
           break;
         default:
           navigate("/");
