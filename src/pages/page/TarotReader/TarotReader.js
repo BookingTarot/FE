@@ -7,8 +7,10 @@ import Footer from "../../../components/Footer/Footer";
 import SessionType from "../../../components/Popup/SessionType";
 import { Link } from "react-router-dom";
 import Btn from "../../../components/Button/Btn";
+import { useAuth } from "../../../components/Login/Authen";
 
 export default function TarotReader() {
+  const {user} = useAuth();
   const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [selectedTarotReaderId, setSelectedTarotReaderId] = useState(null);
@@ -130,6 +132,14 @@ export default function TarotReader() {
     applyFilters();
   }, [filters, tarotReaders]);
 
+  const handleBookMe = (readerId) => {
+    if (!user) {
+      // If user is not logged in, redirect to login page
+      navigate('/login');
+    } else {
+      openModal(readerId);
+    }
+  };
 
   return (
     <div>
@@ -439,7 +449,7 @@ export default function TarotReader() {
                             ))}
 
                             <btn
-                              onClick={() => openModal(reader.tarotReaderId)}
+                              onClick={() => handleBookMe(reader.tarotReaderId)}
                               className="btn btn-comij-call"
                             >
                               Book Me

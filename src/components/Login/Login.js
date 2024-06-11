@@ -26,17 +26,34 @@ export default function Login() {
     if (response.ok) {
       const data = await response.json();
       setUser(data);
-      toast.success("Login successful!", {
-        onClose: () => navigate("/"),
-      });
+      switch (data.roleId) {
+        case 1:
+          navigate("/");
+          break;
+        case 2:
+          navigate("/TarotReaderDashboard");
+          break;
+        case 3:
+          navigate("/TarotAdminDashboard");
+          break;
+        default:
+          navigate("/");
+      }
+      toast.success("Login successful!");
     } else {
       toast.error("Login failed!");
     }
   };
 
   return (
-    <div className="full-height center-content">
-      <ToastContainer />
+    <div>
+          <div className="back-to-home rounded d-none d-sm-block">
+        <Link to="/" className="btn btn-icon btn-primary">
+          <i data-feather="home" className="icons"></i>
+        </Link>
+      </div>
+      <ToastContainer/>
+          <div className="full-height center-content">
       <div className="cardLogin">
         <h2 className="fw-bold mb-2 text-center">Sign in</h2>
         <p className="text-white-50 mb-3 text-center">
@@ -85,6 +102,7 @@ export default function Login() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }
