@@ -20,7 +20,6 @@ export default function SessionType({ onClose, selectedTarotReaderId, tarotReade
         }
         const data = await response.json();
         setSessionTypes(data.sessionTypes);
-        console.log("data", data.sessionTypes);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -30,7 +29,6 @@ export default function SessionType({ onClose, selectedTarotReaderId, tarotReade
 
     fetchSessionTypes();
   }, [selectedTarotReaderId]);
-console.log("a", tarotReaderName);
 
   const handleTimeSelectionOpen = (sessionType) => {
     setSelectedSessionType({ ...sessionType, tarotReaderId: selectedTarotReaderId , tarotReaderName: tarotReaderName});
@@ -62,26 +60,25 @@ console.log("a", tarotReaderName);
         overflowY: "auto"
       }}
     >
-      <div className="modal-dialog" style={{ maxWidth: "600px", width: "90%", maxHeight: "80%" }}>
+      <div className="modal-dialog" style={{ maxWidth: "550px", maxHeight: "85%"}}>
         <div
           className="modal-content"
           style={{
             borderRadius: "30px",
             boxShadow: "rgb(0, 0, 0) 0px 3px 0px 0px",
-            maxHeight: "80vh",
-            overflowY: "auto",
+            height: "85vh"
           }}
         >
           <div className="modal-header border-bottom-0" style={{backgroundColor: "transparent"}}>
             <button
-              style={{ marginRight: "5px" }}
+              style={{ marginRight: "5px"}}
               type="button"
               className="btn-close"
               data-bs-dismiss="modal"
               onClick={onClose}
             ></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body" style={{overflowY: "scroll", paddingBottom: "40px", marginBottom: "20px !important"}}>
             <div className="modal-contact">
               <h2>Chọn buổi đọc</h2>
               {loading && <p>Loading...</p>}
@@ -123,7 +120,7 @@ console.log("a", tarotReaderName);
                       <p style={{ textAlign: "start" }}>
                         <strong>Giá:</strong> {sessionType.price}.000đ
                       </p>
-                      <Btn style={{ maxWidth: "200px" }} onClick={() => handleTimeSelectionOpen(sessionType)}>
+                      <Btn onClick={() => handleTimeSelectionOpen(sessionType)}>
                         Lựa chọn thời gian
                       </Btn>
                     </div>

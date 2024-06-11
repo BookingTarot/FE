@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Btn from "../Button/Btn";
 import Confirm from "../Popup/Confirm";
 
-export default function Schedule({ onClose, sessionType, tarotReaderName }) {
+export default function Schedule({ onClose, sessionType }) {
   const [scheduleData, setScheduleData] = useState([]);
   const [filteredSchedule, setFilteredSchedule] = useState([]);
   const [error, setError] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
+  const [tarotReaderName, setTarotReaderName] = useState('');
 
   useEffect(() => {
     const fetchScheduleData = async () => {
@@ -26,22 +27,38 @@ export default function Schedule({ onClose, sessionType, tarotReaderName }) {
       }
     };
 
-    const filterScheduleData = (data, duration) => {
-      const filtered = data.filter(schedule => {
-        const startTime = new Date(schedule.startTime);
-        const endTime = new Date(schedule.endTime);
-        const scheduleDuration = (endTime - startTime) / (1000 * 60); // Convert duration to minutes
-        return scheduleDuration === duration;
-      });
-      setFilteredSchedule(filtered);
+    const fetchTarotReaderName = async () => {
+      try {
+        const response = await fetch(
+          `https://localhost:7218/api/TarotReader/${sessionType.tarotReaderId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch tarot reader's name");
+        }
+        const data = await response.json();
+        setTarotReaderName(data.fullName);
+      } catch (error) {
+        console.error('Error fetching tarot reader name:', error.message);
+      }
     };
 
     fetchScheduleData();
+    fetchTarotReaderName();
   }, [sessionType]);
+
+  const filterScheduleData = (data, duration) => {
+    const filtered = data.filter(schedule => {
+      const startTime = new Date(schedule.startTime);
+      const endTime = new Date(schedule.endTime);
+      const scheduleDuration = (endTime - startTime) / (1000 * 60); // Convert duration to minutes
+      return scheduleDuration === duration;
+    });
+    setFilteredSchedule(filtered);
+  };
 
   const handleTimeSelect = (schedule) => {
     setBookingDetails({
-      tarotReaderName: tarotReaderName, // Ensure to pass tarotReaderName when opening the Schedule component
+      tarotReaderName: tarotReaderName,
       sessionTypeName: sessionType.name,
       sessionDuration: sessionType.duration,
       date: schedule.date,
@@ -51,8 +68,6 @@ export default function Schedule({ onClose, sessionType, tarotReaderName }) {
     });
     setShowConfirm(true);
   };
-
-  console.log("tarot" , tarotReaderName);
 
   let lastDisplayedDate = null;
 
@@ -73,14 +88,16 @@ export default function Schedule({ onClose, sessionType, tarotReaderName }) {
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.5)",
+        overflowY: "auto"
       }}
     >
-      <div className="modal-dialog" style={{ maxWidth: "600px", width: "90%", maxHeight: "80%" }}>
+      <div className="modal-dialog" style={{ maxWidth: "550px", width: "90%", maxHeight: "80%" }}>
         <div
           className="modal-content"
           style={{
             borderRadius: "30px",
             boxShadow: "rgb(0, 0, 0) 0px 3px 0px 0px",
+            maxHeight: "85vh"
           }}
         >
           <div className="modal-header border-bottom-0" style={{backgroundColor: "transparent"}}>
@@ -92,8 +109,9 @@ export default function Schedule({ onClose, sessionType, tarotReaderName }) {
               onClick={onClose}
             ></button>
           </div>
-          <div className="modal-body">
-            <div className="modal-contact">
+          <div className="modal-body" style={{overflowY: "scroll", paddingBottom: "40px", marginBottom: "20px", textAlign:"center"
+          }}>
+            <div className="modal-contact"> 
               <h2>Lựa chọn thời gian {sessionType.name}</h2>
               {error && <p>Error: {error}</p>}
               {!error && (
@@ -117,7 +135,6 @@ export default function Schedule({ onClose, sessionType, tarotReaderName }) {
                   })}
                 </div>
               )}
-              <Btn onClick={onClose}>Close</Btn>
             </div>
           </div>
         </div>

@@ -1,11 +1,41 @@
 import React from "react";
 import Btn from "../Button/Btn";
+import { useAuth } from "../Login/Authen";
 
 export default function Confirm({ onClose, sessionType, bookingDetails }) {
-  const handleConfirm = () => {
-    // Handle confirmation logic here, such as sending a booking request to the server
-    console.log('Booking confirmed:', bookingDetails);
-    onClose();
+  const {user} = useAuth();
+  console.log("abc", {user});
+  const handleConfirm = async () => {
+    try {
+      const bookingData = {
+        customerId: user.customerId,
+        tarotReaderId: bookingDetails.tarotReaderId,
+        amount: bookingDetails.price, 
+        description: `Booking for ${bookingDetails.sessionTypeName} session`, 
+        sessionTypeId: sessionType.id, 
+        bookDate: new Date().toISOString(), // 
+        startTime: bookingDetails.startTime,
+        endTime: bookingDetails.endTime
+      };
+
+      const response = await fetch('https://localhost:7218/api/Bookings/Booking with Schedule', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to confirm booking');
+      }
+
+      console.log('Booking confirmed:', bookingData);
+      onClose();
+    } catch (error) {
+      console.error('Error confirming booking:', error.message);
+      // Handle error, show error message, etc.
+    }
   };
 
   return (
@@ -27,7 +57,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
         backgroundColor: "rgba(0,0,0,0.5)",
       }}
     >
-      <div className="modal-dialog" style={{ maxWidth: "600px", width: "90%", maxHeight: "80%" }}>
+      <div className="modal-dialog" style={{ maxWidth: "550px", width: "90%", maxHeight: "80%" }}>
         <div
           className="modal-content"
           style={{
@@ -45,7 +75,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
             ></button>
           </div>
           <div className="modal-body">
-            <div className="modal-contact">
+            <div className="modal-contact" style={{padding: "20px", textAlign: "center"}}>
               <h2>Xác nhận đặt lịch</h2>
               <p style={{textAlign: "start"}}>Tarot Reader: {bookingDetails.tarotReaderName}</p>
               <p style={{textAlign: "start"}}>Loại phiên: {bookingDetails.sessionTypeName}</p>
@@ -54,7 +84,6 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
               <p style={{textAlign: "start"}}>Thời gian: {new Date(bookingDetails.startTime).toLocaleTimeString()} - {new Date(bookingDetails.endTime).toLocaleTimeString()}</p>
               <p style={{textAlign: "start"}}>Giá: {bookingDetails.price}.000đ</p>
               <Btn onClick={handleConfirm}>Xác nhận</Btn>
-              <Btn onClick={onClose}>Hủy</Btn>
             </div>
           </div>
         </div>
