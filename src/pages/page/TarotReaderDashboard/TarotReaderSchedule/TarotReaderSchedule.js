@@ -86,18 +86,20 @@ function TarotReaderSchedule() {
     };
 
     const handleSave = async () => {
-        const dateStr = eventDate.toISOString().split('T')[0];
+        const dateStr = eventDate.toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' });
         const startDateTime = `${dateStr}T${startTime}:00`;
         const endDateTime = `${dateStr}T${endTime}:00`;
-
+        console.log(eventDate, dateStr, startDateTime, endDateTime)
         try {
             if (isUpdate) {
-                await axios.put(`https://localhost:7218/api/Schedules/${selectedEventId}`, {
-                    tarotReaderId: tarotReader.tarotReaderId,
+                console.log(selectedEventId, dateStr, startDateTime, startDateTime)
+                await axios.put(`https://localhost:7218/api/Schedules/`, { 
+                    scheduleId: selectedEventId,         
+                    tarotReaderId: tarotReader.tarotReaderId,          
                     date: dateStr,
                     startTime: startDateTime,
-                    endTime: endDateTime,    
-                    status: null           
+                    endTime: startDateTime,    
+                    status: true           
                 });
             } else {
                 await axios.post("https://localhost:7218/api/Schedules", {
@@ -105,7 +107,7 @@ function TarotReaderSchedule() {
                     date: dateStr,
                     startTime: startDateTime,
                     endTime: endDateTime,
-                    status: null
+                    status: true
                 });
             }
             await fetchTarotReaders();
@@ -157,9 +159,9 @@ function TarotReaderSchedule() {
             <div className="row">
                 <div className="col-12 mt-4">
                     <div className="card rounded border-0 shadow p-4">
-                        <Button className="btn-custom" onClick={handleShow}>
+                        <button className="btn-custom" onClick={handleShow}>
                             Đăng ký lịch
-                        </Button>
+                        </button>
                         <FullCalendar 
                             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                             initialView="dayGridMonth"

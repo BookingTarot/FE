@@ -11,12 +11,12 @@
     margin-bottom: 20px;
     transition-duration: 0.4s; /* Thời gian hiệu ứng */
     cursor: pointer; /* Hình dạng con trỏ */    
+    font-size: 20px;
 }
 
 .btn-custom:hover {
     background-color: #1a252f; /* Màu nền khi hover */
     color: white; /* Màu chữ khi hover */
-    border: 2px solid #4CAF50; /* Thêm viền khi hover */
 }
 
 .btn-custom:focus,
@@ -105,4 +105,55 @@
 .react-datepicker__input-container input {
     width: 100%; /* Đảm bảo picker ngày chiếm hết chiều rộng */
     font-size: 15px; /* Kích thước chữ cho picker ngày */      
+}
+
+
+/* CSS FullCalender */
+/* FullCalendar tùy chỉnh kích thước chữ */
+.fc .fc-toolbar-title {
+    font-size: 3rem; /* Kích thước chữ tiêu đề */
+    font-weight: bold;
+    color: #333;
+}
+
+.fc .fc-button {
+    font-size: 2rem; /* Kích thước chữ nút bấm */
+}
+
+.fc .fc-daygrid-day-number {
+    font-size: 2rem; /* Kích thước chữ số ngày */
+    font-weight: bold;
+    color: #333;
+    Text-decoration: none;
+}
+
+.fc .fc-event {
+    font-size: 1.5rem; /* Kích thước chữ sự kiện */
+    color: #333;
+}
+
+.fc .fc-timegrid-slot-label {
+    font-size: 0.9rem; /* Kích thước chữ nhãn thời gian */
+}
+
+.fc .fc-timegrid-event {
+    font-size: 0.9rem; /* Kích thước chữ sự kiện trong lưới thời gian */
+}
+
+.fc .fc-day-today {
+    font-size: 1rem; /* Kích thước chữ ngày hôm nay */
+    background-color: #eaf6ff;
+}
+
+.fc .fc-highlight {
+    font-size: 1rem; /* Kích thước chữ vùng sáng */
+    background-color: #d3e9ff;
+}
+
+/* Văn bản trong ô ngày */
+.fc .fc-daygrid-day-top, 
+.fc .fc-daygrid-day-bottom, 
+.fc .fc-daygrid-event-title, 
+.fc .fc-list-event-title {
+    font-size: 1rem; /* Kích thước chữ chung trong ô ngày */
 }
