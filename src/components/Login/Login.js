@@ -26,7 +26,7 @@ export default function Login() {
     if (response.ok) {
       const data = await response.json();
       setUser(data);
-      console.log(data, data.token)
+      console.log(data)   
       switch (data.roleId) {
         case 2:
           navigate("/");

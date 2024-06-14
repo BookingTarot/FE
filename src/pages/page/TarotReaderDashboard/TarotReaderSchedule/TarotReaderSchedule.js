@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -15,7 +15,7 @@ const hours = Array.from({ length: 48 }, (_, i) => {
   return `${hour}:${minute}`;
 });
 
-function TarotReaderSchedule() {
+function TarotReaderSchedule({ user }) {
     const [tarotReader, setTarotReader] = useState(null);
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -24,9 +24,9 @@ function TarotReaderSchedule() {
     const [eventDate, setEventDate] = useState(new Date());
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
-    const id = 1;
+    const id = user.tarotReader.tarotReaderId;
 
-    const fetchTarotReaders = async () => {
+    const fetchTarotReaders = useCallback(async () => {
         try {
             const response = await axios.get(
                 `https://localhost:7218/api/TarotReader`
@@ -47,11 +47,11 @@ function TarotReaderSchedule() {
         } catch (error) {
             console.error("Error fetching tarot reader data", error);
         }
-    };
+    }, [id]);
 
     useEffect(() => {
         fetchTarotReaders();
-    }, [id]);
+    }, [fetchTarotReaders, user]);
 
     const handleShow = () => {
         setIsUpdate(false);
@@ -75,13 +75,15 @@ function TarotReaderSchedule() {
         const startDate = info.event.start;
         const endDate = info.event.end;
 
-        if (eventId) {
+        if (eventId && startDate && endDate) {
             setIsUpdate(true);
             setSelectedEventId(eventId);
             setEventDate(startDate);
             setStartTime(formatTime(startDate)); // Lấy giờ bắt đầu từ startDate
             setEndTime(formatTime(endDate)); // Lấy giờ kết thúc từ endDate
             setShowModal(true);
+        } else {
+            console.error("Event data is invalid:", info.event);
         }
     };
 
@@ -98,7 +100,7 @@ function TarotReaderSchedule() {
                     tarotReaderId: tarotReader.tarotReaderId,          
                     date: dateStr,
                     startTime: startDateTime,
-                    endTime: startDateTime,    
+                    endTime: endDateTime,    
                     status: true           
                 });
             } else {
