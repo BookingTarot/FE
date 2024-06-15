@@ -3,8 +3,11 @@ import DashboardHeader from "../../../components/Header/DashboardHeader";
 import TarotReaderSchedule from "./TarotReaderSchedule/TarotReaderSchedule";
 import TarotReaderAppointment from "./TarotReaderAppointment/TarotReaderAppointment";
 import "./TarotReaderDashboard.css";
+import { useAuth } from "../../../components/Login/Authen";
 
 function TarotReaderDashboard() {
+
+    const { user } = useAuth();
 
     const [activeTab, setActiveTab] = useState("schedule");
 
@@ -46,11 +49,13 @@ function TarotReaderDashboard() {
                         {/* Content */}
                         <div className="col-xl-9 col-lg-8 col-md-7 mt-4 pt-2 mt-sm-0 pt-sm-0">
                             {activeTab === "schedule" && (
-                                <TarotReaderSchedule                                
+                                <TarotReaderSchedule 
+                                    user={ user }                               
                                 />
                             )}
                             {activeTab === "appointment" && (
-                                <TarotReaderAppointment                                
+                                <TarotReaderAppointment      
+                                    user={ user }                             
                                 />
                             )}
                         </div>
