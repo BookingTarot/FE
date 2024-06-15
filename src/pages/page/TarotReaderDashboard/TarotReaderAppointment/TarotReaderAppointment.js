@@ -2,9 +2,9 @@ import "./TarotReaderAppointment.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function TarotReaderAppointment() {
+function TarotReaderAppointment({ user }) {
     const [appointments, setAppointments] = useState([]);
-    const id = 1;
+    const id = user.tarotReader.tarotReaderId;
 
     useEffect(() => {
         const fetchAppointments = async () => {

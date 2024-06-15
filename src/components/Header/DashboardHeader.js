@@ -1,14 +1,24 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
+import { useAuth } from "../Login/Authen";
 
 function DashboardHeader() {
+
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/');
+  const { user } = useAuth();
+  const profileImage = user.gender ? "assets/images/profile1.png" : "assets/images/profile2.png";
+
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem("userInfo");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
 
   return (
     <header className="float-start w-100">
@@ -50,26 +60,26 @@ function DashboardHeader() {
                           className="btn btn-pills btn-soft-primary p-0"
                         >
                           <img
-                            src="assets/images/profile1.png"
+                            src={profileImage}
                             className="avatar"
                             alt="profile"
                           />
                         </Dropdown.Toggle>
                         <Dropdown.Menu align="end" className="shadow border-0 mt-3 py-3" style={{ minWidth: '200px' }}>
-                          <Dropdown.Item as={Link} to="/profile" className="d-flex align-items-center text-dark">
+                          <Dropdown.Item className="d-flex align-items-center text-dark">
                             <img
-                              src="assets/images/profile1.png"
+                              src={profileImage}
                               className="avatar avatar-md-sm rounded-circle border shadow"
                               alt="profile"
                             />
                             <div className="flex-1 ms-2">
-                              <span className="d-block mb-1">Nguyễn Văn A</span>
+                              <span className="d-block mb-1">{user.lastName}</span>
                               <small className="text-muted">Tarot Reader</small>
                             </div>
                           </Dropdown.Item>
                           <Dropdown.Divider />
                           <Dropdown.Item as={Link} to="/account" className="text-dark">Thông tin tài khoản</Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/login" className="text-dark" onClick={handleLogout}>Đăng xuất</Dropdown.Item>
+                          <Dropdown.Item onClick={handleLogout} className="text-dark">Đăng xuất</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </li>

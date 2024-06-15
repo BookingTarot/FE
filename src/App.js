@@ -43,6 +43,8 @@ function App() {
             />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Register />} />
+
+            
           </Routes>
         </Router>
       </AuthProvider>
