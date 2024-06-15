@@ -26,7 +26,14 @@ export default function Login() {
     if (response.ok) {
       const data = await response.json();
       setUser(data);
-      console.log(data)   
+      console.log(data, data.token)
+
+      if (remember) {
+        localStorage.setItem('user', JSON.stringify(data));
+    } else {
+        localStorage.removeItem('user'); // Xoá thông tin nếu người dùng không chọn Remember me
+    }
+
       switch (data.roleId) {
         case 2:
           navigate("/");

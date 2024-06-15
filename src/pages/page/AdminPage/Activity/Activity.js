@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from "react";
 import DataTable from 'react-data-table-component';
+import { Button, InputGroup, FormControl } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const API = "https://localhost:7218/api/Bookings";
 
-export default function Customer() {
-    const [users, setUsers] = useState([]);
+export default function Activity() {
+    const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchText, setSearchText] = useState('');
 
-    const fetchUsers = async (url) => {
+    const fetchBookings = async () => {
         try {
-            const res = await fetch(url);
+            const res = await fetch(API);
             const data = await res.json();
             if (data.length > 0) {
-                // Sử dụng map để chuyển đổi chuỗi từ API endpoints
-                const transformedData = data.map(user => ({
-                    ...user,
-                    status: user.status ? "Hoàn Thành" : "Bị Hủy",
-                    gender: user.gender ? "Nam" : "Nữ",
-                    date: new Date(user.date).toLocaleDateString('vi-VN')
+                const transformedData = data.map(booking => ({
+                    ...booking,
+                    status: booking.status ? "Hoàn Thành" : "Bị Hủy",
+                    gender: booking.gender ? "Nam" : "Nữ",
+                    date: new Date(booking.date).toLocaleDateString('vi-VN'),
+                    startTime: formatTime(booking.startTime),
+                    endTime: formatTime(booking.endTime)
                 }));
-                setUsers(transformedData);
+                setBookings(transformedData);
             }
-            console.log(data);
             setLoading(false);
         } catch (e) {
             console.error(e);
@@ -30,8 +33,25 @@ export default function Customer() {
     }
 
     useEffect(() => {
-        fetchUsers(API);
+        fetchBookings();
     }, []);
+
+    const formatTime = (timeString) => {
+        const time = new Date(timeString);
+        const hours = time.getHours();
+        const minutes = time.getMinutes();
+        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+    };
+
+    const handleSearch = (e) => {
+        setSearchText(e.target.value);
+    };
+
+    const filteredBookings = bookings.filter(booking =>
+        Object.values(booking).some(value =>
+            typeof value === "string" && value.toLowerCase().includes(searchText.toLowerCase())
+        )
+    );
 
     const columns = [
         {
@@ -67,45 +87,89 @@ export default function Customer() {
         },
         {
             name: 'Bắt Đầu',
-            selector: row => {
-                // Chuyển đổi chuỗi thời gian thành đối tượng Date
-                const startTime = new Date(row.startTime);
-                // Lấy giờ và phút
-                const hours = startTime.getHours();
-                const minutes = startTime.getMinutes();
-                // Format lại để hiển thị
-                const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
-                return formattedTime;
-            }
+            selector: row => row.startTime
         },
         {
             name: 'Kết Thúc',
-            selector: row => {
-                // Chuyển đổi chuỗi thời gian thành đối tượng Date
-                const endTime = new Date(row.endTime);
-                // Lấy giờ và phút
-                const hours = endTime.getHours();
-                const minutes = endTime.getMinutes();
-                // Format lại để hiển thị
-                const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
-                return formattedTime;
-            }
+            selector: row => row.endTime
         },
         {
             name: 'Status',
-            selector: row => row.status
+            selector: row => row.status,
+            cell: row => (
+                <span style={{ color: row.status === "Hoàn Thành" ? "lime" : "red" }}>
+                    {row.status}
+                </span>
+            )
         }
     ];
 
+    const customStyles = {
+        header: {
+            style: {
+                backgroundColor: '#1a1a1a',
+                color: '#ffffff',
+                fontWeight: 'bold',
+                border: '2px solid #333333'
+            },
+        },
+        headRow: {
+            style: {
+                backgroundColor: '#1a1a1a',
+                border: '2px solid #333333'
+            }
+        },
+        headCells: {
+            style: {
+                color: '#ffffff',
+                fontWeight: 'bold',
+                fontSize: '16px'
+            },
+        },
+        rows: {
+            style: {
+                backgroundColor: '#2a2a2a',
+                color: '#ffffff',
+                '&:not(:last-of-type)': {
+                    borderLeft: '2px solid #333333',
+                    borderRight: '2px solid #333333'
+                },
+            },
+            highlightOnHoverStyle: {
+                backgroundColor: '#333333',
+                borderBottomColor: '#333333',
+                borderRadius: '25px',
+                outline: '1px solid #ffffff',
+            },
+        },
+        pagination: {
+            style: {
+                backgroundColor: '#1a1a1a',
+                color: '#ffffff',
+                border: '2px solid #333333'
+            },
+        },
+    };
+
     return (
-        <div className="container mt-5">
+        <div className="container mt-2">
+            <div className="d-flex justify-content-between align-items-center mb-3">
+                <InputGroup style={{ maxWidth: '180px' }}>
+                    <FormControl
+                        placeholder="Search..."
+                        value={searchText}
+                        onChange={handleSearch}
+                    />
+                </InputGroup>
+            </div>
             <DataTable
                 columns={columns}
-                data={users}
+                data={filteredBookings}
                 progressPending={loading}
                 pagination
                 selectableRows
-                wrap
+                customStyles={customStyles}
+                theme="dark"
             />
         </div>
     );

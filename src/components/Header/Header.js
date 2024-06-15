@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../Login/Authen";
+import HomeLogout from "../Button/HomeLogout";
 
 export default function Header() {
   const { user } = useAuth();
@@ -101,9 +102,7 @@ export default function Header() {
                             Chỉnh Sửa Thông Tin
                           </a>
                           <div className="dropdown-divider border-top"></div>
-                          <Link className="dropdown-item text-dark" to="/login">
-                            Logout
-                          </Link>
+                          <HomeLogout />
                         </div>
                       </div>
                     </li>

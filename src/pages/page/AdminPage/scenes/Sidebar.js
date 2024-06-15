@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css';
+import LogoutButton from "../../../../components/Button/LogoutButton";
 
 export default function Sidebar({ onSelect }) {
     const sidebarHeight = 'calc(100vh - 120px)';
@@ -16,23 +17,23 @@ export default function Sidebar({ onSelect }) {
 
                         <hr className="text-white d-none d-sm-block"></hr>
 
-                        <ul class="nav nav-pills flex-column mt-2 mt-sm-0">
-                            <li class="nav-item text-white my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('customer')} style={{marginTop: '20px'}}>
+                        <ul className="nav nav-pills flex-column mt-2 mt-sm-0">
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('customer')} style={{marginTop: '20px'}}>
                                     <i className="bi bi-people fs-3"></i>
                                     <span className="ms-2 fs-3 d-none d-sm-inline">Khách Hàng</span>
                                 </a>
                             </li>
 
-                            <li class="nav-item text-white my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('tarotReader')} style={{marginTop: '15px'}}>
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('tarotReader')} style={{marginTop: '15px'}}>
                                     <i className="bi bi-people fs-3"></i>
                                     <span className="ms-2 fs-3 d-none d-sm-inline">Tarot Reader</span>
                                 </a>
                             </li>
 
-                            <li class="nav-item text-white my-1 py-2 py-sm-0">
-                                <a href="#" class="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('activity')} style={{marginTop: '15px'}}>
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('activity')} style={{marginTop: '15px'}}>
                                     <i className="bi bi-list-ul fs-3"></i>
                                     <span className="ms-2 fs-3 d-none d-sm-inline " style={{ width: '24px', height: '24px' }}>Hoạt Động</span>
                                 </a>
@@ -40,22 +41,8 @@ export default function Sidebar({ onSelect }) {
                         </ul>
                     </div>
 
-                    <div class="dropdown open" style={{marginBottom: '20px'}}>
-                        <a
-                            class="btn btn-secondary dropdown-toggle text-white"
-                            type="button"
-                            id="triggerId"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            <i className="bi bi-person fs-4"></i>
-                            <span className="fs-2 ms-3">Admin</span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="triggerId">
-                            <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                        </div>
+                    <div className="mb-3" style={{marginBottom: '20px'}}>
+                        <LogoutButton />
                     </div>
                 </div>
             </div>
