@@ -1,8 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 
 function DashboardHeader() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+  };
+
   return (
     <header className="float-start w-100">
       <div className="container-fluid">
@@ -62,7 +69,7 @@ function DashboardHeader() {
                           </Dropdown.Item>
                           <Dropdown.Divider />
                           <Dropdown.Item as={Link} to="/account" className="text-dark">Thông tin tài khoản</Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/logout" className="text-dark">Đăng xuất</Dropdown.Item>
+                          <Dropdown.Item as={Link} to="/login" className="text-dark" onClick={handleLogout}>Đăng xuất</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </li>
