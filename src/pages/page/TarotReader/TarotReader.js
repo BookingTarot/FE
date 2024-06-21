@@ -10,7 +10,7 @@ import Btn from "../../../components/Button/Btn";
 import { useAuth } from "../../../components/Login/Authen";
 
 export default function TarotReader() {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [selectedTarotReaderId, setSelectedTarotReaderId] = useState(null);
@@ -80,9 +80,7 @@ export default function TarotReader() {
     let sortedReaders = [...filteredReaders];
     switch (years) {
       case "lessThan1":
-        sortedReaders = sortedReaders.filter(
-          (reader) => reader.experience < 1
-        );
+        sortedReaders = sortedReaders.filter((reader) => reader.experience < 1);
         break;
       case "moreThan1":
         sortedReaders = sortedReaders.filter(
@@ -109,7 +107,7 @@ export default function TarotReader() {
     const fetchTarotReaders = async () => {
       try {
         const response = await axios.get(
-          "https://localhost:7218/api/TarotReader"
+          "http://tarot.somee.com/api/TarotReader"
         );
 
         const filterDuration = response.data.map((reader) => ({
@@ -135,7 +133,7 @@ export default function TarotReader() {
   const handleBookMe = (readerId) => {
     if (!user) {
       // If user is not logged in, redirect to login page
-      navigate('/login');
+      navigate("/login");
     } else {
       openModal(readerId);
     }
@@ -255,7 +253,6 @@ export default function TarotReader() {
                       </div>
                     </div>
                   </div>
-          
 
                   <div class="accordion-item">
                     {/* <h2 class="accordion-header">
@@ -358,22 +355,34 @@ export default function TarotReader() {
                         aria-labelledby="dropdownMenuButton1"
                       >
                         <li>
-                          <button class="dropdown-item" onClick={() => handleSortByExperience("lessThan1")}>
+                          <button
+                            class="dropdown-item"
+                            onClick={() => handleSortByExperience("lessThan1")}
+                          >
                             Ít hơn 1 năm
                           </button>
                         </li>
                         <li>
-                        <button class="dropdown-item" onClick={() => handleSortByExperience("moreThan1")}>
+                          <button
+                            class="dropdown-item"
+                            onClick={() => handleSortByExperience("moreThan1")}
+                          >
                             Hơn 1 năm
                           </button>
                         </li>
                         <li>
-                        <button class="dropdown-item" onClick={() => handleSortByExperience("moreThan3")}>
+                          <button
+                            class="dropdown-item"
+                            onClick={() => handleSortByExperience("moreThan3")}
+                          >
                             Hơn 3 năm
                           </button>
                         </li>
                         <li>
-                        <button class="dropdown-item" onClick={() => handleSortByExperience("moreThan5")}>
+                          <button
+                            class="dropdown-item"
+                            onClick={() => handleSortByExperience("moreThan5")}
+                          >
                             Hơn 5 năm
                           </button>
                         </li>
@@ -457,9 +466,8 @@ export default function TarotReader() {
                           </div>
                         </div>
                       </div>
-
                     ))}
-                    </div>
+                  </div>
 
                   <nav class="my-5">
                     <ul class="pagination">
@@ -495,7 +503,6 @@ export default function TarotReader() {
             </div>
           </div>
         </section>
-
       </main>
 
       {/* <!-- footer Modal --> */}
@@ -506,7 +513,13 @@ export default function TarotReader() {
       <MobileMenu />
 
       {/* <!-- SessionType menu --> */}
-      {isModalOpen && <SessionType selectedTarotReaderId={selectedTarotReaderId} onClose={closeModal} tarotReaderName={selectedTarotReaderName}/>}
+      {isModalOpen && (
+        <SessionType
+          selectedTarotReaderId={selectedTarotReaderId}
+          onClose={closeModal}
+          tarotReaderName={selectedTarotReaderName}
+        />
+      )}
 
       {/* <SessionType /> */}
     </div>

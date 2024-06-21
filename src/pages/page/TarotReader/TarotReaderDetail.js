@@ -20,7 +20,7 @@ export default function TarotReaderDetail() {
   const [selectedTarotReaderId, setSelectedTarotReaderId] = useState(null);
   const [newFeedback, setNewFeedback] = useState({
     rating: 0,
-    comments: ""
+    comments: "",
   });
 
   const openModal = (tarotReaderId) => {
@@ -36,7 +36,7 @@ export default function TarotReaderDetail() {
     const fetchTarotReader = async () => {
       try {
         const response = await axios.get(
-          `https://localhost:7218/api/TarotReader/${id}`
+          `http://tarot.somee.com/api/TarotReader/${id}`
         );
         setTarotReader(response.data);
       } catch (error) {
@@ -47,7 +47,7 @@ export default function TarotReaderDetail() {
     const fetchFeedbacks = async () => {
       try {
         const response = await axios.get(
-          `https://localhost:7218/api/Feedbacks/tarotreader/${id}`
+          `http://tarot.somee.com/api/Feedbacks/tarotreader/${id}`
         );
         setFeedbacks(response.data);
       } catch (error) {
@@ -75,9 +75,9 @@ export default function TarotReaderDetail() {
       tarotReaderId: parseInt(id),
       rating: newFeedback.rating,
       comments: newFeedback.comments,
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
     };
-    console.log("feedback data" , feedbackData);
+    console.log("feedback data", feedbackData);
     console.log("user", user);
 
     try {
@@ -109,13 +109,18 @@ export default function TarotReaderDetail() {
           <nav className="mt-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">Trang Chủ</li>
-              <li className="breadcrumb-item active">Chi Tiết về Tarot Reader</li>
+              <li className="breadcrumb-item active">
+                Chi Tiết về Tarot Reader
+              </li>
             </ol>
           </nav>
         </div>
       </section>
       <main className="float-start w-100 body-main">
-        <section className="astrology-page-details" style={{ backgroundColor: "#0c071c" }}>
+        <section
+          className="astrology-page-details"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="row gx-lg-5">
               <div className="col-lg-3">
@@ -152,7 +157,10 @@ export default function TarotReaderDetail() {
                 </div>
 
                 <div className="book-div-group d-inline-block w-100 mt-5">
-                  <button onClick={() => openModal(tarotReader.tarotReaderId)} className="btn book-btn">
+                  <button
+                    onClick={() => openModal(tarotReader.tarotReaderId)}
+                    className="btn book-btn"
+                  >
                     <i className="fas fa-calendar-alt"></i> Book Me
                   </button>
                 </div>
@@ -211,7 +219,9 @@ export default function TarotReaderDetail() {
                             <h2 className="mt-5" style={{ textAlign: "start" }}>
                               Experience
                             </h2>
-                            <p style={{ textAlign: "start" }}>Công việc, tình yêu</p>
+                            <p style={{ textAlign: "start" }}>
+                              Công việc, tình yêu
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -241,11 +251,19 @@ export default function TarotReaderDetail() {
                               <FullCalendar
                                 plugins={[dayGridPlugin]}
                                 initialView="dayGridMonth"
-                                events={tarotReader.schedules.map((scheduleItem) => ({
-                                  title: "Event",
-                                  start: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.startTime.slice(11),
-                                  end: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.endTime.slice(11),
-                                }))}
+                                events={tarotReader.schedules.map(
+                                  (scheduleItem) => ({
+                                    title: "Event",
+                                    start:
+                                      scheduleItem.date.slice(0, 10) +
+                                      "T" +
+                                      scheduleItem.startTime.slice(11),
+                                    end:
+                                      scheduleItem.date.slice(0, 10) +
+                                      "T" +
+                                      scheduleItem.endTime.slice(11),
+                                  })
+                                )}
                               />
                             </div>
                           </div>
@@ -275,37 +293,52 @@ export default function TarotReaderDetail() {
                           <div className="user-revices">
                             <h2 className="mt-4">Đánh Giá</h2>
                             {feedbacks.length > 0 ? (
-  feedbacks.map((feedback, index) => (
-    <div key={index} className="comon-com-div">
-      <div className="d-lg-flex justify-content-between">
-        <figure>
-          <img
-            src="assets/images/testimonials-1-1.jpg"
-            alt="user-pic"
-          />
-        </figure>
-        <div className="comment-text">
-          <div className="d-flex align-items-center">
-            <h5 className="mb-0">{feedback.userName}</h5>{" "}
-            <span className="d-inline ms-3">
-              {feedback.date && new Date(feedback.date).toLocaleDateString()}
-            </span>
-          </div>
-          <div className="form-group">
-            <div className="stars rt01">
-              {Array.from({ length: 5 }, (_, idx) => (
-                <i key={idx} className={`fas fa-star${idx < feedback.rating ? '' : '-empty'}`}></i>
-              ))}
-            </div>
-          </div>
-          <p>{feedback.comments}</p>
-        </div>
-      </div>
-    </div>
-  ))
-) : (
-  <p>Hiện tại chưa có reviews.</p>
-)}
+                              feedbacks.map((feedback, index) => (
+                                <div key={index} className="comon-com-div">
+                                  <div className="d-lg-flex justify-content-between">
+                                    <figure>
+                                      <img
+                                        src="assets/images/testimonials-1-1.jpg"
+                                        alt="user-pic"
+                                      />
+                                    </figure>
+                                    <div className="comment-text">
+                                      <div className="d-flex align-items-center">
+                                        <h5 className="mb-0">
+                                          {feedback.userName}
+                                        </h5>{" "}
+                                        <span className="d-inline ms-3">
+                                          {feedback.date &&
+                                            new Date(
+                                              feedback.date
+                                            ).toLocaleDateString()}
+                                        </span>
+                                      </div>
+                                      <div className="form-group">
+                                        <div className="stars rt01">
+                                          {Array.from(
+                                            { length: 5 },
+                                            (_, idx) => (
+                                              <i
+                                                key={idx}
+                                                className={`fas fa-star${
+                                                  idx < feedback.rating
+                                                    ? ""
+                                                    : "-empty"
+                                                }`}
+                                              ></i>
+                                            )
+                                          )}
+                                        </div>
+                                      </div>
+                                      <p>{feedback.comments}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))
+                            ) : (
+                              <p>Hiện tại chưa có reviews.</p>
+                            )}
                           </div>
 
                           <div className="leave-sec-part">
@@ -319,8 +352,17 @@ export default function TarotReaderDetail() {
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                           <i
                                             key={rating}
-                                            className={`fa-star ${newFeedback.rating >= rating ? "fas" : "far"}`}
-                                            onClick={() => setNewFeedback({ ...newFeedback, rating })}
+                                            className={`fa-star ${
+                                              newFeedback.rating >= rating
+                                                ? "fas"
+                                                : "far"
+                                            }`}
+                                            onClick={() =>
+                                              setNewFeedback({
+                                                ...newFeedback,
+                                                rating,
+                                              })
+                                            }
                                           />
                                         ))}
                                       </div>
@@ -349,8 +391,9 @@ export default function TarotReaderDetail() {
                                 </div>
                               </form>
                             ) : (
-                              <Link to="/login"><p>Hãy đăng nhập để thực hiện bình luận.</p></Link>
-                              
+                              <Link to="/login">
+                                <p>Hãy đăng nhập để thực hiện bình luận.</p>
+                              </Link>
                             )}
                           </div>
                         </div>
@@ -365,7 +408,12 @@ export default function TarotReaderDetail() {
       </main>
       <Footer />
       <MobileMenu />
-      {isModalOpen && <SessionType selectedTarotReaderId={selectedTarotReaderId} onClose={closeModal} />}
+      {isModalOpen && (
+        <SessionType
+          selectedTarotReaderId={selectedTarotReaderId}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 }
