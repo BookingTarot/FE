@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, PhoneAuthProvider, signInWithCredential } from "firebase/auth";
-import { auth } from "../../firebaseConfig"
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  PhoneAuthProvider,
+  signInWithCredential,
+} from "firebase/auth";
+import { auth } from "../../firebaseConfig";
 import "./Register.css";
 
 const Register = () => {
@@ -31,53 +37,60 @@ const Register = () => {
   };
 
   const setupRecaptcha = () => {
-    if (!window.recaptchaVerifier){
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-        'size': 'invisible',
-        'callback': (response) => {
-          // // reCAPTCHA solved - will proceed with submit function
-          // handleSendOTP();
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+          size: "invisible",
+          callback: (response) => {
+            // // reCAPTCHA solved - will proceed with submit function
+            // handleSendOTP();
+          },
+          "expired-callback": () => {
+            toast.error(
+              "Recaptcha expired. Please complete the recaptcha again."
+            );
+          },
         },
-        'expired-callback': () => {
-
-          toast.error("Recaptcha expired. Please complete the recaptcha again.");
-        }
-      }, auth);
+        auth
+      );
     }
   };
 
   const handleSendOTP = () => {
     setupRecaptcha();
-  
+
     // Format the phone number with the country code
     const phoneNumberFormatted = `+84${formData.phoneNumber}`;
     console.log("phoneNumber: ", phoneNumberFormatted);
 
     const webVerify = window.recaptchaVerifier;
-  
+
     signInWithPhoneNumber(auth, phoneNumberFormatted, webVerify)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         setVerificationId(confirmationResult.verificationId);
         setStep(2);
         console.log("OTP sent");
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error("Error during signInWithPhoneNumber", error);
-        if (error.code === 'auth/invalid-phone-number') {
-          toast.error("Invalid phone number. Please enter a valid phone number.");
+        if (error.code === "auth/invalid-phone-number") {
+          toast.error(
+            "Invalid phone number. Please enter a valid phone number."
+          );
         } else {
           toast.error(`Failed to send OTP. Please try again. ${error.message}`);
         }
-        
       });
-      
   };
 
   const handleVerifyOTP = () => {
     if (otp.length !== 6) {
       toast.error("OTP must be 6 digits long.");
       return;
-  }
+    }
     const credential = PhoneAuthProvider.credential(verificationId, otp);
 
     signInWithCredential(auth, credential)
@@ -93,7 +106,7 @@ const Register = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("https://localhost:7218/api/User/register", {
+      const response = await fetch("http://tarot.somee.com/api/User/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +135,12 @@ const Register = () => {
       <div className="cardRegister">
         <h2 className="fw-bold mb-2 text-center">Sign Up</h2>
         {step === 1 && (
-          <form onSubmit={(e) => { e.preventDefault(); handleSendOTP(); }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSendOTP();
+            }}
+          >
             <div className="form-container">
               <div className="input-group">
                 <label htmlFor="lastName">Last Name</label>
@@ -159,19 +177,19 @@ const Register = () => {
               <div className="input-group">
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input
-  type="text"
-  id="phoneNumber"
-  name="phoneNumber"
-  value={formData.phoneNumber}
-  onChange={(e) => {
-    // Ensure only numeric characters are allowed
-    const formattedValue = e.target.value.replace(/\D/g, '');
-    setFormData({
-      ...formData,
-      phoneNumber: formattedValue
-    });
-  }}
-/>
+                  type="text"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={(e) => {
+                    // Ensure only numeric characters are allowed
+                    const formattedValue = e.target.value.replace(/\D/g, "");
+                    setFormData({
+                      ...formData,
+                      phoneNumber: formattedValue,
+                    });
+                  }}
+                />
               </div>
             </div>
             <div className="form-container">
@@ -224,7 +242,12 @@ const Register = () => {
           </form>
         )}
         {step === 2 && (
-          <form onSubmit={(e) => { e.preventDefault(); handleVerifyOTP(); }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleVerifyOTP();
+            }}
+          >
             <div className="form-container">
               <div className="input-group">
                 <label htmlFor="otp">OTP</label>

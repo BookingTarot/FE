@@ -8,13 +8,13 @@ export default function Schedule({ onClose, sessionType }) {
   const [error, setError] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
-  const [tarotReaderName, setTarotReaderName] = useState('');
+  const [tarotReaderName, setTarotReaderName] = useState("");
 
   useEffect(() => {
     const fetchScheduleData = async () => {
       try {
         const response = await fetch(
-          `https://localhost:7218/api/Schedules/tarot/${sessionType.tarotReaderId}`
+          `http://tarot.somee.com/api/Schedules/tarot/${sessionType.tarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -30,7 +30,7 @@ export default function Schedule({ onClose, sessionType }) {
     const fetchTarotReaderName = async () => {
       try {
         const response = await fetch(
-          `https://localhost:7218/api/TarotReader/${sessionType.tarotReaderId}`
+          `http://tarot.somee.com/api/TarotReader/${sessionType.tarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch tarot reader's name");
@@ -38,7 +38,7 @@ export default function Schedule({ onClose, sessionType }) {
         const data = await response.json();
         setTarotReaderName(data.fullName);
       } catch (error) {
-        console.error('Error fetching tarot reader name:', error.message);
+        console.error("Error fetching tarot reader name:", error.message);
       }
     };
 
@@ -47,7 +47,7 @@ export default function Schedule({ onClose, sessionType }) {
   }, [sessionType]);
 
   const filterScheduleData = (data, duration) => {
-    const filtered = data.filter(schedule => {
+    const filtered = data.filter((schedule) => {
       const startTime = new Date(schedule.startTime);
       const endTime = new Date(schedule.endTime);
       const scheduleDuration = (endTime - startTime) / (1000 * 60); // Convert duration to minutes
@@ -64,7 +64,7 @@ export default function Schedule({ onClose, sessionType }) {
       date: schedule.date,
       startTime: schedule.startTime,
       endTime: schedule.endTime,
-      price: sessionType.price
+      price: sessionType.price,
     });
     setShowConfirm(true);
   };
@@ -88,19 +88,25 @@ export default function Schedule({ onClose, sessionType }) {
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.5)",
-        overflowY: "auto"
+        overflowY: "auto",
       }}
     >
-      <div className="modal-dialog" style={{ maxWidth: "550px", width: "90%", maxHeight: "80%" }}>
+      <div
+        className="modal-dialog"
+        style={{ maxWidth: "550px", width: "90%", maxHeight: "80%" }}
+      >
         <div
           className="modal-content"
           style={{
             borderRadius: "30px",
             boxShadow: "rgb(0, 0, 0) 0px 3px 0px 0px",
-            maxHeight: "85vh"
+            maxHeight: "85vh",
           }}
         >
-          <div className="modal-header border-bottom-0" style={{backgroundColor: "transparent"}}>
+          <div
+            className="modal-header border-bottom-0"
+            style={{ backgroundColor: "transparent" }}
+          >
             <button
               style={{ marginRight: "5px" }}
               type="button"
@@ -109,26 +115,43 @@ export default function Schedule({ onClose, sessionType }) {
               onClick={onClose}
             ></button>
           </div>
-          <div className="modal-body" style={{overflowY: "scroll", paddingBottom: "40px", marginBottom: "20px", textAlign:"center"
-          }}>
-            <div className="modal-contact"> 
+          <div
+            className="modal-body"
+            style={{
+              overflowY: "scroll",
+              paddingBottom: "40px",
+              marginBottom: "20px",
+              textAlign: "center",
+            }}
+          >
+            <div className="modal-contact">
               <h2>Lựa chọn thời gian {sessionType.name}</h2>
               {error && <p>Error: {error}</p>}
               {!error && (
                 <div>
                   {filteredSchedule.map((schedule) => {
-                    const currentDate = new Date(schedule.date).toLocaleDateString();
+                    const currentDate = new Date(
+                      schedule.date
+                    ).toLocaleDateString();
                     const shouldDisplayDate = currentDate !== lastDisplayedDate;
                     lastDisplayedDate = currentDate;
 
                     return (
-                      <div key={schedule.scheduleId} style={{ marginBottom: "10px" }}>
-                        {shouldDisplayDate && (
-                          <p>Date: {currentDate}</p>
-                        )}
+                      <div
+                        key={schedule.scheduleId}
+                        style={{ marginBottom: "10px" }}
+                      >
+                        {shouldDisplayDate && <p>Date: {currentDate}</p>}
                         <Btn onClick={() => handleTimeSelect(schedule)}>
-                          {new Date(schedule.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {" "}
-                          {new Date(schedule.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          {new Date(schedule.startTime).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}{" "}
+                          -{" "}
+                          {new Date(schedule.endTime).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
                         </Btn>
                       </div>
                     );
