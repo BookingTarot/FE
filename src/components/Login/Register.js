@@ -106,13 +106,16 @@ const Register = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://tarot.somee.com/api/User/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://tarot.somee.com/api/User/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         console.log("Registration successful!");

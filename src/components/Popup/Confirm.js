@@ -1,10 +1,12 @@
 import React from "react";
 import Btn from "../Button/Btn";
 import { useAuth } from "../Login/Authen";
+import { useNavigate } from "react-router";
 
 export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const { user } = useAuth();
   console.log("abc", { user });
+  const navigate = useNavigate();
   const handleConfirm = async () => {
     try {
       const bookingData = {
@@ -18,23 +20,20 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
         endTime: bookingDetails.endTime,
       };
 
-      const response = await fetch(
-        "http://tarot.somee.com/api/Bookings/Booking with Schedule",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(bookingData),
-        }
-      );
+      const response = await fetch("https://tarot.somee.com/api/Bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to confirm booking");
       }
 
       console.log("Booking confirmed:", bookingData);
-      onClose();
+      navigate("/");
     } catch (error) {
       console.error("Error confirming booking:", error.message);
       // Handle error, show error message, etc.
