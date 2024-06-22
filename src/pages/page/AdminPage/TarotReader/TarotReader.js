@@ -7,19 +7,19 @@ import axios from 'axios';
 const TarotReaderAPI = "https://tarot.somee.com/api/TarotReader";
 
 export default function TarotReader() {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [selectedRows, setSelectedRows] = useState([]);
-    const [searchText, setSearchText] = useState('');
-    const [showModal, setShowModal] = useState(false);
-    const [editData, setEditData] = useState({
-        tarotReaderId: '',
-        fullName: '',
-        experience: '',
-        kind: '',
-        image: '',
-        status: ''
-    });
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [editData, setEditData] = useState({
+    tarotReaderId: "",
+    fullName: "",
+    experience: "",
+    kind: "",
+    image: "",
+    status: "",
+  });
 
     // Fetch users data
     const fetchUsers = async () => {
@@ -41,14 +41,14 @@ export default function TarotReader() {
         }
     };
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-    // Handle search
-    const handleSearch = (e) => {
-        setSearchText(e.target.value);
-    };
+  // Handle search
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
 
     // Handle edit
     const handleEdit = () => {
@@ -98,102 +98,108 @@ export default function TarotReader() {
         )
     );
 
-    // Columns definition for DataTable
-    const columns = [
-        {
-            name: 'Avatar',
-            cell: row => <img src={row.image} alt="Avatar" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-        },
-        {
-            name: 'Họ Tên',
-            selector: row => row.fullName,
-            wrap: true
-        },
-        {
-            name: 'Kinh Nghiệm',
-            selector: row => row.experience
-        },
-        {
-            name: 'Lĩnh Vực',
-            selector: row => row.kind
-        },
-        {
-            name: 'Status',
-            selector: row => row.status,
-            cell: row => (
-                <span style={{ color: row.status === "Available" ? "lime" : "red" }}>
-                    {row.status}
-                </span>
-            )
-        }
-    ];
+  // Columns definition for DataTable
+  const columns = [
+    {
+      name: "Avatar",
+      cell: (row) => (
+        <img
+          src={row.image}
+          alt="Avatar"
+          style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+        />
+      ),
+    },
+    {
+      name: "Họ Tên",
+      selector: (row) => row.fullName,
+      wrap: true,
+    },
+    {
+      name: "Kinh Nghiệm",
+      selector: (row) => row.experience,
+    },
+    {
+      name: "Lĩnh Vực",
+      selector: (row) => row.kind,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.status,
+      cell: (row) => (
+        <span style={{ color: row.status === "Available" ? "lime" : "red" }}>
+          {row.status}
+        </span>
+      ),
+    },
+  ];
 
-    // Custom styles for DataTable
-    const customStyles = {
-        header: {
-            style: {
-                backgroundColor: '#1a1a1a',
-                color: '#ffffff',
-                fontWeight: 'bold',
-                border: '2px solid #333333'
-            },
+  // Custom styles for DataTable
+  const customStyles = {
+    header: {
+      style: {
+        backgroundColor: "#1a1a1a",
+        color: "#ffffff",
+        fontWeight: "bold",
+        border: "2px solid #333333",
+      },
+    },
+    headRow: {
+      style: {
+        backgroundColor: "#1a1a1a",
+        border: "2px solid #333333",
+      },
+    },
+    headCells: {
+      style: {
+        color: "#ffffff",
+        fontWeight: "bold",
+        fontSize: "16px",
+      },
+    },
+    rows: {
+      style: {
+        backgroundColor: "#2a2a2a",
+        color: "#ffffff",
+        "&:not(:last-of-type)": {
+          borderLeft: "2px solid #333333",
+          borderRight: "2px solid #333333",
         },
-        headRow: {
-            style: {
-                backgroundColor: '#1a1a1a',
-                border: '2px solid #333333'
-            }
-        },
-        headCells: {
-            style: {
-                color: '#ffffff',
-                fontWeight: 'bold',
-                fontSize: '16px'
-            },
-        },
-        rows: {
-            style: {
-                backgroundColor: '#2a2a2a',
-                color: '#ffffff',
-                '&:not(:last-of-type)': {
-                    borderLeft: '2px solid #333333',
-                    borderRight: '2px solid #333333'
-                },
-            },
-            highlightOnHoverStyle: {
-                backgroundColor: '#333333',
-                borderBottomColor: '#333333',
-                borderRadius: '25px',
-                outline: '1px solid #ffffff',
-            },
-        },
-        pagination: {
-            style: {
-                backgroundColor: '#1a1a1a',
-                color: '#ffffff',
-                border: '2px solid #333333'
-            },
-        },
-    };
+      },
+      highlightOnHoverStyle: {
+        backgroundColor: "#333333",
+        borderBottomColor: "#333333",
+        borderRadius: "25px",
+        outline: "1px solid #ffffff",
+      },
+    },
+    pagination: {
+      style: {
+        backgroundColor: "#1a1a1a",
+        color: "#ffffff",
+        border: "2px solid #333333",
+      },
+    },
+  };
 
-    // Function to handle row selection
-    const handleRowSelected = (state) => {
-        setSelectedRows(state.selectedRows);
-    };
+  // Function to handle row selection
+  const handleRowSelected = (state) => {
+    setSelectedRows(state.selectedRows);
+  };
 
-    // Function to open modal for creating a new Tarot Reader
-    const handleCreate = () => {
-        setShowModal(true);
-    };
+  // Function to open modal for creating a new Tarot Reader
+  const handleCreate = () => {
+    setShowModal(true);
+  };
 
-    // Function to handle form input changes
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setEditData({
-            ...editData,
-            [name]: value
-        });
-    };
+  // Function to handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditData({
+      ...editData,
+      [name]: value,
+    });
+  };
 
     // Function to handle form submission for creating a new Tarot Reader
     const handleCreateSubmit = async () => {
