@@ -19,7 +19,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
       };
 
       const response = await fetch(
-        "http://tarot.somee.com/api/Bookings/Booking with Schedule",
+        "https://tarot.somee.com/api/Bookings with Schedule",
         {
           method: "POST",
           headers: {

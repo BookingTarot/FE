@@ -4,6 +4,8 @@ import Sidebar from './scenes/Sidebar';
 import Customer from './Customer/Customer';
 import TarotReader from './TarotReader/TarotReader';
 import Activity from './Activity/Activity';
+import ReaderSchedule from './Schedule/ReaderSchedule';
+import CustomerSchedule from './Schedule/CustomerSchedule';
 import './style.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +21,10 @@ function AdminDashboard() {
                 return <TarotReader />;
             case 'activity':
                 return <Activity />;
+            case 'customerCalendar':
+                return <CustomerSchedule />;
+            case 'readerCalendar':
+                return <ReaderSchedule />;
             default:
                 return <Customer />;
         }

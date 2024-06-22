@@ -17,7 +17,7 @@ export default function SessionType({
     const fetchSessionTypes = async () => {
       try {
         const response = await fetch(
-          `http://tarot.somee.com/api/TarotReader/${selectedTarotReaderId}`
+          `https://tarot.somee.com/api/TarotReader/${selectedTarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

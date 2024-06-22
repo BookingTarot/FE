@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BorderLeft } from "react-bootstrap-icons";
 
 const API = "https://localhost:7218/api/User";
+// const API = "https://tarot.somee.com/api/User";
+
 
 export default function Customer() {
     const [users, setUsers] = useState([]);

@@ -4,6 +4,7 @@ import { Button, InputGroup, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const API = "https://localhost:7218/api/Bookings";
+// const API = "https://tarot.somee.com/api/Bookings";
 
 export default function Activity() {
     const [bookings, setBookings] = useState([]);
@@ -161,6 +162,12 @@ export default function Activity() {
                         onChange={handleSearch}
                     />
                 </InputGroup>
+                
+                <div className="d-flex">
+                    <Button variant="success" className="me-2">
+                        <i className="bi bi-pencil-square fs-4"></i>
+                    </Button>
+                </div>
             </div>
             <DataTable
                 columns={columns}

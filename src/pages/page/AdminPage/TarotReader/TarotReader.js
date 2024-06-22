@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import DataTable from 'react-data-table-component';
 import { Button, InputGroup, FormControl, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
-const TarotReaderAPI = "https://localhost:7218/api/TarotReader";
+const TarotReaderAPI = "https://tarot.somee.com/api/TarotReader";
 
 export default function TarotReader() {
     const [users, setUsers] = useState([]);
@@ -23,8 +24,8 @@ export default function TarotReader() {
     // Fetch users data
     const fetchUsers = async () => {
         try {
-            const res = await fetch(TarotReaderAPI);
-            const data = await res.json();
+            const res = await axios.get(TarotReaderAPI);
+            const data = res.data;
             if (data.length > 0) {
                 const transformedData = data.map(user => ({
                     ...user,
@@ -38,7 +39,7 @@ export default function TarotReader() {
             console.error(e);
             setLoading(false);
         }
-    }
+    };
 
     useEffect(() => {
         fetchUsers();
@@ -47,6 +48,47 @@ export default function TarotReader() {
     // Handle search
     const handleSearch = (e) => {
         setSearchText(e.target.value);
+    };
+
+    // Handle edit
+    const handleEdit = () => {
+        if (selectedRows.length === 1) {
+            const user = selectedRows[0];
+            setEditData({
+                tarotReaderId: user.tarotReaderId,
+                fullName: user.fullName,
+                experience: user.experience,
+                kind: user.kind,
+                image: user.image,
+                status: user.status ? "Available" : "Pending"
+            });
+            setShowModal(true);
+        } else {
+            alert("Vui lòng chọn đúng một user để chỉnh sửa.");
+        }
+    };
+
+    // Handle delete
+    const handleDelete = async () => {
+        if (selectedRows.length > 0) {
+            const confirmDelete = window.confirm("Bạn có chắc chắn muốn xóa những user này?");
+            if (confirmDelete) {
+                try {
+                    await Promise.all(selectedRows.map(async (user) => {
+                        const res = await axios.delete(`${TarotReaderAPI}/${user.tarotReaderId}`);
+                        if (!res.data.success) {
+                            throw new Error(`Failed to delete user with id ${user.tarotReaderId}`);
+                        }
+                    }));
+                    fetchUsers();  // Refresh the user list after deletion
+                } catch (e) {
+                    console.error(e);
+                    alert("An error occurred while deleting the users.");
+                }
+            }
+        } else {
+            alert("Vui lòng chọn ít nhất một user để xóa.");
+        }
     };
 
     // Filtered users based on search text
@@ -156,44 +198,29 @@ export default function TarotReader() {
     // Function to handle form submission for creating a new Tarot Reader
     const handleCreateSubmit = async () => {
         try {
-            const res = await fetch(TarotReaderAPI, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    image: editData.image,
-                    fullName: editData.fullName,
-                    experience: editData.experience,
-                    kind: editData.kind,
-                    status: editData.status
-                })
+            const res = await axios.post(TarotReaderAPI, {
+                image: editData.image,
+                fullName: editData.fullName,
+                experience: editData.experience,
+                kind: editData.kind,
+                status: editData.status === "Available"
             });
-
-            if (!res.ok) {
+    
+            if (!res.data.success) {
                 throw new Error('Failed to create Tarot Reader');
             }
-
+    
             // Close the modal after successful creation
             setShowModal(false);
-
-            // Clear editData state
-            setEditData({
-                tarotReaderId: '',
-                fullName: '',
-                experience: '',
-                kind: '',
-                image: '',
-                status: ''
-            });
-
+    
             // Refresh the list of users
             fetchUsers();
         } catch (error) {
             console.error('Error creating Tarot Reader:', error);
             alert('An error occurred while creating Tarot Reader.');
         }
-    };
+    };    
+
 
     // Function to handle modal close
     const handleCloseModal = () => {
@@ -222,10 +249,10 @@ export default function TarotReader() {
                     <Button className="me-2" onClick={handleCreate}>
                         <i className="bi bi-person-fill-add fs-4"></i>
                     </Button>
-                    <Button variant="success" className="me-2">
+                    <Button variant="success" className="me-2" onClick={handleEdit}>
                         <i className="bi bi-pencil-square fs-4"></i>
                     </Button>
-                    <Button variant="danger">
+                    <Button variant="danger" onClick={handleDelete}>
                         <i className="bi bi-trash3-fill fs-4"></i>
                     </Button>
                 </div>

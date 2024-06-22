@@ -26,9 +26,23 @@ export default function Sidebar({ onSelect }) {
                             </li>
 
                             <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('customerCalendar')} style={{marginTop: '20px'}}>
+                                    <i className="bi bi-calendar2-week fs-3"></i>
+                                    <span className="ms-2 fs-3 d-none d-sm-inline">Lịch Của Khách</span>
+                                </a>
+                            </li>
+
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
                                 <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('tarotReader')} style={{marginTop: '15px'}}>
                                     <i className="bi bi-people fs-3"></i>
                                     <span className="ms-2 fs-3 d-none d-sm-inline">Tarot Reader</span>
+                                </a>
+                            </li>
+
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('readerCalendar')} style={{marginTop: '15px'}}>
+                                    <i className="bi bi-calendar2-week fs-3"></i>
+                                    <span className="ms-2 fs-3 d-none d-sm-inline">Lịch Của Reader</span>
                                 </a>
                             </li>
 
