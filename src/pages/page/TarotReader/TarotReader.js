@@ -107,7 +107,7 @@ export default function TarotReader() {
     const fetchTarotReaders = async () => {
       try {
         const response = await axios.get(
-          "http://tarot.somee.com/api/TarotReader"
+          "https://tarot.somee.com/api/TarotReader"
         );
 
         const filterDuration = response.data.map((reader) => ({
