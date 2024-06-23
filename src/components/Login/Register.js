@@ -136,7 +136,7 @@ const Register = () => {
     <div className="full-height center-content">
       <ToastContainer />
       <div className="cardRegister">
-        <h2 className="fw-bold mb-2 text-center">Sign Up</h2>
+        <h2 className="fw-bold mb-2 text-center">Đăng ký</h2>
         {step === 1 && (
           <form
             onSubmit={(e) => {
@@ -146,7 +146,7 @@ const Register = () => {
           >
             <div className="form-container">
               <div className="input-group">
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="lastName">Tên của bạn</label>
                 <input
                   type="text"
                   id="lastName"
@@ -156,7 +156,7 @@ const Register = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="firstName">First Name</label>
+                <label htmlFor="firstName">Họ của bạn</label>
                 <input
                   type="text"
                   id="firstName"
@@ -168,7 +168,7 @@ const Register = () => {
             </div>
             <div className="form-container">
               <div className="input-group">
-                <label htmlFor="dateOfBirth">Date of Birth</label>
+                <label htmlFor="dateOfBirth">Ngày sinh</label>
                 <input
                   type="date"
                   id="dateOfBirth"
@@ -178,7 +178,7 @@ const Register = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="phoneNumber">Phone Number</label>
+                <label htmlFor="phoneNumber">Số điện thoại</label>
                 <input
                   type="text"
                   id="phoneNumber"
@@ -207,7 +207,7 @@ const Register = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Mật khẩu</label>
                 <input
                   type="password"
                   id="password"
@@ -219,7 +219,7 @@ const Register = () => {
             </div>
             <div className="form-container">
               <div className="input-group">
-                <label htmlFor="address">Address</label>
+                <label htmlFor="address">Địa chỉ</label>
                 <input
                   name="address"
                   value={formData.address}
@@ -227,19 +227,19 @@ const Register = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="gender">Gender</label>
+                <label htmlFor="gender">Giới tính</label>
                 <select
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
                 >
-                  <option value={false}>Male</option>
-                  <option value={true}>Female</option>
+                  <option value={false}>Nam</option>
+                  <option value={true}>Nữ</option>
                 </select>
               </div>
             </div>
             <button type="submit" className="mb-2 w-100">
-              Register
+              Đăng ký
             </button>
             <div id="recaptcha-container"></div>
           </form>
@@ -270,7 +270,7 @@ const Register = () => {
         )}
         <div className="sign-up-link">
           <p>
-            Already have an account? <Link to="/login">Sign In</Link>
+            Bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
           </p>
         </div>
       </div>
