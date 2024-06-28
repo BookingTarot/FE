@@ -120,7 +120,7 @@ export default function Header() {
                   ) : (
                     <li>
                       <Link to="/signup" className="btn consult-btn">
-                        Tư Vấn Ngay
+                        Đăng Kí Ngay
                       </Link>
                     </li>
                   )}

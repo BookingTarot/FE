@@ -63,13 +63,13 @@ export default function Login() {
       <ToastContainer />
       <div className="full-height center-content">
         <div className="cardLogin">
-          <h2 className="fw-bold mb-2 text-center">Sign in</h2>
+          <h2 className="fw-bold mb-2 text-center">Đăng nhập</h2>
           <p className="text-white-50 mb-3 text-center">
-            Please enter your login and password!
+            Hãy nhập email và mật khẩu của bạn!
           </p>
           <form onSubmit={handleSubmit}>
             <div className="input-group-sign mb-4">
-              <label htmlFor="email">Email address</label>
+              <label htmlFor="email">Địa chỉ Email</label>
               <input
                 type="email"
                 name="email"
@@ -79,7 +79,7 @@ export default function Login() {
               />
             </div>
             <div className="input-group-sign mb-4">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Mật khẩu</label>
               <input
                 type="password"
                 name="password"
@@ -96,17 +96,17 @@ export default function Login() {
                   checked={remember}
                   onChange={(e) => setRemember(e.target.checked)}
                 />
-                <label htmlFor="rememberMe">Remember me</label>
+                <label htmlFor="rememberMe">Ghi nhớ</label>
               </div>
-              <Link to="/forgot-password">Forgot password?</Link>
+              {/* <Link to="/forgot-password">Forgot password?</Link> */}
             </div>
             <button type="submit" className="mb-4 w-100">
-              Sign in
+              Đăng nhập
             </button>
           </form>
           <div className="sign-up-link">
             <p>
-              Don't have an account? <Link to="/signup">Sign up</Link>
+              Bạn chưa có tài khoản? <Link to="/signup">Đăng ký</Link>
             </p>
           </div>
         </div>

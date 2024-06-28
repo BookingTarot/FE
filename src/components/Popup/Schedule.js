@@ -14,7 +14,7 @@ export default function Schedule({ onClose, sessionType }) {
     const fetchScheduleData = async () => {
       try {
         const response = await fetch(
-          `http://tarot.somee.com/api/Schedules/tarot/${sessionType.tarotReaderId}`
+          `https://tarot.somee.com/api/Schedules/tarot/${sessionType.tarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -30,7 +30,7 @@ export default function Schedule({ onClose, sessionType }) {
     const fetchTarotReaderName = async () => {
       try {
         const response = await fetch(
-          `http://tarot.somee.com/api/TarotReader/${sessionType.tarotReaderId}`
+          `https://tarot.somee.com/api/TarotReader/${sessionType.tarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch tarot reader's name");

@@ -82,7 +82,7 @@ export default function TarotReaderDetail() {
 
     try {
       const response = await axios.post(
-        `https://localhost:7218/api/Feedbacks`,
+        `https://tarot.somee.com/api/Feedbacks`,
         feedbackData
       );
       console.log("Feedback posted successfully:", response.data);
