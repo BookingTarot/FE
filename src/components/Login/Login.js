@@ -15,7 +15,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://tarot.somee.com/api/User/login", {
+    const response = await fetch("https://tarot.somee.com/api/User/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

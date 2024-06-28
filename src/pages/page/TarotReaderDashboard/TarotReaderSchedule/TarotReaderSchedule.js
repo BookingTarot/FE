@@ -29,7 +29,7 @@ function TarotReaderSchedule({ user }) {
     const fetchTarotReaders = useCallback(async () => {
         try {
             const response = await axios.get(
-                `https://localhost:7218/api/TarotReader`
+                `https://tarot.somee.com/api/TarotReader`
             );
             const reader = response.data.find(
                 (reader) => reader.tarotReaderId === parseInt(id)
@@ -95,23 +95,23 @@ function TarotReaderSchedule({ user }) {
         try {
             if (isUpdate) {
                 console.log(selectedEventId, dateStr, startDateTime, startDateTime)
-                await axios.put(`https://localhost:7218/api/Schedules/`, { 
+                await axios.put(`https://tarot.somee.com/api/Schedules/`, { 
                     scheduleId: selectedEventId,         
                     tarotReaderId: tarotReader.tarotReaderId,          
                     date: dateStr,
                     startTime: startDateTime,
                     endTime: endDateTime,    
                     status: true           
-                });
+                });                
             } else {
-                await axios.post("https://localhost:7218/api/Schedules", {
+                await axios.post("https://tarot.somee.com/api/Schedules", {
                     tarotReaderId: tarotReader.tarotReaderId,
                     date: dateStr,
                     startTime: startDateTime,
                     endTime: endDateTime,
                     status: true
-                });
-            }
+                });                
+            }            
             await fetchTarotReaders();
             handleClose();
         } catch (error) {
@@ -121,7 +121,7 @@ function TarotReaderSchedule({ user }) {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`https://localhost:7218/api/Schedules/${selectedEventId}`);
+            await axios.delete(`https://tarot.somee.com/api/Schedules/${selectedEventId}`);
             await fetchTarotReaders();
             handleClose();
         } catch (error) {

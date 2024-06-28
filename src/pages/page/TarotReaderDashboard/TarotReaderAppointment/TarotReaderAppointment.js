@@ -9,7 +9,7 @@ function TarotReaderAppointment({ user }) {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const response = await axios.get("https://localhost:7218/api/Bookings");
+                const response = await axios.get("https://tarot.somee.com/api/Bookings");
                 const formattedAppointments = response.data.map(appointment => {
                     const formattedDate = new Date(appointment.date).toLocaleDateString('en-GB');
                     const formattedTime = new Date(appointment.startTime).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });

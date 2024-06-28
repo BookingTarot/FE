@@ -102,6 +102,17 @@ export default function Header() {
                             Chỉnh Sửa Thông Tin
                           </a>
                           <div className="dropdown-divider border-top"></div>
+                          {user.roleId === 3 && (
+                            <>
+                              <a
+                                className="dropdown-item text-dark"
+                                href="/TarotReaderDashboard"
+                              >
+                                Bảng Điều Khiển
+                              </a>
+                              <div className="dropdown-divider border-top"></div>
+                            </>
+                          )}
                           <HomeLogout />
                         </div>
                       </div>
