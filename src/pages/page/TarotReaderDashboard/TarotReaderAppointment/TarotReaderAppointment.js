@@ -6,25 +6,27 @@ function TarotReaderAppointment({ user }) {
   const [appointments, setAppointments] = useState([]);
   const id = user.tarotReader.tarotReaderId;
 
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await axios.get(
-          "https://tarot.somee.com/api/Bookings"
-        );
-        const formattedAppointments = response.data.map((appointment) => {
-          const formattedDate = new Date(appointment.date).toLocaleDateString(
-            "en-GB"
-          );
-          const formattedTime = new Date(
-            appointment.startTime
-          ).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
-          return {
-            ...appointment,
-            date: formattedDate,
-            startTime: formattedTime,
-          };
-        });
+    useEffect(() => {
+        const fetchAppointments = async () => {
+            try {
+                const response = await axios.get("https://tarot.somee.com/api/Bookings");
+                const formattedAppointments = response.data.map(appointment => {
+                    const formattedDate = new Date(appointment.date).toLocaleDateString('en-GB');
+                    const formattedTime = new Date(appointment.startTime).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                    return { ...appointment, date: formattedDate, startTime: formattedTime };
+                });
+    
+                // Tìm appointment có tarotReaderId tương ứng với id
+                const filteredAppointments = formattedAppointments.filter(appointment => appointment.tarotReaderId === id);
+    
+                setAppointments(filteredAppointments);
+            } catch (error) {
+                console.error("Error fetching appointments", error);
+            }
+        };
+    
+        fetchAppointments();
+    }, [id]);
 
         // Tìm appointment có tarotReaderId tương ứng với id
         const filteredAppointments = formattedAppointments.filter(
