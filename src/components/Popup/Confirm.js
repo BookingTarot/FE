@@ -7,19 +7,19 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const { user } = useAuth();
-  console.log("abc", { user });
   const navigate = useNavigate();
   const handleConfirm = async () => {
     try {
       const bookingData = {
-        customerId: user.customerId,
-        tarotReaderId: bookingDetails.tarotReaderId,
+        customerId: 3,
+        tarotReaderId: sessionType.tarotReaderId,
         amount: bookingDetails.price,
         description: `Booking for ${bookingDetails.sessionTypeName} session`,
+        scheduleId: bookingDetails.schedule,
         sessionTypeId: sessionType.sessionTypeId,
-        bookDate: new Date().toISOString(), //
-        startTime: bookingDetails.startTime,
-        endTime: bookingDetails.endTime,
+        // bookDate: new Date().toISOString(), //
+        // startTime: bookingDetails.startTime,
+        // endTime: bookingDetails.endTime,
       };
 
       console.log("bookingDetails", bookingDetails);
@@ -32,7 +32,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
         },
         body: JSON.stringify(bookingData),
       });
-
+      console.log("Booking Data", bookingData);
       if (!response.ok) {
         throw new Error("Failed to confirm booking");
       }
