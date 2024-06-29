@@ -47,9 +47,10 @@ export default function Login() {
         default:
           navigate("/");
       }
-      toast.success("Login successful!");
+      toast.success("Đăng nhập thành công!");
+      setTimeout(() => navigate("/"), 1000);
     } else {
-      toast.error("Login failed!");
+      toast.error("Đăng nhập không thành công!");
     }
   };
 

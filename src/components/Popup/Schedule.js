@@ -65,6 +65,7 @@ export default function Schedule({ onClose, sessionType }) {
       startTime: schedule.startTime,
       endTime: schedule.endTime,
       price: sessionType.price,
+      schedule: schedule.scheduleId,
     });
     setShowConfirm(true);
   };

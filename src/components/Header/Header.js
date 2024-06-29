@@ -95,12 +95,18 @@ export default function Header() {
                           Chào, {user.lastName}
                         </a>
                         <div className="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3">
-                          <a
+                          <Link
                             className="dropdown-item text-dark"
-                            href="doctor-profile-setting.html"
+                            to="/customer-info"
                           >
                             Chỉnh Sửa Thông Tin
-                          </a>
+                          </Link>
+                          <Link
+                            className="dropdown-item text-dark"
+                            to="/customer-history"
+                          >
+                            Lịch Sử Đặt Lịch
+                          </Link>
                           <div className="dropdown-divider border-top"></div>
                           <HomeLogout />
                         </div>
