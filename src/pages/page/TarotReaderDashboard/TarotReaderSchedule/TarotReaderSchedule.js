@@ -29,41 +29,33 @@ function TarotReaderSchedule({ user }) {
   const id = user.tarotReader.tarotReaderId;
 
   const fetchTarotReaders = useCallback(async () => {
-      try {
-          const response = await axios.get(
-              `https://tarot.somee.com/api/TarotReader`
-          );
-          const reader = response.data.find(
-              (reader) => reader.tarotReaderId === parseInt(id)
-          );
-          setTarotReader(reader);
-          if (reader && reader.schedules) {
-              const formattedEvents = reader.schedules.map(scheduleItem => ({
-                  id: scheduleItem.scheduleId,
-                  title: "Lịch làm",
-                  start: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.startTime.slice(11),
-                  end: scheduleItem.date.slice(0, 10) + "T" + scheduleItem.endTime.slice(11)
-              }));
-              setEvents(formattedEvents);
-          }
-      } catch (error) {
-          console.error("Error fetching tarot reader data", error);
+    try {
+      const response = await axios.get(
+        `https://tarot.somee.com/api/TarotReader`
+      );
+      const reader = response.data.find(
+        (reader) => reader.tarotReaderId === parseInt(id)
+      );
+      setTarotReader(reader);
+      if (reader && reader.schedules) {
+        const formattedEvents = reader.schedules.map((scheduleItem) => ({
+          id: scheduleItem.scheduleId,
+          title: "Lịch làm",
+          start:
+            scheduleItem.date.slice(0, 10) +
+            "T" +
+            scheduleItem.startTime.slice(11),
+          end:
+            scheduleItem.date.slice(0, 10) +
+            "T" +
+            scheduleItem.endTime.slice(11),
+        }));
+        setEvents(formattedEvents);
       }
+    } catch (error) {
+      console.error("Error fetching tarot reader data", error);
+    }
   }, [id]);
-
-  useEffect(() => {
-      fetchTarotReaders();
-  }, [fetchTarotReaders, user]);
-
-  const handleShow = () => {
-      setIsUpdate(false);
-      setSelectedEventId(null);
-      setEventDate(new Date());
-      setStartTime("");
-      setEndTime("");
-      setShowModal(true);
-  };
-  const handleClose = () => setShowModal(false);
 
   useEffect(() => {
     fetchTarotReaders();
