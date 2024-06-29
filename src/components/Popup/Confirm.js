@@ -8,22 +8,17 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const { user } = useAuth();
   const navigate = useNavigate();
+
   const handleConfirm = async () => {
     try {
       const bookingData = {
-        customerId: 3,
+        customerId: 3, // Assuming user.id is the customer's ID
         tarotReaderId: sessionType.tarotReaderId,
         amount: bookingDetails.price,
         description: `Booking for ${bookingDetails.sessionTypeName} session`,
         scheduleId: bookingDetails.schedule,
         sessionTypeId: sessionType.sessionTypeId,
-        // bookDate: new Date().toISOString(), //
-        // startTime: bookingDetails.startTime,
-        // endTime: bookingDetails.endTime,
       };
-
-      console.log("bookingDetails", bookingDetails);
-      console.log("session", sessionType);
 
       const response = await fetch("https://tarot.somee.com/api/Bookings", {
         method: "POST",
@@ -32,16 +27,96 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
         },
         body: JSON.stringify(bookingData),
       });
-      console.log("Booking Data", bookingData);
+
       if (!response.ok) {
         throw new Error("Failed to confirm booking");
       }
+
+      // If booking creation is successful, fetch the latest booking ID
+      const latestBookingId = await fetchLatestBookingId();
+      if (!latestBookingId) {
+        throw new Error("Failed to retrieve latest booking ID");
+      }
+
+      // Send POST request to create payment link
+      const paymentLinkResponse = await createPaymentLink(latestBookingId);
+      if (!paymentLinkResponse.ok) {
+        throw new Error("Failed to create payment link");
+      }
+
+      // Handle payment link response
+      const paymentLinkData = await paymentLinkResponse.json();
+      const paymentLink = paymentLinkData.url; // Assuming the API returns a paymentUrl
+
+      // Redirect to the payment link or handle as needed
+      window.location.href = paymentLink;
+
       toast.success("Đặt lịch thành công!", {
-        onClose: () => navigate("/"),
+        // onClose: () => navigate("/"),
       });
     } catch (error) {
       console.error("Error confirming booking:", error.message);
       // Handle error, show error message, etc.
+    }
+  };
+
+  const fetchLatestBookingId = async () => {
+    try {
+      const response = await fetch(
+        `https://tarot.somee.com/api/Bookings?CustomerId=3`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to retrieve latest booking ID");
+      }
+
+      const bookings = await response.json();
+      console.log("Bookings array:", bookings);
+
+      // Lấy phần tử cuối cùng từ mảng bookings
+      const latestBooking = bookings[bookings.length - 1];
+
+      console.log("Latest booking:", latestBooking);
+
+      if (!latestBooking) {
+        throw new Error("No bookings found");
+      }
+
+      return latestBooking.bookingId;
+    } catch (error) {
+      console.error("Error fetching latest booking ID:", error.message);
+      return null;
+    }
+  };
+
+  const createPaymentLink = async (bookingId) => {
+    try {
+      const response = await fetch(
+        "https://tarot.somee.com/create-payment-link",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "*/*",
+          },
+          body: JSON.stringify({
+            bookingId: bookingId,
+            returnUrl: "https://www.tellory.id.vn",
+            cancelUrl: "https://www.tellory.id.vn",
+          }),
+        }
+      );
+      console.log("response", response);
+      return response;
+    } catch (error) {
+      console.error("Error creating payment link:", error.message);
+      return null;
     }
   };
 
