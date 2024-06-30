@@ -69,16 +69,18 @@ export default function CustEditInfor() {
     <div>
       <div className="back-to-home rounded d-none d-sm-block">
         <Link to="/" className="btn btn-icon btn-primary">
-          <i data-feather="home" className="icons"></i>
+          <i data-feather="home" className="icons">
+            Trở lại trang
+          </i>
         </Link>
       </div>
       <ToastContainer />
       <div className="full-height center-content">
         <div className="cardEditInfo">
-          <h2 className="fw-bold mb-2 text-center">Edit Information</h2>
+          <h2 className="fw-bold mb-2 text-center">Chỉnh sửa thông tin</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group-edit mb-4">
-              <label htmlFor="lastName">Last Name</label>
+              <label htmlFor="lastName">Tên</label>
               <input
                 type="text"
                 name="lastName"
@@ -88,7 +90,7 @@ export default function CustEditInfor() {
               />
             </div>
             <div className="input-group-edit mb-4">
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor="firstName">Họ và tên đệm</label>
               <input
                 type="text"
                 name="firstName"
@@ -98,7 +100,7 @@ export default function CustEditInfor() {
               />
             </div>
             <div className="input-group-edit mb-4">
-              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <label htmlFor="dateOfBirth">Ngày sinh</label>
               <input
                 type="date"
                 name="dateOfBirth"
@@ -108,7 +110,7 @@ export default function CustEditInfor() {
               />
             </div>
             <div className="input-group-edit mb-4">
-              <label htmlFor="phoneNumber">Phone Number</label>
+              <label htmlFor="phoneNumber">Số điện thoại</label>
               <input
                 type="tel"
                 name="phoneNumber"
@@ -118,15 +120,15 @@ export default function CustEditInfor() {
               />
             </div>
             <div className="input-group-edit mb-4">
-              <label htmlFor="gender">Gender</label>
+              <label htmlFor="gender">Giới tính</label>
               <select
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
                 required
               >
-                <option value={true}>Male</option>
-                <option value={false}>Female</option>
+                <option value={true}>Nam</option>
+                <option value={false}>Nữ</option>
               </select>
             </div>
             <div className="input-group-edit mb-4">
@@ -140,7 +142,7 @@ export default function CustEditInfor() {
               />
             </div>
             <div className="input-group-edit mb-4">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Mật khẩu</label>
               <input
                 type="password"
                 name="password"
@@ -150,7 +152,7 @@ export default function CustEditInfor() {
               />
             </div>
             <div className="input-group-edit mb-4">
-              <label htmlFor="address">Address</label>
+              <label htmlFor="address">Địa chỉ</label>
               <input
                 type="text"
                 name="address"
@@ -160,7 +162,7 @@ export default function CustEditInfor() {
               />
             </div>
             <button type="submit" className="mb-4 w-100">
-              Save
+              Lưu thông tin
             </button>
           </form>
         </div>
