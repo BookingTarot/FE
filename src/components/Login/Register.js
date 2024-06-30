@@ -23,6 +23,7 @@ const Register = () => {
     email: "",
     password: "",
     address: "",
+    descrription: "Customer Register!",
   });
 
   const [otp, setOtp] = useState("");
@@ -88,7 +89,7 @@ const Register = () => {
 
   const handleVerifyOTP = () => {
     if (otp.length !== 6) {
-      toast.error("OTP must be 6 digits long.");
+      toast.error("OTP chứa 6 ký tự");
       return;
     }
     const credential = PhoneAuthProvider.credential(verificationId, otp);
@@ -100,14 +101,14 @@ const Register = () => {
       })
       .catch((error) => {
         console.error("Error during OTP verification", error);
-        toast.error(`Invalid OTP. Please try again. ${error.message}`);
+        toast.error(`OTP không đúng. Hãy thử lại nhé! ${error.message}`);
       });
   };
 
   const handleSubmit = async () => {
     try {
       const response = await fetch(
-        "https://tarot.somee.com/api/User/register",
+        "https://tarot.somee.com/api/User/register-customer",
         {
           method: "POST",
           headers: {
@@ -116,19 +117,20 @@ const Register = () => {
           body: JSON.stringify(formData),
         }
       );
+      console.log("form data", formData);
 
       if (response.ok) {
         console.log("Registration successful!");
-        toast.success("Registration successful!", {
+        toast.success("Đăng ký tài khoản thành công!", {
           onClose: () => navigate("/login"),
         });
       } else {
         console.error("Registration failed!");
-        toast.error("Registration failed!");
+        toast.error("Đăng ký tài khoản thất bại!");
       }
     } catch (error) {
       console.error("Error submitting registration:", error);
-      toast.error("Error submitting registration. Please try again.");
+      toast.error("Lỗi đăng ký. Hãy thử lại nhé!");
     }
   };
 
@@ -146,7 +148,7 @@ const Register = () => {
           >
             <div className="form-container">
               <div className="input-group">
-                <label htmlFor="lastName">Tên của bạn</label>
+                <label htmlFor="lastName">Tên</label>
                 <input
                   type="text"
                   id="lastName"
@@ -156,7 +158,7 @@ const Register = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="firstName">Họ của bạn</label>
+                <label htmlFor="firstName">Họ và tên đệm</label>
                 <input
                   type="text"
                   id="firstName"

@@ -12,7 +12,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const handleConfirm = async () => {
     try {
       const bookingData = {
-        customerId: 3, // Assuming user.id is the customer's ID
+        customerId: user.customer.customerId, // Assuming user.id is the customer's ID
         tarotReaderId: sessionType.tarotReaderId,
         amount: bookingDetails.price,
         description: `Booking for ${bookingDetails.sessionTypeName} session`,
@@ -51,9 +51,12 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
       // Redirect to the payment link or handle as needed
       window.location.href = paymentLink;
 
-      toast.success("Đặt lịch thành công!", {
-        // onClose: () => navigate("/"),
-      });
+      toast.success(
+        "Đặt lịch thành công! Đang chuyển đến trang thanh toán...",
+        {
+          // onClose: () => navigate("/"),
+        }
+      );
     } catch (error) {
       console.error("Error confirming booking:", error.message);
       // Handle error, show error message, etc.
