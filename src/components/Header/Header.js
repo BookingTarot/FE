@@ -87,7 +87,7 @@ export default function Header() {
                         <a
                           className=""
                           href="#"
-                          style={{ color: "white" }}
+                          style={{ color: "white", textDecoration: "none" }}
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"

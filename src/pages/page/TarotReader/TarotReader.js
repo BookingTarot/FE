@@ -8,6 +8,7 @@ import SessionType from "../../../components/Popup/SessionType";
 import { Link } from "react-router-dom";
 import Btn from "../../../components/Button/Btn";
 import { useAuth } from "../../../components/Login/Authen";
+import "./TarotReader.css";
 
 export default function TarotReader() {
   const { user } = useAuth();
@@ -23,12 +24,14 @@ export default function TarotReader() {
     health: false,
     finance: false,
   });
+  const [hoveredReader, setHoveredReader] = useState(null); // State to track hovered reader
 
   const openModal = (tarotReaderId, tarotReaderName) => {
     setSelectedTarotReaderId(tarotReaderId);
     setSelectedTarotReaderName(tarotReaderName);
     setModalOpen(true);
   };
+
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -47,18 +50,19 @@ export default function TarotReader() {
   };
 
   const applyFilters = () => {
-    let newFilteredReaders = tarotReaders;
+    let newFilteredReaders = [...tarotReaders];
 
     if (filters.love) {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
-        reader.kind.includes("Psychic")
+        reader.kind.includes("Tình yêu")
       );
     }
 
     if (filters.work) {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
-        reader.kind.includes("Công Việc")
+        reader.kind.includes("Công việc")
       );
+      console.log("Kind");
     }
 
     if (filters.health) {
@@ -78,28 +82,38 @@ export default function TarotReader() {
 
   const handleSortByExperience = (years) => {
     let sortedReaders = [...filteredReaders];
+
+    console.log("year range", years);
+
     switch (years) {
       case "lessThan1":
-        sortedReaders = sortedReaders.filter((reader) => reader.experience < 1);
+        sortedReaders = sortedReaders.filter(
+          (reader) => parseInt(reader.experience, 10) < 1
+        );
+        console.log(
+          "year <1 range",
+          (sortedReaders = sortedReaders.filter(
+            (reader) => parseInt(reader.experience, 10) < 1
+          ))
+        );
         break;
       case "moreThan1":
         sortedReaders = sortedReaders.filter(
-          (reader) => reader.experience >= 1
+          (reader) => parseInt(reader.experience, 10) >= 1
         );
-        break;
-      case "moreThan3":
-        sortedReaders = sortedReaders.filter(
-          (reader) => reader.experience >= 3
-        );
-        break;
-      case "moreThan5":
-        sortedReaders = sortedReaders.filter(
-          (reader) => reader.experience >= 5
+        console.log(
+          "year >= 1 range",
+          (sortedReaders = sortedReaders.filter(
+            (reader) => parseInt(reader.experience, 10) >= 1
+          ))
         );
         break;
       default:
+        sortedReaders = [...tarotReaders];
         break;
     }
+
+    console.log("Filtered readers:", sortedReaders);
     setFilteredReaders(sortedReaders);
   };
 
@@ -110,14 +124,9 @@ export default function TarotReader() {
           "https://tarot.somee.com/api/TarotReader"
         );
 
-        const filterDuration = response.data.map((reader) => ({
-          ...reader,
-          sessionTypes: reader.sessionTypes.filter(
-            (sessionType) => sessionType.duration === 30
-          ),
-        }));
-        setTarotReaders(filterDuration);
-        setFilteredReaders(filterDuration);
+        // Assume response.data is an array of tarot readers
+        setTarotReaders(response.data);
+        setFilteredReaders(response.data);
       } catch (error) {
         console.error("Error fetching the tarot readers data", error);
       }
@@ -139,58 +148,67 @@ export default function TarotReader() {
     }
   };
 
+  const handleMouseEnter = (readerId) => {
+    setHoveredReader(readerId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredReader(null);
+  };
+
   return (
     <div>
-      {/* <!-- Header Modal --> */}
       <Header />
 
-      <section class="sub-banner-section float-start w-100">
-        <div class="img-main-abnner d-inline-block w-100">
+      <section className="sub-banner-section float-start w-100">
+        <div className="img-main-abnner d-inline-block w-100">
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
-        <div class="container">
-          <h2 class="text-center text-white"> Tarot Reader </h2>
-          <nav class="mt-4">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">Trang Chủ</li>
-              <li class="breadcrumb-item active">Tarot Reader</li>
+        <div className="container">
+          <h2 className="text-center text-white"> Tarot Reader </h2>
+          <nav className="mt-4">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">Trang Chủ</li>
+              <li className="breadcrumb-item active">Tarot Reader</li>
             </ol>
           </nav>
         </div>
       </section>
+
       <main
-        class="float-start w-100 body-main"
+        className="float-start w-100 body-main"
         style={{ backgroundColor: "#0c071c" }}
       >
-        <section class="listing-page-div">
-          <div class="container">
-            <div class="row gx-lg-5">
-              <div class="col-lg-3">
+        <section className="listing-page-div">
+          <div className="container">
+            <div className="row gx-lg-5">
+              <div className="col-lg-3">
                 <div
-                  class="accordion mt-4 list-serach-acd"
+                  className="accordion mt-4 list-serach-acd"
                   id="accordionPanelsStayOpenExample"
                 >
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
+                  <div className="accordion-item" style={{ height: "260px" }}>
+                    <h2 className="accordion-header">
                       <button
-                        class="accordion-button"
+                        className="accordion-button"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne"
                         aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne"
+                        style={{ padding: "8px" }}
                       >
-                        Kinh Nghiệm
+                        Thể Loại
                       </button>
                     </h2>
                     <div
                       id="panelsStayOpen-collapseOne"
-                      class="accordion-collapse collapse show"
+                      className="accordion-collapse collapse show"
                     >
-                      <div class="accordion-body my-4">
-                        <div class="form-check">
+                      <div className="accordion-body my-4">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
@@ -199,53 +217,66 @@ export default function TarotReader() {
                             onChange={handleFilterChange}
                           />
                           <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
+                            className="form-check-label"
+                            htmlFor="flexCheckDefault"
+                            style={{ marginLeft: "10px" }}
                           >
                             Tình yêu
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault2"
+                            name="work"
+                            checked={filters.work}
+                            onChange={handleFilterChange}
                           />
                           <label
-                            class="form-check-label"
-                            for="flexCheckDefault2"
+                            className="form-check-label"
+                            htmlFor="flexCheckDefault2"
+                            style={{ marginLeft: "10px" }}
                           >
                             Công việc
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault3"
+                            name="health"
+                            checked={filters.health}
+                            onChange={handleFilterChange}
                           />
                           <label
-                            class="form-check-label"
-                            for="flexCheckDefault3"
+                            className="form-check-label"
+                            htmlFor="flexCheckDefault3"
+                            style={{ marginLeft: "10px" }}
                           >
                             Sức khỏe
                           </label>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault4"
+                            name="finance"
+                            checked={filters.finance}
+                            onChange={handleFilterChange}
                           />
                           <label
-                            class="form-check-label"
-                            for="flexCheckDefault4"
+                            className="form-check-label"
+                            htmlFor="flexCheckDefault4"
+                            style={{ marginLeft: "10px" }}
                           >
                             Tài chính
                           </label>
@@ -253,110 +284,39 @@ export default function TarotReader() {
                       </div>
                     </div>
                   </div>
-
-                  <div class="accordion-item">
-                    {/* <h2 class="accordion-header">
-                      <button
-                        class="accordion-button "
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapsefour"
-                      >
-                        Experience
-                      </button>
-                    </h2> */}
-                    <div
-                      id="panelsStayOpen-collapsefour"
-                      class="accordion-collapse collapse show"
-                    >
-                      {/* <div class="accordion-body my-5">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault11"
-                          />
-                          <label
-                            class="form-check-label rt-icon"
-                            for="flexCheckDefault11"
-                          >
-                            Upto 10 Years
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault12"
-                          />
-                          <label
-                            class="form-check-label rt-icon"
-                            for="flexCheckDefault8"
-                          >
-                            Upto 15 Years
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault13"
-                          />
-                          <label
-                            class="form-check-label rt-icon"
-                            for="flexCheckDefault13"
-                          >
-                            Upto 10 Years
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault14"
-                          />
-                          <label
-                            class="form-check-label rt-icon"
-                            for="flexCheckDefault14"
-                          >
-                            20 Years & Above
-                          </label>
-                        </div>
-                      </div> */}
-                    </div>
-                  </div>
-
-                  <input type="submit" class="btn submit-btn" value="Filter" />
                 </div>
               </div>
 
-              <div class="col-lg-9 mt-5 mt-lg-0">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="right-section-btn d-flex align-items-center">
-                    <div class="dropdown">
+              <div className="col-lg-9 mt-5 mt-lg-0">
+                <div className="d-flex justify-content-between align-items-center">
+                  <div className="right-section-btn d-flex align-items-center">
+                    <div className="dropdown">
                       <button
-                        class="btn bg-light dfg dropdown-toggle"
+                        className="btn bg-light dfg dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
+                        style={{ width: "150px", fontSize: "15px" }}
                       >
-                        Sắp xếp
+                        Kinh Nghiệm
                       </button>
                       <ul
-                        class="dropdown-menu"
+                        className="dropdown-menu"
                         aria-labelledby="dropdownMenuButton1"
+                        style={{ width: "150px" }}
                       >
                         <li>
                           <button
-                            class="dropdown-item"
+                            className="dropdown-item"
+                            onClick={() => handleSortByExperience()}
+                          >
+                            Toàn bộ
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="dropdown-item"
                             onClick={() => handleSortByExperience("lessThan1")}
                           >
                             Ít hơn 1 năm
@@ -364,26 +324,10 @@ export default function TarotReader() {
                         </li>
                         <li>
                           <button
-                            class="dropdown-item"
+                            className="dropdown-item"
                             onClick={() => handleSortByExperience("moreThan1")}
                           >
                             Hơn 1 năm
-                          </button>
-                        </li>
-                        <li>
-                          <button
-                            class="dropdown-item"
-                            onClick={() => handleSortByExperience("moreThan3")}
-                          >
-                            Hơn 3 năm
-                          </button>
-                        </li>
-                        <li>
-                          <button
-                            class="dropdown-item"
-                            onClick={() => handleSortByExperience("moreThan5")}
-                          >
-                            Hơn 5 năm
                           </button>
                         </li>
                       </ul>
@@ -392,14 +336,23 @@ export default function TarotReader() {
                 </div>
 
                 <div id="products">
-                  <div class="row g-lg-5 mt-0">
-                    {tarotReaders.map((reader, index) => (
+                  <div className="row g-lg-5 mt-0">
+                    {filteredReaders.map((reader, index) => (
                       <div
                         key={index}
                         className="item list-item col-md-12 col-xl-6 view-group grid-group-item collist"
                       >
-                        <div className="comon-items-d1 d-inline-block w-100">
-                          <Link to={`${reader.tarotReaderId}`}>
+                        <div
+                          className="comon-items-d1 d-inline-block w-100 frameInfo"
+                          onMouseEnter={() =>
+                            handleMouseEnter(reader.tarotReaderId)
+                          }
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          <Link
+                            to={`${reader.tarotReaderId}`}
+                            style={{ textDecoration: "none" }}
+                          >
                             <div className="top-asto d-flex align-items-center justify-content-between w-100">
                               <div className="pro-astro d-flex align-items-start">
                                 <div className="profile-astro">
@@ -425,14 +378,22 @@ export default function TarotReader() {
 
                               <div className="right-usert text-lg-end">
                                 <h5> {reader.kind} </h5>
-                                <p> Exp: {reader.experience} </p>
+                                <p style={{ fontSize: "14px" }}>
+                                  {" "}
+                                  Exp: {reader.experience}{" "}
+                                </p>
                               </div>
                             </div>
                           </Link>
                           <div className="lang-ved mt-4">
-                            <p>
-                              <i className="fas fa-newspaper"></i>{" "}
-                              {truncateText(reader.introduction, 40)}
+                            <p style={{ fontSize: "14px" }}>
+                              <i
+                                className="fas fa-newspaper"
+                                style={{ fontSize: "20px" }}
+                              ></i>{" "}
+                              {hoveredReader === reader.tarotReaderId
+                                ? reader.introduction
+                                : truncateText(reader.introduction, 50)}
                             </p>
                           </div>
 
@@ -441,58 +402,63 @@ export default function TarotReader() {
                             className="lang-ved mt-4"
                             style={{ justifyContent: "space-between" }}
                           >
-                            {reader.sessionTypes.map((sessionType) => (
-                              <p
-                                key={sessionType.sessionTypeId}
-                                style={{ marginTop: "1.5rem" }}
-                              >
-                                <i
-                                  className="fas fa-clock"
+                            {reader.sessionTypes.length > 0 && (
+                              <div>
+                                <p
                                   style={{
-                                    color: "#273cb9",
-                                    fontSize: "25px",
+                                    fontWeight: "bold",
+                                    marginTop: "1rem",
+                                    fontSize: "14px",
                                   }}
-                                ></i>
-                                {sessionType.duration} phút
-                              </p>
-                            ))}
+                                ></p>
+                                <p
+                                  style={{
+                                    marginTop: "1.5rem",
+                                    fontSize: "14px",
+                                  }}
+                                >
+                                  <i
+                                    className="fas fa-money-bill-wave"
+                                    style={{
+                                      color: "#273cb9",
+                                      fontSize: "20px",
+                                      marginRight: "10px",
+                                    }}
+                                  ></i>
+                                  {findLowestPrice(reader.sessionTypes)}
+                                  .000+ / buổi
+                                </p>
+                              </div>
+                            )}
 
-                            <btn
+                            <Btn
                               onClick={() => handleBookMe(reader.tarotReaderId)}
                               className="btn btn-comij-call"
                             >
                               Book Me
-                            </btn>
+                            </Btn>
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <nav class="my-5">
-                    <ul class="pagination">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#">
-                          Previous
-                        </a>
+                  <nav className="my-5 d-flex justify-content-end">
+                    <ul className="pagination">
+                      <li className="page-item disabled">
+                        <span className="page-link">Previous</span>
                       </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">
-                          1
-                        </a>
+                      <li className="page-item active">
+                        <span className="page-link">1</span>
                       </li>
-                      <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">
-                          2
-                        </a>
+                      <li className="page-item">
+                        <span className="page-link">2</span>
                       </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">
-                          3
-                        </a>
+                      <li className="page-item">
+                        <span className="page-link">3</span>
                       </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">
+                      <li className="page-item">
+                        <a className="page-link" href="#">
                           Next
                         </a>
                       </li>
@@ -505,14 +471,10 @@ export default function TarotReader() {
         </section>
       </main>
 
-      {/* <!-- footer Modal --> */}
       <Footer />
-
-      {/* <!-- mobile menu --> */}
 
       <MobileMenu />
 
-      {/* <!-- SessionType menu --> */}
       {isModalOpen && (
         <SessionType
           selectedTarotReaderId={selectedTarotReaderId}
@@ -520,8 +482,18 @@ export default function TarotReader() {
           tarotReaderName={selectedTarotReaderName}
         />
       )}
-
-      {/* <SessionType /> */}
     </div>
   );
+}
+function findLowestPrice(sessionTypes) {
+  if (sessionTypes.length === 0) return "";
+
+  let minPrice = sessionTypes[0].price;
+  sessionTypes.forEach((sessionType) => {
+    if (sessionType.price < minPrice) {
+      minPrice = sessionType.price;
+    }
+  });
+
+  return minPrice;
 }

@@ -271,7 +271,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
-                  style={{ textDecoration: "none !important" }}
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -302,6 +302,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -329,6 +330,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -347,6 +349,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -366,6 +369,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -384,6 +388,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -402,6 +407,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -420,6 +426,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -438,6 +445,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -456,6 +464,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -474,6 +483,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -492,6 +502,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
