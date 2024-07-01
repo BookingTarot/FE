@@ -4,8 +4,9 @@ import Sidebar from './scenes/Sidebar';
 import Customer from './Customer/Customer';
 import TarotReader from './TarotReader/TarotReader';
 import Activity from './Activity/Activity';
-import ReaderSchedule from './Schedule/ReaderSchedule';
 import CustomerSchedule from './Schedule/CustomerSchedule';
+import ReaderSchedule from './Schedule/ReaderSchedule';
+import User from './User/User';
 import './style.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,10 +16,16 @@ function AdminDashboard() {
 
     const renderContent = () => {
         switch (selectedSection) {
+            case 'user':
+                return <User />;
             case 'customer':
                 return <Customer />;
+            case 'customerSchedule':
+                return <CustomerSchedule />;
             case 'tarotReader':
                 return <TarotReader />;
+            case 'tarotReaderSchedule':
+                return <ReaderSchedule />;
             case 'activity':
                 return <Activity />;
             case 'customerCalendar':
@@ -26,7 +33,7 @@ function AdminDashboard() {
             case 'readerCalendar':
                 return <ReaderSchedule />;
             default:
-                return <Customer />;
+                return <User />;
         }
     };
 

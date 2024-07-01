@@ -15,6 +15,8 @@ import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import { AuthProvider } from "./components/Login/Authen";
 import ProtectedRoute from "./components/Login/ProtectedRoute";
+import CustEditInfor from "./pages/page/CustomerInfor/CustEditInfor";
+import CustomerBooking from "./pages/page/CustomerInfor/CustomerBooking";
 
 function App() {
   return (
@@ -53,6 +55,12 @@ function App() {
             />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Register />} />
+            <Route exact path="/customer-info" element={<CustEditInfor />} />
+            <Route
+              exact
+              path="/customer-history"
+              element={<CustomerBooking />}
+            />
           </Routes>
         </Router>
       </AuthProvider>

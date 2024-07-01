@@ -3,7 +3,6 @@ import DataTable from "react-data-table-component";
 import { Button, InputGroup, FormControl, Modal, Form } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BorderLeft } from "react-bootstrap-icons";
 
 const API = "https://tarot.somee.com/api/User";
 
@@ -13,13 +12,16 @@ export default function Customer() {
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [showModal, setShowModal] = useState(false);
+  
   const [editUser, setEditUser] = useState({
+    userId: "",
     firstName: "",
     lastName: "",
     dateOfBirth: "",
     phoneNumber: "",
     gender: "",
     email: "",
+    password: "",
     address: "",
     isActive: false,
   });
@@ -59,13 +61,15 @@ export default function Customer() {
     if (selectedRows.length === 1) {
       const user = selectedRows[0];
       setEditUser({
+        userId: user.userId,
         firstName: user.firstName,
         lastName: user.lastName,
-        dateOfBirth: user.dateOfBirth,
+        dateOfBirth: new Date(user.dateOfBirth),
         phoneNumber: user.phoneNumber,
-        gender: user.gender,
+        gender: user.gender === "Nam",
         email: user.email,
         address: user.address,
+        password: "",
         isActive: user.isActive === "Active",
       });
       setShowModal(true);
@@ -109,10 +113,13 @@ export default function Customer() {
   const handleSave = async () => {
     const updatedUser = {
       ...editUser,
+      userId: selectedRows[0].userId,
+      dateOfBirth: new Date(editUser.dateOfBirth),
       gender: editUser.gender === "Nam",
     };
+  
     try {
-      const res = await fetch(`${API}/${selectedRows[0].id}`, {
+      const res = await fetch(API, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -303,9 +310,9 @@ export default function Customer() {
               <Form.Label>Gender</Form.Label>
               <Form.Control
                 as="select"
-                value={editUser.gender}
+                value={editUser.gender ? "Nam" : "Nữ"}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, gender: e.target.value })
+                  setEditUser({ ...editUser, gender: e.target.value === "Nam" })
                 }
               >
                 <option value="Nam">Nam</option>
@@ -319,6 +326,16 @@ export default function Customer() {
                 value={editUser.email}
                 onChange={(e) =>
                   setEditUser({ ...editUser, email: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={editUser.password}
+                onChange={(e) =>
+                  setEditUser({ ...editUser, password: e.target.value })
                 }
               />
             </Form.Group>
