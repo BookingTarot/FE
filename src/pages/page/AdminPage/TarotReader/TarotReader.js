@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const TarotReaderAPI = "https://tarot.somee.com/api/TarotReader";
 
 export default function TarotReader() {
-  const [users, setUsers] = useState([]);
+  const [readers, setReaders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -16,47 +16,38 @@ export default function TarotReader() {
     fullName: "",
     experience: "",
     kind: "",
-    image: "",
-    status: "",
+    image: Uint8Array,
+    status: true,
   });
+  const [imageFile, setImageFile] = useState(null);
 
-  // Fetch users data
-  const fetchUsers = async () => {
+  // Fetch readers data
+  const fetchReaders = async () => {
     try {
       const res = await fetch(TarotReaderAPI);
       const data = await res.json();
       if (data.length > 0) {
-        const transformedData = data.map((user) => ({
-          ...user,
-          status: user.status ? "Available" : "Pending",
-          dateOfBirth: new Date(user.dateOfBirth).toLocaleDateString("vi-VN"),
+        const transformedData = data.map((reader) => ({
+          ...reader,
+          status: reader.status ? "Available" : "Pending",
         }));
-        setUsers(transformedData);
+        setReaders(transformedData);
       }
       setLoading(false);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchReaders();
   }, []);
 
   // Handle search
   const handleSearch = (e) => {
     setSearchText(e.target.value);
   };
-
-  // Filtered users based on search text
-  const filteredUsers = users.filter((user) =>
-    Object.values(user).some(
-      (value) =>
-        typeof value === "string" &&
-        value.toLowerCase().includes(searchText.toLowerCase())
-    )
-  );
 
   // Columns definition for DataTable
   const columns = [
@@ -71,16 +62,16 @@ export default function TarotReader() {
       ),
     },
     {
-      name: "Họ Tên",
+      name: "Full Name",
       selector: (row) => row.fullName,
       wrap: true,
     },
     {
-      name: "Kinh Nghiệm",
+      name: "Experience",
       selector: (row) => row.experience,
     },
     {
-      name: "Lĩnh Vực",
+      name: "Kind",
       selector: (row) => row.kind,
     },
     {
@@ -142,68 +133,32 @@ export default function TarotReader() {
     },
   };
 
-  // Function to handle row selection
   const handleRowSelected = (state) => {
     setSelectedRows(state.selectedRows);
   };
 
-  // Function to open modal for creating a new Tarot Reader
-  const handleCreate = () => {
-    setShowModal(true);
-  };
-
-  // Function to handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditData({
-      ...editData,
-      [name]: value,
-    });
-  };
-
-  // Function to handle form submission for creating a new Tarot Reader
-  const handleCreateSubmit = async () => {
-    try {
-      const res = await fetch(TarotReaderAPI, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: editData.image,
-          fullName: editData.fullName,
-          experience: editData.experience,
-          kind: editData.kind,
-          status: editData.status,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to create Tarot Reader");
-      }
-
-      // Close the modal after successful creation
-      setShowModal(false);
-
-      // Clear editData state
+  const handleEdit = () => {
+    if (selectedRows.length === 1) {
+      const reader = selectedRows[0];
       setEditData({
-        tarotReaderId: "",
-        fullName: "",
-        experience: "",
-        kind: "",
-        image: "",
-        status: "",
+        tarotReaderId: reader.tarotReaderId,
+        image: reader.image,
+        fullName: reader.fullName,
+        experience: reader.experience,
+        kind: reader.kind,
+        status: reader.status ? "Available" : "Pending",
       });
-
-      // Refresh the list of users
-      fetchUsers();
-    } catch (error) {
-      console.error("Error creating Tarot Reader:", error);
-      alert("An error occurred while creating Tarot Reader.");
+      setShowModal(true);
+    } else {
+      alert("Vui lòng chọn đúng một reader để chỉnh sửa.");
     }
   };
 
-  // Function to handle modal close
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditData({ ...editData, [name]: value });
+  };
+
   const handleCloseModal = () => {
     setShowModal(false);
     setEditData({
@@ -214,6 +169,87 @@ export default function TarotReader() {
       image: "",
       status: "",
     });
+  };
+
+  const convertImageToByteArray = (file) => {
+    return new Promise((resolve, reject) => {
+      try {
+        const reader = new FileReader();
+        reader.onload = () => {
+          resolve(reader.result); // Trả về dữ liệu như một Base64 string
+        };
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file); // Đọc tệp như một Base64 string
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
+  const handleUpdateReader = async () => {
+    try {
+      const imageFile = editData.image;
+      if (!imageFile) {
+        alert("Please select an image.");
+        return;
+      }
+
+      const imageByteArray = await convertImageToByteArray(imageFile);
+
+      const updatedReader = {
+        tarotReaderId: editData.tarotReaderId,
+        fullName: editData.fullName,
+        experience: editData.experience,
+        kind: editData.kind,
+        image: imageByteArray,
+        status: editData.status === "Available" ? true : false,
+      };
+
+      const res = await fetch(`${TarotReaderAPI}/${editData.tarotReaderId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedReader),
+      });
+
+      if (res.ok) {
+        setShowModal(false);
+        alert("Tarot Reader updated successfully!");
+        fetchReaders(); // Refresh the readers list after update
+      } else {
+        alert("Failed to update Tarot Reader");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (selectedRows.length > 0) {
+      const confirmDelete = window.confirm(
+        "Bạn có chắc chắn muốn xóa những readers này?"
+      );
+      if (confirmDelete) {
+        try {
+          await Promise.all(
+            selectedRows.map(async (reader) => {
+              const res = await fetch(`${TarotReaderAPI}/${reader.tarotReaderId}`, {
+                method: "DELETE",
+              });
+              if (!res.ok) {
+                throw new Error(`Failed to delete user with id ${reader.tarotReaderId}`);
+              }
+            })
+          );
+          fetchReaders(); // Refresh the user list after deletion
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    } else {
+      alert("Vui lòng chọn ít nhất một reader để xóa.");
+    }
   };
 
   return (
@@ -227,11 +263,8 @@ export default function TarotReader() {
           />
         </InputGroup>
         <div className="d-flex">
-          <Button className="me-2" onClick={handleCreate}>
-            <i className="bi bi-person-fill-add fs-4"></i>
-          </Button>
-          <Button variant="success" className="me-2">
-            <i className="bi bi-pencil-square fs-4"></i>
+          <Button variant="success" className="me-2" onClick={handleEdit}>
+            <i className="bi bi-pencil-square fs-4" onClick={handleDelete}></i>
           </Button>
           <Button variant="danger">
             <i className="bi bi-trash3-fill fs-4"></i>
@@ -240,7 +273,7 @@ export default function TarotReader() {
       </div>
       <DataTable
         columns={columns}
-        data={filteredUsers}
+        data={readers}
         progressPending={loading}
         pagination
         selectableRows
@@ -249,13 +282,20 @@ export default function TarotReader() {
         theme="dark"
       />
 
-      {/* Create Modal */}
+      {/* Update Modal */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Create New Tarot Reader</Modal.Title>
+          <Modal.Title>Edit Tarot Reader</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Avatar File</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(e) => setImageFile(e.target.files[0])}
+              />
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Full Name</Form.Label>
               <Form.Control
@@ -284,15 +324,6 @@ export default function TarotReader() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Image URL</Form.Label>
-              <Form.Control
-                type="text"
-                name="image"
-                value={editData.image}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
               <Form.Label>Status</Form.Label>
               <Form.Control
                 as="select"
@@ -310,8 +341,8 @@ export default function TarotReader() {
           <Button variant="secondary" onClick={handleCloseModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCreateSubmit}>
-            Create
+          <Button variant="primary" onClick={handleUpdateReader}>
+            Update
           </Button>
         </Modal.Footer>
       </Modal>

@@ -19,9 +19,23 @@ export default function Sidebar({ onSelect }) {
 
                         <ul className="nav nav-pills flex-column mt-2 mt-sm-0">
                             <li className="nav-item text-white my-1 py-2 py-sm-0">
-                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('customer')} style={{marginTop: '20px'}}>
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('user')} style={{marginTop: '20px'}}>
+                                    <i className="bi bi-people fs-3"></i>
+                                    <span className="ms-2 fs-3 d-none d-sm-inline">Manage User</span>
+                                </a>
+                            </li>
+
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('customer')} style={{marginTop: '15px'}}>
                                     <i className="bi bi-people fs-3"></i>
                                     <span className="ms-2 fs-3 d-none d-sm-inline">Khách Hàng</span>
+                                </a>
+                            </li>
+
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('customerSchedule')} style={{marginTop: '15px'}}>
+                                    <i className="bi bi-calendar2-range fs-3"></i>
+                                    <span className="ms-2 fs-3 d-none d-sm-inline">Lịch Khách Hàng</span>
                                 </a>
                             </li>
 
@@ -29,6 +43,13 @@ export default function Sidebar({ onSelect }) {
                                 <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('tarotReader')} style={{marginTop: '15px'}}>
                                     <i className="bi bi-people fs-3"></i>
                                     <span className="ms-2 fs-3 d-none d-sm-inline">Tarot Reader</span>
+                                </a>
+                            </li>
+
+                            <li className="nav-item text-white my-1 py-2 py-sm-0">
+                                <a href="#" className="nav-link active text-center text-sm-start" aria-current="page" onClick={() => onSelect('tarotReaderSchedule')} style={{marginTop: '15px'}}>
+                                    <i className="bi bi-calendar2-range fs-3"></i>
+                                    <span className="ms-2 fs-3 d-none d-sm-inline">Lịch Tarot Reader</span>
                                 </a>
                             </li>
 

@@ -5,25 +5,25 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const API = "https://tarot.somee.com/api/User";
+// const API = "https://localhost:7218/api/User";
+const readerAPI = "https://tarot.somee.com/api/TarotReader";
+// const readerAPI = "https://localhost:7218/api/TarotReader";
 
-export default function Customer() {
+export default function User() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  
-  const [editUser, setEditUser] = useState({
+  const [showReaderModal, setShowReaderModal] = useState(false);
+
+  const [newReader, setNewReader] = useState({
     userId: "",
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    phoneNumber: "",
-    gender: "",
-    email: "",
-    password: "",
-    address: "",
-    isActive: false,
+    introduction: "",
+    description: "",
+    experience: "",
+    kind: "",
+    image: Uint8Array,
+    status: true,
   });
 
   const fetchUsers = async () => {
@@ -32,7 +32,7 @@ export default function Customer() {
       const data = await res.json();
       if (data.length > 0) {
         const transformedData = data
-          .filter((user) => user.roleId === 2)
+          .filter((user) => user.roleId === 3)
           .map((user) => ({
             ...user,
             name: `${user.firstName} ${user.lastName}`,
@@ -57,27 +57,6 @@ export default function Customer() {
     setSearchText(e.target.value);
   };
 
-  const handleEdit = () => {
-    if (selectedRows.length === 1) {
-      const user = selectedRows[0];
-      setEditUser({
-        userId: user.userId,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        dateOfBirth: new Date(user.dateOfBirth),
-        phoneNumber: user.phoneNumber,
-        gender: user.gender === "Nam",
-        email: user.email,
-        address: user.address,
-        password: "",
-        isActive: user.isActive === "Active",
-      });
-      setShowModal(true);
-    } else {
-      alert("Vui lòng chọn đúng một user để chỉnh sửa.");
-    }
-  };
-
   const handleDelete = async () => {
     if (selectedRows.length > 0) {
       const confirmDelete = window.confirm(
@@ -98,7 +77,6 @@ export default function Customer() {
           fetchUsers(); // Refresh the user list after deletion
         } catch (e) {
           console.error(e);
-          alert("An error occurred while deleting the users.");
         }
       }
     } else {
@@ -110,31 +88,62 @@ export default function Customer() {
     setSelectedRows(state.selectedRows);
   };
 
-  const handleSave = async () => {
-    const updatedUser = {
-      ...editUser,
-      userId: selectedRows[0].userId,
-      dateOfBirth: new Date(editUser.dateOfBirth),
-      gender: editUser.gender === "Nam",
+  const convertImageToByteArray = (file) => {
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onload = () => {
+        const arrayBuffer = reader.result;
+        const bytes = new Uint8Array(arrayBuffer);
+        resolve(Array.from(bytes));
+      };
+      reader.onerror = (error) => reject(error);
+    })
+  };
+
+  const handleImageChange = (file) => {
+    setNewReader({ ...newReader, image: file });
+  };
+
+  const handleCreateReader = async () => {
+    const imageFile = newReader.image;
+    if (!imageFile) {
+      alert("Please select an image.");
+      return;
+    }
+
+    const imageByteArray = await convertImageToByteArray(imageFile);
+
+    const selectedUser = selectedRows[0];
+
+    const newReaderData = {
+      userId: selectedUser.userId,
+      introduction: newReader.introduction,
+      description: newReader.description,
+      experience: newReader.experience,
+      kind: newReader.kind,
+      image: imageByteArray,
+      status: newReader.status,
     };
-  
+    console.log("Data sent to API:", newReaderData);
+
     try {
-      const res = await fetch(API, {
-        method: "PUT",
+      const res = await fetch(readerAPI, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedUser),
+        body: JSON.stringify(newReaderData),
       });
+
       if (res.ok) {
-        setShowModal(false);
-        fetchUsers();
+        setShowReaderModal(false);
+        alert("Tarot Reader created successfully!");
       } else {
-        alert("Failed to update user");
+        alert("Failed to create Tarot Reader");
       }
     } catch (e) {
       console.error(e);
-      alert("An error occurred while updating the user.");
     }
   };
 
@@ -242,10 +251,10 @@ export default function Customer() {
           />
         </InputGroup>
         <div className="d-flex">
-          <Button variant="success" className="me-2" onClick={handleEdit}>
-            <i className="bi bi-pencil-square fs-4"></i>
+          <Button variant="primary" className="me-2" onClick={() => setShowReaderModal(true)}>
+            <i className="bi bi-person-plus-fill fs-4"></i>
           </Button>
-          <Button variant="danger" onClick={handleDelete}>
+          <Button variant="danger" className="me-2" onClick={handleDelete}>
             <i className="bi bi-trash3-fill fs-4"></i>
           </Button>
         </div>
@@ -260,113 +269,88 @@ export default function Customer() {
         customStyles={customStyles}
         theme="dark"
       />
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+
+      <Modal show={showReaderModal} onHide={() => setShowReaderModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <Modal.Title>Create Tarot Reader</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>First Name</Form.Label>
+              <Form.Label>User ID</Form.Label>
               <Form.Control
                 type="text"
-                value={editUser.firstName}
+                value={selectedRows[0]?.userId || ""}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, firstName: e.target.value })
+                  setNewReader({ ...newReader, userId: e.target.value })
                 }
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Last Name</Form.Label>
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(e) => handleImageChange(e.target.files[0])}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Introduction</Form.Label>
               <Form.Control
                 type="text"
-                value={editUser.lastName}
+                value={newReader.introduction}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, lastName: e.target.value })
+                  setNewReader({ ...newReader, introduction: e.target.value })
                 }
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Date of Birth</Form.Label>
-              <Form.Control
-                type="date"
-                value={editUser.dateOfBirth}
-                onChange={(e) =>
-                  setEditUser({ ...editUser, dateOfBirth: e.target.value })
-                }
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Phone Number</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
-                value={editUser.phoneNumber}
+                value={newReader.description}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, phoneNumber: e.target.value })
+                  setNewReader({ ...newReader, description: e.target.value })
                 }
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Gender</Form.Label>
-              <Form.Control
-                as="select"
-                value={editUser.gender ? "Nam" : "Nữ"}
-                onChange={(e) =>
-                  setEditUser({ ...editUser, gender: e.target.value === "Nam" })
-                }
-              >
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                value={editUser.email}
-                onChange={(e) =>
-                  setEditUser({ ...editUser, email: e.target.value })
-                }
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                value={editUser.password}
-                onChange={(e) =>
-                  setEditUser({ ...editUser, password: e.target.value })
-                }
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Address</Form.Label>
+              <Form.Label>Experience</Form.Label>
               <Form.Control
                 type="text"
-                value={editUser.address}
+                value={newReader.experience}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, address: e.target.value })
+                  setNewReader({ ...newReader, experience: e.target.value })
                 }
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Check
-                type="checkbox"
-                label="Is Active"
-                checked={editUser.isActive}
+              <Form.Label>Kind</Form.Label>
+              <Form.Control
+                type="text"
+                value={newReader.kind}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, isActive: e.target.checked })
+                  setNewReader({ ...newReader, kind: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Status</Form.Label>
+              <Form.Control
+                type="text"
+                value={newReader.status}
+                onChange={(e) =>
+                  setNewReader({ ...newReader, status: e.target.value })
                 }
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <Button variant="secondary" onClick={() => setShowReaderModal(false)}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save Changes
+          <Button variant="primary" onClick={handleCreateReader}>
+            Create Reader
           </Button>
         </Modal.Footer>
       </Modal>
