@@ -95,9 +95,9 @@ export default function SessionType({
           <div
             className="modal-body"
             style={{
+              marginBottom: "20px",
               overflowY: "scroll",
               paddingBottom: "40px",
-              marginBottom: "20px !important",
             }}
           >
             <div className="modal-contact">

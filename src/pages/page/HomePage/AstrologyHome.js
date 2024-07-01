@@ -7,11 +7,11 @@ import Footer from "../../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Horoscope from "../../../components/TabContent/Horoscope";
 import Consult from "../../../components/Consult/Consult";
+import "../HomePage/AstrologyHome.css";
 
 export default function AstrologyHome() {
   return (
     <div>
-      {/* <!-- Header Modal --> */}
       <Header />
 
       <section className="banner-section float-start w-100">
@@ -24,15 +24,13 @@ export default function AstrologyHome() {
             <div className="row row-cols-1 row-cols-lg-2 align-items-center g-lg-5">
               <div className="col">
                 <span className="spm-smalll" data-aos="fade-up">
-                  {" "}
-                  Một Địa Điểm Mới Cho Tarot{" "}
+                  Một Địa Điểm Mới Cho Tarot
                 </span>
                 <h1 className="text-white my-3" data-aos="fade-down">
                   Lá Bài Quyết Định
                   <span className="d-block"> Hành Trình Cuộc Đời </span>
                 </h1>
                 <p data-aos="fade-up">
-                  {" "}
                   Trải nghiệm tương tác & chiếu sáng sâu sắc từ các bài đọc
                   Tarot
                 </p>
@@ -43,8 +41,7 @@ export default function AstrologyHome() {
                     className="btn btn-get-btn"
                     data-aos="fade-up"
                   >
-                    {" "}
-                    Bắt Đầu Khám Phá{" "}
+                    Bắt Đầu Khám Phá
                   </Link>
                 </div>
               </div>
@@ -117,13 +114,21 @@ export default function AstrologyHome() {
                   href="#"
                   className="comon-felature01 d-grid align-content-center w-100"
                   data-aos="fade-up"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/3776970.png" />
                   </div>
-                  <h5 className="text-white"> ĐA DẠNG THỂ LOẠI </h5>
-                  <p>
-                    {" "}
+                  <h5
+                    className="text-white"
+                    style={{
+                      textAlign: "center",
+                      textDecoration: "none !important",
+                    }}
+                  >
+                    ĐA DẠNG THỂ LOẠI
+                  </h5>
+                  <p style={{ textDecoration: "none !important" }}>
                     Các phòng tương tác của chúng tôi là nơi dành cho những
                     người đam mê và những người mới đến tìm hiểu sâu hơn mối
                     quan hệ của họ với tarot mà không có tình trạng spam
@@ -136,6 +141,7 @@ export default function AstrologyHome() {
                   href="#"
                   className="comon-felature01 d-grid align-content-center w-100"
                   data-aos="fade-down"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/815838.png" />
@@ -155,11 +161,15 @@ export default function AstrologyHome() {
                   href="#"
                   className="comon-felature01 d-grid align-content-center w-100"
                   data-aos="fade-up"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/1408347.png" />
                   </div>
-                  <h5 className="text-white"> Trải Nghiệm Tarot </h5>
+                  <h5 className="text-white" style={{ textAlign: "center" }}>
+                    {" "}
+                    Trải Nghiệm Tarot{" "}
+                  </h5>
                   <p>
                     {" "}
                     Chúng tôi đã xây dựng một cách tốt hơn để những người có sở
@@ -190,13 +200,16 @@ export default function AstrologyHome() {
                     data-aos="fade-up"
                   >
                     <h4 className="text-center">
-                      1 +<span className="d-lg-block">Year Experience</span>
+                      1 +<span className="d-lg-block">Số Năm Kinh Nghiệm</span>
                     </h4>
                   </div>
                 </div>
               </div>
               <div className="col">
-                <h5 data-aos="fade-down"> About Tellory </h5>
+                <h5 data-aos="fade-down" style={{ textAlign: "center" }}>
+                  {" "}
+                  Về Tellory{" "}
+                </h5>
                 <h2 className="text-white my-2" data-aos="fade-down">
                   {" "}
                   Chúng Tôi Có Thể Giúp Bạn
@@ -221,10 +234,16 @@ export default function AstrologyHome() {
                   số, đặt chỗ dễ dàng và hơn thế nữa!
                 </p>
 
-                <a href="#" className="read-btn btn mt-4" data-aos="fade-down">
-                  {" "}
-                  <span> Khám Phá Ngay </span>{" "}
-                </a>
+                <div style={{ float: "right" }}>
+                  <a
+                    href="#"
+                    className="read-btn btn mt-4"
+                    data-aos="fade-down"
+                    style={{ float: "right" }}
+                  >
+                    <span> Khám Phá Ngay </span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -252,6 +271,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -260,8 +280,20 @@ export default function AstrologyHome() {
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
-                    <h5 className="text-white"> BẠCH DƯƠNG </h5>
-                    <p className="mt-2"> 21/3 - 19/4</p>
+                    <h5
+                      className="text-white"
+                      style={{ textDecoration: "none !important" }}
+                    >
+                      {" "}
+                      BẠCH DƯƠNG{" "}
+                    </h5>
+                    <p
+                      className="mt-2"
+                      style={{ textDecoration: "none !important" }}
+                    >
+                      {" "}
+                      21/3 - 19/4
+                    </p>
                   </div>
                 </a>
               </div>
@@ -270,6 +302,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -277,8 +310,17 @@ export default function AstrologyHome() {
                       <img alt="Aries" src="assets/images/9009939.png" />
                     </div>
                   </div>
-                  <div className="textr-dels mt-3">
-                    <h5 className="text-white"> KIM NGƯU </h5>
+                  <div
+                    className="textr-dels mt-3"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <h5
+                      className="text-white"
+                      style={{ textDecoration: "none" }}
+                    >
+                      {" "}
+                      KIM NGƯU{" "}
+                    </h5>
                     <p className="mt-2"> 20/4 - 20/5 </p>
                   </div>
                 </a>
@@ -288,6 +330,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -306,6 +349,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -325,6 +369,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -343,6 +388,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -361,6 +407,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -379,6 +426,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -397,6 +445,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -415,6 +464,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -433,6 +483,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -451,6 +502,7 @@ export default function AstrologyHome() {
                 <a
                   href="#"
                   className="text-center comon-zodic w-100 d-grid align-content-center justify-content-center"
+                  style={{ textDecoration: "none" }}
                 >
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
@@ -632,11 +684,12 @@ export default function AstrologyHome() {
             >
               <li className="nav-item" role="presentation">
                 <button
-                  className="nav-link active"
+                  className="nav-link active buttonWhite"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-hop01"
                   type="button"
                   role="tab"
+                  style={{ color: "white !important" }}
                 >
                   {" "}
                   Tử Vi Mỗi Ngày
@@ -671,118 +724,6 @@ export default function AstrologyHome() {
         </section>
 
         <Consult />
-
-        {/* <section
-          className="blogs-part-div d-inline-block w-100"
-          style={{ backgroundColor: "#0c071c" }}
-        >
-          <div className="container">
-            <div className="comon-heading text-center mt-5">
-              <h5 className="sub-heading" data-aos="fade-up">
-                {" "}
-                News & articles{" "}
-              </h5>
-              <h2
-                className="text-white comon-heading mt-2 mb-3"
-                data-aos="fade-up"
-              >
-                {" "}
-                Our Latest News{" "}
-              </h2>
-            </div>
-            <p
-              className="col-lg-8 mx-auto d-block text-center"
-              data-aos="fade-down"
-            >
-              {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard
-            </p>
-
-            <div className="blogs-divb owl-carousel owl-theme mt-5">
-              <a href="#" className="items-blogs">
-                <div className="blogs-imgs">
-                  <img alt="blogs" src="assets/images/aggju.jpg" />
-                  <div className="items012-texr">Astrology</div>
-                </div>
-                <h6> By - Admin </h6>
-                <h3 className="text-white">
-                  {" "}
-                  Why Gemini Are Obsessed With Each Other{" "}
-                </h3>
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna...
-                </p>
-                <h5 className="btn p-0"> Xem thêm </h5>
-              </a>
-
-              <a href="#" className="items-blogs">
-                <div className="blogs-imgs">
-                  <img
-                    alt="blogs"
-                    src="assets/images/tengyart-VgijAV-e97Y-unsplash.jpg"
-                  />
-                  <div className="items012-texr">Tarot</div>
-                </div>
-                <h6> By - Admin </h6>
-                <h3 className="text-white">
-                  {" "}
-                  Why Gemini Are Obsessed With Each Other{" "}
-                </h3>
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna...
-                </p>
-                <h5 className="btn p-0"> Xem thêm </h5>
-              </a>
-
-              <a href="#" className="items-blogs">
-                <div className="blogs-imgs">
-                  <img
-                    alt="blogs"
-                    src="assets/images/cat-crawford-b1AsZn2C-lo-unsplash.jpg"
-                  />
-                  <div className="items012-texr">Tarot</div>
-                </div>
-                <h6> By - Admin </h6>
-                <h3 className="text-white">
-                  {" "}
-                  Why Gemini Are Obsessed With Each Other{" "}
-                </h3>
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna...
-                </p>
-                <h5 className="btn p-0"> Xem thêm </h5>
-              </a>
-
-              <a href="#" className="items-blogs">
-                <div className="blogs-imgs">
-                  <img
-                    alt="blogs"
-                    src="assets/images/tania-medina-zwsL1bj_yKA-unsplash.jpg"
-                  />
-                  <div className="items012-texr">Astrology</div>
-                </div>
-                <h6> By - Admin </h6>
-                <h3 className="text-white">
-                  {" "}
-                  Why Gemini Are Obsessed With Each Other{" "}
-                </h3>
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna...
-                </p>
-                <h5 className="btn p-0"> Xem thêm </h5>
-              </a>
-            </div>
-          </div>
-        </section> */}
       </main>
 
       {/* <!-- footer Modal --> */}

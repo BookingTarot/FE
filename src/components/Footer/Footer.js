@@ -10,12 +10,15 @@ export default function Footer() {
       >
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 align-content-center">
-            <div className="col">
-              <a href="index.html">
-                <img alt="logo" src="assets/images/logo.png" />
-              </a>
-              <p className="text-white mt-3 col-lg-10">
-                {" "}
+            <div className="col d-flex flex-column align-items-center">
+              <Link to="/">
+                <img
+                  style={{ marginLeft: "30%" }}
+                  alt="logo"
+                  src="assets/images/logo.png"
+                />
+              </Link>
+              <p className="text-white mt-3 col-lg-10 text-center">
                 Mỗi lá bài như một tấm gương phản chiếu tâm hồn, mở ra những tri
                 thức cần thiết để bạn định hướng hành trình cuộc đời
               </p>
@@ -46,15 +49,29 @@ export default function Footer() {
                 <ul>
                   <li>
                     {" "}
-                    <a href="tarot.html">Tarot </a>
+                    <a style={{ textDecoration: "none" }} href="tarot.html">
+                      Tarot{" "}
+                    </a>
                   </li>
                   <li>
                     {" "}
-                    <a href="numerology.html"> Xem Bài </a>
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href="numerology.html"
+                    >
+                      {" "}
+                      Xem Bài{" "}
+                    </a>
                   </li>
                   <li>
                     {" "}
-                    <a href="astrologer.html"> Học Xem Bài </a>
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href="astrologer.html"
+                    >
+                      {" "}
+                      Học Xem Bài{" "}
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -65,23 +82,38 @@ export default function Footer() {
                 <ul>
                   <li>
                     {" "}
-                    <Link to="/tarotReader"> Tarot Reader</Link>
+                    <Link to="/tarotReader" style={{ textDecoration: "none" }}>
+                      {" "}
+                      Tarot Reader
+                    </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/tarotCard"> Bài Tarot </Link>
+                    <Link to="/tarotCard" style={{ textDecoration: "none" }}>
+                      {" "}
+                      Bài Tarot{" "}
+                    </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/zodiac"> Cung Hoàng Đạo </Link>
+                    <Link to="/zodiac" style={{ textDecoration: "none" }}>
+                      {" "}
+                      Cung Hoàng Đạo{" "}
+                    </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/blog"> Blog </Link>
+                    <Link to="/blog" style={{ textDecoration: "none" }}>
+                      {" "}
+                      Blog{" "}
+                    </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/about"> Về Chúng Tôi </Link>
+                    <Link to="/about" style={{ textDecoration: "none" }}>
+                      {" "}
+                      Về Chúng Tôi{" "}
+                    </Link>
                   </li>
                 </ul>
               </div>

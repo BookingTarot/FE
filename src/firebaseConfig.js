@@ -14,11 +14,11 @@ const firebaseConfig = {
   storageBucket: "verify-otp-1ca25.appspot.com",
   messagingSenderId: "828363036322",
   appId: "1:828363036322:web:7765ed7bcd7a86f58da9fb",
-  measurementId: "G-KG2J7WR1DM"
+  measurementId: "G-KG2J7WR1DM",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const analytics = getAnalytics(app);
-export { app, auth, analytics }; 
+export { app, auth, analytics };

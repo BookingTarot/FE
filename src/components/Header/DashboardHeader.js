@@ -1,24 +1,20 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import { useAuth } from "../Login/Authen";
+import UpdateInfo from "../Popup/UpdateInfo";
+import HomeLogout from "../Button/HomeLogout";
 
-function DashboardHeader() {
-
-  const navigate = useNavigate();
-
+function DashboardHeader() {  
   const { user } = useAuth();
+  const id = user.tarotReader.tarotReaderId;
   const profileImage = user.gender ? "assets/images/profile1.png" : "assets/images/profile2.png";
 
-  const handleLogout = async () => {
-    try {
-      localStorage.removeItem("userInfo");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <header className="float-start w-100">
@@ -78,8 +74,8 @@ function DashboardHeader() {
                             </div>
                           </Dropdown.Item>
                           <Dropdown.Divider />
-                          <Dropdown.Item as={Link} to="/account" className="text-dark">Thông tin tài khoản</Dropdown.Item>
-                          <Dropdown.Item onClick={handleLogout} className="text-dark">Đăng xuất</Dropdown.Item>
+                          <Dropdown.Item onClick={toggleModal} className="text-dark">Thông tin tài khoản</Dropdown.Item>
+                          <HomeLogout />
                         </Dropdown.Menu>
                       </Dropdown>
                     </li>
@@ -90,6 +86,15 @@ function DashboardHeader() {
           </Navbar.Collapse>
         </Navbar>
       </div>
+      <UpdateInfo
+        isOpen={isModalOpen}
+        toggle={toggleModal}
+        updateInfo={(updatedData) => {
+          console.log("Updated Info:", updatedData);
+        }}
+        userId={user.userId}
+        TarotReaderId={id}
+      />
     </header>
   );
 }
