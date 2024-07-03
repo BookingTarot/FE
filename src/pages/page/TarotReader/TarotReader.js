@@ -24,7 +24,8 @@ export default function TarotReader() {
     health: false,
     finance: false,
   });
-  const [hoveredReader, setHoveredReader] = useState(null); // State to track hovered reader
+  const [hoveredReader, setHoveredReader] = useState(null);
+  const [averageRatings, setAverageRatings] = useState({});
 
   const openModal = (tarotReaderId, tarotReaderName) => {
     setSelectedTarotReaderId(tarotReaderId);
@@ -62,7 +63,6 @@ export default function TarotReader() {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
         reader.kind.includes("Công việc")
       );
-      console.log("Kind");
     }
 
     if (filters.health) {
@@ -83,29 +83,15 @@ export default function TarotReader() {
   const handleSortByExperience = (years) => {
     let sortedReaders = [...filteredReaders];
 
-    console.log("year range", years);
-
     switch (years) {
       case "lessThan1":
         sortedReaders = sortedReaders.filter(
           (reader) => parseInt(reader.experience, 10) < 1
         );
-        console.log(
-          "year <1 range",
-          (sortedReaders = sortedReaders.filter(
-            (reader) => parseInt(reader.experience, 10) < 1
-          ))
-        );
         break;
       case "moreThan1":
         sortedReaders = sortedReaders.filter(
           (reader) => parseInt(reader.experience, 10) >= 1
-        );
-        console.log(
-          "year >= 1 range",
-          (sortedReaders = sortedReaders.filter(
-            (reader) => parseInt(reader.experience, 10) >= 1
-          ))
         );
         break;
       default:
@@ -113,7 +99,6 @@ export default function TarotReader() {
         break;
     }
 
-    console.log("Filtered readers:", sortedReaders);
     setFilteredReaders(sortedReaders);
   };
 
@@ -123,10 +108,9 @@ export default function TarotReader() {
         const response = await axios.get(
           "https://tarot.somee.com/api/TarotReader"
         );
-
-        // Assume response.data is an array of tarot readers
         setTarotReaders(response.data);
         setFilteredReaders(response.data);
+        fetchAverageRatings(response.data);
       } catch (error) {
         console.error("Error fetching the tarot readers data", error);
       }
@@ -135,13 +119,40 @@ export default function TarotReader() {
     fetchTarotReaders();
   }, []);
 
+  const fetchAverageRatings = async (readers) => {
+    const ratings = {};
+    for (const reader of readers) {
+      try {
+        const response = await axios.get(
+          `https://tarot.somee.com/api/Feedbacks/tarotreader/${reader.tarotReaderId}`
+        );
+        const feedbacks = response.data;
+        ratings[reader.tarotReaderId] = calculateAverageRating(feedbacks);
+      } catch (error) {
+        console.error("Error fetching feedbacks", error);
+        ratings[reader.tarotReaderId] = 0; // Default to 0 if there is an error
+      }
+    }
+    setAverageRatings(ratings);
+  };
+
+  const calculateAverageRating = (feedbacks) => {
+    if (feedbacks.length === 0) {
+      return 0;
+    }
+    const totalRating = feedbacks.reduce(
+      (total, feedback) => total + feedback.rating,
+      0
+    );
+    return totalRating / feedbacks.length;
+  };
+
   useEffect(() => {
     applyFilters();
   }, [filters, tarotReaders]);
 
   const handleBookMe = (readerId) => {
     if (!user) {
-      // If user is not logged in, redirect to login page
       navigate("/login");
     } else {
       openModal(readerId);
@@ -156,6 +167,27 @@ export default function TarotReader() {
     setHoveredReader(null);
   };
 
+  const renderStars = (rating) => {
+    if (typeof rating !== "number" || rating < 0 || rating > 5) {
+      return null; // Handle invalid ratings
+    }
+
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+
+    return (
+      <>
+        {[...Array(fullStars)].map((_, index) => (
+          <i key={`full-${index}`} className="fas fa-star"></i>
+        ))}
+        {halfStar === 1 && <i className="fas fa-star-half-alt"></i>}
+        {[...Array(emptyStars)].map((_, index) => (
+          <i key={`empty-${index}`} className="far fa-star"></i>
+        ))}
+      </>
+    );
+  };
   return (
     <div>
       <Header />
@@ -350,7 +382,7 @@ export default function TarotReader() {
                           onMouseLeave={handleMouseLeave}
                         >
                           <Link
-                            to={`${reader.tarotReaderId}`}
+                            to={`/tarotReader/${reader.tarotReaderId}`}
                             style={{ textDecoration: "none" }}
                           >
                             <div className="top-asto d-flex align-items-center justify-content-between w-100">
@@ -358,7 +390,7 @@ export default function TarotReader() {
                                 <div className="profile-astro">
                                   <img
                                     alt="ser"
-                                    src="assets/images/profile2.png"
+                                    src="../../../assets/images/profile2.png"
                                   />
                                 </div>
 
@@ -366,12 +398,10 @@ export default function TarotReader() {
                                   <h5>{reader.fullName} </h5>
                                   <p className="rt-cion">
                                     <span>
-                                      <i className="fas fa-star"></i>
-                                      <i className="fas fa-star"></i>
-                                      <i className="fas fa-star"></i>
+                                      {renderStars(
+                                        averageRatings[reader.tarotReaderId]
+                                      )}
                                     </span>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
                                   </p>
                                 </div>
                               </div>

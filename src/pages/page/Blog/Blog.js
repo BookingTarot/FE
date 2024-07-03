@@ -69,37 +69,40 @@ export default function Blog() {
                             alt="pnm"
                           />
                           <div className="hvert">
-                            10<b className="d-block">Jan</b>
+                            01<b className="d-block">Tháng 7</b>
                           </div>
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            {" "}
-                            <i className="fas fa-tags"></i> vulputate
+                            <i className="fas fa-tags"></i> Góc Tarot
                           </h6>
-                          <h5>All the Lorem Ipsum generators Internet</h5>
+                          <h5>
+                            Giải Mã Tarot: Hướng Dẫn Cho Người Mới Bắt Đầu
+                          </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
-                              <span> By Admin </span>
+                              <span> Bởi Admin </span>
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
-                              <span> 25 May 2021 </span>
+                              <span> 01 Tháng 7 2024 </span>
                             </div>
                           </div>
                           <p className="mt-3">
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                            Khám phá thế giới tarot đầy thú vị với hướng dẫn
+                            toàn diện của chúng tôi. Dù bạn là người mới bắt đầu
+                            muốn học những điều cơ bản hay là người đọc tarot có
+                            kinh nghiệm đang tìm cách nâng cao kiến thức, bài
+                            viết này cung cấp những thông tin giá trị về nghệ
+                            thuật đọc tarot. Tìm hiểu về lịch sử, ý nghĩa của
+                            các lá bài và những mẹo để đọc bài chính xác. Bắt
+                            đầu hành trình vào thế giới huyền bí của tarot ngay
+                            hôm nay!
                           </p>
                         </div>
                       </div>
                     </a>
-
                     <a
                       href="blog-details.html"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
@@ -108,15 +111,16 @@ export default function Blog() {
                         <div className="left-div-list">
                           <img src="assets/images/aggju.jpg" alt="pnm" />
                           <div className="hvert">
-                            10<b className="d-block">Jan</b>
+                            03<b className="d-block">Tháng 7</b>
                           </div>
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            {" "}
                             <i className="fas fa-tags"></i>vulputate
                           </h6>
-                          <h5>It is a long established fact that </h5>
+                          <h5>
+                            Đây là một sự thật đã được thiết lập từ lâu rằng
+                          </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -124,16 +128,17 @@ export default function Blog() {
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
-                              <span> 25 May 2021 </span>
+                              <span> 03 Tháng 7 2024 </span>
                             </div>
                           </div>
                           <p className="mt-3">
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                            Một sự thật đã được thiết lập từ lâu rằng người đọc
+                            sẽ bị phân tâm bởi nội dung dễ đọc của một trang khi
+                            nhìn vào cách trình bày của nó. Lorem Ipsum đã là
+                            văn bản chuẩn của ngành công nghiệp in ấn và sắp chữ
+                            từ những năm 1500, khi một nhà in ấn vô danh lấy một
+                            bộ sưu tập các bản in và sắp xếp chúng để tạo ra một
+                            mẫu sách.
                           </p>
                         </div>
                       </div>
@@ -150,15 +155,17 @@ export default function Blog() {
                             alt="pnm"
                           />
                           <div className="hvert">
-                            10<b className="d-block">Jan</b>
+                            04<b className="d-block">Tháng 7</b>
                           </div>
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            {" "}
                             <i className="fas fa-tags"></i>vulputate
                           </h6>
-                          <h5>In sed tortor eget risus egestas </h5>
+                          <h5>
+                            Trong khi đọc bài Tarot, hãy tập trung vào mục tiêu
+                            và duy trì trạng thái tinh thần bình tĩnh
+                          </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -166,16 +173,15 @@ export default function Blog() {
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
-                              <span> 25 May 2021 </span>
+                              <span> 04 Tháng 7 2024 </span>
                             </div>
                           </div>
                           <p className="mt-3">
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                            Khi đọc bài Tarot, việc tập trung vào mục tiêu và
+                            duy trì trạng thái tinh thần bình tĩnh là rất quan
+                            trọng. Bài viết này hướng dẫn cách sử dụng bài Tarot
+                            để tìm kiếm câu trả lời trong những tình huống khó
+                            khăn.
                           </p>
                         </div>
                       </div>
@@ -192,7 +198,7 @@ export default function Blog() {
                             alt="pnm"
                           />
                           <div className="hvert">
-                            10<b className="d-block">Jan</b>
+                            05<b className="d-block">Tháng 7</b>
                           </div>
                         </div>
                         <div className="right-list-div">
@@ -200,24 +206,23 @@ export default function Blog() {
                             {" "}
                             <i className="fas fa-tags"></i>vulputate
                           </h6>
-                          <h5>Curabitur vitae leo feugiat </h5>
+                          <h5>Curabitur với sự trỗi dậy của sự mạnh mẽ</h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
-                              <span> By Admin </span>
+                              <span> Bởi Admin </span>
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
-                              <span> 25 May 2021 </span>
+                              <span> 05 Tháng 7 2024 </span>
                             </div>
                           </div>
                           <p className="mt-3">
-                            {" "}
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                            Việc xem bài tarot từ lâu đã là nguồn cảm hứng và sự
+                            hiểu biết cho những người đang tìm kiếm sự rõ ràng
+                            trong cuộc sống của họ. Khám phá cách các lá bài có
+                            thể chiếu sáng con đường và mang đến những phát hiện
+                            sâu sắc trong cuộc hành trình của bạn.
                           </p>
                         </div>
                       </div>
@@ -234,32 +239,33 @@ export default function Blog() {
                             alt="pnm"
                           />
                           <div className="hvert">
-                            10<b className="d-block">Jan</b>
+                            06<b className="d-block">Tháng 7</b>
                           </div>
                         </div>
                         <div className="right-list-div">
                           <h6>
                             {" "}
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i> Tarot
                           </h6>
-                          <h5>Nullam et urna rhoncus purus </h5>
+                          <h5>Khám phá sự kỳ diệu của bài Tarot</h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
-                              <span> By Admin </span>
+                              <span> Bởi Admin </span>
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
-                              <span> 25 May 2021 </span>
+                              <span> 06 Tháng 7 2024 </span>
                             </div>
                           </div>
                           <p className="mt-3">
                             {" "}
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                            Bài Tarot không chỉ đơn giản là một phương pháp dự
+                            đoán tương lai mà nó còn là một công cụ tuyệt vời để
+                            khám phá sâu sắc về bản thân và về các mối quan hệ
+                            xung quanh. Hãy cùng chúng tôi tìm hiểu về sức mạnh
+                            tâm linh và sự kỳ diệu của bài Tarot trong cuộc sống
+                            hàng ngày của bạn.
                           </p>
                         </div>
                       </div>
@@ -276,151 +282,37 @@ export default function Blog() {
                             alt="pnm"
                           />
                           <div className="hvert">
-                            10<b className="d-block">Jan</b>
+                            06<b className="d-block">Tháng 7</b>
                           </div>
                         </div>
                         <div className="right-list-div">
                           <h6>
                             {" "}
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i> Tarot
                           </h6>
-                          <h5>Sed eget sapien eget felis commodo </h5>
+                          <h5>Khám phá những bài Tarot nổi tiếng và ý nghĩa</h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
-                              <span> By Admin </span>
+                              <span> Bởi Admin </span>
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
-                              <span> 25 May 2021 </span>
+                              <span> 06 Tháng 7 2024 </span>
                             </div>
                           </div>
                           <p className="mt-3">
                             {" "}
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                            Bài Tarot không chỉ là một loại bói toán mà còn là
+                            một cách để khám phá những tầng sâu của tâm hồn và
+                            tìm hiểu về mối quan hệ, sự nghiệp và tương lai của
+                            bạn. Hãy cùng chúng tôi đi vào thế giới phép màu của
+                            bài Tarot và những ý nghĩa sâu sắc mà nó mang lại.
                           </p>
                         </div>
                       </div>
                     </a>
                   </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4">
-                <div className="right-comon-linst05 pt-0">
-                  <h3> Categories </h3>
-                  <ul className="mt-5">
-                    <li>
-                      {" "}
-                      <a href="#"> Pellentesque </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> Morbi viverra </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> scelerisque </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> Vestibulum </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> Pellentesque </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> ultricies </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> scelerisque </a>{" "}
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="right-comon-linst05 mt-5">
-                  <h3 className="mb-5"> Recent Post </h3>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img
-                        alt="gmh"
-                        src="assets/images/numerology-concept-still-life.jpg"
-                      />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Morbi vitae felis eget turpis</h5>
-                    </div>
-                  </a>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img alt="gmh" src="assets/images/moon-phasing1.png" />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Sed et sem at risus consectetur</h5>
-                    </div>
-                  </a>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img alt="gmh" src="assets/images/imag-tarot_zen.jpg" />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Nullam mattis nisl eget </h5>
-                    </div>
-                  </a>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img
-                        alt="gmh"
-                        src="assets/images/tengyart-VgijAV-e97Y-unsplash.jpg"
-                      />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Vestibulum feugiat lorem</h5>
-                    </div>
-                  </a>
-                </div>
-
-                <div className="right-comon-linst05 tabs-links mt-5">
-                  <h3 className="mb-5"> Tags </h3>
-                  <ul>
-                    <li>
-                      <a href="#" className="btn">
-                        {" "}
-                        Vestibulum{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Morbi{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Curabitur{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Nullam{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Pellentesque{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Nullam{" "}
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

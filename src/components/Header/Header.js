@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../Login/Authen";
 import HomeLogout from "../Button/HomeLogout";
+import Logo from "../../assets/images/logo.png";
 
 export default function Header() {
   const { user } = useAuth();
@@ -12,7 +13,7 @@ export default function Header() {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
             <Link className="navbar-brand" to="/">
-              <img alt="logo" src="assets/images/logo.png" />
+              <img alt="logo" src={Logo} />
             </Link>
             <button
               className="navbar-toggler"

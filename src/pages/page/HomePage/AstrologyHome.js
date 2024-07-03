@@ -6,7 +6,6 @@ import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
 import Footer from "../../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Horoscope from "../../../components/TabContent/Horoscope";
-import Consult from "../../../components/Consult/Consult";
 import "../HomePage/AstrologyHome.css";
 
 export default function AstrologyHome() {
@@ -669,7 +668,7 @@ export default function AstrologyHome() {
                 Tử Vi{" "}
               </h5>
               <h2
-                className="text-white comon-heading mt-2 mb-3"
+                className="text-white comon-heading mt-2 mb-3 nav-link.active.nameImportant"
                 data-aos="fade-up"
               >
                 {" "}
@@ -722,8 +721,6 @@ export default function AstrologyHome() {
             <Horoscope />
           </div>
         </section>
-
-        <Consult />
       </main>
 
       {/* <!-- footer Modal --> */}

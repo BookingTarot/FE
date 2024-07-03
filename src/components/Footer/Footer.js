@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/images/logo.png";
 
 export default function Footer() {
   return (
@@ -12,11 +13,7 @@ export default function Footer() {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 align-content-center">
             <div className="col d-flex flex-column align-items-center">
               <Link to="/">
-                <img
-                  style={{ marginLeft: "30%" }}
-                  alt="logo"
-                  src="assets/images/logo.png"
-                />
+                <img style={{ marginLeft: "30%" }} alt="Logo" src={Logo} />
               </Link>
               <p className="text-white mt-3 col-lg-10 text-center">
                 Mỗi lá bài như một tấm gương phản chiếu tâm hồn, mở ra những tri
@@ -26,7 +23,7 @@ export default function Footer() {
             <div className="col">
               <div className="colm-footer">
                 <h5> Liên Hệ </h5>
-                <ul>
+                <ul style={{ paddingLeft: "0px" }}>
                   <li>
                     {" "}
                     <i className="fab fa-whatsapp"></i> +8432-8026-926
@@ -46,29 +43,23 @@ export default function Footer() {
             <div className="col">
               <div className="colm-footer">
                 <h5> Dịch Vụ </h5>
-                <ul>
+                <ul style={{ paddingLeft: "0px" }}>
                   <li>
                     {" "}
-                    <a style={{ textDecoration: "none" }} href="tarot.html">
+                    <a style={{ textDecoration: "none" }} href="">
                       Tarot{" "}
                     </a>
                   </li>
                   <li>
                     {" "}
-                    <a
-                      style={{ textDecoration: "none" }}
-                      href="numerology.html"
-                    >
+                    <a style={{ textDecoration: "none" }} href="">
                       {" "}
                       Xem Bài{" "}
                     </a>
                   </li>
                   <li>
                     {" "}
-                    <a
-                      style={{ textDecoration: "none" }}
-                      href="astrologer.html"
-                    >
+                    <a style={{ textDecoration: "none" }} href="">
                       {" "}
                       Học Xem Bài{" "}
                     </a>
@@ -79,7 +70,7 @@ export default function Footer() {
             <div className="col">
               <div className="colm-footer">
                 <h5> Liên Kết </h5>
-                <ul>
+                <ul style={{ paddingLeft: "0px" }}>
                   <li>
                     {" "}
                     <Link to="/tarotReader" style={{ textDecoration: "none" }}>
