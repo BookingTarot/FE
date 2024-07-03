@@ -8,7 +8,7 @@ import TarotLove from "../../../components/TarotCard/TarotLove";
 import TarotWork from "../../../components/TarotCard/TarotWork";
 import TarotFinance from "../../../components/TarotCard/TarotFinance";
 import TarotHealth from "../../../components/TarotCard/TarotHealth";
-import Consult from "../../../components/Consult/Consult";
+import "../TarotCard/TarotCard.css";
 
 export default function TarotCard() {
   return (
@@ -57,20 +57,19 @@ export default function TarotCard() {
             >
               <li className="nav-item" role="presentation">
                 <button
-                  className="nav-link active"
+                  className="nav-link active nameImportant"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-hop01"
                   type="button"
                   role="tab"
                 >
-                  {" "}
-                  Tất cả Bài Tarot{" "}
+                  Tất cả Bài Tarot
                 </button>
               </li>
 
               <li className="nav-item" role="presentation">
                 <button
-                  className="nav-link"
+                  className="nav-link nameImportant"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-hop02"
                   type="button"
@@ -81,7 +80,7 @@ export default function TarotCard() {
               </li>
               <li className="nav-item" role="presentation">
                 <button
-                  className="nav-link"
+                  className="nav-link nameImportant"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-hop03"
                   type="button"
@@ -93,7 +92,7 @@ export default function TarotCard() {
 
               <li className="nav-item" role="presentation">
                 <button
-                  className="nav-link"
+                  className="nav-link nameImportant"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-hop04"
                   type="button"
@@ -105,7 +104,7 @@ export default function TarotCard() {
 
               <li className="nav-item" role="presentation">
                 <button
-                  className="nav-link"
+                  className="nav-link nameImportant"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-hop05"
                   type="button"
@@ -140,7 +139,6 @@ export default function TarotCard() {
                         có gì rõ ràng. Theo đó, quân bài này cho thấy bạn và
                         người ấy mới chỉ bắt đầu cảm mến nhau...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -162,7 +160,6 @@ export default function TarotCard() {
                         liệt. Không chỉ có bạn dành tình cảm cho người ấy. Mặt
                         khác, còn có rất nhiều đối tượng đang săn đón...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -185,7 +182,6 @@ export default function TarotCard() {
                         hiểu nên cả hai thường xuyên cãi vã? Nếu tình trạng kể
                         trên tiếp diễn...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -208,7 +204,6 @@ export default function TarotCard() {
                         vì nhận ra người ấy không quan tâm và tôn trọng mình như
                         khi...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -230,7 +225,6 @@ export default function TarotCard() {
                         đây là quân bài cho thấy tình cảm của người ấy dành cho
                         bạn đang rất cuồng nhiệt, dạt dào.{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -253,7 +247,6 @@ export default function TarotCard() {
                         hẳn đã là điều dễ dàng với bạn, vậy nên nhiều khi bạn
                         hay...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -275,7 +268,6 @@ export default function TarotCard() {
                         tranh với những cá nhân khác trong lĩnh vực của bạn. Và
                         có thể nói rằng bạn đang đi làm là vì tiền...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -298,7 +290,6 @@ export default function TarotCard() {
                         một tương lai sẽ có được sự thăng tiến với lộ trình rõ
                         ràng...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -320,7 +311,6 @@ export default function TarotCard() {
                         xa huy hoàng tiến vào thành Roma. Ông đã đánh bại kẻ thù
                         và thu về nhiều chiến lợi phẩm và đất đai...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -342,7 +332,6 @@ export default function TarotCard() {
                         khắc một đồng tiền. Anh ta đã hoàn thành được sáu đồng
                         và có một đồng nữa đang sắp hoàn thành...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -364,7 +353,6 @@ export default function TarotCard() {
                         và trầm cảm mà người bị chưa nhận ra hay chưa giải quyết
                         được. Hãy khuyên khách hàng của bạn tìm...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -387,7 +375,6 @@ export default function TarotCard() {
                         căng thẳng và lo âu và những lời văng vẳng trong đầu
                         về...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -410,7 +397,6 @@ export default function TarotCard() {
                         thích, thức uống có cồn và tình dục, hoặc những trường
                         hợp như...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -433,7 +419,6 @@ export default function TarotCard() {
                         khác có liên quan đến cơ thể hay sự cân bằng trong não
                         bộ...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -455,7 +440,6 @@ export default function TarotCard() {
                         thể là kết quả của một thay đổi lớn trong cuộc đời mà
                         người ta không ngờ đến hoặc quá đột ngột...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -477,7 +461,6 @@ export default function TarotCard() {
                         năm cánh. Phong cảnh bên dưới bàn tay đại diện cho chủ
                         đề chính của suit. Trong Ace of Pentacles, cảnh quan...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -499,7 +482,6 @@ export default function TarotCard() {
                         trên ngai vàng chạm trổ những cây ăn quả, dê, thiên
                         thần, và các biểu tượng khác của thành công vật chất..{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -522,7 +504,6 @@ export default function TarotCard() {
                         tuyết, băng qua cửa kính rực rỡ của một nhà thờ. Nhà thờ
                         là...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -544,7 +525,6 @@ export default function TarotCard() {
                         chiếc ghế, cách xa quê nhà. Ông giữ chặt pentacles hoặc
                         đồng tiền của mình trong một tư thế phòng...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
 
@@ -567,7 +547,6 @@ export default function TarotCard() {
                         soát. Ông là một người cha thích chăm sóc người khác
                         thông qua việc...{" "}
                       </p>
-                      <a href="tarot-details.html">Xem thêm</a>
                     </div>
                   </div>
                 </div>
@@ -588,54 +567,6 @@ export default function TarotCard() {
                 <TarotFinance />
               </div>
             </div>
-          </div>
-        </section>
-
-        <Consult />
-
-        <section className="news-letter-div d-inline-block w-100">
-          <div className="container">
-            <div className="comon-heading text-center mt-5">
-              <h5 className="sub-heading" data-aos="fade-down">
-                {" "}
-                Our Newsletter{" "}
-              </h5>
-              <h2
-                className="text-white comon-heading mt-2 mb-3"
-                data-aos="fade-up"
-              >
-                {" "}
-                Subscribe And Ask For Free{" "}
-              </h2>
-            </div>
-            <p
-              className="col-lg-8 mx-auto d-block text-center"
-              data-aos="fade-up"
-            >
-              {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard
-            </p>
-            <form
-              method="get"
-              action="https://oxentictemplates.in/templatemonster/astrology/gm"
-              className="w-100"
-            >
-              <div
-                className="subcribe-section mt-5 col-lg-5 mx-auto d-flex justify-content-center"
-                data-aos="fade-up"
-              >
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Your Email"
-                />
-                <button type="submit" className="subscribe btn">
-                  {" "}
-                  subscribe
-                </button>
-              </div>
-            </form>
           </div>
         </section>
       </main>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
 import axios from "axios";
 import Header from "../../../components/Header/Header";
 import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
@@ -9,15 +8,18 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import imageBG from "../../../assets/images/horocurty03.jpg";
 import SessionType from "../../../components/Popup/SessionType";
 import { useAuth } from "../../../components/Login/Authen";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Profile from "../../../assets/images/profile2.png";
+import Customer from "../../../assets/images/profile1.png";
 
 export default function TarotReaderDetail() {
-  const { id } = useParams();
+  const { id } = useParams(); // Get id from route params
   const { user } = useAuth();
   const [tarotReader, setTarotReader] = useState(null);
   const [feedbacks, setFeedbacks] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedTarotReaderId, setSelectedTarotReaderId] = useState(null);
+  const [averageRating, setAverageRating] = useState(0);
   const [newFeedback, setNewFeedback] = useState({
     rating: 0,
     comments: "",
@@ -50,6 +52,7 @@ export default function TarotReaderDetail() {
           `https://tarot.somee.com/api/Feedbacks/tarotreader/${id}`
         );
         setFeedbacks(response.data);
+        calculateAverageRating(response.data);
       } catch (error) {
         console.error("Error fetching feedback data", error);
       }
@@ -77,20 +80,49 @@ export default function TarotReaderDetail() {
       comments: newFeedback.comments,
       date: new Date().toISOString(),
     };
-    console.log("feedback data", feedbackData);
-    console.log("user", user);
 
     try {
       const response = await axios.post(
         `https://tarot.somee.com/api/Feedbacks`,
         feedbackData
       );
-      console.log("Feedback posted successfully:", response.data);
       setFeedbacks([...feedbacks, response.data]);
       setNewFeedback({ rating: 0, comments: "" });
+      calculateAverageRating([...feedbacks, response.data]);
     } catch (error) {
       console.error("Error posting feedback", error);
     }
+  };
+
+  const calculateAverageRating = (feedbacks) => {
+    if (feedbacks.length === 0) {
+      setAverageRating(0);
+      return;
+    }
+    const totalRating = feedbacks.reduce(
+      (total, feedback) => total + feedback.rating,
+      0
+    );
+    const average = totalRating / feedbacks.length;
+    setAverageRating(average);
+  };
+
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+
+    return (
+      <>
+        {[...Array(fullStars)].map((_, index) => (
+          <i key={`full-${index}`} className="fas fa-star"></i>
+        ))}
+        {halfStar === 1 && <i className="fas fa-star-half-alt"></i>}
+        {[...Array(emptyStars)].map((_, index) => (
+          <i key={`empty-${index}`} className="far fa-star"></i>
+        ))}
+      </>
+    );
   };
 
   if (!tarotReader) {
@@ -126,33 +158,26 @@ export default function TarotReaderDetail() {
               <div className="col-lg-3">
                 <div className="top-pro d-inline-block bg-white p-5 w-100">
                   <figure className="mx-auto d-block">
-                    <img
-                      alt="su"
-                      src="assets/images/spiritual-man-india-traditional-clothing-39495501.jpg"
-                    />
+                    <img alt="ser" src={Profile} />
                   </figure>
 
                   <div className="name-t mt-4">
                     <h2>{tarotReader.fullName}</h2>
 
-                    <h5 className="mt-3">Vedic, Numerology</h5>
-                    <p className="mt-3">
-                      <span>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                      </span>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                    </p>
+                    <h5 className="mt-3" style={{ textAlign: "center" }}>
+                      {tarotReader.kind}
+                    </h5>
+                    <p className="mt-3">{renderStars(averageRating)}</p>
                     <p className="rte mt-3">
                       <span>
-                        <i className="fas fa-dollar-sign"></i>
+                        <i
+                          className="fas fa-money-bill-wave"
+                          style={{ color: "black" }}
+                        ></i>
                       </span>{" "}
-                      10/min
+                      {findLowestPrice(tarotReader.sessionTypes)}
+                      .000+ / buổi
                     </p>
-
-                    <p className="offline">Offline</p>
                   </div>
                 </div>
 
@@ -160,29 +185,18 @@ export default function TarotReaderDetail() {
                   <button
                     onClick={() => openModal(tarotReader.tarotReaderId)}
                     className="btn book-btn"
+                    style={{
+                      color: "#415cfb",
+                      backgroundColor: "white",
+                      fontSize: "18px",
+                    }}
                   >
-                    <i className="fas fa-calendar-alt"></i> Book Me
+                    <i
+                      className="fas fa-calendar-alt"
+                      style={{ color: "#415cfb" }}
+                    ></i>{" "}
+                    Book Me
                   </button>
-                </div>
-                <div className="folow-divd mt-5">
-                  <h5 className="text-white">Follow On</h5>
-                  <span className="mt-3 d-inline-block w-100">
-                    <a className="btn fac">
-                      <span>
-                        <i className="fab fa-facebook-f"></i>
-                      </span>
-                    </a>
-                    <a href="#" className="btn twitterb">
-                      <span>
-                        <i className="fab fa-twitter"></i>
-                      </span>
-                    </a>
-                    <a href="#" className="btn intsga">
-                      <span>
-                        <i className="fab fa-instagram"></i>
-                      </span>
-                    </a>
-                  </span>
                 </div>
               </div>
 
@@ -297,10 +311,7 @@ export default function TarotReaderDetail() {
                                 <div key={index} className="comon-com-div">
                                   <div className="d-lg-flex justify-content-between">
                                     <figure>
-                                      <img
-                                        src="assets/images/testimonials-1-1.jpg"
-                                        alt="user-pic"
-                                      />
+                                      <img src={Customer} alt="user-pic" />
                                     </figure>
                                     <div className="comment-text">
                                       <div className="d-flex align-items-center">
@@ -342,13 +353,16 @@ export default function TarotReaderDetail() {
                           </div>
 
                           <div className="leave-sec-part">
-                            <h2>Bình Luận</h2>
+                            <h2>Đánh Giá</h2>
                             {user ? (
                               <form onSubmit={handleSubmitComment}>
                                 <div className="row">
                                   <div className="col-lg-12 mb-3">
                                     <div className="form-group">
-                                      <div className="stars">
+                                      <div
+                                        className="stars"
+                                        style={{ textAlign: "center" }}
+                                      >
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                           <i
                                             key={rating}
@@ -372,7 +386,7 @@ export default function TarotReaderDetail() {
                                     <div className="form-group">
                                       <textarea
                                         className="form-control"
-                                        placeholder="Message"
+                                        placeholder="Hãy chia sẻ nhận xét cho Tarot Reader này bạn nhé!"
                                         name="comments"
                                         value={newFeedback.comments}
                                         onChange={handleInputChange}
@@ -380,11 +394,14 @@ export default function TarotReaderDetail() {
                                     </div>
                                   </div>
                                   <div className="col-lg-12">
-                                    <div className="form-group">
+                                    <div
+                                      className="form-group"
+                                      style={{ textAlign: "center" }}
+                                    >
                                       <input
                                         type="submit"
                                         className="btn subimt-comment"
-                                        value="Post Comment"
+                                        value="Xác Nhận"
                                       />
                                     </div>
                                   </div>
@@ -416,4 +433,17 @@ export default function TarotReaderDetail() {
       )}
     </div>
   );
+}
+
+function findLowestPrice(sessionTypes) {
+  if (sessionTypes.length === 0) return "";
+
+  let minPrice = sessionTypes[0].price;
+  sessionTypes.forEach((sessionType) => {
+    if (sessionType.price < minPrice) {
+      minPrice = sessionType.price;
+    }
+  });
+
+  return minPrice;
 }

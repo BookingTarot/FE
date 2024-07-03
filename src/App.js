@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/tarotReader" element={<TarotReader />} />
             <Route
               exact
-              path="/TarotReader/:id"
+              path="/tarotReader/:id"
               element={<TarotReaderDetail />}
             />
             <Route exact path="/blog" element={<Blog />} />
