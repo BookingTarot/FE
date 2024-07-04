@@ -5,26 +5,18 @@ import { useAuth } from "./Authen";
 function ProtectedRoute({ element: Component, role, ...rest }) {
   const { user } = useAuth();
 
-  console.log("ProtectedRoute", user);
-
   if (!user) {
     return <Navigate to="/login" />;
   }
 
-  switch (role) {
-    case 1:
-      if (user.roleId === 3) {
-        return <Navigate to="/tarotReaderDashboard" />;
-      }
-      break;
-    case 2:
-      if (user.roleId === 1) {
-        console.log("admin", user.roleId === 1);
-        return <Navigate to="/tarotAdmin" />;
-      }
-      break;
-    default:
+  if (role && user.roleId !== role) {
+    if (user.roleId === 3) {
+      return <Navigate to="/tarotReaderDashboard" />;
+    } else if (user.roleId === 1) {
+      return <Navigate to="/tarotAdmin" />;
+    } else {
       return <Navigate to="/" />;
+    }
   }
 
   return <Component {...rest} />;
