@@ -9,16 +9,20 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const { user } = useAuth();
   const navigate = useNavigate();
 
+  console.log("Confirm ddata", bookingDetails);
+
   const handleConfirm = async () => {
     try {
       const bookingData = {
         customerId: user.customer.customerId, // Assuming user.id is the customer's ID
         tarotReaderId: sessionType.tarotReaderId,
         amount: bookingDetails.price,
-        description: `Booking for ${bookingDetails.sessionTypeName} session`,
+        description: `Đặt lịch cho ${bookingDetails.sessionTypeName}`,
         scheduleId: bookingDetails.schedule,
         sessionTypeId: sessionType.sessionTypeId,
       };
+
+      console.log("Booking Data:", bookingData);
 
       const response = await fetch("https://tarot.somee.com/api/Bookings", {
         method: "POST",
@@ -29,8 +33,11 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to confirm booking");
+        const errorText = await response.text();
+        throw new Error(`Failed to confirm booking: ${errorText}`);
       }
+
+      console.log("Booking confirmed");
 
       // If booking creation is successful, fetch the latest booking ID
       const latestBookingId = await fetchLatestBookingId();
@@ -38,15 +45,25 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
         throw new Error("Failed to retrieve latest booking ID");
       }
 
+      console.log("Latest Booking ID:", latestBookingId);
+
       // Send POST request to create payment link
       const paymentLinkResponse = await createPaymentLink(latestBookingId);
       if (!paymentLinkResponse.ok) {
-        throw new Error("Failed to create payment link");
+        const errorText = await paymentLinkResponse.text();
+        throw new Error(`Failed to create payment link: ${errorText}`);
       }
+
+      console.log("Payment link created");
 
       // Handle payment link response
       const paymentLinkData = await paymentLinkResponse.json();
       const paymentLink = paymentLinkData.url; // Assuming the API returns a paymentUrl
+
+      // Update the schedule status to false
+      await updateScheduleStatus(bookingDetails, sessionType);
+
+      console.log("Schedule status updated");
 
       // Redirect to the payment link or handle as needed
       window.location.href = paymentLink;
@@ -66,7 +83,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const fetchLatestBookingId = async () => {
     try {
       const response = await fetch(
-        `https://tarot.somee.com/api/Bookings?CustomerId=3`,
+        `https://tarot.somee.com/api/Bookings?CustomerId=${user.customer.customerId}`,
         {
           method: "GET",
           headers: {
@@ -115,11 +132,57 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
           }),
         }
       );
-      console.log("response", response);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to create payment link: ${errorText}`);
+      }
+
+      console.log("Payment link response:", response);
+
       return response;
     } catch (error) {
       console.error("Error creating payment link:", error.message);
       return null;
+    }
+  };
+
+  const updateScheduleStatus = async (bookingDetails, sessionType) => {
+    const { schedule } = bookingDetails;
+    const { tarotReaderId } = sessionType;
+    const { date } = bookingDetails;
+    const { endTime } = bookingDetails;
+    const { startTime } = bookingDetails;
+
+    console.log("Updating schedule status for scheduleId:", schedule);
+
+    try {
+      const response = await fetch(
+        `https://tarot.somee.com/api/Schedules/${schedule}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            scheduleId: schedule,
+            tarotReaderId: tarotReaderId,
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+            status: false,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to update schedule status: ${errorText}`);
+      }
+
+      console.log("Schedule status updated successfully");
+    } catch (error) {
+      console.error("Error updating schedule status:", error.message);
     }
   };
 

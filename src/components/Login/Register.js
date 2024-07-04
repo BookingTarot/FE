@@ -23,7 +23,9 @@ const Register = () => {
     email: "",
     password: "",
     address: "",
-    descrription: "Customer Register!",
+    isActive: true,
+    description: "Customer Register!",
+    status: true,
   });
 
   const [otp, setOtp] = useState("");
@@ -106,6 +108,9 @@ const Register = () => {
   };
 
   const handleSubmit = async () => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // Set timeout to 5 seconds
+
     try {
       const response = await fetch(
         "https://tarot.somee.com/api/User/register-customer",
@@ -115,8 +120,12 @@ const Register = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
+          signal: controller.signal,
         }
       );
+
+      clearTimeout(timeoutId);
+
       console.log("form data", formData);
 
       if (response.ok) {
@@ -126,11 +135,20 @@ const Register = () => {
         });
       } else {
         console.error("Registration failed!");
+        console.error("Response status:", response.status);
+        console.error("Response statusText:", response.statusText);
+        const errorText = await response.text();
+        console.error("Response text:", errorText);
         toast.error("Đăng ký tài khoản thất bại!");
       }
     } catch (error) {
-      console.error("Error submitting registration:", error);
-      toast.error("Lỗi đăng ký. Hãy thử lại nhé!");
+      if (error.name === "AbortError") {
+        console.error("Fetch request timed out");
+        toast.error("Yêu cầu đã hết thời gian chờ. Vui lòng thử lại sau.");
+      } else {
+        console.error("Error submitting registration:", error);
+        toast.error("Lỗi đăng ký. Hãy thử lại nhé!");
+      }
     }
   };
 
