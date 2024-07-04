@@ -50,7 +50,7 @@ export default function Login() {
           setTimeout(() => navigate("/TarotReaderDashboard"), 1000);
           break;
         default:
-          navigate("/");
+          navigate("/login");
       }
     } else {
       toast.error("Đăng nhập không thành công!");

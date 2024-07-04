@@ -115,10 +115,10 @@ export default function Footer() {
             <p> Copyright © 2024. All rights reserved.</p>
             <ul>
               <li>
-                <a href="#">
+                <Link href="https://www.facebook.com/profile.php?id=61559836587347">
                   {" "}
                   <i className="fab fa-facebook-f"></i>{" "}
-                </a>
+                </Link>
                 <a href="#" className="mx-2">
                   {" "}
                   <i className="fab fa-twitter"></i>{" "}
