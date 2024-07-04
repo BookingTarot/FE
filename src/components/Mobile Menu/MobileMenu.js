@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./MobileMenu.css"; // Make sure to import your CSS file
 
 export default function MobileMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,7 +10,7 @@ export default function MobileMenu() {
   };
 
   const closeMenu = () => {
-    setMenuOpen(false); // Đóng menu khi click
+    setMenuOpen(false); // Close the menu when a link is clicked
   };
 
   return (
@@ -19,6 +20,8 @@ export default function MobileMenu() {
           menuOpen ? "show" : ""
         }`}
         id="mobile-menu"
+        tabIndex="-1"
+        aria-labelledby="offcanvasRightLabel"
       >
         <div className="offcanvas-header">
           <button type="button" className="close-menu" onClick={toggleMenu}>
@@ -40,7 +43,7 @@ export default function MobileMenu() {
                       <Link
                         className="nav-link"
                         to="/tarotReader"
-                        onClick={closeMenu} // Đóng menu khi click
+                        onClick={closeMenu}
                       >
                         Tarot Reader
                       </Link>
@@ -49,7 +52,7 @@ export default function MobileMenu() {
                       <Link
                         className="nav-link"
                         to="/tarotCard"
-                        onClick={closeMenu} // Đóng menu khi click
+                        onClick={closeMenu}
                       >
                         Bài Tarot
                       </Link>
@@ -58,17 +61,13 @@ export default function MobileMenu() {
                       <Link
                         className="nav-link"
                         to="/zodiac"
-                        onClick={closeMenu} // Đóng menu khi click
+                        onClick={closeMenu}
                       >
                         Cung Hoàng Đạo
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link
-                        className="nav-link"
-                        to="/blog"
-                        onClick={closeMenu} // Đóng menu khi click
-                      >
+                      <Link className="nav-link" to="/blog" onClick={closeMenu}>
                         Blog
                       </Link>
                     </li>
@@ -76,7 +75,7 @@ export default function MobileMenu() {
                       <Link
                         className="nav-link"
                         to="/about"
-                        onClick={closeMenu} // Đóng menu khi click
+                        onClick={closeMenu}
                       >
                         Về Chúng Tôi
                       </Link>
@@ -88,32 +87,27 @@ export default function MobileMenu() {
 
             <ul className="side-media list-unstyled">
               <li>
-                {" "}
-                <a href="#" onClick={closeMenu}>
-                  {" "}
-                  <i className="fab fa-facebook-f"></i>{" "}
-                </a>{" "}
+                <Link
+                  to="https://www.facebook.com/profile.php?id=61559836587347"
+                  onClick={closeMenu}
+                >
+                  <i className="fab fa-facebook-f"></i>
+                </Link>
               </li>
               <li>
-                {" "}
                 <a href="#" onClick={closeMenu}>
-                  {" "}
-                  <i className="fab fa-twitter"></i>{" "}
-                </a>{" "}
+                  <i className="fab fa-twitter"></i>
+                </a>
               </li>
               <li>
-                {" "}
                 <a href="#" onClick={closeMenu}>
-                  {" "}
-                  <i className="fab fa-google-plus-g"></i>{" "}
-                </a>{" "}
+                  <i className="fab fa-google-plus-g"></i>
+                </a>
               </li>
               <li>
-                {" "}
                 <a href="#" onClick={closeMenu}>
-                  {" "}
-                  <i className="fab fa-instagram"></i>{" "}
-                </a>{" "}
+                  <i className="fab fa-instagram"></i>
+                </a>
               </li>
             </ul>
           </div>
