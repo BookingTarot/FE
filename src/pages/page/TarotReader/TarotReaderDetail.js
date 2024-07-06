@@ -138,14 +138,6 @@ export default function TarotReaderDetail() {
         </div>
         <div className="container">
           <h2 className="text-center text-white">Chi Tiết về Tarot Reader</h2>
-          <nav className="mt-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">Trang Chủ</li>
-              <li className="breadcrumb-item active">
-                Chi Tiết về Tarot Reader
-              </li>
-            </ol>
-          </nav>
         </div>
       </section>
       <main className="float-start w-100 body-main">

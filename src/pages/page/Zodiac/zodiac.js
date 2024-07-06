@@ -18,12 +18,6 @@ export default function Zodiac() {
         </div>
         <div className="container">
           <h2 className="text-center text-white"> Tử Vi Mỗi Ngày </h2>
-          <nav className="mt-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">Trang chủ</li>
-              <li className="breadcrumb-item active">Tử Vi Mỗi Ngày</li>
-            </ol>
-          </nav>
         </div>
       </section>
       <main

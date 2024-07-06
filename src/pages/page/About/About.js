@@ -17,12 +17,6 @@ export default function About() {
         </div>
         <div className="container">
           <h2 className="text-center text-white"> Về Chúng Tôi </h2>
-          <nav className="mt-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">Trang chủ</li>
-              <li className="breadcrumb-item active"> Về Chúng Tôi </li>
-            </ol>
-          </nav>
         </div>
       </section>
       <main className="float-start w-100 body-main">
