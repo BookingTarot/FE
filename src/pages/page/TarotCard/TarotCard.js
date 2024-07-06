@@ -22,12 +22,6 @@ export default function TarotCard() {
         </div>
         <div className="container">
           <h2 className="text-center text-white"> Bài Tarot </h2>
-          <nav className="mt-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">Trang chủ</li>
-              <li className="breadcrumb-item active">Bài Tarot</li>
-            </ol>
-          </nav>
         </div>
       </section>
       <main

@@ -17,12 +17,6 @@ export default function Blog() {
         </div>
         <div className="container">
           <h2 className="text-center text-white"> Blog </h2>
-          <nav className="mt-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">Home</li>
-              <li className="breadcrumb-item active"> Blog </li>
-            </ol>
-          </nav>
         </div>
       </section>
       <main
@@ -34,26 +28,7 @@ export default function Blog() {
             <div className="row gy-5 g-lg-5">
               <div className="col-lg-8">
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="listed-bn">
-                    <ul className="list-unstyled d-flex align-items-center justify-content-end">
-                      <li className="ms-0">
-                        <a id="list" className="active">
-                          {" "}
-                          <i className="fas fa-th-list"></i>{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a id="grid">
-                          {" "}
-                          <i className="fas fa-th-large"></i>{" "}
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <h6 className="ms-lg-4 ashow">
-                    {" "}
-                    Showing <b> 1-4 </b> of <b> 13 </b> results{" "}
-                  </h6>
+                  <div className="listed-bn"></div>
                 </div>
 
                 <div id="products" className="mt-4">
