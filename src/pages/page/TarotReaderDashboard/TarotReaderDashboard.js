@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DashboardHeader from "../../../components/Header/DashboardHeader";
 import TarotReaderSchedule from "./TarotReaderSchedule/TarotReaderSchedule";
 import TarotReaderAppointment from "./TarotReaderAppointment/TarotReaderAppointment";
+import TarotReaderSessionType from "./TarotReaderSessionType/TarotReaderSessionType";
 import "./TarotReaderDashboard.css";
 import { useAuth } from "../../../components/Login/Authen";
 
@@ -41,6 +42,14 @@ function TarotReaderDashboard() {
                                     >
                                             <i className="ri-calendar-check-line align-middle navbar-icon"></i> Lịch hẹn
                                         </button>
+                                    </li>
+                                    <li className="navbar-item">
+                                        <button 
+                                        className={`tab-btn ${activeTab === "sessionType" ? "active" : ""}`}
+                                        onClick={() => handleTabClick("sessionType")}
+                                    >
+                                            <i className="ri-calendar-check-line align-middle navbar-icon"></i> Buổi đọc
+                                        </button>
                                     </li>                                    
                                 </ul>
                             </div>
@@ -55,6 +64,11 @@ function TarotReaderDashboard() {
                             )}
                             {activeTab === "appointment" && (
                                 <TarotReaderAppointment      
+                                    user={ user }                             
+                                />
+                            )}
+                            {activeTab === "sessionType" && (
+                                <TarotReaderSessionType      
                                     user={ user }                             
                                 />
                             )}
