@@ -1,4 +1,5 @@
-.title{
+/* Định dạng tiêu đề */
+.title {
     font-size: 50px;    
     font-weight: bold;
     color: rgb(255, 255, 255);
@@ -6,8 +7,7 @@
     justify-content: center;    
 }
 
-/* TarotReaderAppointment.css */
-
+/* Định dạng bảng */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -52,20 +52,20 @@
     font-weight: bold;
 }
 
-/* CSS Paging */
+/* Định dạng phân trang */
 .pagination {
     display: flex;
     justify-content: flex-end; /* Đẩy phân trang sang bên phải */
     list-style-type: none;
     padding: 0;
     margin: 20px 0; /* Khoảng cách trên và dưới */
-  }
-  
-  .pagination li {
+}
+
+.pagination li {
     display: inline;
-  }
-  
-  .pagination li a {
+}
+
+.pagination li a {
     color: black; /* Màu chữ đen */
     padding: 10px 15px;
     text-decoration: none;
@@ -73,18 +73,17 @@
     border-radius: 5px; /* Bo góc cho các trang */
     transition: background-color 0.3s;
     background-color: white; /* Màu nền trắng cho các mục phân trang */
-  }
-  
-  .pagination li a:hover {
+}
+
+.pagination li a:hover {
     background-color: #ddd; /* Màu nền khi hover */
-  }
-  
-  .pagination li.active a {
+}
+
+.pagination li.active a {
     background-color: #007bff; /* Màu nền trang hiện tại */
     color: white; /* Màu chữ trang hiện tại */
-  }
-  
-  .pagination li.disabled a {
+}
+
+.pagination li.disabled a {
     color: grey; /* Màu chữ khi trang bị disable */
-  }
-  
+}
