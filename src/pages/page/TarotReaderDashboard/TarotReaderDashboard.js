@@ -5,6 +5,7 @@ import TarotReaderAppointment from "./TarotReaderAppointment/TarotReaderAppointm
 import TarotReaderSessionType from "./TarotReaderSessionType/TarotReaderSessionType";
 import "./TarotReaderDashboard.css";
 import { useAuth } from "../../../components/Login/Authen";
+import { ToastContainer } from "react-toastify";
 
 function TarotReaderDashboard() {
 
@@ -18,7 +19,8 @@ function TarotReaderDashboard() {
 
     return (  
         <div className="dashboard-container">
-            <DashboardHeader />            
+            <DashboardHeader />
+            <ToastContainer/>
             <section className="bg-dashboard">                            
                 <div className="container-fluid">
                     <div className="row">
