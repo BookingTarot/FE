@@ -34,21 +34,24 @@ export default function Login() {
         localStorage.removeItem("user"); // Xoá thông tin nếu người dùng không chọn Remember me
       }
 
+      console.log("check tarot: ", data.roleId);
+
       switch (data.roleId) {
+        case 1:
+          toast.success("Đăng nhập thành công!");
+          setTimeout(() => navigate("/tarotAdmin"), 1000);
+          break;
         case 2:
-          navigate("/");
+          toast.success("Đăng nhập thành công!");
+          setTimeout(() => navigate("/"), 1000);
           break;
         case 3:
-          navigate("/TarotReaderDashboard");
-          break;
-        case 1:
-          navigate("/tarotAdmin");
+          toast.success("Đăng nhập thành công!");
+          setTimeout(() => navigate("/TarotReaderDashboard"), 1000);
           break;
         default:
-          navigate("/");
+          navigate("/login");
       }
-      toast.success("Đăng nhập thành công!");
-      setTimeout(() => navigate("/"), 1000);
     } else {
       toast.error("Đăng nhập không thành công!");
     }

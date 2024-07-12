@@ -1,28 +1,27 @@
 import "./TarotReaderAppointment.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
 
 function TarotReaderAppointment({ user }) {
   const [appointments, setAppointments] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [sortDirection, setSortDirection] = useState("asc"); // Trạng thái sắp xếp (asc hoặc desc)
+  const appointmentsPerPage = 10; // Số lượng appointments hiển thị trên mỗi trang
   const id = user.tarotReader.tarotReaderId;
 
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get(
-          "https://tarot.somee.com/api/Bookings"
-        );
+        const response = await axios.get("https://tarot.somee.com/api/Bookings");
         const formattedAppointments = response.data.map((appointment) => {
-          const formattedDate = new Date(appointment.date).toLocaleDateString(
-            "en-GB"
-          );
-          const formattedTime = new Date(
-            appointment.startTime
-          ).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+          const formattedDate = new Date(appointment.date).toLocaleDateString("en-GB");
+          const formattedTime = new Date(appointment.startTime).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
           return {
             ...appointment,
             date: formattedDate,
             startTime: formattedTime,
+            dateObject: new Date(appointment.date), // Lưu thêm đối tượng Date để dễ sắp xếp
           };
         });
 
@@ -40,6 +39,28 @@ function TarotReaderAppointment({ user }) {
     fetchAppointments();
   }, [id]);
 
+  const handleSortClick = () => {
+    const newDirection = sortDirection === "asc" ? "desc" : "asc";
+    setSortDirection(newDirection);
+    setAppointments((prevAppointments) =>
+      [...prevAppointments].sort((a, b) => {
+        if (newDirection === "asc") {
+          return new Date(a.dateObject) - new Date(b.dateObject);
+        } else {
+          return new Date(b.dateObject) - new Date(a.dateObject);
+        }
+      })
+    );
+  };
+
+  // Tính toán appointments hiển thị trên trang hiện tại
+  const offset = currentPage * appointmentsPerPage;
+  const currentAppointments = appointments.slice(offset, offset + appointmentsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
   return (
     <div>
       <div className="row">
@@ -51,42 +72,23 @@ function TarotReaderAppointment({ user }) {
             <table className="table mb-0 table-center">
               <thead>
                 <tr>
-                  <th
-                    className="border-bottom p-3"
-                    style={{ minWidth: "50px" }}
-                  >
-                    #
-                  </th>
-                  <th
-                    className="border-bottom p-3"
-                    style={{ minWidth: "180px" }}
-                  >
-                    Tên
-                  </th>
+                  <th className="border-bottom p-3" style={{ minWidth: "50px" }}>#</th>
+                  <th className="border-bottom p-3" style={{ minWidth: "180px" }}>Tên</th>
                   <th className="border-bottom p-3">Tuổi</th>
                   <th className="border-bottom p-3">Giới tính</th>
                   <th className="border-bottom p-3">Số điện thoại</th>
-                  <th
-                    className="border-bottom p-3"
-                    style={{ minWidth: "150px" }}
-                  >
-                    Ngày
+                  <th className="border-bottom p-3" style={{ minWidth: "150px" }} onClick={handleSortClick}>
+                    Ngày {sortDirection === "asc" ? "↑" : "↓"}
                   </th>
                   <th className="border-bottom p-3">Thời gian</th>
                   <th className="border-bottom p-3">Gói dịch vụ</th>
-                  <th
-                    className="border-bottom p-3"
-                    style={{ minWidth: "150px" }}
-                  >
-                    Trạng thái
-                  </th>
+                  <th className="border-bottom p-3" style={{ minWidth: "150px" }}>Trạng thái</th>
                 </tr>
               </thead>
-
               <tbody>
-                {appointments.map((appointment, index) => (
+                {currentAppointments.map((appointment, index) => (
                   <tr key={index}>
-                    <th className="p-3">{index + 1}</th>
+                    <th className="p-3">{offset + index + 1}</th>
                     <td className="p-3">{appointment.customerName}</td>
                     <td className="p-3">{appointment.age}</td>
                     <td className="p-3">{appointment.gender ? "Nữ" : "Nam"}</td>
@@ -100,11 +102,7 @@ function TarotReaderAppointment({ user }) {
                         <button className="btn btn-danger">Hủy</button>
                       </td>
                     ) : (
-                      <td
-                        className={`p-3 ${
-                          appointment.status ? "true" : "false"
-                        }`}
-                      >
+                      <td className={`p-3 ${appointment.status ? "true" : "false"}`}>
                         {appointment.status ? "Xác nhận" : "Hủy"}
                       </td>
                     )}
@@ -115,6 +113,19 @@ function TarotReaderAppointment({ user }) {
           </div>
         </div>
       </div>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={Math.ceil(appointments.length / appointmentsPerPage)}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={2}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        subContainerClassName={"pages pagination"}
+        activeClassName={"active"}
+      />
     </div>
   );
 }

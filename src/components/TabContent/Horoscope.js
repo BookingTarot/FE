@@ -1,4 +1,5 @@
 import React from "react";
+import "../TabContent/Horoscope.css";
 
 export default function Horoscope() {
   return (
@@ -92,7 +93,7 @@ export default function Horoscope() {
 
           <a
             href="/zodiac"
-            className="btn btn-more01 d-table mx-auto text-center"
+            className="btn btn-more01 d-table mx-auto text-center colorWhite"
             data-aos="fade-up"
           >
             <span> Xem thêm Tử Vi </span>

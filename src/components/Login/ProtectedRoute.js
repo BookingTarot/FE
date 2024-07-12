@@ -1,6 +1,6 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from './Authen';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "./Authen";
 
 function ProtectedRoute({ element: Component, role, ...rest }) {
   const { user } = useAuth();
@@ -9,8 +9,14 @@ function ProtectedRoute({ element: Component, role, ...rest }) {
     return <Navigate to="/login" />;
   }
 
-  if (user.roleId !== role) {
-    return <Navigate to="/" />;
+  if (role && user.roleId !== role) {
+    if (user.roleId === 3) {
+      return <Navigate to="/tarotReaderDashboard" />;
+    } else if (user.roleId === 1) {
+      return <Navigate to="/tarotAdmin" />;
+    } else {
+      return <Navigate to="/" />;
+    }
   }
 
   return <Component {...rest} />;

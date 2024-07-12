@@ -1,0 +1,4 @@
+/* Add this to your CSS file */
+.mobile-menu-div.show + .modal-backdrop {
+    display: none;
+  }
