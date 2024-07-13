@@ -20,8 +20,14 @@ export default function Schedule({ onClose, sessionType }) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setScheduleData(data);
-        filterScheduleData(data, sessionType.duration);
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const filteredData = data.filter(
+          (schedule) => new Date(schedule.date) >= today
+        );
+        setScheduleData(filteredData);
+        filterScheduleData(filteredData, sessionType.duration);
       } catch (error) {
         setError(error.message);
       }

@@ -138,11 +138,11 @@ export default function SessionType({
                               }}
                             ></i>
                           </strong>{" "}
-                          {sessionType.duration} minutes
+                          {sessionType.duration} phút
                         </p>
-                        <p style={{ textAlign: "start" }}>
+                        {/* <p style={{ textAlign: "start" }}>
                           <strong>Mô tả:</strong> {sessionType.description}
-                        </p>
+                        </p> */}
                         <p style={{ textAlign: "start" }}>
                           <strong>Giá:</strong> {sessionType.price}.000đ
                         </p>
