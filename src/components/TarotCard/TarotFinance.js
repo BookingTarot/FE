@@ -19,7 +19,7 @@ export default function TarotFinance() {
               Phong cảnh bên dưới bàn tay đại diện cho chủ đề chính của suit.
               Trong Ace of Pentacles, cảnh quan...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export default function TarotFinance() {
               vàng chạm trổ những cây ăn quả, dê, thiên thần, và các biểu tượng
               khác của thành công vật chất..{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export default function TarotFinance() {
               cảnh. Trong lá này, đôi vợ chồng nghèo đi bộ trên tuyết, băng qua
               cửa kính rực rỡ của một nhà thờ. Nhà thờ là...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function TarotFinance() {
               cách xa quê nhà. Ông giữ chặt pentacles hoặc đồng tiền của mình
               trong một tư thế phòng...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function TarotFinance() {
               sức mạnh, ổn định, kỷ luật, tin cậy và kiểm soát. Ông là một người
               cha thích chăm sóc người khác thông qua việc...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
       </div>

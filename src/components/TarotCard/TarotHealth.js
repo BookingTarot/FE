@@ -19,7 +19,7 @@ export default function TarotHealth() {
               thích. Nhưng theo đuổi thứ mình thích chưa hẳn đã là điều dễ dàng
               với bạn, vậy nên nhiều khi bạn hay...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export default function TarotHealth() {
               những cá nhân khác trong lĩnh vực của bạn. Và có thể nói rằng bạn
               đang đi làm là vì tiền...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export default function TarotHealth() {
               tượng tốt với sếp và đồng nghiệp. Bạn mong chờ một tương lai sẽ có
               được sự thăng tiến với lộ trình rõ ràng...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function TarotHealth() {
               hoàng tiến vào thành Roma. Ông đã đánh bại kẻ thù và thu về nhiều
               chiến lợi phẩm và đất đai...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function TarotHealth() {
               tiền. Anh ta đã hoàn thành được sáu đồng và có một đồng nữa đang
               sắp hoàn thành...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
       </div>

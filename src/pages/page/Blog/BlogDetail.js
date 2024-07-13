@@ -16,20 +16,17 @@ export default function BlogDetail() {
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
         <div className="container">
-          <h2 className="text-center text-white"> Blog details </h2>
-          <nav className="mt-4">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">Home</li>
-              <li className="breadcrumb-item active"> Blog details </li>
-            </ol>
-          </nav>
+          <h2 className="text-center text-white">
+            {" "}
+            Giới Thiệu Các Bộ Bài Tarot Nổi Tiếng{" "}
+          </h2>
         </div>
       </section>
       <main className="float-start w-100 body-main">
         <section className="blogs-info-div d-inline-block w-100 my-5">
           <div className="container">
             <div className="row gy-5 g-lg-5">
-              <div className="col-lg-8">
+              <div className="col-lg-12">
                 <div className="left-details-info">
                   <figure className="moni">
                     <img
@@ -41,281 +38,333 @@ export default function BlogDetail() {
                     <ul className="list-unstyled d-flex">
                       <li>
                         {" "}
-                        <i className="far fa-user"></i> By Author{" "}
+                        <i className="far fa-user"></i> Bởi Admin{" "}
                       </li>
                       <li>
                         {" "}
-                        <i className="far fa-calendar-alt"></i> Oct 12, 2021{" "}
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="far fa-comment"></i> 2 comments{" "}
+                        <i className="far fa-calendar-alt"></i> 01 Tháng 7 2024{" "}
                       </li>
                     </ul>
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      {" "}
-                      <i className="fas fa-share-alt"></i> Share
-                    </a>
                   </div>
-                  <h1 className="mt-5">
-                    {" "}
-                    Donec eu lectus convallis, ornare ligula eu, hendrerit
-                    tortor.{" "}
-                  </h1>
+                  <h1 className="mt-5"> Giới Thiệu </h1>
 
-                  <p className="mt-4">
+                  <p
+                    className="mt-4"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
                     {" "}
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
+                    Tarot đã trở thành một công cụ phổ biến cho việc tiên đoán
+                    và tự khám phá bản thân. Với nhiều bộ bài tarot khác nhau,
+                    mỗi bộ đều mang những nét độc đáo và phong cách riêng. Dưới
+                    đây, chúng tôi sẽ giới thiệu các bộ bài tarot nổi tiếng
+                    nhất, giúp bạn có cái nhìn tổng quan và lựa chọn bộ bài phù
+                    hợp với mình.
                   </p>
 
-                  <div className="oqute d-lg-flex align-items-center w-100 p-5 my-5">
-                    <span>
-                      {" "}
-                      <i className="fas fa-quote-right"></i>{" "}
-                    </span>
-                    <h2 className="ms-5">
-                      {" "}
-                      Grursus mal suada faci lisis Lorem ipsum dolarorit more a
-                      ametion the is consectetur elit. Vesti at bulum nec odio
-                      aea the dumm more ipsumm ipsum the consectetur elit.
-                    </h2>
-                  </div>
+                  <h1 className="mt-5"> 1. Rider-Waite Tarot </h1>
 
-                  <p className="mt-3">
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
                     {" "}
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. Many desktop publishing packages and web
-                    page editors now use Lorem Ipsum as their default model
-                    text, and a search for 'lorem ipsum' will uncover many web
-                    sites still in their infancy. Various versions have evolved
-                    over the years, sometimes by accident, sometimes on purpose
-                    (injected humour and the like).
+                    Nguồn gốc: Được thiết kế bởi A.E. Waite và vẽ bởi Pamela
+                    Colman Smith vào năm 1909.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Đặc điểm:
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Hình ảnh chi tiết, dễ hiểu.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Phù hợp cho cả người mới bắt đầu và những người đã có kinh
+                    nghiệm.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Ý nghĩa: Các lá bài của Rider-Waite thường được sử dụng để
+                    giải thích các ý nghĩa chuẩn của tarot, làm nền tảng cho
+                    nhiều bộ bài khác.
                   </p>
 
-                  <div className="comment-sec-part">
-                    <h2> Comments</h2>
-                    <div className="comon-com-div">
-                      <div className="d-lg-flex justify-content-between">
-                        <figure>
-                          <img
-                            src="assets/images/testimonials-1-1.jpg"
-                            alt="user-pic"
-                          />
-                        </figure>
-                        <div className="comment-text">
-                          <div className="d-flex align-items-center">
-                            <h5 className="mb-0"> Jone due </h5>{" "}
-                            <span className="d-inline ms-3">
-                              {" "}
-                              Oct 12 ,2021{" "}
-                            </span>
-                          </div>
+                  <h1 className="mt-5"> 2. Thoth Tarot</h1>
 
-                          <p>
-                            {" "}
-                            Contrary to popular belief, Lorem Ipsum is not
-                            simply random text. It has roots in a piece of
-                            classical Latin literature from 45 BC, making it
-                            over 2000 years old. Richard McClintock.{" "}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="comon-com-div d-inline-block w-100">
-                      <div className="d-lg-flex justify-content-between">
-                        <figure>
-                          <img
-                            src="assets/images/istockphoto-1277996375-612x612.jpg"
-                            alt="user-pic"
-                          />
-                        </figure>
-                        <div className="comment-text">
-                          <div className="d-flex align-items-center">
-                            <h5 className="mb-0"> Jone due </h5>{" "}
-                            <span className="d-inline ms-3">
-                              {" "}
-                              Oct 12 ,2021{" "}
-                            </span>
-                          </div>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Nguồn gốc: Được thiết kế bởi Aleister Crowley và vẽ bởi Lady
+                    Frieda Harris vào giữa thế kỷ 20.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Đặc điểm:
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Hình ảnh phức tạp, đa dạng màu sắc.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Tập trung vào các yếu tố huyền bí và tâm linh.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Ý nghĩa: Thoth Tarot yêu cầu người dùng phải có kiến thức
+                    sâu rộng về tarot và các hệ thống huyền học khác.
+                  </p>
 
-                          <p>
-                            {" "}
-                            Contrary to popular belief, Lorem Ipsum is not
-                            simply random text. It has roots in a piece of
-                            classical Latin literature from 45 BC, making it
-                            over 2000 years old. Richard McClintock.{" "}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="leave-sec-part">
-                    <h2> Leave a Comment </h2>
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Full Name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Email"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="form-group">
-                          <textarea
-                            className="form-control"
-                            placeholder="Message"
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="form-group">
-                          <input
-                            type="submit"
-                            className="btn subimt-comment"
-                            value="Post Comment"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  <h1 className="mt-5"> 3. Tarot de Marseille</h1>
 
-              <div className="col-lg-4">
-                <div className="right-comon-linst05">
-                  <h3> Categories </h3>
-                  <ul className="mt-5">
-                    <li>
-                      {" "}
-                      <a href="#"> Pellentesque </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> Morbi viverra </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> scelerisque </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> Vestibulum </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> Pellentesque </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> ultricies </a>{" "}
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="#"> scelerisque </a>{" "}
-                    </li>
-                  </ul>
-                </div>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Nguồn gốc: Xuất hiện từ thế kỷ 15 tại Pháp.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Đặc điểm:
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Hình ảnh đơn giản, cổ điển.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Là một trong những bộ bài tarot cổ xưa nhất.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Ý nghĩa: Tarot de Marseille được ưa chuộng bởi những người
+                    muốn tìm hiểu tarot từ góc nhìn lịch sử và truyền thống.
+                  </p>
 
-                <div className="right-comon-linst05 mt-5">
-                  <h3 className="mb-5"> Recent Post </h3>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img
-                        alt="gmh"
-                        src="assets/images/numerology-concept-still-life.jpg"
-                      />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Morbi vitae felis eget turpis</h5>
-                    </div>
-                  </a>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img alt="gmh" src="assets/images/moon-phasing1.png" />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Sed et sem at risus consectetur</h5>
-                    </div>
-                  </a>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img alt="gmh" src="assets/images/imag-tarot_zen.jpg" />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Nullam mattis nisl eget </h5>
-                    </div>
-                  </a>
-                  <a href="#" className="d-flex post-cmonk align-items-center">
-                    <div className="img-small01">
-                      <img
-                        alt="gmh"
-                        src="assets/images/tengyart-VgijAV-e97Y-unsplash.jpg"
-                      />
-                    </div>
-                    <div className="right-details-yui">
-                      <p> 16 jan, 2023 </p>
-                      <h5>Vestibulum feugiat lorem</h5>
-                    </div>
-                  </a>
-                </div>
+                  <h1 className="mt-5"> 4. Wild Unknown Tarot</h1>
 
-                <div className="right-comon-linst05 tabs-links mt-5">
-                  <h3 className="mb-5"> Tags </h3>
-                  <ul>
-                    <li>
-                      <a href="#" className="btn">
-                        {" "}
-                        Vestibulum{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Morbi{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Curabitur{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Nullam{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Pellentesque{" "}
-                      </a>
-                      <a href="#" className="btn">
-                        {" "}
-                        Nullam{" "}
-                      </a>
-                    </li>
-                  </ul>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Nguồn gốc: Được tạo ra bởi nghệ sĩ Kim Krans vào năm 2012.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Đặc điểm:
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Hình ảnh nghệ thuật, đậm chất thiên nhiên.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Phù hợp với những người yêu thích nghệ thuật và thiên
+                    nhiên.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Ý nghĩa: Bộ bài này giúp kết nối người dùng với tự nhiên và
+                    các yếu tố nguyên thủy.
+                  </p>
+
+                  <h1 className="mt-5"> 5. Modern Witch Tarot</h1>
+
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Nguồn gốc: Được thiết kế bởi Lisa Sterle vào năm 2019.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Đặc điểm:
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Hình ảnh hiện đại, phản ánh văn hóa đương đại.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    - Phù hợp với người trẻ tuổi và những người muốn tìm kiếm sự
+                    kết nối với thế giới hiện đại.
+                  </p>
+                  <p
+                    className="mt-3"
+                    style={{
+                      color: "white",
+                      textAlign: "start",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {" "}
+                    Ý nghĩa: Modern Witch Tarot mang lại góc nhìn mới mẻ và hiện
+                    đại cho tarot, phù hợp với thế hệ trẻ.
+                  </p>
                 </div>
               </div>
             </div>
@@ -329,14 +378,6 @@ export default function BlogDetail() {
       {/* <!-- mobile menu --> */}
 
       <MobileMenu />
-
-      {/* 
-<!-- login Modal --> */}
-      <Login />
-
-      {/* <!-- register Modal --> */}
-
-      <Register />
     </div>
   );
 }

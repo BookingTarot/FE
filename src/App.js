@@ -17,6 +17,9 @@ import { AuthProvider } from "./components/Login/Authen";
 import ProtectedRoute from "./components/Login/ProtectedRoute";
 import CustEditInfor from "./pages/page/CustomerInfor/CustEditInfor";
 import CustomerBooking from "./pages/page/CustomerInfor/CustomerBooking";
+import BlogDetail1 from "./pages/page/Blog/BLogDetail1";
+import BlogDetail2 from "./pages/page/Blog/BlogDetail2";
+import BlogDetail3 from "./pages/page/Blog/BlogDetail3";
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
             />
             <Route exact path="/blog" element={<Blog />} />
             <Route exact path="/blogDetail" element={<BlogDetail />} />
+            <Route exact path="/blogDetail1" element={<BlogDetail1 />} />
+            <Route exact path="/blogDetail2" element={<BlogDetail2 />} />
+            <Route exact path="/blogDetail3" element={<BlogDetail3 />} />
             <Route exact path="/zodiac" element={<Zodiac />} />
             <Route exact path="/tarotCard" element={<TarotCard />} />
             <Route

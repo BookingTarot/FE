@@ -187,7 +187,7 @@ export default function TarotReaderDetail() {
                       className="fas fa-calendar-alt"
                       style={{ color: "#415cfb" }}
                     ></i>{" "}
-                    Book Me
+                    Đặt Lịch
                   </button>
                 </div>
               </div>
@@ -223,11 +223,12 @@ export default function TarotReaderDetail() {
                               {tarotReader.description}
                             </p>
                             <h2 className="mt-5" style={{ textAlign: "start" }}>
-                              Experience
+                              Kinh nghiệm
+                              <p style={{ textAlign: "start" }}>
+                                {tarotReader.experience}
+                              </p>
                             </h2>
-                            <p style={{ textAlign: "start" }}>
-                              Công việc, tình yêu
-                            </p>
+                            <p style={{ textAlign: "start" }}></p>
                           </div>
                         </div>
                       </div>

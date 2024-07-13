@@ -16,7 +16,7 @@ export default function TarotLove() {
               ràng. Theo đó, quân bài này cho thấy bạn và người ấy mới chỉ bắt
               đầu cảm mến nhau...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -35,7 +35,7 @@ export default function TarotLove() {
               chỉ có bạn dành tình cảm cho người ấy. Mặt khác, còn có rất nhiều
               đối tượng đang săn đón...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export default function TarotLove() {
               bạn đã rất mệt mỏi. Phải chăng vì chưa thấu hiểu nên cả hai thường
               xuyên cãi vã? Nếu tình trạng kể trên tiếp diễn...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ export default function TarotLove() {
               bị bỏ rơi. Thậm chí có người còn hoảng loạn vì nhận ra người ấy
               không quan tâm và tôn trọng mình như khi...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function TarotLove() {
               bài cho thấy tình cảm của người ấy dành cho bạn đang rất cuồng
               nhiệt, dạt dào.{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default function TarotLove() {
               thích. Nhưng theo đuổi thứ mình thích chưa hẳn đã là điều dễ dàng
               với bạn, vậy nên nhiều khi bạn hay...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -130,7 +130,7 @@ export default function TarotLove() {
               những cá nhân khác trong lĩnh vực của bạn. Và có thể nói rằng bạn
               đang đi làm là vì tiền...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -149,7 +149,7 @@ export default function TarotLove() {
               tượng tốt với sếp và đồng nghiệp. Bạn mong chờ một tương lai sẽ có
               được sự thăng tiến với lộ trình rõ ràng...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -168,7 +168,7 @@ export default function TarotLove() {
               hoàng tiến vào thành Roma. Ông đã đánh bại kẻ thù và thu về nhiều
               chiến lợi phẩm và đất đai...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -187,7 +187,7 @@ export default function TarotLove() {
               tiền. Anh ta đã hoàn thành được sáu đồng và có một đồng nữa đang
               sắp hoàn thành...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -206,7 +206,7 @@ export default function TarotLove() {
               cảm mà người bị chưa nhận ra hay chưa giải quyết được. Hãy khuyên
               khách hàng của bạn tìm...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -225,7 +225,7 @@ export default function TarotLove() {
               bản thân tiêu cực. Mất ngủ là hậu quả của căng thẳng và lo âu và
               những lời văng vẳng trong đầu về...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -241,7 +241,7 @@ export default function TarotLove() {
               thể bao gồm những thứ như chất kích thích, thức uống có cồn và
               tình dục, hoặc những trường hợp như...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -260,7 +260,7 @@ export default function TarotLove() {
               đến triệu chứng Lưỡng cực hoặc vấn đề tâm lý khác có liên quan đến
               cơ thể hay sự cân bằng trong não bộ...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -276,7 +276,7 @@ export default function TarotLove() {
               quả của một thay đổi lớn trong cuộc đời mà người ta không ngờ đến
               hoặc quá đột ngột...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -295,7 +295,7 @@ export default function TarotLove() {
               Phong cảnh bên dưới bàn tay đại diện cho chủ đề chính của suit.
               Trong Ace of Pentacles, cảnh quan...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -314,7 +314,7 @@ export default function TarotLove() {
               vàng chạm trổ những cây ăn quả, dê, thiên thần, và các biểu tượng
               khác của thành công vật chất..{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -333,7 +333,7 @@ export default function TarotLove() {
               cảnh. Trong lá này, đôi vợ chồng nghèo đi bộ trên tuyết, băng qua
               cửa kính rực rỡ của một nhà thờ. Nhà thờ là...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -352,7 +352,7 @@ export default function TarotLove() {
               cách xa quê nhà. Ông giữ chặt pentacles hoặc đồng tiền của mình
               trong một tư thế phòng...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -371,7 +371,7 @@ export default function TarotLove() {
               sức mạnh, ổn định, kỷ luật, tin cậy và kiểm soát. Ông là một người
               cha thích chăm sóc người khác thông qua việc...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
       </div>
