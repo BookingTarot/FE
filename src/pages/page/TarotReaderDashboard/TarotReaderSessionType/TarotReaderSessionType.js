@@ -1,6 +1,7 @@
 import "./TarotReaderSessionType.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function TarotReaderSessionType({ user }) {
   const [sessions, setSessions] = useState([]);
@@ -44,6 +45,7 @@ function TarotReaderSessionType({ user }) {
           session.sessionTypeId === editingSession.sessionTypeId ? updatedSession : session
         )
       );
+      toast.success("Sửa thành công!");
       setEditingSession(null);
     } catch (error) {
       if (error.response) {

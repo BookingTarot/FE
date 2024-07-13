@@ -8,6 +8,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./TarotReaderSchedule.css";
+import { toast } from "react-toastify";
 
 const hours = Array.from({ length: 48 }, (_, i) => {
   const hour = Math.floor(i / 2)
@@ -122,6 +123,7 @@ function TarotReaderSchedule({ user }) {
           status: true,
         });
       }
+      toast.success("Đăng thành công!");
       await fetchTarotReaders();
       handleClose();
     } catch (error) {
