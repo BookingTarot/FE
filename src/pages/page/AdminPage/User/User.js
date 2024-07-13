@@ -4,10 +4,10 @@ import { Button, InputGroup, FormControl, Modal, Form } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API = "https://tarot.somee.com/api/User";
-// const API = "https://localhost:7218/api/User";
-const readerAPI = "https://tarot.somee.com/api/TarotReader";
-// const readerAPI = "https://localhost:7218/api/TarotReader";
+// const API = "https://tarot.somee.com/api/User";
+const API = "https://localhost:7218/api/User";
+// const readerAPI = "https://tarot.somee.com/api/TarotReader";
+const readerAPI = "https://localhost:7218/api/User/register-tarotreader";
 
 export default function User() {
   const [users, setUsers] = useState([]);
@@ -18,11 +18,19 @@ export default function User() {
 
   const [newReader, setNewReader] = useState({
     userId: "",
+    lastName: "",
+    firstName: "",
+    dateOfBirth: "",
+    gender: "",
+    email: "",
+    password: "",
+    address: "",
     introduction: "",
     description: "",
     experience: "",
     kind: "",
-    image: Uint8Array,
+    image: "",
+    isActive: true,
     status: true,
   });
 
@@ -89,16 +97,18 @@ export default function User() {
   };
 
   const convertImageToByteArray = (file) => {
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsArrayBuffer(file);
-      reader.onload = () => {
-        const arrayBuffer = reader.result;
-        const bytes = new Uint8Array(arrayBuffer);
-        resolve(Array.from(bytes));
-      };
-      reader.onerror = (error) => reject(error);
-    })
+    return new Promise((resolve, reject) => {
+      try {
+        const reader = new FileReader();
+        reader.onload = () => {
+          resolve(reader.result.split(',')[1]); // Chỉ lấy phần Base64 sau dấu phẩy
+        };
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file); // Đọc tệp như một Base64 string
+      } catch (error) {
+        reject(error);
+      }
+    });
   };
 
   const handleImageChange = (file) => {
@@ -106,28 +116,29 @@ export default function User() {
   };
 
   const handleCreateReader = async () => {
-    const imageFile = newReader.image;
-    if (!imageFile) {
-      alert("Please select an image.");
-      return;
-    }
-
-    const imageByteArray = await convertImageToByteArray(imageFile);
-
-    const selectedUser = selectedRows[0];
-
-    const newReaderData = {
-      userId: selectedUser.userId,
-      introduction: newReader.introduction,
-      description: newReader.description,
-      experience: newReader.experience,
-      kind: newReader.kind,
-      image: imageByteArray,
-      status: newReader.status,
-    };
-    console.log("Data sent to API:", newReaderData);
-
     try {
+      const imageFile = newReader.image;
+      let imageByteArray = "";
+
+      if (imageFile instanceof File) {
+        imageByteArray = await convertImageToByteArray(imageFile);
+      } else {
+        imageByteArray = imageFile;
+      }
+
+      const selectedUser = selectedRows[0];
+
+      const newReaderData = {
+        userId: selectedUser.userId,
+        introduction: newReader.introduction,
+        description: newReader.description,
+        experience: newReader.experience,
+        kind: newReader.kind,
+        image: imageByteArray,
+        status: newReader.status,
+      };
+      console.log("Data sent to API:", newReaderData);
+
       const res = await fetch(readerAPI, {
         method: "POST",
         headers: {
@@ -252,10 +263,10 @@ export default function User() {
         </InputGroup>
         <div className="d-flex">
           <Button variant="primary" className="me-2" onClick={() => setShowReaderModal(true)}>
-            <i className="bi bi-person-plus-fill fs-4"></i>
+            Thêm Tài Khoản
           </Button>
           <Button variant="danger" className="me-2" onClick={handleDelete}>
-            <i className="bi bi-trash3-fill fs-4"></i>
+            Xóa Tài Khoản
           </Button>
         </div>
       </div>
@@ -272,7 +283,7 @@ export default function User() {
 
       <Modal show={showReaderModal} onHide={() => setShowReaderModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Create Tarot Reader</Modal.Title>
+          <Modal.Title>Thêm Tarot Reader</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -287,16 +298,17 @@ export default function User() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Image</Form.Label>
+              <Form.Label>Ảnh Đại Diện</Form.Label>
               <Form.Control
                 type="file"
                 onChange={(e) => handleImageChange(e.target.files[0])}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Introduction</Form.Label>
+              <Form.Label>Giới Thiệu</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
+                row={3}
                 value={newReader.introduction}
                 onChange={(e) =>
                   setNewReader({ ...newReader, introduction: e.target.value })
@@ -304,9 +316,10 @@ export default function User() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Mô Tả</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
+                row={3}
                 value={newReader.description}
                 onChange={(e) =>
                   setNewReader({ ...newReader, description: e.target.value })
@@ -314,7 +327,7 @@ export default function User() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Experience</Form.Label>
+              <Form.Label>Kinh Nghiệm</Form.Label>
               <Form.Control
                 type="text"
                 value={newReader.experience}
@@ -324,7 +337,7 @@ export default function User() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Kind</Form.Label>
+              <Form.Label>Thể Loại</Form.Label>
               <Form.Control
                 type="text"
                 value={newReader.kind}
@@ -336,21 +349,25 @@ export default function User() {
             <Form.Group className="mb-3">
               <Form.Label>Status</Form.Label>
               <Form.Control
-                type="text"
+                as="select"
+                name="status"
                 value={newReader.status}
                 onChange={(e) =>
                   setNewReader({ ...newReader, status: e.target.value })
                 }
-              />
+              >
+              <option value={true}>Available</option>
+              <option value={false}>Pending</option>
+            </Form.Control>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowReaderModal(false)}>
-            Close
+            Thoát
           </Button>
           <Button variant="primary" onClick={handleCreateReader}>
-            Create Reader
+            Thêm Mới Tarot Reader
           </Button>
         </Modal.Footer>
       </Modal>

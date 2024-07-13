@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import { Button, InputGroup, FormControl } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API = "https://localhost:7218/api/Bookings";
+const API = "https://tarot.somee.com/api/Bookings";
 
 export default function Activity() {
   const [bookings, setBookings] = useState([]);
