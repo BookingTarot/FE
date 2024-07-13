@@ -84,14 +84,14 @@ export default function TarotReader() {
     let sortedReaders = [...filteredReaders];
 
     switch (years) {
-      case "lessThan1":
+      case "lessThan5":
         sortedReaders = sortedReaders.filter(
-          (reader) => parseInt(reader.experience, 10) < 1
+          (reader) => parseInt(reader.experience, 10) < 5
         );
         break;
-      case "moreThan1":
+      case "moreThan5":
         sortedReaders = sortedReaders.filter(
-          (reader) => parseInt(reader.experience, 10) >= 1
+          (reader) => parseInt(reader.experience, 10) >= 5
         );
         break;
       default:
@@ -343,17 +343,17 @@ export default function TarotReader() {
                         <li>
                           <button
                             className="dropdown-item"
-                            onClick={() => handleSortByExperience("lessThan1")}
+                            onClick={() => handleSortByExperience("lessThan5")}
                           >
-                            Ít hơn 1 năm
+                            Ít hơn 5 năm
                           </button>
                         </li>
                         <li>
                           <button
                             className="dropdown-item"
-                            onClick={() => handleSortByExperience("moreThan1")}
+                            onClick={() => handleSortByExperience("moreThan5")}
                           >
-                            Hơn 1 năm
+                            Hơn 5 năm
                           </button>
                         </li>
                       </ul>
@@ -404,7 +404,7 @@ export default function TarotReader() {
                                 <h5> {reader.kind} </h5>
                                 <p style={{ fontSize: "14px" }}>
                                   {" "}
-                                  Exp: {reader.experience}{" "}
+                                  Kinh Nghiệm: {reader.experience}{" "}
                                 </p>
                               </div>
                             </div>
@@ -450,7 +450,7 @@ export default function TarotReader() {
                                     }}
                                   ></i>
                                   {findLowestPrice(reader.sessionTypes)}
-                                  .000+ / buổi
+                                  .000+ VNĐ / buổi
                                 </p>
                               </div>
                             )}
@@ -459,7 +459,7 @@ export default function TarotReader() {
                               onClick={() => handleBookMe(reader.tarotReaderId)}
                               className="btn btn-comij-call"
                             >
-                              Book Me
+                              Đặt Lịch
                             </Btn>
                           </div>
                         </div>
@@ -467,7 +467,7 @@ export default function TarotReader() {
                     ))}
                   </div>
 
-                  <nav className="my-5 d-flex justify-content-end">
+                  {/* <nav className="my-5 d-flex justify-content-end">
                     <ul className="pagination">
                       <li className="page-item disabled">
                         <span className="page-link">Previous</span>
@@ -487,7 +487,7 @@ export default function TarotReader() {
                         </a>
                       </li>
                     </ul>
-                  </nav>
+                  </nav> */}
                 </div>
               </div>
             </div>

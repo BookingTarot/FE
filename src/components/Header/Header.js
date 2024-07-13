@@ -76,7 +76,7 @@ export default function Header() {
                         </svg>
                       </span>
                       <span>
-                        Chăm Sóc Khách Hàng
+                        Liên Hệ Hỗ Trợ
                         <b className="d-block">032 8026 926</b>
                       </span>
                     </div>

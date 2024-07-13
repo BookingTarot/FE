@@ -31,7 +31,7 @@ export default function Footer() {
                   <li>
                     {" "}
                     <i className="fas fa-paper-plane"></i>{" "}
-                    bookingtarot@gmail.com
+                    tellorybooking@gmail.com
                   </li>
                   <li>
                     {" "}

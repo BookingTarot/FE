@@ -9,6 +9,7 @@ import {
   Label,
   Input,
 } from "reactstrap";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
@@ -95,6 +96,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
       try {
         const response = await axios.put(`https://tarot.somee.com/api/TarotReader/`, updatedTarotReaderData);
         console.log("Update successful:", response.data);
+        toast.success('Cập nhập thành công!');
       } catch (error) {
         if (error.response) {
           // Server returned an error response
@@ -120,7 +122,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
     setPasswordVisible(!passwordVisible);
   };
 
-  return (
+  return (    
     <Modal isOpen={isOpen} toggle={toggle}>
       <ModalHeader toggle={toggle}>Update Information</ModalHeader>
       <ModalBody>

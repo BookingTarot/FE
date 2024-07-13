@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../../../components/Header/Header";
-import Register from "../../../components/Login/Register";
-import Login from "../../../components/Login/Login";
 import MobileMenu from "../../../components/Mobile Menu/MobileMenu";
 import Footer from "../../../components/Footer/Footer";
+import { Link } from "react-router-dom";
+import "./Blog.css";
 
 export default function Blog() {
   return (
@@ -23,19 +23,23 @@ export default function Blog() {
         className="float-start w-100 body-main"
         style={{ backgroundColor: "#0c071c" }}
       >
-        <section className="blogs-info-div d-inline-block w-100 my-5">
+        <section
+          className="blogs-info-div d-inline-block w-100 my-5"
+          style={{ backgroundColor: "#0c071c" }}
+        >
           <div className="container">
             <div className="row gy-5 g-lg-5">
-              <div className="col-lg-8">
+              <div className="col-lg-12">
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="listed-bn"></div>
                 </div>
 
                 <div id="products" className="mt-4">
-                  <div className="row justify-content-between gy-5 g-lg-5">
-                    <a
-                      href="blog-details.html"
+                  <div className="d-flex flex-wrap justify-content-between">
+                    <Link
+                      to="/blogDetail"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
+                      style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
                       <div className="inside-div01">
                         <div className="left-div-list">
@@ -51,9 +55,7 @@ export default function Blog() {
                           <h6>
                             <i className="fas fa-tags"></i> Góc Tarot
                           </h6>
-                          <h5>
-                            Giải Mã Tarot: Hướng Dẫn Cho Người Mới Bắt Đầu
-                          </h5>
+                          <h5>Giới Thiệu Các Bộ Bài Tarot Nổi Tiếng</h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -65,22 +67,19 @@ export default function Blog() {
                             </div>
                           </div>
                           <p className="mt-3">
-                            Khám phá thế giới tarot đầy thú vị với hướng dẫn
-                            toàn diện của chúng tôi. Dù bạn là người mới bắt đầu
-                            muốn học những điều cơ bản hay là người đọc tarot có
-                            kinh nghiệm đang tìm cách nâng cao kiến thức, bài
-                            viết này cung cấp những thông tin giá trị về nghệ
-                            thuật đọc tarot. Tìm hiểu về lịch sử, ý nghĩa của
-                            các lá bài và những mẹo để đọc bài chính xác. Bắt
-                            đầu hành trình vào thế giới huyền bí của tarot ngay
-                            hôm nay!
+                            Tarot đã trở thành một công cụ phổ biến cho việc
+                            tiên đoán và tự khám phá bản thân. Với nhiều bộ bài
+                            tarot khác nhau, mỗi bộ đều mang những nét độc đáo
+                            và phong cách riêng.Tarot đã trở thành một công cụ
+                            phổ biến cho việc tiên đoán và tự khám phá bản thân.
                           </p>
                         </div>
                       </div>
-                    </a>
-                    <a
-                      href="blog-details.html"
+                    </Link>
+                    <Link
+                      to="/blogDetail1"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
+                      style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
                       <div className="inside-div01">
                         <div className="left-div-list">
@@ -91,15 +90,17 @@ export default function Blog() {
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i>Tarot Sức Khỏe & Tâm
+                            Lý
                           </h6>
                           <h5>
-                            Đây là một sự thật đã được thiết lập từ lâu rằng
+                            Tarot và Sức Khỏe Tâm Lý: Sử Dụng Tarot Như Một Công
+                            Cụ Hỗ Trợ Tâm Lý
                           </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
-                              <span> By Admin </span>
+                              <span> Bởi Admin </span>
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
@@ -107,21 +108,18 @@ export default function Blog() {
                             </div>
                           </div>
                           <p className="mt-3">
-                            Một sự thật đã được thiết lập từ lâu rằng người đọc
-                            sẽ bị phân tâm bởi nội dung dễ đọc của một trang khi
-                            nhìn vào cách trình bày của nó. Lorem Ipsum đã là
-                            văn bản chuẩn của ngành công nghiệp in ấn và sắp chữ
-                            từ những năm 1500, khi một nhà in ấn vô danh lấy một
-                            bộ sưu tập các bản in và sắp xếp chúng để tạo ra một
-                            mẫu sách.
+                            Sử dụng tarot có thể giúp bạn hiểu rõ hơn về bản
+                            thân, tìm ra nguyên nhân của những vấn đề tâm lý và
+                            đưa ra giải pháp để cải thiện tình trạng hiện tại.
                           </p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
 
-                    <a
-                      href="blog-details.html"
+                    <Link
+                      to="/blogDetail2"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
+                      style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
                       <div className="inside-div01">
                         <div className="left-div-list">
@@ -135,16 +133,16 @@ export default function Blog() {
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i>Giải Nghĩa Bài Tarot
                           </h6>
                           <h5>
-                            Trong khi đọc bài Tarot, hãy tập trung vào mục tiêu
-                            và duy trì trạng thái tinh thần bình tĩnh
+                            SEVEN OF CUPS SHADOWSCAPES TAROT - MÔ TẢ & GIẢI
+                            NGHĨA TRẢI BÀI
                           </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
-                              <span> By Admin </span>
+                              <span> Bởi Admin </span>
                             </div>
                             <div className="admin-t">
                               <i className="fas fa-calendar-alt"></i>
@@ -152,19 +150,62 @@ export default function Blog() {
                             </div>
                           </div>
                           <p className="mt-3">
-                            Khi đọc bài Tarot, việc tập trung vào mục tiêu và
-                            duy trì trạng thái tinh thần bình tĩnh là rất quan
-                            trọng. Bài viết này hướng dẫn cách sử dụng bài Tarot
-                            để tìm kiếm câu trả lời trong những tình huống khó
-                            khăn.
+                            Làm thế nào để sống thanh thản và nhẹ nhàng? Lá bài
+                            Seven of Cups Shadowscapes sẽ trả lời cho câu hỏi
+                            đó. Nó được xem là một con đường hướng đến sự thanh
+                            thản.
                           </p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
+
+                    <Link
+                      to="/blogDetail3"
+                      className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
+                      style={{ flex: "0 0 48%", marginBottom: "20px" }}
+                    >
+                      <div className="inside-div01">
+                        <div className="left-div-list">
+                          <img
+                            src="assets/images/cat-crawford-b1AsZn2C-lo-unsplash.jpg"
+                            alt="pnm"
+                          />
+                          <div className="hvert">
+                            05<b className="d-block">Tháng 7</b>
+                          </div>
+                        </div>
+                        <div className="right-list-div">
+                          <h6>
+                            {" "}
+                            <i className="fas fa-tags"></i>vulputate
+                          </h6>
+                          <h5>
+                            KING OF WANDS SHADOWSCAPES TAROT - MÔ TẢ & GIẢI
+                            NGHĨA TRẢI BÀI
+                          </h5>
+                          <div className="d-flex align-items-center">
+                            <div className="admin-t">
+                              <i className="far fa-user"></i>
+                              <span> Bởi Admin </span>
+                            </div>
+                            <div className="admin-t">
+                              <i className="fas fa-calendar-alt"></i>
+                              <span> 05 Tháng 7 2024 </span>
+                            </div>
+                          </div>
+                          <p className="mt-3">
+                            King of Wands Shadowscapes thường liên kết với cung
+                            hoàng đạo Nhân Mã, mang theo một nguồn năng lượng
+                            nam tính mạnh mẽ, cởi mở và đam mê phiêu lưu.
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
 
                     <a
                       href="blog-details.html"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
+                      style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
                       <div className="inside-div01">
                         <div className="left-div-list">
@@ -206,6 +247,7 @@ export default function Blog() {
                     <a
                       href="blog-details.html"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
+                      style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
                       <div className="inside-div01">
                         <div className="left-div-list">
@@ -219,10 +261,13 @@ export default function Blog() {
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            {" "}
-                            <i className="fas fa-tags"></i> Tarot
+                            <i className="fas fa-tags"></i>vulputate
                           </h6>
-                          <h5>Khám phá sự kỳ diệu của bài Tarot</h5>
+                          <h5>
+                            {" "}
+                            Năm 2024 là một năm đầy hứa hẹn cho những người đọc
+                            tarot
+                          </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -234,55 +279,12 @@ export default function Blog() {
                             </div>
                           </div>
                           <p className="mt-3">
-                            {" "}
-                            Bài Tarot không chỉ đơn giản là một phương pháp dự
-                            đoán tương lai mà nó còn là một công cụ tuyệt vời để
-                            khám phá sâu sắc về bản thân và về các mối quan hệ
-                            xung quanh. Hãy cùng chúng tôi tìm hiểu về sức mạnh
-                            tâm linh và sự kỳ diệu của bài Tarot trong cuộc sống
-                            hàng ngày của bạn.
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-
-                    <a
-                      href="blog-details.html"
-                      className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
-                    >
-                      <div className="inside-div01">
-                        <div className="left-div-list">
-                          <img
-                            src="assets/images/tania-medina-zwsL1bj_yKA-unsplash.jpg"
-                            alt="pnm"
-                          />
-                          <div className="hvert">
-                            06<b className="d-block">Tháng 7</b>
-                          </div>
-                        </div>
-                        <div className="right-list-div">
-                          <h6>
-                            {" "}
-                            <i className="fas fa-tags"></i> Tarot
-                          </h6>
-                          <h5>Khám phá những bài Tarot nổi tiếng và ý nghĩa</h5>
-                          <div className="d-flex align-items-center">
-                            <div className="admin-t">
-                              <i className="far fa-user"></i>
-                              <span> Bởi Admin </span>
-                            </div>
-                            <div className="admin-t">
-                              <i className="fas fa-calendar-alt"></i>
-                              <span> 06 Tháng 7 2024 </span>
-                            </div>
-                          </div>
-                          <p className="mt-3">
-                            {" "}
-                            Bài Tarot không chỉ là một loại bói toán mà còn là
-                            một cách để khám phá những tầng sâu của tâm hồn và
-                            tìm hiểu về mối quan hệ, sự nghiệp và tương lai của
-                            bạn. Hãy cùng chúng tôi đi vào thế giới phép màu của
-                            bài Tarot và những ý nghĩa sâu sắc mà nó mang lại.
+                            Năm 2024 hứa hẹn mang lại những cơ hội tuyệt vời
+                            trong việc sử dụng bài tarot để đạt được sự hiểu
+                            biết sâu sắc và sự rõ ràng trong cuộc sống. Tìm hiểu
+                            cách các lá bài tarot có thể hướng dẫn bạn vượt qua
+                            những thách thức và khám phá các khía cạnh mới của
+                            bản thân.
                           </p>
                         </div>
                       </div>
@@ -295,12 +297,8 @@ export default function Blog() {
         </section>
       </main>
 
-      {/* <!-- footer Modal --> */}
-      <Footer />
-
-      {/* <!-- mobile menu --> */}
-
       <MobileMenu />
+      <Footer />
     </div>
   );
 }

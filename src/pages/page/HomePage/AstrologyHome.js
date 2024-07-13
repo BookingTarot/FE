@@ -21,15 +21,16 @@ export default function AstrologyHome() {
         <div className="container">
           <div className="banner-text-home">
             <div className="row row-cols-1 row-cols-lg-2 align-items-center g-lg-5">
-              <div className="col">
-                <span className="spm-smalll" data-aos="fade-up">
-                  Một Địa Điểm Mới Cho Tarot
-                </span>
-                <h1 className="text-white my-3" data-aos="fade-down">
-                  Lá Bài Quyết Định
-                  <span className="d-block"> Hành Trình Cuộc Đời </span>
+              <div className="col" style={{ marginBottom: "30px" }}>
+                <h1
+                  className="text-white my-3"
+                  data-aos="fade-down"
+                  style={{ fontSize: "3.5rem" }}
+                >
+                  KHÁM PHÁ TƯƠNG LAI
+                  <span className="d-block"> CHẠM ĐẾN TÂM HỒN </span>
                 </h1>
-                <p data-aos="fade-up">
+                <p data-aos="fade-up" style={{ textAlign: "start" }}>
                   Trải nghiệm tương tác & chiếu sáng sâu sắc từ các bài đọc
                   Tarot
                 </p>
@@ -40,7 +41,7 @@ export default function AstrologyHome() {
                     className="btn btn-get-btn"
                     data-aos="fade-up"
                   >
-                    Bắt Đầu Khám Phá
+                    ĐẶT LỊCH NGAY
                   </Link>
                 </div>
               </div>
@@ -125,12 +126,13 @@ export default function AstrologyHome() {
                       textDecoration: "none !important",
                     }}
                   >
-                    ĐA DẠNG THỂ LOẠI
+                    ĐA DẠNG TRẢI NGHIỆM TAROT
                   </h5>
                   <p style={{ textDecoration: "none !important" }}>
-                    Các phòng tương tác của chúng tôi là nơi dành cho những
-                    người đam mê và những người mới đến tìm hiểu sâu hơn mối
-                    quan hệ của họ với tarot mà không có tình trạng spam
+                    Tellory cung cấp nhiều loại trải nghiệm tarot phong phú, từ
+                    các buổi đọc bài chuyên sâu đến các buổi tư vấn cá nhân. Hãy
+                    để Tellory giúp bạn giải mã những bí ẩn cuộc sống với những
+                    trải nghiệm tarot độc đáo và thú vị.
                   </p>
                 </a>
               </div>
@@ -145,12 +147,12 @@ export default function AstrologyHome() {
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/815838.png" />
                   </div>
-                  <h5 className="text-white"> ĐẶT CHỖ AN TOÀN, UY TÍN </h5>
+                  <h5 className="text-white"> ĐẶT CHỖ NHANH CHÓNG, AN TOÀN </h5>
                   <p>
                     {" "}
-                    Tellory đảm nhận việc đặt chỗ và thanh toán dễ dàng cho các
-                    bài đọc và bài học, để các chuyên gia tarot có thể phát
-                    triển
+                    Với Tellory, bạn có thể dễ dàng đặt chỗ và thanh toán trực
+                    tuyến một cách an toàn và tiện lợi. Chúng tôi cam kết bảo
+                    mật thông tin và đảm bảo mọi giao dịch diễn ra suôn sẻ.
                   </p>
                 </a>
               </div>
@@ -167,13 +169,15 @@ export default function AstrologyHome() {
                   </div>
                   <h5 className="text-white" style={{ textAlign: "center" }}>
                     {" "}
-                    Trải Nghiệm Tarot{" "}
+                    KẾT NỐI VỚI NHỮNG BẬC THẦY TAROT UY TÍN{" "}
                   </h5>
                   <p>
                     {" "}
-                    Chúng tôi đã xây dựng một cách tốt hơn để những người có sở
-                    thích khám phá các bộ bài tarot mới cũng như phong cách đọc
-                    bài và giáo viên đa dạng phù hợp với họ.
+                    Tellory là cầu nối giữa bạn và các chuyên gia tarot hàng
+                    đầu, được chọn lọc kỹ lưỡng. Được chọn lọc kỹ lưỡng, những
+                    người đọc bài của chúng tôi sẽ mang đến cho bạn những lời
+                    khuyên chân thành và chính xác, giúp bạn tìm thấy ánh sáng
+                    trong những khúc quanh cuộc sống.
                   </p>
                 </a>
               </div>
@@ -532,7 +536,7 @@ export default function AstrologyHome() {
                 className="text-white comon-heading mt-3 mb-3"
                 data-aos="fade-up"
               >
-                Xem Tarot – Khai Mở Tương Lai
+                Xem Tarot – Khám Phá Tương Lai
               </h2>
             </div>
             <p
@@ -540,9 +544,10 @@ export default function AstrologyHome() {
               data-aos="fade-down"
             >
               {" "}
-              Tellory tổ chức các chuyên gia tarot giàu lòng nhân ái và hòa
-              nhập, những người cung cấp các bài đọc và bài học cho mọi cấp độ
-              kinh nghiệm
+              Tellory là người bạn đồng hành đáng tin cậy, nơi tập hợp nhiều
+              tarot reader với mọi cấp độ kinh nghiệm. Hãy để chúng tôi giúp bạn
+              khám phá những bí ẩn của cuộc sống và tìm thấy hướng đi cho tương
+              lai.
             </p>
             <div className="row mt-5 gy-4 g-lg-4">
               <div className="col-lg-3">
@@ -552,8 +557,9 @@ export default function AstrologyHome() {
                   </figure>
                   <h4 className="text-white mt-3">Tình Yêu</h4>
                   <p className="mt-2">
-                    Tarot giúp bạn hiểu rõ hơn về tình cảm và mối quan hệ của
-                    mình.
+                    Các chuyên gia tarot trên Tellory giúp bạn thấu hiểu sâu sắc
+                    về tình cảm và các mối quan hệ, mang đến những lời khuyên
+                    chân thành để nuôi dưỡng và phát triển tình yêu.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -567,8 +573,9 @@ export default function AstrologyHome() {
                   </figure>
                   <h4 className="text-white mt-3">Sức Khỏe</h4>
                   <p className="mt-2">
-                    Tarot đưa ra lời khuyên về tình trạng sức khỏe và cách cải
-                    thiện.
+                    Với sự am hiểu sâu rộng, các tarot reader đưa ra lời khuyên
+                    bổ ích về tình trạng sức khỏe hiện tại và cách cải thiện nó,
+                    giúp bạn đạt được trạng thái cân bằng và khỏe mạnh.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -596,8 +603,9 @@ export default function AstrologyHome() {
                   </figure>
                   <h4 className="text-white mt-3">Công Việc</h4>
                   <p className="mt-2">
-                    Tarot cung cấp cái nhìn sâu sắc về con đường sự nghiệp và cơ
-                    hội thăng tiến.
+                    Tarot reader của chúng tôi cung cấp những cái nhìn sắc bén
+                    về con đường sự nghiệp, giúp bạn định hướng rõ ràng và tận
+                    dụng cơ hội thăng tiến trong công việc.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -611,8 +619,9 @@ export default function AstrologyHome() {
                   </figure>
                   <h4 className="text-white mt-3">Tài Chính</h4>
                   <p className="mt-2">
-                    Tarot hỗ trợ bạn quản lý tài chính và nhận diện cơ hội đầu
-                    tư.
+                    Tarot reader trên Tellory hỗ trợ bạn quản lý tài chính hiệu
+                    quả, nhận diện cơ hội đầu tư và đưa ra những quyết định tài
+                    chính khôn ngoan, giúp bạn đạt được sự thịnh vượng.
                   </p>
                   <span className="d-block">
                     {" "}
@@ -635,7 +644,7 @@ export default function AstrologyHome() {
             </div>
             <div className="tipsoft" data-aos="fade-up">
               <div className="d-md-flex justify-content-center align-items-center">
-                <h2 className="text-white"> Mẹo Trong Ngày </h2>
+                <h2 className="text-white"> LÁ BÀI HÔM NAY CỦA BẠN </h2>
                 <p className="ms-md-5 col-lg-7">
                   <span className="me-3 text-white">
                     {" "}

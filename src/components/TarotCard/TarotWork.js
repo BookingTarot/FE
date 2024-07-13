@@ -16,7 +16,7 @@ export default function TarotWork() {
               ràng. Theo đó, quân bài này cho thấy bạn và người ấy mới chỉ bắt
               đầu cảm mến nhau...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -35,7 +35,7 @@ export default function TarotWork() {
               chỉ có bạn dành tình cảm cho người ấy. Mặt khác, còn có rất nhiều
               đối tượng đang săn đón...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export default function TarotWork() {
               bạn đã rất mệt mỏi. Phải chăng vì chưa thấu hiểu nên cả hai thường
               xuyên cãi vã? Nếu tình trạng kể trên tiếp diễn...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ export default function TarotWork() {
               bị bỏ rơi. Thậm chí có người còn hoảng loạn vì nhận ra người ấy
               không quan tâm và tôn trọng mình như khi...{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function TarotWork() {
               bài cho thấy tình cảm của người ấy dành cho bạn đang rất cuồng
               nhiệt, dạt dào.{" "}
             </p>
-            <a href="tarot-details.html">Xem thêm</a>
+            <a href="tarot-details.html"> </a>
           </div>
         </div>
       </div>
