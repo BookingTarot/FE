@@ -20,6 +20,8 @@ import CustomerBooking from "./pages/page/CustomerInfor/CustomerBooking";
 import BlogDetail1 from "./pages/page/Blog/BLogDetail1";
 import BlogDetail2 from "./pages/page/Blog/BlogDetail2";
 import BlogDetail3 from "./pages/page/Blog/BlogDetail3";
+import BlogDetail4 from "./pages/page/Blog/BlogDetail4";
+import BlogDetail5 from "./pages/page/Blog/BlogDetail5";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
             <Route exact path="/blogDetail1" element={<BlogDetail1 />} />
             <Route exact path="/blogDetail2" element={<BlogDetail2 />} />
             <Route exact path="/blogDetail3" element={<BlogDetail3 />} />
+            <Route exact path="/blogDetail4" element={<BlogDetail4 />} />
+            <Route exact path="/blogDetail5" element={<BlogDetail5 />} />
             <Route exact path="/zodiac" element={<Zodiac />} />
             <Route exact path="/tarotCard" element={<TarotCard />} />
             <Route

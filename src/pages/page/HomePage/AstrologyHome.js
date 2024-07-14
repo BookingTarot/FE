@@ -666,7 +666,7 @@ export default function AstrologyHome() {
           </div>
         </section>
 
-        <section
+        {/* <section
           className="daily-horp d-inline-block w-100"
           style={{ backgroundColor: "#0c071c" }}
         >
@@ -729,7 +729,7 @@ export default function AstrologyHome() {
             </ul>
             <Horoscope />
           </div>
-        </section>
+        </section> */}
       </main>
 
       {/* <!-- footer Modal --> */}

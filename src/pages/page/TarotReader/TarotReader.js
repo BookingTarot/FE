@@ -57,21 +57,15 @@ export default function TarotReader() {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
         reader.kind.includes("Tình yêu")
       );
-    }
-
-    if (filters.work) {
+    } else if (filters.work) {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
         reader.kind.includes("Công việc")
       );
-    }
-
-    if (filters.health) {
+    } else if (filters.health) {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
         reader.kind.includes("Sức khỏe")
       );
-    }
-
-    if (filters.finance) {
+    } else if (filters.finance) {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
         reader.kind.includes("Tài chính")
       );

@@ -159,7 +159,7 @@ export default function SessionType({
                 !error &&
                 sessionTypes &&
                 sessionTypes.length === 0 && (
-                  <p>No session types available for this tarot reader.</p>
+                  <p>Hiện tại chưa có buổi đọc bài cho Tarot này</p>
                 )}
             </div>
           </div>

@@ -136,8 +136,8 @@ export default function Blog() {
                             <i className="fas fa-tags"></i>Giải Nghĩa Bài Tarot
                           </h6>
                           <h5>
-                            SEVEN OF CUPS SHADOWSCAPES TAROT - MÔ TẢ & GIẢI
-                            NGHĨA TRẢI BÀI
+                            Seven of Cups Shadowscapes Tarot - Mô Tả & Giải
+                            Nghĩa Trải Bài
                           </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
@@ -177,11 +177,11 @@ export default function Blog() {
                         <div className="right-list-div">
                           <h6>
                             {" "}
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i>Giải nghĩa bài Tarot
                           </h6>
                           <h5>
-                            KING OF WANDS SHADOWSCAPES TAROT - MÔ TẢ & GIẢI
-                            NGHĨA TRẢI BÀI
+                            King of Wands Shadowscapes Tarot - Mô Tả & Giải
+                            Nghĩa Trải Bài
                           </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
@@ -202,8 +202,8 @@ export default function Blog() {
                       </div>
                     </Link>
 
-                    <a
-                      href="blog-details.html"
+                    <Link
+                      to="/blogDetail4"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
                       style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
@@ -220,9 +220,9 @@ export default function Blog() {
                         <div className="right-list-div">
                           <h6>
                             {" "}
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i>Giải nghĩa bài Tarot
                           </h6>
-                          <h5>Curabitur với sự trỗi dậy của sự mạnh mẽ</h5>
+                          <h5>Ace of Cups - Hạnh Phúc Đơn Thuần</h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -234,18 +234,16 @@ export default function Blog() {
                             </div>
                           </div>
                           <p className="mt-3">
-                            Việc xem bài tarot từ lâu đã là nguồn cảm hứng và sự
-                            hiểu biết cho những người đang tìm kiếm sự rõ ràng
-                            trong cuộc sống của họ. Khám phá cách các lá bài có
-                            thể chiếu sáng con đường và mang đến những phát hiện
-                            sâu sắc trong cuộc hành trình của bạn.
+                            Sống với một trái tim chân thành và cởi mở. Cho phép
+                            bản thân cảm nhận những cơ hội của tình yêu, niềm
+                            vui và hạnh phúc.
                           </p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
 
-                    <a
-                      href="blog-details.html"
+                    <Link
+                      to="/blogDetail5"
                       className="item list-item col-md-6 col-lg-6 col-xl-6 view-group list-group-item"
                       style={{ flex: "0 0 48%", marginBottom: "20px" }}
                     >
@@ -261,12 +259,12 @@ export default function Blog() {
                         </div>
                         <div className="right-list-div">
                           <h6>
-                            <i className="fas fa-tags"></i>vulputate
+                            <i className="fas fa-tags"></i>Giải nghĩa bài Tarot
                           </h6>
                           <h5>
                             {" "}
-                            Năm 2024 là một năm đầy hứa hẹn cho những người đọc
-                            tarot
+                            King of Cups Shadowscapes Tarot - Mô Tả & Giải Nghĩa
+                            Trải Bài
                           </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
@@ -279,16 +277,13 @@ export default function Blog() {
                             </div>
                           </div>
                           <p className="mt-3">
-                            Năm 2024 hứa hẹn mang lại những cơ hội tuyệt vời
-                            trong việc sử dụng bài tarot để đạt được sự hiểu
-                            biết sâu sắc và sự rõ ràng trong cuộc sống. Tìm hiểu
-                            cách các lá bài tarot có thể hướng dẫn bạn vượt qua
-                            những thách thức và khám phá các khía cạnh mới của
-                            bản thân.
+                            King of Cups trong Shadowscapes Tarot thực sự là một
+                            biểu tượng của sự kết hợp tinh tế giữa tâm linh và
+                            cảm xúc.
                           </p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

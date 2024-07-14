@@ -153,26 +153,26 @@ export default function Activity() {
     },
   };
 
-  return (
-    <div className="container mt-2">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <InputGroup style={{ maxWidth: "180px" }}>
-          <FormControl
-            placeholder="Search..."
-            value={searchText}
-            onChange={handleSearch}
-          />
-        </InputGroup>
-      </div>
-      <DataTable
-        columns={columns}
-        data={filteredBookings}
-        progressPending={loading}
-        pagination
-        selectableRows
-        customStyles={customStyles}
-        theme="dark"
-      />
-    </div>
-  );
+    return (
+        <div className="container mt-2">
+            <div className="d-flex justify-content-between align-items-center mb-3">
+                <InputGroup style={{ maxWidth: '180px' }}>
+                    <FormControl
+                        placeholder="Search..."
+                        value={searchText}
+                        onChange={handleSearch}
+                    />
+                </InputGroup>
+            </div>
+            <DataTable
+                columns={columns}
+                data={filteredBookings}
+                progressPending={loading}
+                pagination
+                selectableRows
+                customStyles={customStyles}
+                theme="dark"
+            />
+        </div>
+    );
 }

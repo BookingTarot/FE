@@ -37,7 +37,7 @@ export default function Customer() {
             ...user,
             name: `${user.firstName} ${user.lastName}`,
             gender: user.gender ? "Nam" : "Nữ",
-            isActive: user.isActive ? "Active" : "InActive",
+            isActive: user.isActive ? "Active" : "Inactive",
             dateOfBirth: new Date(user.dateOfBirth).toLocaleDateString("vi-VN"),
           }));
         setUsers(transformedData);
@@ -243,10 +243,10 @@ export default function Customer() {
         </InputGroup>
         <div className="d-flex">
           <Button variant="success" className="me-2" onClick={handleEdit}>
-            <i className="bi bi-pencil-square fs-4"></i>
+            Chỉnh Sửa Tài Khoản
           </Button>
           <Button variant="danger" onClick={handleDelete}>
-            <i className="bi bi-trash3-fill fs-4"></i>
+            Xóa Tài Khoản
           </Button>
         </div>
       </div>
@@ -262,12 +262,12 @@ export default function Customer() {
       />
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <Modal.Title>Khách Hàng</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>First Name</Form.Label>
+              <Form.Label>Họ</Form.Label>
               <Form.Control
                 type="text"
                 value={editUser.firstName}
@@ -277,7 +277,7 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Last Name</Form.Label>
+              <Form.Label>Tên</Form.Label>
               <Form.Control
                 type="text"
                 value={editUser.lastName}
@@ -287,7 +287,7 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Date of Birth</Form.Label>
+              <Form.Label>Ngày Sinh</Form.Label>
               <Form.Control
                 type="date"
                 value={editUser.dateOfBirth}
@@ -297,7 +297,7 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Phone Number</Form.Label>
+              <Form.Label>Số Điện Thoại</Form.Label>
               <Form.Control
                 type="text"
                 value={editUser.phoneNumber}
@@ -307,7 +307,7 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Gender</Form.Label>
+              <Form.Label>Giới Tính</Form.Label>
               <Form.Control
                 as="select"
                 value={editUser.gender ? "Nam" : "Nữ"}
@@ -330,7 +330,7 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Mật Khẩu</Form.Label>
               <Form.Control
                 type="password"
                 value={editUser.password}
@@ -340,7 +340,7 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Address</Form.Label>
+              <Form.Label>Địa Chỉ</Form.Label>
               <Form.Control
                 type="text"
                 value={editUser.address}
@@ -350,23 +350,27 @@ export default function Customer() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Check
-                type="checkbox"
-                label="Is Active"
-                checked={editUser.isActive}
+              <Form.Label>Status</Form.Label>
+              <Form.Control
+                as="select"
+                name="status"
+                value={editUser.status}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, isActive: e.target.checked })
+                  setEditUser({ ...editUser, status: e.target.value })
                 }
-              />
+              >
+                <option value={true}>Active</option>
+                <option value={false}>Inactive</option>
+              </Form.Control>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
+            Thoát
           </Button>
           <Button variant="primary" onClick={handleSave}>
-            Save Changes
+            Lưu Thông Tin
           </Button>
         </Modal.Footer>
       </Modal>
