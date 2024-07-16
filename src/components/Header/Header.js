@@ -109,6 +109,17 @@ export default function Header() {
                             Lịch Sử Đặt Lịch
                           </Link>
                           <div className="dropdown-divider border-top"></div>
+                          {user.roleId === 1 && (
+                            <>
+                              <a
+                                className="dropdown-item text-dark"
+                                href="/tarotAdmin"
+                              >
+                                Bảng Quản Lý
+                              </a>
+                              <div className="dropdown-divider border-top"></div>
+                            </>
+                          )}
                           {user.roleId === 3 && (
                             <>
                               <a

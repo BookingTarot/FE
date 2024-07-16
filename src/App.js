@@ -22,6 +22,7 @@ import BlogDetail2 from "./pages/page/Blog/BlogDetail2";
 import BlogDetail3 from "./pages/page/Blog/BlogDetail3";
 import BlogDetail4 from "./pages/page/Blog/BlogDetail4";
 import BlogDetail5 from "./pages/page/Blog/BlogDetail5";
+import Transaction from "./pages/page/AdminPage/Transaction/Transaction";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Register />} />
             <Route exact path="/customer-info" element={<CustEditInfor />} />
+            <Route exac path="/transaction" element={<Transaction />} />
             <Route
               exact
               path="/customer-history"

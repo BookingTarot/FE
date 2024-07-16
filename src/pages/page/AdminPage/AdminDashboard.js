@@ -11,6 +11,7 @@ import "./style.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Statistic from "./Statistic/Statistic";
+import Transaction from "./Transaction/Transaction";
 
 function AdminDashboard() {
   const [selectedSection, setSelectedSection] = useState("customer");
@@ -31,6 +32,8 @@ function AdminDashboard() {
         return <Activity />;
       case "statistic":
         return <Statistic />;
+      case "transaction":
+        return <Transaction />;
       default:
         return <User />;
     }
