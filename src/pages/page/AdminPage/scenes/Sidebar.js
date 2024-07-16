@@ -14,7 +14,7 @@ export default function Sidebar({ onSelect }) {
         >
           <div style={{ marginTop: "15px" }}>
             <a className="text-decoration-none d-flex align-items-center text-white d-none d-sm-inline">
-              <i className="lni lni-user"></i>
+              {/* <i className="lni lni-user"></i> */}
               <span className="fs-2">Admin Dashboard</span>
             </a>
 
@@ -29,7 +29,7 @@ export default function Sidebar({ onSelect }) {
                   onClick={() => onSelect("user")}
                   style={{ marginTop: "20px" }}
                 >
-                  <i className="bi bi-people fs-3"></i>
+                  {/* <i className="bi bi-people fs-3"></i> */}
                   <span className="ms-2 fs-3 d-none d-sm-inline">
                     Manage User
                   </span>
@@ -44,7 +44,7 @@ export default function Sidebar({ onSelect }) {
                   onClick={() => onSelect("customer")}
                   style={{ marginTop: "15px" }}
                 >
-                  <i className="bi bi-people fs-3"></i>
+                  {/* <i className="bi bi-people fs-3"></i> */}
                   <span className="ms-2 fs-3 d-none d-sm-inline">
                     Khách Hàng
                   </span>
@@ -59,7 +59,7 @@ export default function Sidebar({ onSelect }) {
                   onClick={() => onSelect("customerSchedule")}
                   style={{ marginTop: "15px" }}
                 >
-                  <i className="bi bi-calendar2-range fs-3"></i>
+                  {/* <i className="bi bi-calendar2-range fs-3"></i> */}
                   <span className="ms-2 fs-3 d-none d-sm-inline">
                     Lịch Khách Hàng
                   </span>
@@ -74,7 +74,7 @@ export default function Sidebar({ onSelect }) {
                   onClick={() => onSelect("tarotReader")}
                   style={{ marginTop: "15px" }}
                 >
-                  <i className="bi bi-people fs-3"></i>
+                  {/* <i className="bi bi-people fs-3"></i> */}
                   <span className="ms-2 fs-3 d-none d-sm-inline">
                     Tarot Reader
                   </span>
@@ -89,7 +89,7 @@ export default function Sidebar({ onSelect }) {
                   onClick={() => onSelect("tarotReaderSchedule")}
                   style={{ marginTop: "15px" }}
                 >
-                  <i className="bi bi-calendar2-range fs-3"></i>
+                  {/* <i className="bi bi-calendar2-range fs-3"></i> */}
                   <span className="ms-2 fs-3 d-none d-sm-inline">
                     Lịch Tarot Reader
                   </span>
@@ -104,7 +104,7 @@ export default function Sidebar({ onSelect }) {
                   onClick={() => onSelect("activity")}
                   style={{ marginTop: "15px" }}
                 >
-                  <i className="bi bi-list-ul fs-3"></i>
+                  {/* <i className="bi bi-list-ul fs-3"></i> */}
                   <span
                     className="ms-2 fs-3 d-none d-sm-inline "
                     style={{ width: "24px", height: "24px" }}
@@ -127,6 +127,23 @@ export default function Sidebar({ onSelect }) {
                     style={{ width: "24px", height: "24px" }}
                   >
                     Thống Kê
+                  </span>
+                </a>
+              </li>
+
+              <li className="nav-item text-white my-1 py-2 py-sm-0">
+                <a
+                  href="#"
+                  className="nav-link active text-center text-sm-start"
+                  aria-current="page"
+                  onClick={() => onSelect("transaction")}
+                  style={{ marginTop: "15px" }}
+                >
+                  <span
+                    className="ms-2 fs-3 d-none d-sm-inline "
+                    style={{ width: "24px", height: "24px" }}
+                  >
+                    Giao dịch
                   </span>
                 </a>
               </li>
