@@ -31,7 +31,7 @@ export default function Sidebar({ onSelect }) {
                 >
                   {/* <i className="bi bi-people fs-3"></i> */}
                   <span className="ms-2 fs-3 d-none d-sm-inline">
-                    Manage User
+                    Quản Lý Tài Khoản
                   </span>
                 </a>
               </li>

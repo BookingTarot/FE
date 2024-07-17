@@ -13,10 +13,16 @@ function TarotReaderAppointment({ user }) {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get("https://tarot.somee.com/api/Bookings");
+        const response = await axios.get(
+          "https://tarot.somee.com/api/Bookings"
+        );
         const formattedAppointments = response.data.map((appointment) => {
-          const formattedDate = new Date(appointment.date).toLocaleDateString("en-GB");
-          const formattedTime = new Date(appointment.startTime).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+          const formattedDate = new Date(appointment.date).toLocaleDateString(
+            "en-GB"
+          );
+          const formattedTime = new Date(
+            appointment.startTime
+          ).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
           return {
             ...appointment,
             date: formattedDate,
@@ -55,7 +61,10 @@ function TarotReaderAppointment({ user }) {
 
   // Tính toán appointments hiển thị trên trang hiện tại
   const offset = currentPage * appointmentsPerPage;
-  const currentAppointments = appointments.slice(offset, offset + appointmentsPerPage);
+  const currentAppointments = appointments.slice(
+    offset,
+    offset + appointmentsPerPage
+  );
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
@@ -72,17 +81,36 @@ function TarotReaderAppointment({ user }) {
             <table className="table mb-0 table-center">
               <thead>
                 <tr>
-                  <th className="border-bottom p-3" style={{ minWidth: "50px" }}>#</th>
-                  <th className="border-bottom p-3" style={{ minWidth: "180px" }}>Tên</th>
+                  <th
+                    className="border-bottom p-3"
+                    style={{ minWidth: "50px" }}
+                  >
+                    #
+                  </th>
+                  <th
+                    className="border-bottom p-3"
+                    style={{ minWidth: "180px" }}
+                  >
+                    Tên
+                  </th>
                   <th className="border-bottom p-3">Tuổi</th>
                   <th className="border-bottom p-3">Giới tính</th>
                   <th className="border-bottom p-3">Số điện thoại</th>
-                  <th className="border-bottom p-3" style={{ minWidth: "150px" }} onClick={handleSortClick}>
+                  <th
+                    className="border-bottom p-3"
+                    style={{ minWidth: "150px" }}
+                    onClick={handleSortClick}
+                  >
                     Ngày {sortDirection === "asc" ? "↑" : "↓"}
                   </th>
                   <th className="border-bottom p-3">Thời gian</th>
                   <th className="border-bottom p-3">Gói dịch vụ</th>
-                  <th className="border-bottom p-3" style={{ minWidth: "150px" }}>Trạng thái</th>
+                  <th
+                    className="border-bottom p-3"
+                    style={{ minWidth: "150px" }}
+                  >
+                    Trạng thái
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -102,7 +130,11 @@ function TarotReaderAppointment({ user }) {
                         <button className="btn btn-danger">Hủy</button>
                       </td>
                     ) : (
-                      <td className={`p-3 ${appointment.status ? "true" : "false"}`}>
+                      <td
+                        className={`p-3 ${
+                          appointment.status ? "true" : "false"
+                        }`}
+                      >
                         {appointment.status ? "Xác nhận" : "Hủy"}
                       </td>
                     )}
@@ -114,8 +146,8 @@ function TarotReaderAppointment({ user }) {
         </div>
       </div>
       <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
+        previousLabel={"Trước"}
+        nextLabel={"Sau"}
         breakLabel={"..."}
         breakClassName={"break-me"}
         pageCount={Math.ceil(appointments.length / appointmentsPerPage)}

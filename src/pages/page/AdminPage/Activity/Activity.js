@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
-import { Button, InputGroup, FormControl } from "react-bootstrap";
+import { Button, InputGroup, FormControl, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const API = "https://tarot.somee.com/api/Bookings";
+const statusOptions = ["Chưa thanh toán", "Đã thanh toán"];
 
 export default function Activity() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [editBooking, setEditBooking] = useState({
+    bookingId: 0,
+    tarotReaderId: 0,
+    customerId: 0,
+    date: "",
+    amount: 0,
+    description: "",
+    scheduleId: 0,
+    sessionTypeId: 0,
+    status: true,
+  });
 
   const fetchBookings = async () => {
     try {
@@ -17,9 +30,8 @@ export default function Activity() {
       if (data.length > 0) {
         const transformedData = data.map((booking) => ({
           ...booking,
-          status: booking.status ? "Hoàn Thành" : "Bị Hủy",
+          status: booking.status ? "Đã thanh toán" : "Chưa thanh toán",
           gender: booking.gender ? "Nam" : "Nữ",
-          date: new Date(booking.date).toLocaleDateString("vi-VN"),
           startTime: formatTime(booking.startTime),
           endTime: formatTime(booking.endTime),
         }));
@@ -55,6 +67,57 @@ export default function Activity() {
     )
   );
 
+  const handleEdit = (booking) => {
+    setEditBooking({
+      bookingId: booking.bookingId,
+      tarotReaderId: booking.tarotReaderId,
+      customerId: booking.customerId,
+      date: booking.date,
+      amount: booking.amount,
+      description: booking.description,
+      scheduleId: booking.scheduleId,
+      sessionTypeId: booking.sessionTypeId,
+      status: booking.status === "Đã thanh toán",
+    });
+    setShowModal(true);
+  };
+
+  const handleSave = async () => {
+    try {
+      const bookingData = {
+        bookingId: editBooking.bookingId,
+        tarotReaderId: editBooking.tarotReaderId,
+        customerId: editBooking.customerId,
+        amount: editBooking.amount,
+        date: editBooking.date,
+        description: editBooking.description,
+        scheduleId: editBooking.scheduleId,
+        sessionTypeId: editBooking.sessionTypeId,
+        status: editBooking.status, // Send status as boolean
+      };
+
+      console.log("Booking Data to Update:", bookingData);
+
+      const res = await fetch(`${API}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (res.ok) {
+        console.log("Update successful");
+        fetchBookings(); // Refresh bookings after successful update
+        setShowModal(false); // Close modal
+      } else {
+        console.error("Failed to update booking");
+      }
+    } catch (error) {
+      console.error("Error updating booking:", error);
+    }
+  };
+
   const columns = [
     {
       name: "Tarot Reader",
@@ -62,46 +125,56 @@ export default function Activity() {
       wrap: true,
     },
     {
-      name: "Khách Hàng",
+      name: "Khách hàng",
       selector: (row) => row.customerName,
       wrap: true,
     },
     {
-      name: "Giới Tính",
+      name: "Giới tính",
       selector: (row) => row.gender,
     },
     {
-      name: "Tuổi",
+      name: "Tuổi",
       selector: (row) => row.age,
     },
     {
-      name: "Số Điện Thoại",
+      name: "Số điện thoại",
       selector: (row) => row.phoneNumber,
     },
     {
-      name: "Dịch Vụ",
+      name: "Buổi đọc bài",
       selector: (row) => row.sessionTypeName,
       wrap: true,
     },
     {
-      name: "Ngày xem",
+      name: "Ngày",
       selector: (row) => row.date,
     },
     {
-      name: "Bắt Đầu",
+      name: "Thờ gian bắt đầu",
       selector: (row) => row.startTime,
     },
     {
-      name: "Kết Thúc",
+      name: "Thời gian kết thúc",
       selector: (row) => row.endTime,
     },
     {
-      name: "Status",
+      name: "Trạng thái",
       selector: (row) => row.status,
       cell: (row) => (
-        <span style={{ color: row.status === "Hoàn Thành" ? "lime" : "red" }}>
+        <span
+          style={{ color: row.status === "Đã thanh toán" ? "lime" : "red" }}
+        >
           {row.status}
         </span>
+      ),
+    },
+    {
+      name: "Thực hiện",
+      cell: (row) => (
+        <Button variant="info" onClick={() => handleEdit(row)}>
+          Cập nhật
+        </Button>
       ),
     },
   ];
@@ -153,26 +226,137 @@ export default function Activity() {
     },
   };
 
-    return (
-        <div className="container mt-2">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-                <InputGroup style={{ maxWidth: '180px' }}>
-                    <FormControl
-                        placeholder="Search..."
-                        value={searchText}
-                        onChange={handleSearch}
-                    />
-                </InputGroup>
-            </div>
-            <DataTable
-                columns={columns}
-                data={filteredBookings}
-                progressPending={loading}
-                pagination
-                selectableRows
-                customStyles={customStyles}
-                theme="dark"
+  return (
+    <div className="container mt-2">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <InputGroup style={{ maxWidth: "180px" }}>
+          <FormControl
+            placeholder="Search..."
+            value={searchText}
+            onChange={handleSearch}
+          />
+        </InputGroup>
+      </div>
+      <DataTable
+        columns={[...columns]}
+        data={filteredBookings}
+        progressPending={loading}
+        pagination
+        selectableRows
+        customStyles={customStyles}
+        theme="dark"
+      />
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Cập nhật thông tin đặt lịch</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Group controlId="editBooking.tarotReaderId">
+            <Form.Label>Tarot Reader</Form.Label>
+            <FormControl
+              type="number"
+              value={editBooking.tarotReaderId}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  tarotReaderId: parseInt(e.target.value),
+                })
+              }
             />
-        </div>
-    );
+          </Form.Group>
+          <Form.Group controlId="editBooking.customerId">
+            <Form.Label>Khách hàng</Form.Label>
+            <FormControl
+              type="number"
+              value={editBooking.customerId}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  customerId: parseInt(e.target.value),
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group controlId="editBooking.amount">
+            <Form.Label>Giá</Form.Label>
+            <FormControl
+              type="number"
+              value={editBooking.amount}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  amount: parseFloat(e.target.value),
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group controlId="editBooking.description">
+            <Form.Label>Mô tả</Form.Label>
+            <FormControl
+              type="text"
+              value={editBooking.description}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  description: e.target.value,
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group controlId="editBooking.scheduleId">
+            <Form.Label>Lịch</Form.Label>
+            <FormControl
+              type="number"
+              value={editBooking.scheduleId}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  scheduleId: parseInt(e.target.value),
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group controlId="editBooking.sessionTypeId">
+            <Form.Label>Buổi đọc</Form.Label>
+            <FormControl
+              type="number"
+              value={editBooking.sessionTypeId}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  sessionTypeId: parseInt(e.target.value),
+                })
+              }
+            />
+          </Form.Group>
+          <Form.Group controlId="editBooking.status">
+            <Form.Label>Trạng thái</Form.Label>
+            <Form.Select
+              value={editBooking.status ? "Đã thanh toán" : "Chưa thanh toán"}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  status: e.target.value === "Đã thanh toán",
+                })
+              }
+            >
+              {statusOptions.map((status, index) => (
+                <option key={index} value={status}>
+                  {status}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Đóng
+          </Button>
+          <Button variant="primary" onClick={handleSave}>
+            Lưu Thông Tin
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+  );
 }

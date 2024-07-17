@@ -26,6 +26,8 @@ export default function TarotReader() {
   });
   const [hoveredReader, setHoveredReader] = useState(null);
   const [averageRatings, setAverageRatings] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const openModal = (tarotReaderId, tarotReaderName) => {
     setSelectedTarotReaderId(tarotReaderId);
@@ -48,6 +50,17 @@ export default function TarotReader() {
   const handleFilterChange = (e) => {
     const { name, checked } = e.target;
     setFilters((prevFilters) => ({ ...prevFilters, [name]: checked }));
+  };
+
+  const totalPages = Math.ceil(filteredReaders.length / itemsPerPage);
+
+  const currentData = filteredReaders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   const applyFilters = () => {
@@ -160,6 +173,8 @@ export default function TarotReader() {
   const handleMouseLeave = () => {
     setHoveredReader(null);
   };
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   const renderStars = (rating) => {
     if (typeof rating !== "number" || rating < 0 || rating > 5) {
@@ -461,27 +476,49 @@ export default function TarotReader() {
                     ))}
                   </div>
 
-                  {/* <nav className="my-5 d-flex justify-content-end">
+                  <nav className="my-5 d-flex justify-content-end">
                     <ul className="pagination">
-                      <li className="page-item disabled">
-                        <span className="page-link">Previous</span>
+                      <li
+                        className={`page-item ${
+                          currentPage === 1 ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(currentPage - 1)}
+                        >
+                          Trước
+                        </button>
                       </li>
-                      <li className="page-item active">
-                        <span className="page-link">1</span>
-                      </li>
-                      <li className="page-item">
-                        <span className="page-link">2</span>
-                      </li>
-                      <li className="page-item">
-                        <span className="page-link">3</span>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          Next
-                        </a>
+                      {pageNumbers.map((number) => (
+                        <li
+                          key={number}
+                          className={`page-item ${
+                            currentPage === number ? "active" : ""
+                          }`}
+                        >
+                          <button
+                            className="page-link"
+                            onClick={() => handlePageChange(number)}
+                          >
+                            {number}
+                          </button>
+                        </li>
+                      ))}
+                      <li
+                        className={`page-item ${
+                          currentPage === totalPages ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(currentPage + 1)}
+                        >
+                          Sau
+                        </button>
                       </li>
                     </ul>
-                  </nav> */}
+                  </nav>
                 </div>
               </div>
             </div>
