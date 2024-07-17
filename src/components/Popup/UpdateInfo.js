@@ -30,9 +30,13 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userRes = await axios.get(`https://tarot.somee.com/api/user/${userId}`);
-        const tarotReaderRes = await axios.get(`https://tarot.somee.com/api/TarotReader/${TarotReaderId}`);
-                
+        const userRes = await axios.get(
+          `https://tarot.somee.com/api/user/${userId}`
+        );
+        const tarotReaderRes = await axios.get(
+          `https://tarot.somee.com/api/TarotReader/${TarotReaderId}`
+        );
+
         const genderValue = userRes.data.gender ? "1" : "0";
 
         setFormData({
@@ -80,23 +84,37 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
 
       await axios.put(`https://tarot.somee.com/api/user/`, userData);
 
-      const tarotReaderRes = await axios.get(`https://tarot.somee.com/api/TarotReader/${TarotReaderId}`);
-      const currentTarotReaderData = tarotReaderRes.data;      
-      console.log(currentTarotReaderData)
+      const tarotReaderRes = await axios.get(
+        `https://tarot.somee.com/api/TarotReader/${TarotReaderId}`
+      );
+      const currentTarotReaderData = tarotReaderRes.data;
+      console.log(currentTarotReaderData);
       const updatedTarotReaderData = {
         tarotReaderId: TarotReaderId,
         userId: currentTarotReaderData.userId,
         introduction: formData.introduction,
         description: formData.description,
-        experience: currentTarotReaderData.experience !== null ? currentTarotReaderData.experience.toString() : "",
-        kind: currentTarotReaderData.kind !== null ? currentTarotReaderData.kind.toString() : "",
-        image: currentTarotReaderData.image !== null ? currentTarotReaderData.image.toString() : "",
-        status: true    
-      };      
+        experience:
+          currentTarotReaderData.experience !== null
+            ? currentTarotReaderData.experience.toString()
+            : "",
+        kind:
+          currentTarotReaderData.kind !== null
+            ? currentTarotReaderData.kind.toString()
+            : "",
+        image:
+          currentTarotReaderData.image !== null
+            ? currentTarotReaderData.image.toString()
+            : "",
+        status: true,
+      };
       try {
-        const response = await axios.put(`https://tarot.somee.com/api/TarotReader/`, updatedTarotReaderData);
+        const response = await axios.put(
+          `https://tarot.somee.com/api/TarotReader/`,
+          updatedTarotReaderData
+        );
         console.log("Update successful:", response.data);
-        toast.success('Cập nhập thành công!');
+        toast.success("Cập nhập thành công!");
       } catch (error) {
         if (error.response) {
           // Server returned an error response
@@ -109,7 +127,6 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           console.error("Error setting up the request:", error.message);
         }
       }
-      
 
       updateInfo(formData);
       toggle();
@@ -122,12 +139,12 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
     setPasswordVisible(!passwordVisible);
   };
 
-  return (    
+  return (
     <Modal isOpen={isOpen} toggle={toggle}>
       <ModalHeader toggle={toggle}>Update Information</ModalHeader>
       <ModalBody>
         <FormGroup>
-          <Label for="lastName">Last Name</Label>
+          <Label for="lastName">Tên</Label>
           <Input
             type="text"
             id="lastName"
@@ -136,7 +153,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="firstName">First Name</Label>
+          <Label for="firstName">Họ và tên đệm</Label>
           <Input
             type="text"
             id="firstName"
@@ -145,7 +162,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="dateOfBirth">Date of Birth</Label>
+          <Label for="dateOfBirth">Ngày sinh</Label>
           <Input
             type="date"
             id="dateOfBirth"
@@ -154,7 +171,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="phoneNumber">Phone Number</Label>
+          <Label for="phoneNumber">Số điện thoại</Label>
           <Input
             type="text"
             id="phoneNumber"
@@ -163,15 +180,15 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="gender">Gender</Label>
+          <Label for="gender">Giới tính</Label>
           <Input
             type="select"
             id="gender"
             onChange={(event) => handleOnChangeInput(event, "gender")}
             value={formData.gender}
           >
-            <option value="0">Male</option>
-            <option value="1">Female</option>
+            <option value="0">Nam</option>
+            <option value="1">Nữ</option>
           </Input>
         </FormGroup>
         <FormGroup>
@@ -184,7 +201,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password">Mật khẩu</Label>
           <Input
             type={passwordVisible ? "text" : "password"}
             id="password"
@@ -192,11 +209,11 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
             value={formData.password}
           />
           <Button onClick={togglePasswordVisibility}>
-            {passwordVisible ? "Hide" : "Show"} Password
+            {passwordVisible ? "Ẩn" : "Hiển thị"} mật khẩu
           </Button>
         </FormGroup>
         <FormGroup>
-          <Label for="address">Address</Label>
+          <Label for="address">Địa chỉ</Label>
           <Input
             type="text"
             id="address"
@@ -205,7 +222,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="introduction">Introduction</Label>
+          <Label for="introduction">Giới thiệu</Label>
           <Input
             type="textarea"
             id="introduction"
@@ -214,7 +231,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="description">Description</Label>
+          <Label for="description">Mô tả</Label>
           <Input
             type="textarea"
             id="description"
@@ -225,10 +242,10 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
       </ModalBody>
       <ModalFooter>
         <Button color="primary" onClick={handleUpdateInfo}>
-          Update
+          Cập nhật
         </Button>
         <Button color="secondary" onClick={toggle}>
-          Cancel
+          Hủy
         </Button>
       </ModalFooter>
     </Modal>
