@@ -19,7 +19,7 @@ const Register = () => {
     firstName: "",
     dateOfBirth: "",
     phoneNumber: "",
-    gender: true,
+    gender: false,
     email: "",
     password: "",
     address: "",
@@ -35,7 +35,8 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === "gender" ? value === "true" : value,
+
     });
   };
 
