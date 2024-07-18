@@ -12,7 +12,7 @@ function TarotReaderSessionType({ user }) {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const response = await axios.get(`https://tarot.somee.com/api/TarotReader/${id}`);
+        const response = await axios.get(`https://tarott.azurewebsites.net/api/TarotReader/${id}`);
         const filteredSessions = response.data.sessionTypes;
         setSessions(filteredSessions);
       } catch (error) {
@@ -39,7 +39,7 @@ function TarotReaderSessionType({ user }) {
     };
 
     try {
-      await axios.put(`https://tarot.somee.com/api/SessionTypes/`, updatedSession);
+      await axios.put(`https://tarott.azurewebsites.net/api/SessionTypes/`, updatedSession);
       setSessions((prevSessions) =>
         prevSessions.map((session) =>
           session.sessionTypeId === editingSession.sessionTypeId ? updatedSession : session

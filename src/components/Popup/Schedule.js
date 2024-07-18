@@ -14,7 +14,7 @@ export default function Schedule({ onClose, sessionType }) {
     const fetchScheduleData = async () => {
       try {
         const response = await fetch(
-          `https://tarot.somee.com/api/Schedules/tarot/${sessionType.tarotReaderId}`
+          `https://tarott.azurewebsites.net/api/Schedules/tarot/${sessionType.tarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -24,7 +24,7 @@ export default function Schedule({ onClose, sessionType }) {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const filteredData = data.filter(
-          (schedule) => new Date(schedule.date) >= today
+          (schedule) => new Date(schedule.date) >= today && schedule.status
         );
         setScheduleData(filteredData);
         filterScheduleData(filteredData, sessionType.duration);
@@ -36,7 +36,7 @@ export default function Schedule({ onClose, sessionType }) {
     const fetchTarotReaderName = async () => {
       try {
         const response = await fetch(
-          `https://tarot.somee.com/api/TarotReader/${sessionType.tarotReaderId}`
+          `https://tarott.azurewebsites.net/api/TarotReader/${sessionType.tarotReaderId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch tarot reader's name");

@@ -24,13 +24,16 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
 
       console.log("Booking Data:", bookingData);
 
-      const response = await fetch("https://tarot.somee.com/api/Bookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-      });
+      const response = await fetch(
+        "https://tarott.azurewebsites.net/api/Bookings",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bookingData),
+        }
+      );
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -66,7 +69,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
       console.log("Schedule status updated");
 
       // Redirect to the payment link or handle as needed
-      window.location.href = paymentLink;
+      // window.location.href = paymentLink;
 
       toast.success(
         "Đặt lịch thành công! Đang chuyển đến trang thanh toán...",
@@ -83,7 +86,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const fetchLatestBookingId = async () => {
     try {
       const response = await fetch(
-        `https://tarot.somee.com/api/Bookings?CustomerId=${user.customer.customerId}`,
+        `https://tarott.azurewebsites.net/api/Bookings?CustomerId=${user.customer.customerId}`,
         {
           method: "GET",
           headers: {
@@ -118,7 +121,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const createPaymentLink = async (bookingId) => {
     try {
       const response = await fetch(
-        "https://tarot.somee.com/create-payment-link",
+        "https://tarott.azurewebsites.net/create-payment-link",
         {
           method: "POST",
           headers: {
@@ -154,11 +157,9 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
     const { endTime } = bookingDetails;
     const { startTime } = bookingDetails;
 
-    console.log("Updating schedule status for scheduleId:", schedule);
-
     try {
       const response = await fetch(
-        `https://tarot.somee.com/api/Schedules/${schedule}`,
+        `https://tarott.azurewebsites.net/api/Schedules`,
         {
           method: "PUT",
           headers: {
@@ -177,10 +178,12 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
 
       if (!response.ok) {
         const errorText = await response.text();
+        console.error(`Failed to update schedule status: ${errorText}`);
         throw new Error(`Failed to update schedule status: ${errorText}`);
       }
 
-      console.log("Schedule status updated successfully");
+      const result = await response.json();
+      console.log("Schedule status updated successfully", result);
     } catch (error) {
       console.error("Error updating schedule status:", error.message);
     }

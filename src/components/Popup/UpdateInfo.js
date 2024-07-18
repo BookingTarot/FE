@@ -33,10 +33,10 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
     const fetchUserData = async () => {
       try {
         const userRes = await axios.get(
-          `https://tarot.somee.com/api/user/${userId}`
+          `https://tarott.azurewebsites.net/api/user/${userId}`
         );
         const tarotReaderRes = await axios.get(
-          `https://tarot.somee.com/api/TarotReader/${TarotReaderId}`
+          `https://tarott.azurewebsites.net/api/TarotReader/${TarotReaderId}`
         );
 
         const genderValue = userRes.data.gender ? "1" : "0";
@@ -86,10 +86,10 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
         address: formData.address,
       };
 
-      await axios.put(`https://tarot.somee.com/api/user/`, userData);
+      await axios.put(`https://tarott.azurewebsites.net/api/user/`, userData);
 
       const tarotReaderRes = await axios.get(
-        `https://tarot.somee.com/api/TarotReader/${TarotReaderId}`
+        `https://tarott.azurewebsites.net/api/TarotReader/${TarotReaderId}`
       );
       const currentTarotReaderData = tarotReaderRes.data;
       console.log(currentTarotReaderData);
@@ -114,7 +114,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
       };
       try {
         const response = await axios.put(
-          `https://tarot.somee.com/api/TarotReader/`,
+          `https://tarott.azurewebsites.net/api/TarotReader/`,
           updatedTarotReaderData
         );
         console.log("Update successful:", response.data);

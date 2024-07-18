@@ -4,7 +4,7 @@ import { Button, InputGroup, FormControl, Modal, Form } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API = "https://tarot.somee.com/api/User";
+const API = "https://tarott.azurewebsites.net/api/User";
 
 export default function Customer() {
   const [users, setUsers] = useState([]);

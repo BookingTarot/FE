@@ -12,7 +12,7 @@ export default function CustomerBooking() {
     const fetchBookingHistory = async () => {
       try {
         const response = await fetch(
-          `https://tarot.somee.com/api/Bookings?customerId=${user.customer.customerId}`
+          `https://tarott.azurewebsites.net/api/Bookings?customerId=${user.customer.customerId}`
         );
         const data = await response.json();
         setBookingHistory(data);
@@ -82,29 +82,39 @@ export default function CustomerBooking() {
                 <th>Amount</th>
                 <th>Description</th>
                 <th>Status</th>
+                <th>Link Xem Bài</th>
               </tr>
             </thead>
             <tbody>
               {displayBookings.map((booking) => (
                 <tr key={booking.scheduleId}>
                   <td>{booking.tarotReaderName}</td>
-                  <td>{new Date(booking.date).toLocaleDateString()}</td>
+                  <td>{new Date(booking.startTime).toLocaleDateString()}</td>
                   <td>
                     {new Date(booking.startTime).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
+                      hour12: true,
                     })}
                   </td>
                   <td>
                     {new Date(booking.endTime).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
+                      hour12: true,
                     })}
                   </td>
                   <td>{booking.sessionTypeName}</td>
                   <td>{booking.amount}</td>
                   <td>{booking.description}</td>
                   <td>{booking.status ? "Completed" : "Pending"}</td>
+                  <td>
+                    {booking.status && (
+                      <a href={`https://meet.google.com/xge-qmxk-kpk`}>
+                        Tham gia xem bài
+                      </a>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
