@@ -13,7 +13,7 @@ export default function CustEditInfor() {
     firstName: "",
     dateOfBirth: "",
     phoneNumber: "",
-    gender: true,
+    gender: false,
     email: "",
     password: "",
     address: "",
@@ -38,14 +38,14 @@ export default function CustEditInfor() {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === "gender" ? value === "true" : value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("https://tarot.somee.com/api/User", {
+    const response = await fetch("https://tarott.azurewebsites.net/api/User", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -127,8 +127,8 @@ export default function CustEditInfor() {
                 onChange={handleChange}
                 required
               >
-                <option value={true}>Nam</option>
-                <option value={false}>Nữ</option>
+                <option value={false}>Nam</option>
+                <option value={true}>Nữ</option>
               </select>
             </div>
             <div className="input-group-edit mb-4">

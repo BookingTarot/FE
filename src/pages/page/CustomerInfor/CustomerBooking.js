@@ -12,7 +12,7 @@ export default function CustomerBooking() {
     const fetchBookingHistory = async () => {
       try {
         const response = await fetch(
-          `https://tarot.somee.com/api/Bookings?customerId=${user.customer.customerId}`
+          `https://tarott.azurewebsites.net/api/Bookings?customerId=${user.customer.customerId}`
         );
         const data = await response.json();
         setBookingHistory(data);

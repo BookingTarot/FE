@@ -38,7 +38,7 @@ export default function TarotReaderDetail() {
     const fetchTarotReader = async () => {
       try {
         const response = await axios.get(
-          `https://tarot.somee.com/api/TarotReader/${id}`
+          `https://tarott.azurewebsites.net/api/TarotReader/${id}`
         );
         setTarotReader(response.data);
       } catch (error) {
@@ -49,7 +49,7 @@ export default function TarotReaderDetail() {
     const fetchFeedbacks = async () => {
       try {
         const response = await axios.get(
-          `https://tarot.somee.com/api/Feedbacks/tarotreader/${id}`
+          `https://tarott.azurewebsites.net/api/Feedbacks/tarotreader/${id}`
         );
         setFeedbacks(response.data);
         calculateAverageRating(response.data);
@@ -83,7 +83,7 @@ export default function TarotReaderDetail() {
 
     try {
       const response = await axios.post(
-        `https://tarot.somee.com/api/Feedbacks`,
+        `https://tarott.azurewebsites.net/api/Feedbacks`,
         feedbackData
       );
       setFeedbacks([...feedbacks, response.data]);

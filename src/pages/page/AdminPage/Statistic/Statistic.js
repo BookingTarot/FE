@@ -31,9 +31,9 @@ const Statistic = () => {
 
   const fetchData = async () => {
     try {
-      const usersResponse = await axios.get("https://tarot.somee.com/api/User");
+      const usersResponse = await axios.get("https://tarott.azurewebsites.net/api/User");
       const bookingsResponse = await axios.get(
-        "https://tarot.somee.com/api/Bookings"
+        "https://tarott.azurewebsites.net/api/Bookings"
       );
 
       const customersCount = usersResponse.data.filter(

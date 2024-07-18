@@ -14,7 +14,7 @@ function TarotReaderAppointment({ user }) {
     const fetchAppointments = async () => {
       try {
         const response = await axios.get(
-          "https://tarot.somee.com/api/Bookings"
+          "https://tarott.azurewebsites.net/api/Bookings"
         );
         const formattedAppointments = response.data.map((appointment) => {
           const formattedDate = new Date(appointment.date).toLocaleDateString(

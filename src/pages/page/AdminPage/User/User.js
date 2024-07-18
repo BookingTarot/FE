@@ -5,9 +5,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // const API = "https://tarot.somee.com/api/User";
-const API = "https://localhost:7218/api/User";
+const API = "https://tarott.azurewebsites.net/api/User";
 // const readerAPI = "https://tarot.somee.com/api/TarotReader";
-const readerAPI = "https://localhost:7218/api/User/register-tarotreader";
+const readerAPI = "https://tarott.azurewebsites.net/api/User/register-tarotreader";
 
 export default function User() {
   const [users, setUsers] = useState([]);

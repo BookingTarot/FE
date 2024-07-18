@@ -32,7 +32,7 @@ function TarotReaderSchedule({ user }) {
   const fetchTarotReaders = useCallback(async () => {
     try {
       const response = await axios.get(
-        `https://tarot.somee.com/api/TarotReader`
+        `https://tarott.azurewebsites.net/api/TarotReader`
       );
       const reader = response.data.find(
         (reader) => reader.tarotReaderId === parseInt(id)
@@ -106,7 +106,7 @@ function TarotReaderSchedule({ user }) {
     try {
       if (isUpdate) {
         console.log(selectedEventId, dateStr, startDateTime, startDateTime);
-        await axios.put(`https://tarot.somee.com/api/Schedules/`, {
+        await axios.put(`https://tarott.azurewebsites.net/api/Schedules/`, {
           scheduleId: selectedEventId,
           tarotReaderId: tarotReader.tarotReaderId,
           date: dateStr,
@@ -115,7 +115,7 @@ function TarotReaderSchedule({ user }) {
           status: true,
         });
       } else {
-        await axios.post("https://tarot.somee.com/api/Schedules", {
+        await axios.post("https://tarott.azurewebsites.net/api/Schedules", {
           tarotReaderId: tarotReader.tarotReaderId,
           date: dateStr,
           startTime: startDateTime,
@@ -134,7 +134,7 @@ function TarotReaderSchedule({ user }) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `https://tarot.somee.com/api/Schedules/${selectedEventId}`
+        `https://tarott.azurewebsites.net/api/Schedules/${selectedEventId}`
       );
       await fetchTarotReaders();
       handleClose();

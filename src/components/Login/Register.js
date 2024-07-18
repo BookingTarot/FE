@@ -114,7 +114,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "https://tarot.somee.com/api/User/register-customer",
+        "https://tarott.azurewebsites.net/api/User/register-customer",
         {
           method: "POST",
           headers: {

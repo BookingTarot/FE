@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const bookingAPI = "https://tarot.somee.com/api/Bookings";
+const bookingAPI = "https://tarott.azurewebsites.net/api/Bookings";
 const telloryLogoUrl = "../../../../assets/images/logo.png";
 
 export default function Transaction() {

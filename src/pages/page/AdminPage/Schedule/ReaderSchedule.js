@@ -18,7 +18,7 @@ const ReaderSchedule = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get(`https://tarot.somee.com/api/Bookings`);
+      const response = await axios.get(`https://tarott.azurewebsites.net/api/Bookings`);
       const bookings = response.data;
       const formattedEvents = bookings.map((booking) => ({
         id: booking.bookingId,

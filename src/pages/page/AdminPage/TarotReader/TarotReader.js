@@ -3,10 +3,10 @@ import DataTable from 'react-data-table-component';
 import { Button, InputGroup, FormControl, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TarotReaderAPI = "https://tarot.somee.com/api/TarotReader";
+const TarotReaderAPI = "https://tarott.azurewebsites.net/api/TarotReader";
 // const TarotReaderAPI = "https://localhost:7218/api/TarotReader";
 
-const newReaderAPI = "https://tarot.somee.com/api/User/register-tarotreader";
+const newReaderAPI = "https://tarott.azurewebsites.net/api/User/register-tarotreader";
 // const newReaderAPI = "https://localhost:7218/api/User/register-tarotreader";
 
 export default function TarotReader() {

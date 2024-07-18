@@ -113,7 +113,7 @@ export default function TarotReader() {
     const fetchTarotReaders = async () => {
       try {
         const response = await axios.get(
-          "https://tarot.somee.com/api/TarotReader"
+          "https://tarott.azurewebsites.net/api/TarotReader"
         );
         setTarotReaders(response.data);
         setFilteredReaders(response.data);
@@ -131,7 +131,7 @@ export default function TarotReader() {
     for (const reader of readers) {
       try {
         const response = await axios.get(
-          `https://tarot.somee.com/api/Feedbacks/tarotreader/${reader.tarotReaderId}`
+          `https://tarott.azurewebsites.net/api/Feedbacks/tarotreader/${reader.tarotReaderId}`
         );
         const feedbacks = response.data;
         ratings[reader.tarotReaderId] = calculateAverageRating(feedbacks);

@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import { Button, InputGroup, FormControl, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API = "https://tarot.somee.com/api/Bookings";
+const API = "https://tarott.azurewebsites.net/api/Bookings";
 const statusOptions = ["Chưa thanh toán", "Đã thanh toán"];
 
 export default function Activity() {

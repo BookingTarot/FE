@@ -24,7 +24,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
 
       console.log("Booking Data:", bookingData);
 
-      const response = await fetch("https://tarot.somee.com/api/Bookings", {
+      const response = await fetch("https://tarott.azurewebsites.net/api/Bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const fetchLatestBookingId = async () => {
     try {
       const response = await fetch(
-        `https://tarot.somee.com/api/Bookings?CustomerId=${user.customer.customerId}`,
+        `https://tarott.azurewebsites.net/api/Bookings?CustomerId=${user.customer.customerId}`,
         {
           method: "GET",
           headers: {
@@ -118,7 +118,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
   const createPaymentLink = async (bookingId) => {
     try {
       const response = await fetch(
-        "https://tarot.somee.com/create-payment-link",
+        "https://tarott.azurewebsites.net/create-payment-link",
         {
           method: "POST",
           headers: {
@@ -158,7 +158,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
 
     try {
       const response = await fetch(
-        `https://tarot.somee.com/api/Schedules/${schedule}`,
+        `https://tarott.azurewebsites.net/api/Schedules/${schedule}`,
         {
           method: "PUT",
           headers: {
