@@ -21,6 +21,7 @@ export default function Activity() {
     scheduleId: 0,
     sessionTypeId: 0,
     status: true,
+    linkMeet: "",
   });
 
   const fetchBookings = async () => {
@@ -51,9 +52,12 @@ export default function Activity() {
 
   const formatTime = (timeString) => {
     const time = new Date(timeString);
+    const day = time.getDate();
+    const month = time.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
+    const year = time.getFullYear();
     const hours = time.getHours();
     const minutes = time.getMinutes();
-    return `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
+    return `${day}-${month}-${year} ${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
   };
 
   const handleSearch = (e) => {
@@ -79,6 +83,7 @@ export default function Activity() {
       scheduleId: booking.scheduleId,
       sessionTypeId: booking.sessionTypeId,
       status: booking.status === "Đã thanh toán",
+      linkMeet: booking.linkMeet,
     });
     setShowModal(true);
   };
@@ -94,7 +99,8 @@ export default function Activity() {
         description: editBooking.description,
         scheduleId: editBooking.scheduleId,
         sessionTypeId: editBooking.sessionTypeId,
-        status: editBooking.status, // Send status as boolean
+        status: editBooking.status,
+        linkMeet: editBooking.linkMeet // Send status as boolean
       };
 
       console.log("Booking Data to Update:", bookingData);
@@ -169,6 +175,15 @@ export default function Activity() {
           {row.status}
         </span>
       ),
+    },
+    {
+      name: "Mã Đơn",
+      selector: (row) => row.bookingId,
+    }
+    ,
+    {
+      name: "Link Meet",
+      selector: (row) => row.linkMeet,
     },
     {
       name: "Thực hiện",
@@ -348,6 +363,19 @@ export default function Activity() {
               ))}
               {/* <option value="Đã thanh toán">Đã thanh toán</option> */}
             </Form.Select>
+          </Form.Group>
+          <Form.Group controlId="editBooking.description">
+            <Form.Label>Link Meet</Form.Label>
+            <FormControl
+              type="text"
+              value={editBooking.linkMeet}
+              onChange={(e) =>
+                setEditBooking({
+                  ...editBooking,
+                  linkMeet: e.target.value,
+                })
+              }
+            />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
