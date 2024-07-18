@@ -67,7 +67,11 @@ export default function Transaction() {
       ),
       sortable: true,
     },
-    { name: "Tổng tiền", selector: (row) => row.amount, sortable: true },
+    {
+      name: "Tổng tiền",
+      selector: (row) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(row.amount * 1000),
+      sortable: true
+    },
     {
       name: "Ngày tạo",
       selector: (row) => row.date,
