@@ -341,7 +341,12 @@ export default function Activity() {
                 })
               }
             >
-              <option value="Đã thanh toán">Đã thanh toán</option>
+              {statusOptions.map((status, index) => (
+                <option key={index} value={status}>
+                  {status}
+                </option>
+              ))}
+              {/* <option value="Đã thanh toán">Đã thanh toán</option> */}
             </Form.Select>
           </Form.Group>
         </Modal.Body>
