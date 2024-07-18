@@ -18,8 +18,8 @@ function AdminDashboard() {
 
   const renderContent = () => {
     switch (selectedSection) {
-      case "user":
-        return <User />;
+      // case "user":
+      //   return <User />;
       case "customer":
         return <Customer />;
       case "customerSchedule":
@@ -35,7 +35,7 @@ function AdminDashboard() {
       case "transaction":
         return <Transaction />;
       default:
-        return <User />;
+        return <Customer />;
     }
   };
 

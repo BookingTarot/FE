@@ -24,7 +24,7 @@ export default function Schedule({ onClose, sessionType }) {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const filteredData = data.filter(
-          (schedule) => new Date(schedule.date) >= today
+          (schedule) => new Date(schedule.date) >= today && schedule.status
         );
         setScheduleData(filteredData);
         filterScheduleData(filteredData, sessionType.duration);

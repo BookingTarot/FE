@@ -35,6 +35,7 @@ export default function Activity() {
           startTime: formatTime(booking.startTime),
           endTime: formatTime(booking.endTime),
         }));
+        transformedData.sort((a, b) => new Date(b.date) - new Date(a.date));
         setBookings(transformedData);
       }
       setLoading(false);
@@ -340,11 +341,7 @@ export default function Activity() {
                 })
               }
             >
-              {statusOptions.map((status, index) => (
-                <option key={index} value={status}>
-                  {status}
-                </option>
-              ))}
+              <option value="Đã thanh toán">Đã thanh toán</option>
             </Form.Select>
           </Form.Group>
         </Modal.Body>

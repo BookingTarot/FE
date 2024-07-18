@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
-import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import { InputGroup, FormControl, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const bookingAPI = "https://tarott.azurewebsites.net/api/Bookings";
@@ -12,22 +12,33 @@ export default function Transaction() {
   const [searchText, setSearchText] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-
-  const fetchBookings = async () => {
-    try {
-      const res = await fetch(bookingAPI);
-      const data = await res.json();
-      setBookings(data);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
-  };
+  const [filteredBookings, setFilteredBookings] = useState([]);
 
   useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const res = await fetch(bookingAPI);
+        let data = await res.json();
+        data = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setBookings(data);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
+
     fetchBookings();
   }, []);
+
+  useEffect(() => {
+    // Filter and sort bookings based on search text, start date, and end date
+    const filtered = bookings.filter((booking) =>
+      booking.customerName.toLowerCase().includes(searchText.toLowerCase())
+    );
+    const sorted = filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    setFilteredBookings(sorted);
+  }, [bookings, searchText, startDate, endDate]);
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);
@@ -40,32 +51,6 @@ export default function Transaction() {
   const handleEndDateChange = (e) => {
     setEndDate(e.target.value);
   };
-
-  const handleApplyFilter = () => {
-    // Filter bookings based on date range
-    const filteredBookings = bookings.filter((booking) => {
-      const bookingDate = new Date(booking.date);
-      const start = startDate ? new Date(startDate) : null;
-      const end = endDate ? new Date(endDate) : null;
-
-      if (start && end) {
-        return bookingDate >= start && bookingDate <= end;
-      } else if (start) {
-        return bookingDate >= start;
-      } else if (end) {
-        return bookingDate <= end;
-      }
-      return true; // No date range specified
-    });
-
-    return filteredBookings;
-  };
-
-  const filteredBookings = bookings
-    .filter((booking) =>
-      booking.customerName.toLowerCase().includes(searchText.toLowerCase())
-    )
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const columns = [
     {
