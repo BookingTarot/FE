@@ -69,7 +69,7 @@ export default function Confirm({ onClose, sessionType, bookingDetails }) {
       console.log("Schedule status updated");
 
       // Redirect to the payment link or handle as needed
-      // window.location.href = paymentLink;
+      window.location.href = paymentLink;
 
       toast.success(
         "Đặt lịch thành công! Đang chuyển đến trang thanh toán...",
