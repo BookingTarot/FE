@@ -21,7 +21,7 @@ export default function Sidebar({ onSelect }) {
             <hr className="text-white d-none d-sm-block"></hr>
 
             <ul className="nav nav-pills flex-column mt-2 mt-sm-0">
-              <li className="nav-item text-white my-1 py-2 py-sm-0">
+              {/* <li className="nav-item text-white my-1 py-2 py-sm-0">
                 <a
                   href="#"
                   className="nav-link active text-center text-sm-start"
@@ -30,11 +30,10 @@ export default function Sidebar({ onSelect }) {
                   style={{ marginTop: "20px" }}
                 >
                   {/* <i className="bi bi-people fs-3"></i> */}
-                  <span className="ms-2 fs-3 d-none d-sm-inline">
+              {/* <span className="ms-2 fs-3 d-none d-sm-inline">
                     Quản Lý Tài Khoản
                   </span>
-                </a>
-              </li>
+                </a> */}
 
               <li className="nav-item text-white my-1 py-2 py-sm-0">
                 <a
