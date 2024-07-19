@@ -24,6 +24,8 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
     address: "",
     introduction: "",
     description: "",
+    kind: "",
+    experience: "",
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -50,6 +52,8 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           address: userRes.data.address,
           introduction: tarotReaderRes.data.introduction,
           description: tarotReaderRes.data.description,
+          kind: tarotReaderRes.data.kind,
+          experience: tarotReaderRes.data.experience,
         });
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -141,7 +145,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
 
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
-      <ModalHeader toggle={toggle}>Update Information</ModalHeader>
+      <ModalHeader toggle={toggle}>Cập Nhập Thông Tin</ModalHeader>
       <ModalBody>
         <FormGroup>
           <Label for="lastName">Tên</Label>
@@ -153,7 +157,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="firstName">Họ và tên đệm</Label>
+          <Label for="firstName">Họ</Label>
           <Input
             type="text"
             id="firstName"
@@ -222,6 +226,24 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
           />
         </FormGroup>
         <FormGroup>
+          <Label for="kind"> Thể Loại</Label>
+          <Input
+            type="text"
+            id="kind"
+            onChange={(event) => handleOnChangeInput(event, "kind")}
+            value={formData.kind}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="experience">Kinh nghiệm</Label>
+          <Input
+            type="text"
+            id="experience"
+            onChange={(event) => handleOnChangeInput(event, "experience")}
+            value={formData.experience}
+          />
+        </FormGroup>
+        <FormGroup>
           <Label for="introduction">Giới thiệu</Label>
           <Input
             type="textarea"
@@ -238,7 +260,7 @@ function UpdateInfo({ isOpen, toggle, updateInfo, userId, TarotReaderId }) {
             onChange={(event) => handleOnChangeInput(event, "description")}
             value={formData.description}
           />
-        </FormGroup>
+        </FormGroup>      
       </ModalBody>
       <ModalFooter>
         <Button color="primary" onClick={handleUpdateInfo}>
