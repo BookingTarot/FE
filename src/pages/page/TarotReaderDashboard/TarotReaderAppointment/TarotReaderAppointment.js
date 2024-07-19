@@ -59,6 +59,12 @@ function TarotReaderAppointment({ user }) {
     );
   };
 
+  const handleMeetClick = (link) => {
+    if (link) {
+      window.open(link, "_blank");
+    }
+  };
+
   // Tính toán appointments hiển thị trên trang hiện tại
   const offset = currentPage * appointmentsPerPage;
   const currentAppointments = appointments.slice(
@@ -81,10 +87,7 @@ function TarotReaderAppointment({ user }) {
             <table className="table mb-0 table-center">
               <thead>
                 <tr>
-                  <th
-                    className="border-bottom p-3"
-                    style={{ minWidth: "50px" }}
-                  >
+                  <th className="border-bottom p-3" style={{ minWidth: "50px" }}>
                     #
                   </th>
                   <th
@@ -111,6 +114,7 @@ function TarotReaderAppointment({ user }) {
                   >
                     Trạng thái
                   </th>
+                  <th className="border-bottom p-3">Meet</th>
                 </tr>
               </thead>
               <tbody>
@@ -138,6 +142,18 @@ function TarotReaderAppointment({ user }) {
                         {appointment.status ? "Xác nhận" : "Hủy"}
                       </td>
                     )}
+                    <td className="p-3">
+                      {appointment.linkMeet ? (
+                        <button
+                          className="btn btn-success"
+                          onClick={() => handleMeetClick(appointment.linkMeet)}
+                        >
+                          Tham Gia
+                        </button>
+                      ) : (
+                        ""
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
