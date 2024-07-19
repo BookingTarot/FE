@@ -268,32 +268,6 @@ export default function Activity() {
           <Modal.Title>Cập nhật thông tin đặt lịch</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Group controlId="editBooking.tarotReaderId">
-            <Form.Label>Tarot Reader</Form.Label>
-            <FormControl
-              type="number"
-              value={editBooking.tarotReaderId}
-              onChange={(e) =>
-                setEditBooking({
-                  ...editBooking,
-                  tarotReaderId: parseInt(e.target.value),
-                })
-              }
-            />
-          </Form.Group>
-          <Form.Group controlId="editBooking.customerId">
-            <Form.Label>Khách hàng</Form.Label>
-            <FormControl
-              type="number"
-              value={editBooking.customerId}
-              onChange={(e) =>
-                setEditBooking({
-                  ...editBooking,
-                  customerId: parseInt(e.target.value),
-                })
-              }
-            />
-          </Form.Group>
           <Form.Group controlId="editBooking.amount">
             <Form.Label>Giá</Form.Label>
             <FormControl
@@ -316,32 +290,6 @@ export default function Activity() {
                 setEditBooking({
                   ...editBooking,
                   description: e.target.value,
-                })
-              }
-            />
-          </Form.Group>
-          <Form.Group controlId="editBooking.scheduleId">
-            <Form.Label>Lịch</Form.Label>
-            <FormControl
-              type="number"
-              value={editBooking.scheduleId}
-              onChange={(e) =>
-                setEditBooking({
-                  ...editBooking,
-                  scheduleId: parseInt(e.target.value),
-                })
-              }
-            />
-          </Form.Group>
-          <Form.Group controlId="editBooking.sessionTypeId">
-            <Form.Label>Buổi đọc</Form.Label>
-            <FormControl
-              type="number"
-              value={editBooking.sessionTypeId}
-              onChange={(e) =>
-                setEditBooking({
-                  ...editBooking,
-                  sessionTypeId: parseInt(e.target.value),
                 })
               }
             />
