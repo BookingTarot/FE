@@ -12,6 +12,7 @@ export default function Customer() {
   const [selectedRows, setSelectedRows] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
   
   const [editUser, setEditUser] = useState({
     userId: "",
@@ -19,11 +20,23 @@ export default function Customer() {
     lastName: "",
     dateOfBirth: "",
     phoneNumber: "",
-    gender: "",
+    gender: true,
     email: "",
     password: "",
     address: "",
     isActive: false,
+  });
+
+  const [createUser, setCreateUser] = useState({
+    lastName: "",
+    firstName: "",
+    dateOfBirth: "",
+    phoneNumber: "",
+    gender: true,
+    email: "",
+    password: "",
+    address: "",
+    description: "",
   });
 
   const fetchUsers = async () => {
@@ -57,6 +70,21 @@ export default function Customer() {
     setSearchText(e.target.value);
   };
 
+  const handleCreate = () => {
+    setCreateUser({
+      lastName: "",
+      firstName: "",
+      dateOfBirth: "",
+      phoneNumber: "",
+      gender: true,
+      email: "",
+      password: "",
+      address: "",
+      description: "",
+    });
+    setShowCreateModal(true);
+  };
+
   const handleEdit = () => {
     if (selectedRows.length === 1) {
       const user = selectedRows[0];
@@ -66,7 +94,7 @@ export default function Customer() {
         lastName: user.lastName,
         dateOfBirth: new Date(user.dateOfBirth),
         phoneNumber: user.phoneNumber,
-        gender: user.gender === "Nam",
+        gender: user.gender === "Nam" ? true : false,
         email: user.email,
         address: user.address,
         password: "",
@@ -110,13 +138,41 @@ export default function Customer() {
     setSelectedRows(state.selectedRows);
   };
 
+  const handleSubmit = async () => {
+    const addUser = {
+      ...createUser,
+      dateOfBirth: new Date(createUser.dateOfBirth)
+    };
+    console.log(addUser);
+
+    try {
+      const res = await fetch(`${API}/register-customer`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(addUser),
+      });
+      if (res.ok) {
+        setShowCreateModal(false);
+        fetchUsers();
+      } else {
+        alert ("Failed to create user");
+      }
+    } catch (e) {
+      console.error("An error occured while creating user.");
+    }
+  };
+
   const handleSave = async () => {
     const updatedUser = {
       ...editUser,
       userId: selectedRows[0].userId,
       dateOfBirth: new Date(editUser.dateOfBirth),
-      gender: editUser.gender === "Nam",
+      gender: editUser.gender === "true",
     };
+
+    console.log(editUser);
   
     try {
       const res = await fetch(API, {
@@ -242,6 +298,9 @@ export default function Customer() {
           />
         </InputGroup>
         <div className="d-flex">
+        <Button variant="primary" className="me-2" onClick={handleCreate}>
+            Thêm Tài Khoản
+          </Button>
           <Button variant="success" className="me-2" onClick={handleEdit}>
             Chỉnh Sửa Tài Khoản
           </Button>
@@ -260,6 +319,104 @@ export default function Customer() {
         customStyles={customStyles}
         theme="dark"
       />
+
+      {/* Create Modal */}
+      <Modal show={showCreateModal} onHide={() => setShowCreateModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Khách Hàng</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Họ</Form.Label>
+              <Form.Control
+                type="text"
+                name="lastName"
+                value={createUser.firstName}
+                onChange={(e) => setCreateUser({ ...createUser, firstName: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Tên</Form.Label>
+              <Form.Control
+                type="text"
+                name="firstName"
+                value={createUser.lastName}
+                onChange={(e) => setCreateUser({ ...createUser, lastName: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Ngày sinh</Form.Label>
+              <Form.Control
+                type="date"
+                name="dateOfBirth"
+                value={createUser.dateOfBirth}
+                onChange={(e) => setCreateUser({ ...createUser, dateOfBirth: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Giới tính</Form.Label>
+              <Form.Control
+                as="select"
+                name="gender"
+                value={createUser.gender}
+                onChange={(e) =>
+                  setCreateUser({ ...createUser, gender: e.target.value })
+                }
+              >
+                <option value={true}>Nam</option>
+                <option value={false}>Nữ</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Số Điện Thoại</Form.Label>
+              <Form.Control
+                type="text"
+                name="phoneNumber"
+                value={createUser.phoneNumber}
+                onChange={(e) => setCreateUser({ ...createUser, phoneNumber: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={createUser.email}
+                onChange={(e) => setCreateUser({ ...createUser, email: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Mật khẩu</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                value={createUser.password}
+                onChange={(e) => setCreateUser({ ...createUser, password: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Địa chỉ</Form.Label>
+              <Form.Control
+                type="text"
+                name="address"
+                value={createUser.address}
+                onChange={(e) => setCreateUser({ ...createUser, address: e.target.value })}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowCreateModal(false)}>
+            Thoát
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Tạo Mới Khách Hàng
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Update Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Khách Hàng</Modal.Title>
@@ -292,7 +449,7 @@ export default function Customer() {
                 type="date"
                 value={editUser.dateOfBirth}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, dateOfBirth: e.target.value })
+                  setEditUser({ ...editUser, dateOfBirth: e.target.value})
                 }
               />
             </Form.Group>
@@ -310,13 +467,14 @@ export default function Customer() {
               <Form.Label>Giới Tính</Form.Label>
               <Form.Control
                 as="select"
-                value={editUser.gender ? "Nam" : "Nữ"}
+                name="gender"
+                value={editUser.gender ? "true" : "false"}
                 onChange={(e) =>
-                  setEditUser({ ...editUser, gender: e.target.value === "Nam" })
+                  setEditUser({ ...editUser, gender: e.target.value === "true" })
                 }
               >
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
+                <option value={true}>Nam</option>
+                <option value={false}>Nữ</option>
               </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3">
