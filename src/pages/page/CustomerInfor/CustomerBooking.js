@@ -91,7 +91,7 @@ export default function CustomerBooking() {
                   <td>{booking.tarotReaderName}</td>
                   <td>{new Date(booking.startTime).toLocaleDateString()}</td>
                   <td>
-                  {new Date(booking.startTime).toLocaleDateString('vi-VN')} {" "}
+                    {new Date(booking.startTime).toLocaleDateString("vi-VN")}{" "}
                     {new Date(booking.startTime).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
@@ -99,7 +99,7 @@ export default function CustomerBooking() {
                     })}
                   </td>
                   <td>
-                  {new Date(booking.endTime).toLocaleDateString('vi-VN')} {" "}
+                    {new Date(booking.endTime).toLocaleDateString("vi-VN")}{" "}
                     {new Date(booking.endTime).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
@@ -107,15 +107,16 @@ export default function CustomerBooking() {
                     })}
                   </td>
                   <td>{booking.sessionTypeName}</td>
-                  <td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(booking.amount * 1000)}</td>
+                  <td>
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(booking.amount * 1000)}
+                  </td>
                   <td>{booking.description}</td>
                   <td>{booking.status ? "Completed" : "Pending"}</td>
                   <td>
-                    {booking.status && (
-                      <a href={booking.linkMeet}>
-                        Tham gia xem bài
-                      </a>
-                    )}
+                    <a href={booking.linkMeet}>Tham gia xem bài</a>
                   </td>
                 </tr>
               ))}

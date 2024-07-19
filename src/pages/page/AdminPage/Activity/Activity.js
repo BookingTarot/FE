@@ -57,7 +57,9 @@ export default function Activity() {
     const year = time.getFullYear();
     const hours = time.getHours();
     const minutes = time.getMinutes();
-    return `${day}-${month}-${year} ${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
+    return `${day}-${month}-${year} ${hours}:${
+      minutes < 10 ? "0" : ""
+    }${minutes}`;
   };
 
   const handleSearch = (e) => {
@@ -99,8 +101,8 @@ export default function Activity() {
         description: editBooking.description,
         scheduleId: editBooking.scheduleId,
         sessionTypeId: editBooking.sessionTypeId,
-        status: editBooking.status,
-        linkMeet: editBooking.linkMeet // Send status as boolean
+        status: true,
+        linkMeet: editBooking.linkMeet, // Send status as boolean
       };
 
       console.log("Booking Data to Update:", bookingData);
@@ -179,8 +181,7 @@ export default function Activity() {
     {
       name: "Mã Đơn",
       selector: (row) => row.bookingId,
-    }
-    ,
+    },
     {
       name: "Link Meet",
       selector: (row) => row.linkMeet,
@@ -356,12 +357,12 @@ export default function Activity() {
                 })
               }
             >
-              {statusOptions.map((status, index) => (
+              {/* {statusOptions.map((status, index) => (
                 <option key={index} value={status}>
                   {status}
                 </option>
-              ))}
-              {/* <option value="Đã thanh toán">Đã thanh toán</option> */}
+              ))} */}
+              <option value="Đã thanh toán">Đã thanh toán</option>
             </Form.Select>
           </Form.Group>
           <Form.Group controlId="editBooking.description">
