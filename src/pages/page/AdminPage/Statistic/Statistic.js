@@ -31,7 +31,9 @@ const Statistic = () => {
 
   const fetchData = async () => {
     try {
-      const usersResponse = await axios.get("https://tarott.azurewebsites.net/api/User");
+      const usersResponse = await axios.get(
+        "https://tarott.azurewebsites.net/api/User"
+      );
       const bookingsResponse = await axios.get(
         "https://tarott.azurewebsites.net/api/Bookings"
       );
@@ -43,7 +45,7 @@ const Statistic = () => {
 
       const filteredBookings = bookingsResponse.data.filter(
         (booking) =>
-          booking.status === true &&
+          booking.status === true ||
           moment(booking.date).isBetween(startDate, endDate, null, "[]")
       );
 
@@ -58,9 +60,10 @@ const Statistic = () => {
 
       const customersWithBookings = new Set();
       filteredBookings.forEach((booking) => {
-        customersWithBookings.add(booking.customerId); // Assuming tarotUserId is the correct identifier for customers
+        customersWithBookings.add(booking.customerId);
       });
       const customersWithBookingsCount = customersWithBookings.size;
+      console.log("customer", customersWithBookingsCount);
       setTotalCustomersBooking(customersWithBookingsCount);
 
       createOrUpdateChart(filteredBookings);
@@ -81,12 +84,12 @@ const Statistic = () => {
       if (aggregatedData[date]) {
         aggregatedData[date].bookings += 1;
         aggregatedData[date].amount += booking.amount;
-        aggregatedData[date].customers.add(booking.tarotUserId); // Assuming tarotUserId is the correct identifier for customers
+        aggregatedData[date].customers.add(booking.customerId);
       } else {
         aggregatedData[date] = {
           bookings: 1,
           amount: booking.amount,
-          customers: new Set([booking.tarotUserId]),
+          customers: new Set([booking.customerId]),
         };
       }
     });
@@ -100,9 +103,20 @@ const Statistic = () => {
 
     if (barChartInstance) {
       barChartInstance.destroy();
+      setBarChartInstance(null);
     }
 
-    const ctx = barChartRef.current.getContext("2d");
+    const canvasElement = barChartRef.current;
+    if (!canvasElement) {
+      console.error("Canvas element is not available");
+      return;
+    }
+
+    const ctx = canvasElement.getContext("2d");
+    if (!ctx) {
+      console.error("Failed to get canvas context");
+      return;
+    }
 
     const newChartInstance = new Chart(ctx, {
       type: "bar",
@@ -143,6 +157,7 @@ const Statistic = () => {
       },
     });
 
+    canvasElement.chartInstance = newChartInstance;
     setBarChartInstance(newChartInstance);
   };
 
