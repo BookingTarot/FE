@@ -1,90 +1,111 @@
-.title{
-    font-size: 50px;    
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;    
+.title {
+  font-size: 50px;    
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;    
 }
 
 /* TarotReaderAppointment.css */
 
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 1.5rem;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 1.5rem;
 }
 
 .table th,
 .table td {
-    padding: 12px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #dee2e6;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #dee2e6;
 }
 
 .table thead th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    text-transform: uppercase;
+  background-color: #f8f9fa;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .table tbody tr:nth-child(even) {
-    background-color: #f3f4f6;
+  background-color: #f3f4f6;
 }
 
 .table tbody tr:hover {
-    background-color: #e9ecef;
+  background-color: #e9ecef;
 }
 
 .table tbody td:last-child {
-    text-align: center;
+  text-align: center;
 }
 
 .table tbody .true {
-    color: green;
-    font-weight: bold;
+  color: green;
+  font-weight: bold;
 }
 
 .table tbody .false {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
+}
+
+.table tbody td.meet {
+  text-align: center;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-success:hover {
+  background-color: #218838;
 }
 
 /* CSS Paging */
 .pagination {
-    display: flex;
-    justify-content: flex-end; /* Đẩy phân trang sang bên phải */
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0; /* Khoảng cách trên và dưới */
-  }
-  
-  .pagination li {
-    display: inline;
-  }
-  
-  .pagination li a {
-    color: black; /* Màu chữ đen */
-    padding: 10px 15px;
-    text-decoration: none;
-    margin: 5px;
-    border-radius: 5px; /* Bo góc cho các trang */
-    transition: background-color 0.3s;
-    background-color: white; /* Màu nền trắng cho các mục phân trang */
-  }
-  
-  .pagination li a:hover {
-    background-color: #ddd; /* Màu nền khi hover */
-  }
-  
-  .pagination li.active a {
-    background-color: #007bff; /* Màu nền trang hiện tại */
-    color: white; /* Màu chữ trang hiện tại */
-  }
-  
-  .pagination li.disabled a {
-    color: grey; /* Màu chữ khi trang bị disable */
-  }
-  
+  display: flex;
+  justify-content: flex-end; /* Đẩy phân trang sang bên phải */
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0; /* Khoảng cách trên và dưới */
+}
+
+.pagination li {
+  display: inline;
+}
+
+.pagination li a {
+  color: black; /* Màu chữ đen */
+  padding: 10px 15px;
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 5px; /* Bo góc cho các trang */
+  transition: background-color 0.3s;
+  background-color: white; /* Màu nền trắng cho các mục phân trang */
+}
+
+.pagination li a:hover {
+  background-color: #ddd; /* Màu nền khi hover */
+}
+
+.pagination li.active a {
+  background-color: #007bff; /* Màu nền trang hiện tại */
+  color: white; /* Màu chữ trang hiện tại */
+}
+
+.pagination li.disabled a {
+  color: grey; /* Màu chữ khi trang bị disable */
+}
