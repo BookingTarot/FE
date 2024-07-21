@@ -66,7 +66,12 @@ export default function Blog() {
                               <span> 01 Tháng 7 2024 </span>
                             </div>
                           </div>
-                          <p className="mt-3">
+                          <p
+                            className="mt-3"
+                            style={{
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
+                          >
                             Tarot đã trở thành một công cụ phổ biến cho việc
                             tiên đoán và tự khám phá bản thân. Với nhiều bộ bài
                             tarot khác nhau, mỗi bộ đều mang những nét độc đáo
@@ -107,7 +112,12 @@ export default function Blog() {
                               <span> 03 Tháng 7 2024 </span>
                             </div>
                           </div>
-                          <p className="mt-3">
+                          <p
+                            className="mt-3"
+                            style={{
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
+                          >
                             Sử dụng tarot có thể giúp bạn hiểu rõ hơn về bản
                             thân, tìm ra nguyên nhân của những vấn đề tâm lý và
                             đưa ra giải pháp để cải thiện tình trạng hiện tại.
@@ -149,7 +159,12 @@ export default function Blog() {
                               <span> 04 Tháng 7 2024 </span>
                             </div>
                           </div>
-                          <p className="mt-3">
+                          <p
+                            className="mt-3"
+                            style={{
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
+                          >
                             Làm thế nào để sống thanh thản và nhẹ nhàng? Lá bài
                             Seven of Cups Shadowscapes sẽ trả lời cho câu hỏi
                             đó. Nó được xem là một con đường hướng đến sự thanh
@@ -193,7 +208,12 @@ export default function Blog() {
                               <span> 05 Tháng 7 2024 </span>
                             </div>
                           </div>
-                          <p className="mt-3">
+                          <p
+                            className="mt-3"
+                            style={{
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
+                          >
                             King of Wands Shadowscapes thường liên kết với cung
                             hoàng đạo Nhân Mã, mang theo một nguồn năng lượng
                             nam tính mạnh mẽ, cởi mở và đam mê phiêu lưu.
@@ -233,7 +253,12 @@ export default function Blog() {
                               <span> 05 Tháng 7 2024 </span>
                             </div>
                           </div>
-                          <p className="mt-3">
+                          <p
+                            className="mt-3"
+                            style={{
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
+                          >
                             Sống với một trái tim chân thành và cởi mở. Cho phép
                             bản thân cảm nhận những cơ hội của tình yêu, niềm
                             vui và hạnh phúc.
@@ -276,7 +301,12 @@ export default function Blog() {
                               <span> 06 Tháng 7 2024 </span>
                             </div>
                           </div>
-                          <p className="mt-3">
+                          <p
+                            className="mt-3"
+                            style={{
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
+                          >
                             King of Cups trong Shadowscapes Tarot thực sự là một
                             biểu tượng của sự kết hợp tinh tế giữa tâm linh và
                             cảm xúc.

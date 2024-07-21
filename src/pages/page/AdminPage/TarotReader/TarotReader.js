@@ -31,7 +31,7 @@ export default function TarotReader() {
     lastName: "",
     firstName: "",
     dateOfBirth: "",
-    gender: true,
+    gender: false,
     phoneNumber: "",
     email: "",
     password: "",
@@ -256,8 +256,12 @@ export default function TarotReader() {
         alert("Tarot Reader updated successfully!");
         fetchReaders(); // Refresh the readers list after update
         setSelectedRows([]); // Unselect all selected rows
+      }
+      else if (res.status === 500) {
+        const statusCode = res.status;
+        alert(`An Error occurs in server. Status code: ${statusCode}`);
       } else {
-        alert("Failed to update Tarot Reader");
+        alert("Failed to update Tarot Reader!");
       }
     } catch (error) {
       console.error(error);
@@ -363,7 +367,9 @@ export default function TarotReader() {
           status: true,
         }); // Reset newReader state
       } else {
-        alert("Failed to create Tarot Reader");
+        const errorMessage = await res.text();
+        const cleanErrorMessage = errorMessage.split('\n')[0].split(':')[1].trim();
+        alert(`${cleanErrorMessage}`);
       }
     } catch (error) {
       console.error("Error creating Tarot Reader:", error);
@@ -452,8 +458,8 @@ export default function TarotReader() {
                 value={newReader.gender}
                 onChange={(e) => setNewReader({ ...newReader, gender: e.target.value })}
               >
-                <option value={true}>Nam</option>
-                <option value={false}>Nữ</option>
+                <option value={true}>Nữ</option>
+                <option value={false}>Nam</option>
               </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3">
