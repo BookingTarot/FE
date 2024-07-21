@@ -31,6 +31,7 @@ const Register = () => {
   const [otp, setOtp] = useState("");
   const [verificationId, setVerificationId] = useState(null);
   const [step, setStep] = useState(1);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -42,17 +43,15 @@ const Register = () => {
   const setupRecaptcha = () => {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,
         "recaptcha-container",
         {
           size: "invisible",
           callback: (response) => {
-            // // reCAPTCHA solved - will proceed with submit function
-            // handleSendOTP();
+            // Recaptcha solved - proceed with submit function
           },
           "expired-callback": () => {
             toast.error(
-              "Recaptcha expired. Please complete the recaptcha again."
+              "Recaptcha đã hết hạn. Hãy hoàn thành recapcha lần nữa."
             );
           },
         },
@@ -68,9 +67,9 @@ const Register = () => {
     const phoneNumberFormatted = `+84${formData.phoneNumber}`;
     console.log("phoneNumber: ", phoneNumberFormatted);
 
-    const webVerify = window.recaptchaVerifier;
+    const appVerifier = window.recaptchaVerifier;
 
-    signInWithPhoneNumber(auth, phoneNumberFormatted, webVerify)
+    signInWithPhoneNumber(auth, phoneNumberFormatted, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         setVerificationId(confirmationResult.verificationId);
@@ -81,10 +80,10 @@ const Register = () => {
         console.error("Error during signInWithPhoneNumber", error);
         if (error.code === "auth/invalid-phone-number") {
           toast.error(
-            "Invalid phone number. Please enter a valid phone number."
+            "Số điện thoại không hợp lệ. Hãy nhập số điện thoại đúng nhé!"
           );
         } else {
-          toast.error(`Failed to send OTP. Please try again. ${error.message}`);
+          toast.error(`Mã OTP không đúng. Hãy thử lại nhé! ${error.message}`);
         }
       });
   };
@@ -94,6 +93,7 @@ const Register = () => {
       toast.error("OTP chứa 6 ký tự");
       return;
     }
+
     const credential = PhoneAuthProvider.credential(verificationId, otp);
 
     signInWithCredential(auth, credential)
@@ -299,19 +299,15 @@ const Register = () => {
                   />
                 </div>
               </div>
-              <button type="submit" className="mb-2 w-100">
-                Verify OTP
+              <button
+                type="submit"
+                className="mb-2 w-100"
+                style={{ backgroundColor: "#D3A417" }}
+              >
+                Xác thực OTP
               </button>
             </form>
           )}
-          <div className="sign-up-link">
-            <p>
-              Bạn đã có tài khoản?{" "}
-              <Link to="/login" style={{ color: "#D3A417" }}>
-                Đăng nhập
-              </Link>
-            </p>
-          </div>
         </div>
       </div>
     </div>
