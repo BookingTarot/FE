@@ -115,14 +115,20 @@ export default function Footer() {
             <p> Copyright © 2024. All rights reserved.</p>
             <ul>
               <li>
-                <Link href="https://www.facebook.com/profile.php?id=61559836587347">
+                <Link to="https://www.facebook.com/profile.php?id=61559836587347">
                   {" "}
                   <i className="fab fa-facebook-f"></i>{" "}
                 </Link>
-                <a href="#" className="mx-2">
+                <Link
+                  to="https://www.tiktok.com/@tellory.booking"
+                  className="mx-2"
+                >
                   {" "}
-                  <i className="fab fa-twitter"></i>{" "}
-                </a>
+                  <i
+                    className="fab fa-tiktok"
+                    style={{ color: "white" }}
+                  ></i>{" "}
+                </Link>
                 <a href="#">
                   {" "}
                   <i className="fab fa-instagram"></i>{" "}

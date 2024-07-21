@@ -4,7 +4,6 @@ import { Button, InputGroup, FormControl, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const API = "https://tarott.azurewebsites.net/api/Bookings";
-const statusOptions = ["Chưa thanh toán", "Đã thanh toán"];
 
 export default function Activity() {
   const [bookings, setBookings] = useState([]);
@@ -101,7 +100,7 @@ export default function Activity() {
         description: editBooking.description,
         scheduleId: editBooking.scheduleId,
         sessionTypeId: editBooking.sessionTypeId,
-        status: true,
+        status: editBooking.status,
         linkMeet: editBooking.linkMeet, // Send status as boolean
       };
 
@@ -138,14 +137,7 @@ export default function Activity() {
       selector: (row) => row.customerName,
       wrap: true,
     },
-    {
-      name: "Giới tính",
-      selector: (row) => row.gender,
-    },
-    {
-      name: "Tuổi",
-      selector: (row) => row.age,
-    },
+
     {
       name: "Số điện thoại",
       selector: (row) => row.phoneNumber,
@@ -297,20 +289,16 @@ export default function Activity() {
           <Form.Group controlId="editBooking.status">
             <Form.Label>Trạng thái</Form.Label>
             <Form.Select
-              value={editBooking.status ? "Đã thanh toán" : "Chưa thanh toán"}
+              value={editBooking.status ? "true" : "false"}
               onChange={(e) =>
                 setEditBooking({
                   ...editBooking,
-                  status: e.target.value === "Đã thanh toán",
+                  status: e.target.value === "true",
                 })
               }
             >
-              {/* {statusOptions.map((status, index) => (
-                <option key={index} value={status}>
-                  {status}
-                </option>
-              ))} */}
-              <option value="Đã thanh toán">Đã thanh toán</option>
+              <option value="true">Đã thanh toán</option>
+              <option value="false">Chưa thanh toán</option>
             </Form.Select>
           </Form.Group>
           <Form.Group controlId="editBooking.description">

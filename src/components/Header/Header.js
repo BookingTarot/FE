@@ -37,11 +37,6 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/tarotCard">
-                    Bài Tarot
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to="/zodiac">
                     Cung Hoàng Đạo
                   </Link>
