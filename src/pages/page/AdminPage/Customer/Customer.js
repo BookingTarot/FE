@@ -49,7 +49,7 @@ export default function Customer() {
           .map((user) => ({
             ...user,
             name: `${user.firstName} ${user.lastName}`,
-            gender: user.gender ? "Nam" : "Nữ",
+            gender: user.gender ? "Nữ" : "Nam",
             isActive: user.isActive ? "Active" : "Inactive",
             dateOfBirth: new Date(user.dateOfBirth).toLocaleDateString("vi-VN"),
           }));
@@ -94,7 +94,7 @@ export default function Customer() {
         lastName: user.lastName,
         dateOfBirth: new Date(user.dateOfBirth),
         phoneNumber: user.phoneNumber,
-        gender: user.gender === "Nam" ? true : false,
+        gender: user.gender === "Nữ" ? true : false,
         email: user.email,
         address: user.address,
         password: "",
@@ -119,7 +119,7 @@ export default function Customer() {
                 method: "DELETE",
               });
               if (!res.ok) {
-                throw new Error(`Failed to delete user with id ${user.userId}`);
+                throw new Error(`Failed to delete user ${user.firstName} ${user.lastName}`);
               }
             })
           );
@@ -157,7 +157,9 @@ export default function Customer() {
         setShowCreateModal(false);
         fetchUsers();
       } else {
-        alert ("Failed to create user");
+        const errorMessage = await res.text();
+        const cleanErrorMessage = errorMessage.split('\n')[0].split(':')[1].trim();
+        alert(`${cleanErrorMessage}`);
       }
     } catch (e) {
       console.error("An error occured while creating user.");
@@ -185,8 +187,12 @@ export default function Customer() {
       if (res.ok) {
         setShowModal(false);
         fetchUsers();
+      }
+      else if (res.status === 500) {
+        const statusCode = res.status;
+        alert(`An Error occurs in server. Status code: ${statusCode}`);
       } else {
-        alert("Failed to update user");
+        alert("Failed to update user!");
       }
     } catch (e) {
       console.error(e);
@@ -473,8 +479,8 @@ export default function Customer() {
                   setEditUser({ ...editUser, gender: e.target.value === "true" })
                 }
               >
-                <option value={true}>Nam</option>
-                <option value={false}>Nữ</option>
+                <option value={true}>Nữ</option>
+                <option value={false}>Nam</option>
               </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3">
