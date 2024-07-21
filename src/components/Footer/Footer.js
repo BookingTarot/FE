@@ -46,20 +46,29 @@ export default function Footer() {
                 <ul style={{ paddingLeft: "0px" }}>
                   <li>
                     {" "}
-                    <a style={{ textDecoration: "none" }} href="">
+                    <a
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                      href=""
+                    >
                       Tarot{" "}
                     </a>
                   </li>
                   <li>
                     {" "}
-                    <a style={{ textDecoration: "none" }} href="">
+                    <a
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                      href=""
+                    >
                       {" "}
                       Xem Bài{" "}
                     </a>
                   </li>
                   <li>
                     {" "}
-                    <a style={{ textDecoration: "none" }} href="">
+                    <a
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                      href=""
+                    >
                       {" "}
                       Học Xem Bài{" "}
                     </a>
@@ -73,35 +82,50 @@ export default function Footer() {
                 <ul style={{ paddingLeft: "0px" }}>
                   <li>
                     {" "}
-                    <Link to="/tarotReader" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/tarotReader"
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                    >
                       {" "}
                       Tarot Reader
                     </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/tarotCard" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/tarotCard"
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                    >
                       {" "}
                       Bài Tarot{" "}
                     </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/zodiac" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/zodiac"
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                    >
                       {" "}
                       Cung Hoàng Đạo{" "}
                     </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/blog" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/blog"
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                    >
                       {" "}
                       Blog{" "}
                     </Link>
                   </li>
                   <li>
                     {" "}
-                    <Link to="/about" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/about"
+                      style={{ textDecoration: "none", color: "#d3a417" }}
+                    >
                       {" "}
                       Về Chúng Tôi{" "}
                     </Link>
