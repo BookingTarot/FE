@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./MobileMenu.css"; // Make sure to import your CSS file
+import { useAuth } from "../Login/Authen";
+import HomeLogout from "../Button/HomeLogout";
 
 export default function MobileMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user } = useAuth();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -39,6 +42,22 @@ export default function MobileMenu() {
               <nav className="navbar navbar-expand navbar-light">
                 <div className="collapse navbar-collapse">
                   <ul className="navbar-nav">
+                    {user ? (
+                      <li className="nav-item">
+                        <HomeLogout />
+                      </li>
+                    ) : (
+                      <li className="nav-item">
+                        <Link
+                          className="nav-link"
+                          to="/login"
+                          onClick={closeMenu}
+                        >
+                          Đăng nhập
+                        </Link>
+                      </li>
+                    )}
+
                     <li className="nav-item">
                       <Link
                         className="nav-link"
@@ -46,15 +65,6 @@ export default function MobileMenu() {
                         onClick={closeMenu}
                       >
                         Tarot Reader
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link
-                        className="nav-link"
-                        to="/tarotCard"
-                        onClick={closeMenu}
-                      >
-                        Bài Tarot
                       </Link>
                     </li>
                     <li className="nav-item">

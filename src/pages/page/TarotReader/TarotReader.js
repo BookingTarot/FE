@@ -23,6 +23,7 @@ export default function TarotReader() {
     work: false,
     health: false,
     finance: false,
+    another: false,
   });
   const [hoveredReader, setHoveredReader] = useState(null);
   const [averageRatings, setAverageRatings] = useState({});
@@ -66,21 +67,29 @@ export default function TarotReader() {
   const applyFilters = () => {
     let newFilteredReaders = [...tarotReaders];
 
+    const filterConditions = [];
+
     if (filters.love) {
-      newFilteredReaders = newFilteredReaders.filter((reader) =>
-        reader.kind.includes("Tình yêu")
+      filterConditions.push("Tình yêu");
+    }
+    if (filters.work) {
+      filterConditions.push("Công việc");
+    }
+    if (filters.health) {
+      filterConditions.push("Sức khỏe");
+    }
+    if (filters.finance) {
+      filterConditions.push("Tài chính");
+    }
+    console.log("Filter Conditions:", filterConditions);
+    if (filters.another) {
+      newFilteredReaders = newFilteredReaders.filter(
+        (reader) =>
+          !filterConditions.some((condition) => reader.kind.includes(condition))
       );
-    } else if (filters.work) {
+    } else if (filterConditions.length > 0) {
       newFilteredReaders = newFilteredReaders.filter((reader) =>
-        reader.kind.includes("Công việc")
-      );
-    } else if (filters.health) {
-      newFilteredReaders = newFilteredReaders.filter((reader) =>
-        reader.kind.includes("Sức khỏe")
-      );
-    } else if (filters.finance) {
-      newFilteredReaders = newFilteredReaders.filter((reader) =>
-        reader.kind.includes("Tài chính")
+        filterConditions.some((condition) => reader.kind.includes(condition))
       );
     }
 
@@ -222,7 +231,7 @@ export default function TarotReader() {
                   className="accordion mt-4 list-serach-acd"
                   id="accordionPanelsStayOpenExample"
                 >
-                  <div className="accordion-item" style={{ height: "260px" }}>
+                  <div className="accordion-item" style={{ height: "300px" }}>
                     <h2 className="accordion-header">
                       <button
                         className="accordion-button"
@@ -314,6 +323,25 @@ export default function TarotReader() {
                             style={{ marginLeft: "10px" }}
                           >
                             Tài chính
+                          </label>
+                        </div>
+
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="flexCheckDefault5"
+                            name="another"
+                            checked={filters.another}
+                            onChange={handleFilterChange}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="flexCheckDefault3"
+                            style={{ marginLeft: "10px" }}
+                          >
+                            Khác
                           </label>
                         </div>
                       </div>
@@ -410,10 +438,11 @@ export default function TarotReader() {
                               </div>
 
                               <div className="right-usert text-lg-end">
-                                <h5> {reader.kind} </h5>
+                                <h5> {truncateText(reader.kind, 25)} </h5>
                                 <p style={{ fontSize: "14px" }}>
                                   {" "}
-                                  Kinh Nghiệm: {reader.experience}{" "}
+                                  Kinh Nghiệm:{" "}
+                                  {truncateText(reader.experience, 7)}
                                 </p>
                               </div>
                             </div>
