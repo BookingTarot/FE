@@ -30,7 +30,13 @@ export default function AstrologyHome() {
                   KHÁM PHÁ TƯƠNG LAI
                   <span className="d-block"> CHẠM ĐẾN TÂM HỒN </span>
                 </h1>
-                <p data-aos="fade-up" style={{ textAlign: "start" }}>
+                <p
+                  data-aos="fade-up"
+                  style={{
+                    textAlign: "start",
+                    fontFamily: "Arial, Helvetica, sans-serif",
+                  }}
+                >
                   Trải nghiệm tương tác & chiếu sáng sâu sắc từ các bài đọc
                   Tarot
                 </p>
@@ -128,7 +134,12 @@ export default function AstrologyHome() {
                   >
                     ĐA DẠNG TRẢI NGHIỆM TAROT
                   </h5>
-                  <p style={{ textDecoration: "none !important" }}>
+                  <p
+                    style={{
+                      textDecoration: "none !important",
+                      fontFamily: "Arial, Helvetica, sans-serif",
+                    }}
+                  >
                     Tellory cung cấp nhiều loại trải nghiệm tarot phong phú, từ
                     các buổi đọc bài chuyên sâu đến các buổi tư vấn cá nhân. Hãy
                     để Tellory giúp bạn giải mã những bí ẩn cuộc sống với những
@@ -148,7 +159,7 @@ export default function AstrologyHome() {
                     <img alt="sop" src="assets/images/815838.png" />
                   </div>
                   <h5 className="text-white"> ĐẶT CHỖ NHANH CHÓNG, AN TOÀN </h5>
-                  <p>
+                  <p style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                     {" "}
                     Với Tellory, bạn có thể dễ dàng đặt chỗ và thanh toán trực
                     tuyến một cách an toàn và tiện lợi. Chúng tôi cam kết bảo
@@ -171,7 +182,7 @@ export default function AstrologyHome() {
                     {" "}
                     KẾT NỐI VỚI NHỮNG BẬC THẦY TAROT UY TÍN{" "}
                   </h5>
-                  <p>
+                  <p style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                     {" "}
                     Tellory là cầu nối giữa bạn và các chuyên gia tarot hàng
                     đầu, được chọn lọc kỹ lưỡng. Được chọn lọc kỹ lưỡng, những
@@ -221,7 +232,11 @@ export default function AstrologyHome() {
                     Tự Tin Hơn Với Bài Tarot
                   </span>
                 </h2>
-                <p className="mt-3" data-aos="fade-up">
+                <p
+                  className="mt-3"
+                  data-aos="fade-up"
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                >
                   {" "}
                   Tarot là một môn tập luyện bí truyền có hơn 400 năm tuổi gần
                   đây đã bùng nổ thành một nghi thức suy ngẫm phổ biến đối với
@@ -229,7 +244,10 @@ export default function AstrologyHome() {
                   rộng của nó đang tìm kiếm các công cụ tốt hơn để cùng nhau
                   giải bài tarot trực tuyến.{" "}
                 </p>
-                <p className="mt-3">
+                <p
+                  className="mt-3"
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                >
                   {" "}
                   Vì vậy, Tellory đã xây dựng một nền tảng mới để phát triển
                   theo nhu cầu của tarot. Chúng tôi tạo ra những công cụ tuyệt
@@ -542,6 +560,7 @@ export default function AstrologyHome() {
             <p
               className="col-lg-7 mx-auto d-block text-center subi-text"
               data-aos="fade-down"
+              style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
             >
               {" "}
               Tellory là người bạn đồng hành đáng tin cậy, nơi tập hợp nhiều
@@ -556,7 +575,10 @@ export default function AstrologyHome() {
                     <img alt="su" src="assets/images/3013143.png" />
                   </figure>
                   <h4 className="text-white mt-3">Tình Yêu</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                  >
                     Các chuyên gia tarot trên Tellory giúp bạn thấu hiểu sâu sắc
                     về tình cảm và các mối quan hệ, mang đến những lời khuyên
                     chân thành để nuôi dưỡng và phát triển tình yêu.
@@ -572,7 +594,10 @@ export default function AstrologyHome() {
                     <img alt="su" src="assets/images/8596897.png" />
                   </figure>
                   <h4 className="text-white mt-3">Sức Khỏe</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                  >
                     Với sự am hiểu sâu rộng, các tarot reader đưa ra lời khuyên
                     bổ ích về tình trạng sức khỏe hiện tại và cách cải thiện nó,
                     giúp bạn đạt được trạng thái cân bằng và khỏe mạnh.
@@ -602,7 +627,10 @@ export default function AstrologyHome() {
                     <img alt="su" src="assets/images/867780.png" />
                   </figure>
                   <h4 className="text-white mt-3">Công Việc</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                  >
                     Tarot reader của chúng tôi cung cấp những cái nhìn sắc bén
                     về con đường sự nghiệp, giúp bạn định hướng rõ ràng và tận
                     dụng cơ hội thăng tiến trong công việc.
@@ -618,7 +646,10 @@ export default function AstrologyHome() {
                     <img alt="su" src="assets/images/9289285.png" />
                   </figure>
                   <h4 className="text-white mt-3">Tài Chính</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                  >
                     Tarot reader trên Tellory hỗ trợ bạn quản lý tài chính hiệu
                     quả, nhận diện cơ hội đầu tư và đưa ra những quyết định tài
                     chính khôn ngoan, giúp bạn đạt được sự thịnh vượng.
@@ -645,7 +676,10 @@ export default function AstrologyHome() {
             <div className="tipsoft" data-aos="fade-up">
               <div className="d-md-flex justify-content-center align-items-center">
                 <h2 className="text-white"> LÁ BÀI HÔM NAY CỦA BẠN </h2>
-                <p className="ms-md-5 col-lg-7">
+                <p
+                  className="ms-md-5 col-lg-7"
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+                >
                   <span className="me-3 text-white">
                     {" "}
                     <i className="fas fa-quote-left"></i>{" "}

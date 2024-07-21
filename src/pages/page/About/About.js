@@ -57,7 +57,11 @@ export default function About() {
                     Tự Tin Hơn Với Bài Tarot
                   </span>
                 </h2>
-                <p className="mt-3" data-aos="fade-up">
+                <p
+                  className="mt-3"
+                  data-aos="fade-up"
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                >
                   {" "}
                   Tarot là một môn tập luyện bí truyền có hơn 400 năm tuổi gần
                   đây đã bùng nổ thành một nghi thức suy ngẫm phổ biến đối với
@@ -65,7 +69,10 @@ export default function About() {
                   rộng của nó đang tìm kiếm các công cụ tốt hơn để cùng nhau
                   giải bài tarot trực tuyến.{" "}
                 </p>
-                <p className="mt-3">
+                <p
+                  className="mt-3"
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                >
                   {" "}
                   Vì vậy, Tellory đã xây dựng một nền tảng mới để phát triển
                   theo nhu cầu của tarot. Chúng tôi tạo ra những công cụ tuyệt
@@ -379,6 +386,7 @@ export default function About() {
             <p
               className="col-lg-7 mx-auto d-block text-center subi-text"
               data-aos="fade-down"
+              style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
             >
               {" "}
               Tellory tổ chức các chuyên gia tarot giàu lòng nhân ái và hòa
@@ -392,7 +400,10 @@ export default function About() {
                     <img alt="su" src="assets/images/3013143.png" />
                   </figure>
                   <h4 className="text-white mt-3">Tình Yêu</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                  >
                     Tarot giúp bạn hiểu rõ hơn về tình cảm và mối quan hệ của
                     mình.
                   </p>
@@ -407,7 +418,10 @@ export default function About() {
                     <img alt="su" src="assets/images/8596897.png" />
                   </figure>
                   <h4 className="text-white mt-3">Sức Khỏe</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                  >
                     Tarot đưa ra lời khuyên về tình trạng sức khỏe và cách cải
                     thiện.
                   </p>
@@ -436,7 +450,10 @@ export default function About() {
                     <img alt="su" src="assets/images/867780.png" />
                   </figure>
                   <h4 className="text-white mt-3">Công Việc</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                  >
                     Tarot cung cấp cái nhìn sâu sắc về con đường sự nghiệp và cơ
                     hội thăng tiến.
                   </p>
@@ -451,7 +468,10 @@ export default function About() {
                     <img alt="su" src="assets/images/9289285.png" />
                   </figure>
                   <h4 className="text-white mt-3">Tài Chính</h4>
-                  <p className="mt-2">
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                  >
                     Tarot hỗ trợ bạn quản lý tài chính và nhận diện cơ hội đầu
                     tư.
                   </p>
@@ -477,7 +497,10 @@ export default function About() {
             <div className="tipsoft" data-aos="fade-up">
               <div className="d-md-flex justify-content-center align-items-center">
                 <h2 className="text-white"> Mẹo Trong Ngày </h2>
-                <p className="ms-md-5 col-lg-7">
+                <p
+                  className="ms-md-5 col-lg-7"
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif " }}
+                >
                   <span className="me-3 text-white">
                     {" "}
                     <i className="fas fa-quote-left"></i>{" "}

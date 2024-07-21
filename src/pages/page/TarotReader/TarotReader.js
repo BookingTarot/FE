@@ -240,7 +240,10 @@ export default function TarotReader() {
                         data-bs-target="#panelsStayOpen-collapseOne"
                         aria-expanded="true"
                         aria-controls="panelsStayOpen-collapseOne"
-                        style={{ padding: "8px" }}
+                        style={{
+                          padding: "8px",
+                          fontFamily: "Arial, Helvetica, sans-serif ",
+                        }}
                       >
                         Thể Loại
                       </button>
@@ -263,7 +266,10 @@ export default function TarotReader() {
                           <label
                             className="form-check-label"
                             htmlFor="flexCheckDefault"
-                            style={{ marginLeft: "10px" }}
+                            style={{
+                              marginLeft: "10px",
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
                           >
                             Tình yêu
                           </label>
@@ -282,7 +288,10 @@ export default function TarotReader() {
                           <label
                             className="form-check-label"
                             htmlFor="flexCheckDefault2"
-                            style={{ marginLeft: "10px" }}
+                            style={{
+                              marginLeft: "10px",
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
                           >
                             Công việc
                           </label>
@@ -301,7 +310,10 @@ export default function TarotReader() {
                           <label
                             className="form-check-label"
                             htmlFor="flexCheckDefault3"
-                            style={{ marginLeft: "10px" }}
+                            style={{
+                              marginLeft: "10px",
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
                           >
                             Sức khỏe
                           </label>
@@ -320,7 +332,10 @@ export default function TarotReader() {
                           <label
                             className="form-check-label"
                             htmlFor="flexCheckDefault4"
-                            style={{ marginLeft: "10px" }}
+                            style={{
+                              marginLeft: "10px",
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
                           >
                             Tài chính
                           </label>
@@ -339,7 +354,10 @@ export default function TarotReader() {
                           <label
                             className="form-check-label"
                             htmlFor="flexCheckDefault3"
-                            style={{ marginLeft: "10px" }}
+                            style={{
+                              marginLeft: "10px",
+                              fontFamily: "Arial, Helvetica, sans-serif ",
+                            }}
                           >
                             Khác
                           </label>
@@ -360,7 +378,11 @@ export default function TarotReader() {
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
-                        style={{ width: "150px", fontSize: "15px" }}
+                        style={{
+                          width: "150px",
+                          fontSize: "15px",
+                          fontFamily: "Arial, Helvetica, sans-serif ",
+                        }}
                       >
                         Kinh Nghiệm
                       </button>
@@ -438,8 +460,20 @@ export default function TarotReader() {
                               </div>
 
                               <div className="right-usert text-lg-end">
-                                <h5> {truncateText(reader.kind, 25)} </h5>
-                                <p style={{ fontSize: "14px" }}>
+                                <h5
+                                  style={{
+                                    fontFamily: "Arial, Helvetica, sans-serif ",
+                                  }}
+                                >
+                                  {" "}
+                                  {truncateText(reader.kind, 25)}{" "}
+                                </h5>
+                                <p
+                                  style={{
+                                    fontSize: "14px",
+                                    fontFamily: "Arial, Helvetica, sans-serif ",
+                                  }}
+                                >
                                   {" "}
                                   Kinh Nghiệm:{" "}
                                   {truncateText(reader.experience, 7)}
@@ -448,7 +482,12 @@ export default function TarotReader() {
                             </div>
                           </Link>
                           <div className="lang-ved mt-4">
-                            <p style={{ fontSize: "14px" }}>
+                            <p
+                              style={{
+                                fontSize: "14px",
+                                fontFamily: "Arial, Helvetica, sans-serif ",
+                              }}
+                            >
                               <i
                                 className="fas fa-newspaper"
                                 style={{ fontSize: "20px" }}
