@@ -178,14 +178,14 @@ export default function TarotReaderDetail() {
                     onClick={() => openModal(tarotReader.tarotReaderId)}
                     className="btn book-btn"
                     style={{
-                      color: "#415cfb",
+                      color: "#D3A417",
                       backgroundColor: "white",
                       fontSize: "18px",
                     }}
                   >
                     <i
                       className="fas fa-calendar-alt"
-                      style={{ color: "#415cfb" }}
+                      style={{ color: "#D3A417" }}
                     ></i>{" "}
                     Đặt Lịch
                   </button>

@@ -15,13 +15,16 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("https://tarott.azurewebsites.net/api/User/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, remember }),
-    });
+    const response = await fetch(
+      "https://tarott.azurewebsites.net/api/User/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password, remember }),
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
@@ -60,8 +63,14 @@ export default function Login() {
   return (
     <div>
       <div className="back-to-home rounded d-none d-sm-block">
-        <Link to="/" className="btn btn-icon btn-primary">
-          <i data-feather="home" className="icons"></i>
+        <Link
+          to="/"
+          className="btn btn-icon btn-primary"
+          style={{ backgroundColor: "#D3A417" }}
+        >
+          <i data-feather="home" className="icons">
+            Trở về trang chủ
+          </i>
         </Link>
       </div>
       <ToastContainer />
@@ -104,13 +113,20 @@ export default function Login() {
               </div>
               {/* <Link to="/forgot-password">Forgot password?</Link> */}
             </div>
-            <button type="submit" className="mb-4 w-100">
+            <button
+              type="submit"
+              className="mb-4 w-100"
+              style={{ backgroundColor: "#D3A417" }}
+            >
               Đăng nhập
             </button>
           </form>
           <div className="sign-up-link">
             <p>
-              Bạn chưa có tài khoản? <Link to="/signup">Đăng ký</Link>
+              Bạn chưa có tài khoản?{" "}
+              <Link to="/signup" style={{ color: "#D3A417" }}>
+                Đăng ký
+              </Link>
             </p>
           </div>
         </div>

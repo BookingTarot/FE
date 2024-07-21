@@ -85,7 +85,7 @@ export default function SessionType({
             style={{ backgroundColor: "transparent" }}
           >
             <button
-              style={{ marginRight: "5px" }}
+              style={{ marginRight: "5px", backgroundColor: "#D3A417" }}
               type="button"
               className="btn-close"
               data-bs-dismiss="modal"
@@ -132,7 +132,7 @@ export default function SessionType({
                             <i
                               className="fas fa-clock"
                               style={{
-                                color: "#273cb9",
+                                color: "#D3A417",
                                 fontSize: "25px",
                                 marginTop: "10px",
                               }}
