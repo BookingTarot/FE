@@ -170,13 +170,13 @@ function TarotReaderSchedule({ user }) {
   return (
     <div>
       <div className="row">
-        <h1 className="title">Đăng kí lịch làm việc</h1>
+        <h1 className="title">Tạo lịch làm việc</h1>
       </div>
       <div className="row">
         <div className="col-12 mt-4">
           <div className="card rounded border-0 shadow p-4">
             <button className="btn-custom" onClick={handleShow}>
-              Đăng ký lịch
+              Tạo lịch
             </button>
             <FullCalendar
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
