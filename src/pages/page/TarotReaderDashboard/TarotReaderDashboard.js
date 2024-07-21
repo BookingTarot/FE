@@ -34,7 +34,7 @@ function TarotReaderDashboard() {
                                             className={`tab-btn ${activeTab === "schedule" ? "active" : ""}`}
                                             onClick={() => handleTabClick("schedule")}
                                         >
-                                            <i className="ri-airplay-line align-middle navbar-icon"></i> Đặt lịch làm
+                                            <i className="ri-airplay-line align-middle navbar-icon"></i> Tạo lịch làm
                                         </button>
                                     </li>
                                     <li className="navbar-item">
