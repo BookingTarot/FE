@@ -138,14 +138,7 @@ export default function Activity() {
       selector: (row) => row.customerName,
       wrap: true,
     },
-    {
-      name: "Giới tính",
-      selector: (row) => row.gender,
-    },
-    {
-      name: "Tuổi",
-      selector: (row) => row.age,
-    },
+
     {
       name: "Số điện thoại",
       selector: (row) => row.phoneNumber,

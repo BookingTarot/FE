@@ -75,13 +75,13 @@ export default function CustomerBooking() {
             <thead>
               <tr>
                 <th>Tarot Reader</th>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Session Type</th>
-                <th>Amount</th>
-                <th>Description</th>
-                <th>Status</th>
+                <th>Ngày đặt lịch</th>
+                <th>Bắt đầu</th>
+                <th>Kết thúc</th>
+                <th>Buổi đọc</th>
+                <th>Giá</th>
+                <th>Mô tả</th>
+                <th>Trạng thái</th>
                 <th>Link Xem Bài</th>
               </tr>
             </thead>
@@ -91,16 +91,14 @@ export default function CustomerBooking() {
                   <td>{booking.tarotReaderName}</td>
                   <td>{new Date(booking.startTime).toLocaleDateString()}</td>
                   <td>
-                    {new Date(booking.startTime).toLocaleDateString("vi-VN")}{" "}
-                    {new Date(booking.startTime).toLocaleTimeString([], {
+                    {new Date(booking.startTime).toLocaleTimeString("vi-VN", {
                       hour: "2-digit",
                       minute: "2-digit",
                       hour12: true,
                     })}
                   </td>
                   <td>
-                    {new Date(booking.endTime).toLocaleDateString("vi-VN")}{" "}
-                    {new Date(booking.endTime).toLocaleTimeString([], {
+                    {new Date(booking.startTime).toLocaleTimeString("vi-VN", {
                       hour: "2-digit",
                       minute: "2-digit",
                       hour12: true,
@@ -114,9 +112,15 @@ export default function CustomerBooking() {
                     }).format(booking.amount * 1000)}
                   </td>
                   <td>{booking.description}</td>
-                  <td>{booking.status ? "Completed" : "Pending"}</td>
                   <td>
-                    <a href={booking.linkMeet}>Tham gia xem bài</a>
+                    {booking.status ? "Đã hoàn thành" : "Chưa hoàn thành"}
+                  </td>
+                  <td>
+                    {booking.status ? (
+                      <a href={booking.linkMeet}>Tham gia xem bài</a>
+                    ) : (
+                      "N/A"
+                    )}
                   </td>
                 </tr>
               ))}
