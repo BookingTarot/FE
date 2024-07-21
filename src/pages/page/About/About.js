@@ -123,7 +123,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/10350949.png" />
+                      <img alt="Aries" src="assets/images/10350949.png" style={{ width: '70%', height: '90%' }} />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -154,7 +154,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/9009939.png" />
+                      <img alt="Aries" src="assets/images/9009939.png" style={{ width: '70%', height: '90%' }}/>
                     </div>
                   </div>
                   <div
@@ -182,7 +182,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/47271.png" />
+                      <img alt="Aries" src="assets/images/47271.png" style={{ width: '60%', height: '80%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -201,7 +201,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/3201854.png" />
+                      <img alt="Aries" src="assets/images/3201854.png" style={{ width: '70%', height: '80%' }}/>
                     </div>
                   </div>
 
@@ -221,7 +221,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/10350961.png" />
+                      <img alt="Aries" src="assets/images/10350961.png" style={{ width: '70%', height: '70%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -240,7 +240,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/47148.png" />
+                      <img alt="Aries" src="assets/images/47148.png" style={{ width: '65%', height: '70%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -259,7 +259,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/10350969.png" />
+                      <img alt="Aries" src="assets/images/10350969.png" style={{ width: '70%', height: '70%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -278,7 +278,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/8062843.png" />
+                      <img alt="Aries" src="assets/images/8062843.png" style={{ width: '70%', height: '80%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -297,7 +297,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/75522.png" />
+                      <img alt="Aries" src="assets/images/75522.png" style={{ width: '60%', height: '70%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -316,7 +316,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/9009955.png" />
+                      <img alt="Aries" src="assets/images/9009955.png" style={{ width: '70%', height: '90%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -335,7 +335,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/47246.png" />
+                      <img alt="Aries" src="assets/images/47246.png" style={{ width: '70%', height: '80%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -354,7 +354,7 @@ export default function About() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/7125116.png" />
+                      <img alt="Aries" src="assets/images/7125116.png" style={{ width: '70%', height: '75%' }}/>
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
