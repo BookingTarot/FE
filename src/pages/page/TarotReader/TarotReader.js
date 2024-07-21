@@ -482,7 +482,7 @@ export default function TarotReader() {
                                   <i
                                     className="fas fa-money-bill-wave"
                                     style={{
-                                      color: "#273cb9",
+                                      color: "#d3a417",
                                       fontSize: "20px",
                                       marginRight: "10px",
                                     }}
