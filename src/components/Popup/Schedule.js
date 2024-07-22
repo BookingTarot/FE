@@ -53,10 +53,19 @@ export default function Schedule({ onClose, sessionType }) {
   }, [sessionType]);
 
   const filterScheduleData = (data, duration) => {
+    const now = new Date();
     const filtered = data.filter((schedule) => {
       const startTime = new Date(schedule.startTime);
       const endTime = new Date(schedule.endTime);
       const scheduleDuration = (endTime - startTime) / (1000 * 60); // Convert duration to minutes
+
+      if (
+        new Date(schedule.date).toLocaleDateString() ===
+          now.toLocaleDateString() &&
+        startTime < now
+      ) {
+        return false;
+      }
       return scheduleDuration === duration;
     });
     setFilteredSchedule(filtered);
@@ -115,7 +124,7 @@ export default function Schedule({ onClose, sessionType }) {
             style={{ backgroundColor: "transparent" }}
           >
             <button
-              style={{ marginRight: "5px" }}
+              style={{ marginRight: "5px", backgroundColor: "#D3A417" }}
               type="button"
               className="btn-close"
               data-bs-dismiss="modal"

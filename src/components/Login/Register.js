@@ -31,29 +31,27 @@ const Register = () => {
   const [otp, setOtp] = useState("");
   const [verificationId, setVerificationId] = useState(null);
   const [step, setStep] = useState(1);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: name === "gender" ? value === "true" : value,
-
     });
   };
 
   const setupRecaptcha = () => {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
-        auth,
         "recaptcha-container",
         {
           size: "invisible",
           callback: (response) => {
-            // // reCAPTCHA solved - will proceed with submit function
-            // handleSendOTP();
+            // Recaptcha solved - proceed with submit function
           },
           "expired-callback": () => {
             toast.error(
-              "Recaptcha expired. Please complete the recaptcha again."
+              "Recaptcha đã hết hạn. Hãy hoàn thành recapcha lần nữa."
             );
           },
         },
@@ -69,9 +67,9 @@ const Register = () => {
     const phoneNumberFormatted = `+84${formData.phoneNumber}`;
     console.log("phoneNumber: ", phoneNumberFormatted);
 
-    const webVerify = window.recaptchaVerifier;
+    const appVerifier = window.recaptchaVerifier;
 
-    signInWithPhoneNumber(auth, phoneNumberFormatted, webVerify)
+    signInWithPhoneNumber(auth, phoneNumberFormatted, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         setVerificationId(confirmationResult.verificationId);
@@ -82,10 +80,10 @@ const Register = () => {
         console.error("Error during signInWithPhoneNumber", error);
         if (error.code === "auth/invalid-phone-number") {
           toast.error(
-            "Invalid phone number. Please enter a valid phone number."
+            "Số điện thoại không hợp lệ. Hãy nhập số điện thoại đúng nhé!"
           );
         } else {
-          toast.error(`Failed to send OTP. Please try again. ${error.message}`);
+          toast.error(`Mã OTP không đúng. Hãy thử lại nhé! ${error.message}`);
         }
       });
   };
@@ -95,6 +93,7 @@ const Register = () => {
       toast.error("OTP chứa 6 ký tự");
       return;
     }
+
     const credential = PhoneAuthProvider.credential(verificationId, otp);
 
     signInWithCredential(auth, credential)
@@ -154,145 +153,161 @@ const Register = () => {
   };
 
   return (
-    <div className="full-height center-content">
+    <div>
+      <div className="back-to-home rounded d-none d-sm-block">
+        <Link
+          to="/"
+          className="btn btn-icon btn-primary"
+          style={{ backgroundColor: "#D3A417" }}
+        >
+          <i data-feather="home" className="icons">
+            Trở về trang chủ
+          </i>
+        </Link>
+      </div>
       <ToastContainer />
-      <div className="cardRegister">
-        <h2 className="fw-bold mb-2 text-center">Đăng ký</h2>
-        {step === 1 && (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSendOTP();
-            }}
-          >
-            <div className="form-container">
-              <div className="input-group">
-                <label htmlFor="lastName">Tên</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                />
+      <div className="full-height center-content">
+        <div className="cardRegister">
+          <h2 className="fw-bold mb-2 text-center">Đăng ký</h2>
+          {step === 1 && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendOTP();
+              }}
+            >
+              <div className="form-container">
+                <div className="input-group">
+                  <label htmlFor="lastName">Tên</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="firstName">Họ và tên đệm</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-              <div className="input-group">
-                <label htmlFor="firstName">Họ và tên đệm</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
+              <div className="form-container">
+                <div className="input-group">
+                  <label htmlFor="dateOfBirth">Ngày sinh</label>
+                  <input
+                    type="date"
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="phoneNumber">Số điện thoại</label>
+                  <input
+                    type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={(e) => {
+                      // Ensure only numeric characters are allowed
+                      const formattedValue = e.target.value.replace(/\D/g, "");
+                      setFormData({
+                        ...formData,
+                        phoneNumber: formattedValue,
+                      });
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="form-container">
-              <div className="input-group">
-                <label htmlFor="dateOfBirth">Ngày sinh</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  value={formData.dateOfBirth}
-                  onChange={handleChange}
-                />
+              <div className="form-container">
+                <div className="input-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="password">Mật khẩu</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-              <div className="input-group">
-                <label htmlFor="phoneNumber">Số điện thoại</label>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={(e) => {
-                    // Ensure only numeric characters are allowed
-                    const formattedValue = e.target.value.replace(/\D/g, "");
-                    setFormData({
-                      ...formData,
-                      phoneNumber: formattedValue,
-                    });
-                  }}
-                />
+              <div className="form-container">
+                <div className="input-group">
+                  <label htmlFor="address">Địa chỉ</label>
+                  <input
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="gender">Giới tính</label>
+                  <select
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                  >
+                    <option value={false}>Nam</option>
+                    <option value={true}>Nữ</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div className="form-container">
-              <div className="input-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
+              <button
+                type="submit"
+                className="mb-2 w-100"
+                style={{ backgroundColor: "#D3A417" }}
+              >
+                Đăng ký
+              </button>
+              <div id="recaptcha-container"></div>
+            </form>
+          )}
+          {step === 2 && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleVerifyOTP();
+              }}
+            >
+              <div className="form-container">
+                <div className="input-group">
+                  <label htmlFor="otp">OTP</label>
+                  <input
+                    type="text"
+                    id="otp"
+                    name="otp"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className="input-group">
-                <label htmlFor="password">Mật khẩu</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-container">
-              <div className="input-group">
-                <label htmlFor="address">Địa chỉ</label>
-                <input
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="gender">Giới tính</label>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                >
-                  <option value={false}>Nam</option>
-                  <option value={true}>Nữ</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit" className="mb-2 w-100">
-              Đăng ký
-            </button>
-            <div id="recaptcha-container"></div>
-          </form>
-        )}
-        {step === 2 && (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleVerifyOTP();
-            }}
-          >
-            <div className="form-container">
-              <div className="input-group">
-                <label htmlFor="otp">OTP</label>
-                <input
-                  type="text"
-                  id="otp"
-                  name="otp"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                />
-              </div>
-            </div>
-            <button type="submit" className="mb-2 w-100">
-              Verify OTP
-            </button>
-          </form>
-        )}
-        <div className="sign-up-link">
-          <p>
-            Bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
-          </p>
+              <button
+                type="submit"
+                className="mb-2 w-100"
+                style={{ backgroundColor: "#D3A417" }}
+              >
+                Xác thực OTP
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </div>

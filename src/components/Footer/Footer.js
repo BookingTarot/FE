@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 align-content-center">
             <div className="col d-flex flex-column align-items-center">
               <Link to="/">
-                <img style={{ marginLeft: "30%" }} alt="Logo" src={Logo} />
+                <img alt="Logo" src={Logo} />
               </Link>
               <p className="text-white mt-3 col-lg-10 text-center">
                 Mỗi lá bài như một tấm gương phản chiếu tâm hồn, mở ra những tri
@@ -32,10 +32,6 @@ export default function Footer() {
                     {" "}
                     <i className="fas fa-paper-plane"></i>{" "}
                     tellorybooking@gmail.com
-                  </li>
-                  <li>
-                    {" "}
-                    <i className="fas fa-phone-alt"></i> +8432-8026-926
                   </li>
                 </ul>
               </div>
@@ -90,16 +86,7 @@ export default function Footer() {
                       Tarot Reader
                     </Link>
                   </li>
-                  <li>
-                    {" "}
-                    <Link
-                      to="/tarotCard"
-                      style={{ textDecoration: "none", color: "#d3a417" }}
-                    >
-                      {" "}
-                      Bài Tarot{" "}
-                    </Link>
-                  </li>
+
                   <li>
                     {" "}
                     <Link

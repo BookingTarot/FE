@@ -5,10 +5,12 @@ import { useAuth } from "../Login/Authen";
 import UpdateInfo from "../Popup/UpdateInfo";
 import HomeLogout from "../Button/HomeLogout";
 
-function DashboardHeader() {  
+function DashboardHeader() {
   const { user } = useAuth();
   const id = user.tarotReader.tarotReaderId;
-  const profileImage = user.gender ? "assets/images/profile1.png" : "assets/images/profile2.png";
+  const profileImage = user.gender
+    ? "assets/images/profile1.png"
+    : "assets/images/profile2.png";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,7 +19,7 @@ function DashboardHeader() {
   };
 
   return (
-    <header className="float-start w-100">    
+    <header className="float-start w-100">
       <div className="container-fluid">
         <Navbar expand="lg" className="navbar-light">
           <Link className="navbar-brand logo" to="/">
@@ -61,7 +63,11 @@ function DashboardHeader() {
                             alt="profile"
                           />
                         </Dropdown.Toggle>
-                        <Dropdown.Menu align="end" className="shadow border-0 mt-3 py-3" style={{ minWidth: '200px' }}>
+                        <Dropdown.Menu
+                          align="end"
+                          className="shadow border-0 mt-3 py-3"
+                          style={{ minWidth: "200px" }}
+                        >
                           <Dropdown.Item className="d-flex align-items-center text-dark">
                             <img
                               src={profileImage}
@@ -69,12 +75,19 @@ function DashboardHeader() {
                               alt="profile"
                             />
                             <div className="flex-1 ms-2">
-                              <span className="d-block mb-1">{user.lastName}</span>
+                              <span className="d-block mb-1">
+                                {user.lastName}
+                              </span>
                               <small className="text-muted">Tarot Reader</small>
                             </div>
                           </Dropdown.Item>
                           <Dropdown.Divider />
-                          <Dropdown.Item onClick={toggleModal} className="text-dark">Thông tin tài khoản</Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={toggleModal}
+                            className="text-dark"
+                          >
+                            Thông tin tài khoản
+                          </Dropdown.Item>
                           <HomeLogout />
                         </Dropdown.Menu>
                       </Dropdown>

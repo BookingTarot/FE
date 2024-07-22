@@ -55,7 +55,9 @@ export default function Blog() {
                           <h6>
                             <i className="fas fa-tags"></i> Góc Tarot
                           </h6>
-                          <h5>Giới Thiệu Các Bộ Bài Tarot Nổi Tiếng</h5>
+                          <h5 style={{ color: "#d3a417" }}>
+                            Giới Thiệu Các Bộ Bài Tarot Nổi Tiếng
+                          </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -98,7 +100,7 @@ export default function Blog() {
                             <i className="fas fa-tags"></i>Tarot Sức Khỏe & Tâm
                             Lý
                           </h6>
-                          <h5>
+                          <h5 style={{ color: "#d3a417" }}>
                             Tarot và Sức Khỏe Tâm Lý: Sử Dụng Tarot Như Một Công
                             Cụ Hỗ Trợ Tâm Lý
                           </h5>
@@ -145,7 +147,7 @@ export default function Blog() {
                           <h6>
                             <i className="fas fa-tags"></i>Giải Nghĩa Bài Tarot
                           </h6>
-                          <h5>
+                          <h5 style={{ color: "#d3a417" }}>
                             Seven of Cups Shadowscapes Tarot - Mô Tả & Giải
                             Nghĩa Trải Bài
                           </h5>
@@ -194,7 +196,7 @@ export default function Blog() {
                             {" "}
                             <i className="fas fa-tags"></i>Giải nghĩa bài Tarot
                           </h6>
-                          <h5>
+                          <h5 style={{ color: "#d3a417" }}>
                             King of Wands Shadowscapes Tarot - Mô Tả & Giải
                             Nghĩa Trải Bài
                           </h5>
@@ -242,7 +244,9 @@ export default function Blog() {
                             {" "}
                             <i className="fas fa-tags"></i>Giải nghĩa bài Tarot
                           </h6>
-                          <h5>Ace of Cups - Hạnh Phúc Đơn Thuần</h5>
+                          <h5 style={{ color: "#d3a417" }}>
+                            Ace of Cups - Hạnh Phúc Đơn Thuần
+                          </h5>
                           <div className="d-flex align-items-center">
                             <div className="admin-t">
                               <i className="far fa-user"></i>
@@ -286,7 +290,7 @@ export default function Blog() {
                           <h6>
                             <i className="fas fa-tags"></i>Giải nghĩa bài Tarot
                           </h6>
-                          <h5>
+                          <h5 style={{ color: "#d3a417" }}>
                             {" "}
                             King of Cups Shadowscapes Tarot - Mô Tả & Giải Nghĩa
                             Trải Bài

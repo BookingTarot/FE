@@ -14,7 +14,7 @@ export default function BlogDetail2() {
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
         <div className="container">
-          <h2 className="text-center text-white">
+          <h2 className="text-center" style={{ color: "#d3a417" }}>
             {" "}
             SEVEN OF CUPS SHADOWSCAPES TAROT - MÔ TẢ & GIẢI NGHĨA TRẢI BÀI{" "}
           </h2>
@@ -41,13 +41,13 @@ export default function BlogDetail2() {
                       </li>
                     </ul>
                   </div>
-                  <h1 className="mt-5">
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
                     I. Mô tả về lá Seven of Cups Shadowscapes
                   </h1>
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -82,7 +82,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -176,14 +176,14 @@ export default function BlogDetail2() {
                     giữa lựa chọn có ý nghĩa và lợi ích ngắn hạn.
                   </p>
 
-                  <h1 className="mt-5">
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
                     II. Ý nghĩa lá Seven of Cups Shadowscapes ngược và xuôi
                   </h1>
 
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -193,7 +193,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -217,7 +217,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -246,7 +246,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -278,7 +278,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -309,7 +309,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -342,7 +342,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -376,7 +376,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -411,7 +411,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -445,7 +445,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -477,7 +477,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -504,7 +504,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -536,7 +536,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -566,7 +566,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -602,7 +602,7 @@ export default function BlogDetail2() {
                   <h2
                     className="mt-5"
                     style={{
-                      color: "white",
+                      color: "#d3a417",
                       textAlign: "start",
                     }}
                   >
@@ -633,7 +633,7 @@ export default function BlogDetail2() {
                     và cải thiện sức khỏe.
                   </p>
 
-                  <h1 className="mt-5">
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
                     III. Biến thể của lá bài Seven of Cups trong bộ Rider Waite
                     Tarot
                   </h1>
