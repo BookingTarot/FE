@@ -15,7 +15,7 @@ export default function BlogDetail1() {
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
         <div className="container">
-          <h2 className="text-center text-white">
+          <h2 className="text-center " style={{ color: "#d3a417" }}>
             {" "}
             Tarot và Sức Khỏe Tâm Lý: Sử Dụng Tarot Như Một Công Cụ Hỗ Trợ Tâm
             Lý{" "}
@@ -43,7 +43,10 @@ export default function BlogDetail1() {
                       </li>
                     </ul>
                   </div>
-                  <h1 className="mt-5"> Giới Thiệu </h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    Giới Thiệu{" "}
+                  </h1>
 
                   <p
                     className="mt-4"
@@ -62,7 +65,10 @@ export default function BlogDetail1() {
                     ra giải pháp để cải thiện tình trạng hiện tại.
                   </p>
 
-                  <h1 className="mt-5"> 1. Tarot và Tự Khám Phá Bản Thân </h1>
+                  <h1 className="mt-5 " style={{ color: "#d3a417" }}>
+                    {" "}
+                    1. Tarot và Tự Khám Phá Bản Thân{" "}
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -80,7 +86,10 @@ export default function BlogDetail1() {
                     nhận thức được trước đây.
                   </p>
 
-                  <h1 className="mt-5"> 2. Giải Quyết Các Vấn Đề Tâm Lý</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    2. Giải Quyết Các Vấn Đề Tâm Lý
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -98,7 +107,10 @@ export default function BlogDetail1() {
                     đề, từ đó đưa ra những gợi ý và giải pháp cụ thể.
                   </p>
 
-                  <h1 className="mt-5"> 3. Kết Nối Với Trực Giác</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    3. Kết Nối Với Trực Giác
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -117,7 +129,10 @@ export default function BlogDetail1() {
                     sống.
                   </p>
 
-                  <h1 className="mt-5"> 4. Hướng Dẫn Thiền Định Với Tarot</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    4. Hướng Dẫn Thiền Định Với Tarot
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -136,7 +151,10 @@ export default function BlogDetail1() {
                     những suy nghĩ tiêu cực.
                   </p>
 
-                  <h1 className="mt-5"> 5. Tạo Lập Kế Hoạch Hành Động</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    5. Tạo Lập Kế Hoạch Hành Động
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -154,7 +172,7 @@ export default function BlogDetail1() {
                     cận tốt nhất để đạt được mục tiêu của mình.
                   </p>
 
-                  <h1 className="mt-5">
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
                     {" "}
                     Lưu Ý Khi Sử Dụng Tarot Cho Sức Khỏe Tâm Lý
                   </h1>
@@ -212,7 +230,10 @@ export default function BlogDetail1() {
                     </p>
                   </p>
 
-                  <h1 className="mt-5"> Kết Luận</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    Kết Luận
+                  </h1>
                   <p
                     className="mt-3"
                     style={{

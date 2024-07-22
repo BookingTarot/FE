@@ -16,7 +16,7 @@ export default function BlogDetail() {
           <img alt="sm" src="assets/images/horocurty03.jpg" />
         </div>
         <div className="container">
-          <h2 className="text-center text-white">
+          <h2 className="text-center" style={{ color: "#d3a417" }}>
             {" "}
             Giới Thiệu Các Bộ Bài Tarot Nổi Tiếng{" "}
           </h2>
@@ -46,7 +46,10 @@ export default function BlogDetail() {
                       </li>
                     </ul>
                   </div>
-                  <h1 className="mt-5"> Giới Thiệu </h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    Giới Thiệu{" "}
+                  </h1>
 
                   <p
                     className="mt-4"
@@ -65,7 +68,10 @@ export default function BlogDetail() {
                     hợp với mình.
                   </p>
 
-                  <h1 className="mt-5"> 1. Rider-Waite Tarot </h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    1. Rider-Waite Tarot{" "}
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -127,7 +133,10 @@ export default function BlogDetail() {
                     nhiều bộ bài khác.
                   </p>
 
-                  <h1 className="mt-5"> 2. Thoth Tarot</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    2. Thoth Tarot
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -187,7 +196,10 @@ export default function BlogDetail() {
                     sâu rộng về tarot và các hệ thống huyền học khác.
                   </p>
 
-                  <h1 className="mt-5"> 3. Tarot de Marseille</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    3. Tarot de Marseille
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -246,7 +258,10 @@ export default function BlogDetail() {
                     muốn tìm hiểu tarot từ góc nhìn lịch sử và truyền thống.
                   </p>
 
-                  <h1 className="mt-5"> 4. Wild Unknown Tarot</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    4. Wild Unknown Tarot
+                  </h1>
 
                   <p
                     className="mt-3"
@@ -306,7 +321,10 @@ export default function BlogDetail() {
                     các yếu tố nguyên thủy.
                   </p>
 
-                  <h1 className="mt-5"> 5. Modern Witch Tarot</h1>
+                  <h1 className="mt-5" style={{ color: "#d3a417" }}>
+                    {" "}
+                    5. Modern Witch Tarot
+                  </h1>
 
                   <p
                     className="mt-3"
