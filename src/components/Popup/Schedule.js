@@ -53,10 +53,19 @@ export default function Schedule({ onClose, sessionType }) {
   }, [sessionType]);
 
   const filterScheduleData = (data, duration) => {
+    const now = new Date();
     const filtered = data.filter((schedule) => {
       const startTime = new Date(schedule.startTime);
       const endTime = new Date(schedule.endTime);
       const scheduleDuration = (endTime - startTime) / (1000 * 60); // Convert duration to minutes
+
+      if (
+        new Date(schedule.date).toLocaleDateString() ===
+          now.toLocaleDateString() &&
+        startTime < now
+      ) {
+        return false;
+      }
       return scheduleDuration === duration;
     });
     setFilteredSchedule(filtered);
