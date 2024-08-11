@@ -120,7 +120,9 @@ export default function AstrologyHome() {
                   href="#"
                   className="comon-felature01 d-grid align-content-center w-100"
                   data-aos="fade-up"
-                  style={{ textDecoration: "none" }}
+                  style={{
+                    textDecoration: "none",
+                  }}
                 >
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/3776970.png" />
@@ -132,7 +134,7 @@ export default function AstrologyHome() {
                       textDecoration: "none !important",
                     }}
                   >
-                    ĐA DẠNG TRẢI NGHIỆM TAROT
+                    ĐA DẠNG TRẢI NGHIỆM CÙNG TAROT
                   </h5>
                   <p
                     style={{
@@ -140,10 +142,10 @@ export default function AstrologyHome() {
                       fontFamily: "Arial, Helvetica, sans-serif",
                     }}
                   >
+                    {" "}
                     Tellory cung cấp nhiều loại trải nghiệm tarot phong phú, từ
                     các buổi đọc bài chuyên sâu đến các buổi tư vấn cá nhân. Hãy
-                    để Tellory giúp bạn giải mã những bí ẩn cuộc sống với những
-                    trải nghiệm tarot độc đáo và thú vị.
+                    để Tellory giúp bạn giải mã những bí ẩn cuộc sống.{" "}
                   </p>
                 </a>
               </div>
@@ -153,12 +155,16 @@ export default function AstrologyHome() {
                   href="#"
                   className="comon-felature01 d-grid align-content-center w-100"
                   data-aos="fade-down"
-                  style={{ textDecoration: "none" }}
+                  style={{
+                    textDecoration: "none",
+                    padding: 0,
+                    height: "auto",
+                  }}
                 >
                   <div className="c-img mx-auto mb-2">
                     <img alt="sop" src="assets/images/815838.png" />
                   </div>
-                  <h5 className="text-white"> ĐẶT CHỖ NHANH CHÓNG, AN TOÀN </h5>
+                  <h5 className="text-white"> ĐẶT CHỖ NHANH CHÓNG, AN TOÀN</h5>
                   <p style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                     {" "}
                     Với Tellory, bạn có thể dễ dàng đặt chỗ và thanh toán trực
@@ -180,15 +186,14 @@ export default function AstrologyHome() {
                   </div>
                   <h5 className="text-white" style={{ textAlign: "center" }}>
                     {" "}
-                    KẾT NỐI VỚI NHỮNG BẬC THẦY TAROT UY TÍN{" "}
+                    KẾT NỐI VỚI BẬC THẦY TAROT UY TÍN{" "}
                   </h5>
                   <p style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                     {" "}
                     Tellory là cầu nối giữa bạn và các chuyên gia tarot hàng
                     đầu, được chọn lọc kỹ lưỡng. Được chọn lọc kỹ lưỡng, những
                     người đọc bài của chúng tôi sẽ mang đến cho bạn những lời
-                    khuyên chân thành và chính xác, giúp bạn tìm thấy ánh sáng
-                    trong những khúc quanh cuộc sống.
+                    khuyên chân thành.
                   </p>
                 </a>
               </div>
@@ -226,10 +231,10 @@ export default function AstrologyHome() {
                 </h5>
                 <h2 className="text-white my-2" data-aos="fade-down">
                   {" "}
-                  Chúng Tôi Có Thể Giúp Bạn
+                  Khám Phá Bản Thân Với Tarot
                   <span className="d-lg-block" data-aos="fade-up">
                     {" "}
-                    Tự Tin Hơn Với Bài Tarot
+                    Cùng TELLORY
                   </span>
                 </h2>
                 <p
@@ -238,21 +243,21 @@ export default function AstrologyHome() {
                   style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                 >
                   {" "}
-                  Tarot là một môn tập luyện bí truyền có hơn 400 năm tuổi gần
-                  đây đã bùng nổ thành một nghi thức suy ngẫm phổ biến đối với
-                  hàng triệu người trên toàn thế giới. Đối tượng ngày càng mở
-                  rộng của nó đang tìm kiếm các công cụ tốt hơn để cùng nhau
-                  giải bài tarot trực tuyến.{" "}
+                  TELLORY tự hào là nơi quy tụ những chuyên gia tarot hàng đầu,
+                  sẵn sàng lắng nghe và chia sẻ với bạn những trải nghiệm tâm
+                  linh đáng giá. Với hệ thống đặt lịch trực tuyến tiện lợi và
+                  linh hoạt, bạn có thể dễ dàng chọn thời gian phù hợp và nhận
+                  được sự tư vấn tận tâm từ các tarot reader uy tín.{" "}
                 </p>
                 <p
                   className="mt-3"
                   style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                 >
                   {" "}
-                  Vì vậy, Tellory đã xây dựng một nền tảng mới để phát triển
-                  theo nhu cầu của tarot. Chúng tôi tạo ra những công cụ tuyệt
-                  vời bao gồm các phiên tarot được cá nhân hóa, bộ bài kỹ thuật
-                  số, đặt chỗ dễ dàng và hơn thế nữa!
+                  Hãy cùng TELLORY bước vào hành trình khám phá những bí mật của
+                  vũ trụ và tìm ra con đường sáng cho tương lai của bạn. Trải
+                  nghiệm ngay dịch vụ xem tarot độc đáo và chuyên nghiệp tại
+                  TELLORY!
                 </p>
 
                 <div style={{ float: "right" }}>
@@ -297,7 +302,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/10350949.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/10350949.png"
+                        style={{ width: "70%", height: "90%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -328,7 +337,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/9009939.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/9009939.png"
+                        style={{ width: "70%", height: "90%" }}
+                      />
                     </div>
                   </div>
                   <div
@@ -356,7 +369,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/47271.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/47271.png"
+                        style={{ width: "60%", height: "80%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -375,7 +392,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/3201854.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/3201854.png"
+                        style={{ width: "70%", height: "80%" }}
+                      />
                     </div>
                   </div>
 
@@ -395,7 +416,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/10350961.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/10350961.png"
+                        style={{ width: "70%", height: "70%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -414,7 +439,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/47148.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/47148.png"
+                        style={{ width: "65%", height: "70%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -433,7 +462,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/10350969.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/10350969.png"
+                        style={{ width: "70%", height: "70%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -452,7 +485,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/8062843.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/8062843.png"
+                        style={{ width: "70%", height: "80%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -471,7 +508,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/75522.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/75522.png"
+                        style={{ width: "60%", height: "70%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -490,7 +531,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/9009955.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/9009955.png"
+                        style={{ width: "70%", height: "90%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -509,7 +554,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/47246.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/47246.png"
+                        style={{ width: "70%", height: "80%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
@@ -528,7 +577,11 @@ export default function AstrologyHome() {
                   <div className="round-imog">
                     <img alt="al" src="assets/images/round.png" />
                     <div className="img-out diamond1">
-                      <img alt="Aries" src="assets/images/7125116.png" />
+                      <img
+                        alt="Aries"
+                        src="assets/images/7125116.png"
+                        style={{ width: "70%", height: "75%" }}
+                      />
                     </div>
                   </div>
                   <div className="textr-dels mt-3">
