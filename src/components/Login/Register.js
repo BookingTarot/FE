@@ -277,6 +277,14 @@ const Register = () => {
               >
                 Đăng ký
               </button>
+              <div className="sign-up-link">
+                <p>
+                  Bạn đã có tài khoản?{" "}
+                  <Link to="/login" style={{ color: "#D3A417" }}>
+                    Đăng nhập
+                  </Link>
+                </p>
+              </div>
               <div id="recaptcha-container"></div>
             </form>
           )}
