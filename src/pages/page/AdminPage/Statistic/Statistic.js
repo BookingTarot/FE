@@ -179,9 +179,10 @@ const Statistic = () => {
         <Button
           variant="contained"
           style={{ maxWidth: "100px", color: "black", background: "white" }}
-          onClick={() =>
-            setStartDate(moment().subtract(1, "day").format("YYYY-MM-DD"))
-          }
+          onClick={() => {
+            setStartDate(moment().format("YYYY-MM-DD"));
+            setEndDate(moment().format("YYYY-MM-DD"));
+          }}
           sx={{ mr: 1 }}
         >
           Hôm nay
