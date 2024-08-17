@@ -441,10 +441,12 @@ export default function TarotReader() {
                             <div className="top-asto d-flex align-items-center justify-content-between w-100">
                               <div className="pro-astro d-flex align-items-start">
                                 <div className="profile-astro">
-                                  <img
-                                    alt="ser"
-                                    src="../../../assets/images/profile2.png"
-                                  />
+                                <img
+                                
+                                src={`data:image/${getImageFormat(reader.image)};base64,${reader.image}`}
+                          alt="Avatar"
+            style={{ width: "50px", height: "50px", borderRadius: "50%", margin: "5px" }}
+          />
                                 </div>
 
                                 <div className="le-astro ms-4">
@@ -607,6 +609,18 @@ export default function TarotReader() {
       )}
     </div>
   );
+}
+
+function getImageFormat(base64Image) {
+  const prefix = base64Image.substring(0, 5);
+  switch (prefix) {
+    case "/9j/4":
+      return "jpeg";
+    case "iVBOR":
+      return "png";
+    default:
+      return "jpeg"; // Default to jpeg if the format is not recognized
+  }
 }
 function findLowestPrice(sessionTypes) {
   if (sessionTypes.length === 0) return "";

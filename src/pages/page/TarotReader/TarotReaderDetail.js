@@ -150,7 +150,7 @@ export default function TarotReaderDetail() {
               <div className="col-lg-3">
                 <div className="top-pro d-inline-block bg-white p-5 w-100">
                   <figure className="mx-auto d-block">
-                    <img alt="ser" src={Profile} />
+                  <img alt="ser" src={`data:image/${getImageFormat(tarotReader.image)};base64,${tarotReader.image}`} />
                   </figure>
 
                   <div className="name-t mt-4">
@@ -427,7 +427,17 @@ export default function TarotReaderDetail() {
     </div>
   );
 }
-
+function getImageFormat(base64Image) {
+  const prefix = base64Image.substring(0, 5);
+  switch (prefix) {
+    case "/9j/4":
+      return "jpeg";
+    case "iVBOR":
+      return "png";
+    default:
+      return "jpeg"; // Default to jpeg if the format is not recognized
+  }
+}
 function findLowestPrice(sessionTypes) {
   if (sessionTypes.length === 0) return "";
 
